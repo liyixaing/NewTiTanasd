@@ -75,6 +75,7 @@
     <string name="please_ed">please input</string>
     <string name="billing_records">Billing Records</string>
     <string name="status">Status</string>
+    <string name="source_address">Source Address</string>
     <string name="address">Currency withdrawal address</string>
     <string name="label">Ticket label</string>
     <string name="screen">Filter</string>

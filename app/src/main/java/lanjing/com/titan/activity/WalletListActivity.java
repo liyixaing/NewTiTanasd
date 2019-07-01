@@ -103,7 +103,6 @@ public class WalletListActivity extends MvpActivity<WalletContact.WalletPresent>
         });
         refresh.setEnableLoadMore(false);//不进行上拉加载
 
-
         new Thread() {
             public void run() {
                 Message msg = hand.obtainMessage();
@@ -112,9 +111,7 @@ public class WalletListActivity extends MvpActivity<WalletContact.WalletPresent>
 
         }.start();
 
-
     }
-
 
     Handler hand = new Handler() {
         public void handleMessage(android.os.Message msg) {
@@ -123,7 +120,7 @@ public class WalletListActivity extends MvpActivity<WalletContact.WalletPresent>
                 // 如果是第一次启动程序则进入引导界面
 
                 //全屏提示，没高亮控件情况引导
-                HighLightGuideView.builder(context) .addNoHighLightGuidView(R.drawable.wallet_list_yindao) .setMaskColor(getResources().getColor(R.color.mask_color)) .show();
+                HighLightGuideView.builder(context).addNoHighLightGuidView(R.drawable.wallet_list_yindao).setMaskColor(getResources().getColor(R.color.mask_color)).show();
 
                 //有高亮控件情况引导（单个高亮控件）
 //                HighLightGuideView.builder(context) .addHighLightGuidView(tvLanguage, R.drawable.dmtext) .setHighLightStyle(HighLightGuideView.VIEWSTYLE_OVAL) .show();
@@ -132,7 +129,9 @@ public class WalletListActivity extends MvpActivity<WalletContact.WalletPresent>
 //                HighLightGuideView.builder(context) .addHighLightGuidView(view1, R.drawable.dstext) .addHighLightGuidView(view2, R.drawable.dmtext) .setHighLightStyle(HighLightGuideView.VIEWSTYLE_OVAL) .show();
             }
 
-        };
+        }
+
+        ;
     };
 
     // 判断是否是第一次启动程序 利用 SharedPreferences 将数据保存在本地
@@ -159,7 +158,7 @@ public class WalletListActivity extends MvpActivity<WalletContact.WalletPresent>
         // 设置菜单创建器
         rv.setSwipeMenuCreator(swipeMenuCreator);
         // 设置菜单Item点击监听
-        rv .setSwipeMenuItemClickListener(mMenuItemClickListener);
+        rv.setSwipeMenuItemClickListener(mMenuItemClickListener);
     }
 
     // 3. 创建侧滑菜单
@@ -204,6 +203,7 @@ public class WalletListActivity extends MvpActivity<WalletContact.WalletPresent>
     }
 
     AlertDialog deleteWalletDialog = null;
+
     //删除钱包
     private void showDeleteWalletDialog(String token) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this)

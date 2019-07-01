@@ -78,6 +78,7 @@
     <string name="please_ed">请输入</string>
     <string name="billing_records">账单记录</string>
     <string name="status">状态</string>
+    <string name="source_address">来源地址</string>
     <string name="address">提币地址</string>
     <string name="label">提币标签</string>
     <string name="screen">筛选</string>
