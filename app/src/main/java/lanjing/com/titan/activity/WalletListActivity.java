@@ -61,7 +61,6 @@ public class WalletListActivity extends MvpActivity<WalletContact.WalletPresent>
     SmartRefreshLayout refresh;
     WalletListAdapter mAdapter;
     List<WalletListResponse.DataBean> mList;
-
     String token;
     @BindView(R.id.rv)
     SwipeMenuRecyclerView rv;

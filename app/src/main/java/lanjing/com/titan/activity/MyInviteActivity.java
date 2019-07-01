@@ -6,6 +6,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.AnimationUtils;
 import android.view.animation.LayoutAnimationController;
@@ -43,6 +44,10 @@ public class MyInviteActivity extends MvpActivity<FriendListContact.FriendListPr
     TextView tvFriendNum;
     @BindView(R.id.tv_reward_num)
     TextView tvRewardNum;
+    @BindView(R.id.tv_team_sun)
+    TextView TvTeamSun;
+    @BindView(R.id.tv_team_sum)
+    TextView Tv_TeamSum;
     @BindView(R.id.tv_register_url)
     TextView tvRegisterUrl;
     @BindView(R.id.register_btn)
@@ -160,8 +165,11 @@ public class MyInviteActivity extends MvpActivity<FriendListContact.FriendListPr
         refresh.finishRefresh();
         refresh.finishLoadMore();
         if (response.body().getCode() == Constant.SUCCESS_CODE) {
+            Log.e("TAG", String.valueOf(response));
             tvFriendNum.setText(String.valueOf(response.body().getNum()));
             tvRewardNum.setText(String.valueOf(response.body().getReward()));
+            TvTeamSun.setText(String.valueOf(response.body().getCurrent_predice_mining_number_of_people()));
+            Tv_TeamSum.setText(String.valueOf(response.body().getCurrent_predice_mining_number_of_usd()));
             tvInviteUrl.setText(response.body().getRecommendurl());
             tvRegisterUrl.setText(response.body().getRegisterurl());
             inviteUrl = response.body().getRecommendurl();

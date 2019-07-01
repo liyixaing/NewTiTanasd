@@ -49,6 +49,16 @@ public class AssetTitanDetailActivity extends MvpActivity<BillDetailContact.Bill
     LinearLayout ll_transactionID;
     @BindView(R.id.v_xian_three)
     View v_xian_three;
+    @BindView(R.id.v_xian_four)
+    View VXianFour;
+    @BindView(R.id.ll_ourceaddress)
+    LinearLayout llOurceaddress;
+    @BindView(R.id.tv_titan_label)
+    TextView TvTitanLabel;
+    @BindView(R.id.tv_titan_address)
+    TextView TvTitanAddress;
+    @BindView(R.id.tv_ource_address)
+    TextView TvOurceAddress;
 
     @Override
     public void initData(Bundle savedInstanceState) {
@@ -69,6 +79,8 @@ public class AssetTitanDetailActivity extends MvpActivity<BillDetailContact.Bill
             tvTitanType.setText("充币");
             ll_transactionID.setVisibility(View.VISIBLE);
             v_xian_three.setVisibility(View.VISIBLE);
+            VXianFour.setVisibility(View.VISIBLE);
+            llOurceaddress.setVisibility(View.VISIBLE);
         } else if (type.equals("33")) {
             TvTitleNameId.setTitleText("TITAN 提币");
             tvTitanType.setText("提币");
@@ -180,6 +192,9 @@ public class AssetTitanDetailActivity extends MvpActivity<BillDetailContact.Bill
 //            tvTitanState.setText(response.body().getHistory().getState());
             tvTitanTime.setText(response.body().getHistory().getTime());
             tvTitanBlockchainId.setText(response.body().getHistory().getKeys());
+            TvTitanLabel.setText(response.body().getHistory().getToTag());
+            TvTitanAddress.setText(response.body().getHistory().getToAddress());
+            TvOurceAddress.setText(response.body().getHistory().getFromAddress());
         } else {
             ToastUtils.showShortToast(context, getResources().getString(R.string.network_error));
         }

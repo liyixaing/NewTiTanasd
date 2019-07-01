@@ -39,6 +39,25 @@ public class FriendListResponse {
     private String recommendurl;
     private String registerurl;
     private int num;
+    private int current_predice_mining_number_of_people;
+    private Double current_predice_mining_number_of_usd;
+
+    public int getCurrent_predice_mining_number_of_people() {
+        return current_predice_mining_number_of_people;
+    }
+
+    public void setCurrent_predice_mining_number_of_people(int current_predice_mining_number_of_people) {
+        this.current_predice_mining_number_of_people = current_predice_mining_number_of_people;
+    }
+
+    public Double getCurrent_predice_mining_number_of_usd() {
+        return current_predice_mining_number_of_usd;
+    }
+
+    public void setCurrent_predice_mining_number_of_usd(Double current_predice_mining_number_of_usd) {
+        this.current_predice_mining_number_of_usd = current_predice_mining_number_of_usd;
+    }
+
     private List<DataBean> data;
 
     public double getReward() {

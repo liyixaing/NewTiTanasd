@@ -56,6 +56,33 @@ public class BillDetailResponse {
         private String state;
         private String time;
         private String type;
+        private String toTag;
+        private String fromAddress;
+        private String toAddress;
+
+        public String getToTag() {
+            return toTag;
+        }
+
+        public void setToTag(String toTag) {
+            this.toTag = toTag;
+        }
+
+        public String getFromAddress() {
+            return fromAddress;
+        }
+
+        public void setFromAddress(String fromAddress) {
+            this.fromAddress = fromAddress;
+        }
+
+        public String getToAddress() {
+            return toAddress;
+        }
+
+        public void setToAddress(String toAddress) {
+            this.toAddress = toAddress;
+        }
 
         public String getKeys() {
             return keys;

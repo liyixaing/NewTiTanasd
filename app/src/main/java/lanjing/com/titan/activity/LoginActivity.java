@@ -196,7 +196,6 @@ public class LoginActivity extends MvpActivity<LoginContact.LoginPresent> implem
     public void getLoginResult(Response<LoginResponse> response) {
         dismissLoadingDialog();
         if (response.body().getCode() == Constant.SUCCESS_CODE) {
-
             SPUtils.putString(Constant.ACCOUNT, edUserName.getText().toString().trim(), context);
             SPUtils.putString(Constant.LOGIN_PWD, edLoginPwd.getText().toString().trim(), context);
             SPUtils.putString(Constant.TOKEN, response.body().getToken(), context);
@@ -212,7 +211,6 @@ public class LoginActivity extends MvpActivity<LoginContact.LoginPresent> implem
     @Override
     public void getPersonResult(Response<PersonResponse> response) {
         if (response.body().getCode() == Constant.SUCCESS_CODE) {
-//            Log.e("xiaoqiang", response.body().getData().getPhonenum());
             if (ObjectUtils.isEmpty(response.body().getData().getPhonenum())) {
                 Intent intent = new Intent(context, RegisterBindingPhoneActivity.class);
                 intent.putExtra("code", inviteCode);
@@ -234,7 +232,6 @@ public class LoginActivity extends MvpActivity<LoginContact.LoginPresent> implem
             Intent intent = new Intent(context, MainActivity.class);
             startActivity(intent);
             finish();
-
         } else {
             //英文版输出中文的原因是输出的是接口中的massage消息
             ToastUtils.showShortToast(context, response.body().getMsg());
