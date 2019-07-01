@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/information_item"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:foreground="@drawable/bg_white">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="@dimen/dp_10">
+
+            <ImageView
+                android:id="@+id/img"
+                android:layout_width="@dimen/dp_102"
+                android:layout_height="@dimen/dp_69"
+                android:scaleType="centerCrop" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_69"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_information_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="@dimen/dp_20"
+                    android:paddingRight="@dimen/dp_10"
+
+                    android:textColor="@color/common_black" />
+
+                <TextView
+                    android:id="@+id/tv_information_time"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:gravity="bottom"
+                    android:paddingLeft="@dimen/dp_20"
+                    android:paddingRight="@dimen/dp_10"
+
+                    android:textSize="@dimen/sp_10" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/dp_5"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:layout_marginRight="@dimen/dp_10"
+            android:layout_marginTop="@dimen/dp_10"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+
+            <!--资讯标题-->
+            <TextView
+                android:id="@+id/tx_information_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/dp_20"
+                android:text="马化腾：产业互联网机会巨大，腾讯考虑开发VR微信。"
+                android:textColor="@color/common_black" />
+            <!--资讯图片-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_5">
+
+                <ImageView
+                    android:id="@+id/img_one"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/dp_70"
+                    android:layout_gravity="left|center"
+                    android:layout_marginRight="@dimen/dp_2"
+                    android:layout_weight="1"
+                    android:scaleType="centerCrop" />
+
+                <ImageView
+                    android:id="@+id/img_two"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/dp_70"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="@dimen/dp_2"
+                    android:layout_marginRight="@dimen/dp_2"
+                    android:layout_weight="1"
+                    android:scaleType="centerCrop" />
+
+                <ImageView
+                    android:id="@+id/img_three"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/dp_70"
+                    android:layout_gravity="left|center"
+                    android:layout_marginLeft="@dimen/dp_4"
+                    android:layout_weight="1"
+                    android:gravity="right"
+                    android:scaleType="centerCrop" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tx_create_time"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/dp_5"
+                android:text="2018-12-12"
+                android:textColor="@color/ed_gray" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/bg_gray" />
+    </LinearLayout>
+
+</LinearLayout>

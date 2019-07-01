@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/shape_white_bg"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/all"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:foreground="@drawable/bg_white"
+        android:gravity="center"
+        android:padding="@dimen/dp_10"
+        android:text="@string/all"
+        android:textColor="#FF000000"
+        android:textSize="@dimen/sp_15" />
+
+
+
+    <TextView
+        android:id="@+id/tv_buy"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:foreground="@drawable/bg_white"
+        android:gravity="center"
+        android:padding="@dimen/dp_10"
+        android:text="@string/buy"
+        android:textColor="#FF000000"
+        android:textSize="@dimen/sp_15" />
+
+
+
+    <TextView
+        android:id="@+id/tv_sell"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:foreground="@drawable/bg_white"
+        android:gravity="center"
+        android:padding="@dimen/dp_10"
+        android:text="@string/sell"
+        android:textColor="#FF000000"
+        android:textSize="@dimen/sp_15" />
+
+
+
+    <LinearLayout
+        android:id="@+id/tv_service_fee"
+        android:paddingLeft="@dimen/dp_20"
+        android:paddingRight="@dimen/dp_20"
+        android:foreground="@drawable/bg_white"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="@dimen/dp_10"
+            android:text="@string/service_fee"
+            android:textColor="#FF000000"
+            android:textSize="@dimen/sp_15" />
+    </LinearLayout>
+
+
+
+    <TextView
+        android:visibility="gone"
+        android:id="@+id/tv_system"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:foreground="@drawable/bg_white"
+        android:gravity="center"
+        android:padding="@dimen/dp_10"
+        android:text="@string/system"
+        android:textColor="#FF000000"
+        android:textSize="@dimen/sp_15" />
+
+
+
+    <TextView
+        android:visibility="gone"
+        android:id="@+id/tv_others"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:foreground="@drawable/bg_white"
+        android:gravity="center"
+        android:padding="@dimen/dp_10"
+        android:text="@string/others"
+        android:textColor="#FF000000"
+        android:textSize="@dimen/sp_15" />
+</LinearLayout>

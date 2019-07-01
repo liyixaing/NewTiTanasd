@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="lanjing.com.titan.activity.TItanTopUpActivity">
+
+    <com.lxh.baselibray.view.TitleView
+        android:id="@+id/title_lay"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/titil_view_height"
+        android:background="@color/default_white_bg"
+        app:ivLeftPic="@mipmap/icon_page_return"
+        app:titleTextColor="@color/common_black"
+        app:tvTitleText="@string/titan_top_up" />
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_margin="@dimen/dp_15"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:background="@drawable/shape_gray_bg"
+            android:padding="@dimen/dp_15"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:textColor="@color/blue"
+                    android:text="@string/top_up_address"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/tv_copy_top_up_address"
+                    android:gravity="right"
+                    android:textColor="@color/blue"
+                    android:text="@string/copy"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_top_up_address"
+                android:layout_marginTop="@dimen/dp_20"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginTop="@dimen/dp_20"
+            android:background="@drawable/shape_gray_bg"
+            android:padding="@dimen/dp_15"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:textColor="@color/blue"
+                    android:text="@string/address_label"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/tv_copy_address_label"
+                    android:gravity="right"
+                    android:textColor="@color/blue"
+                    android:text="@string/copy"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_address_label"
+                android:layout_marginTop="@dimen/dp_20"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <TextView
+            android:textSize="@dimen/sp_11"
+            android:layout_marginTop="@dimen/dp_20"
+            android:lineSpacingExtra="@dimen/dp_10"
+            android:text="@string/werm_tip"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,516 @@
+<resources>
+    <!--语言-->
+    <string name="language_cn">中文</string>
+    <string name="language_en">ENGLISH</string>
+    <string name="language_auto">自动</string>
+
+    <string name="app_name">TITAN</string>
+    <string name="get_code">获取验证码</string>
+    <!--引导页-->
+    <string name="language">语言</string>
+    <string name="start">开始</string>
+    <!--登陆-->
+    <string name="titan_plan">泰坦计划</string>
+    <string name="user_name">用户名</string>
+    <string name="account">账号</string>
+    <string name="user_names">用户名：</string>
+    <string name="login_pwd">登录密码</string>
+    <string name="login">登录</string>
+    <string name="right_validation">往右滑动验证></string>
+
+    <string name="finish_validation">完成验证</string>
+    <string name="create_wallet">创建钱包</string>
+    <string name="import_wallet">导入钱包？</string>
+    <!--注册-->
+    <string name="creation">创建钱包</string>
+    <string name="nick_name">昵称</string>
+    <string name="confirm_login_pwd">确认登录密码</string>
+    <string name="deal_pwd">交易密码</string>
+    <string name="confirm_deal_pwd">确认交易密码</string>
+    <string name="invite_code">邀请码(选填)</string>
+    <string name="agreement">我已阅读，并同意《信用钱包用户服务协议》内容</string>
+    <string name="create">创建</string>
+    <!--注册 第二步-->
+    <string name="wallet_mnemonic">钱包助记词</string>
+    <string name="set_wallet_mnemonic">设置钱包助记词</string>
+    <string name="set_wallet_mnemonic_tip">请选择三个随机提供的助记词，完成后点下一步</string>
+    <string name="next_step">下一步</string>
+    <!--注册 第三步-->
+    <string name="my_wallet">我的钱包</string>
+    <string name="wallet_secret_key">钱包私钥</string>
+    <string name="onclick_copy">点击复制</string>
+    <string name="complete">完成</string>
+
+    <!--  导入钱包-->
+    <string name="import_the_wallet">导入钱包</string>
+    <string name="please_input_word">请输入助记词</string>
+    <string name="please_input_private_key">请输入私钥</string>
+    <string name="submit">提交</string>
+    <string name="bind_references">绑定推荐人</string>
+    <string name="vault">跳过</string>
+    <string name="references_id">推荐人ID</string>
+
+    <!--底部导航-->
+    <string name="network_error">请求超时，稍后尝试！</string>
+    <string name="in_the_loading">加载中......</string>
+    <string name="setting_title">设置</string>
+    <string name="rb_wallet">钱包</string>
+    <string name="rb_market">行情</string>
+    <string name="rb_deal">交易</string>
+    <string name="rb_information">资讯</string>
+    <string name="rb_my">我的</string>
+
+    <string name="normal_data">空空如也~</string>
+
+    <!--钱包-->
+    <string name="total_assets">总资产折合</string>
+    <string name="assets">资产</string>
+    <string name="unexchanged">待交易</string>
+    <string name="to_be_airdropped">待空投</string>
+    <string name="wallet_address">钱包地址</string>
+    <string name="address_label">地址标签</string>
+    <string name="prompt_words_export">导出助记词</string>
+    <string name="secret_key_export">导出私钥</string>
+    <string name="wallet_prompt_words">钱包助记词</string>
+    <string name="balance">资产余额</string>
+    <string name="frozen">交易冻结</string>
+    <string name="qty">数量</string>
+    <string name="please_ed">请输入</string>
+    <string name="billing_records">账单记录</string>
+    <string name="status">状态</string>
+    <string name="address">提币地址</string>
+    <string name="label">提币标签</string>
+    <string name="screen">筛选</string>
+    <string name="time">时间</string>
+    <string name="system">系统</string>
+    <string name="exchange">交易</string>
+    <string name="others">其他</string>
+    <string name="type">类型</string>
+    <string name="top_up_address">充币地址</string>
+    <string name="copy">复制</string>
+    <string name="over_copy">已复制</string>
+    <string name="werm_tip">温馨提示：请务必填写并仔细核对地址标签，这是您账户的唯一标识否则资产将不可找回。</string>
+    <string name="wallet_management">钱包管理</string>
+
+    <string name="all">全部</string>
+    <string name="unfrozen">交易激活</string>
+    <string name="top_up_c">充币</string>
+    <string name="withdraw_c">提币</string>
+
+    <string name="cash_withdraw_balance">可提现余额</string>
+    <string name="exchange_transfer">交易所转入(未交易)</string>
+    <string name="titan_top_up">TITAN 充币</string>
+    <string name="titan_withdraw">TITAN 提币</string>
+    <string name="titan_trading_particulars">TITAN 交易详情</string>
+
+    <string name="pls_one">请输入提币地址</string>
+    <string name="pls_two">请输入地址标签（请务必填写并仔细核对ID）</string>
+    <string name="pls_three">请输入提币数量</string>
+    <string name="pls_four">提币手续费：</string>
+    <string name="confirm_to_mention_money">确认提币</string>
+
+    <string name="deal_time">交易时间</string>
+    <string name="blockchain_trade_id">区块链交易ID</string>
+
+    <string name="titan_unclaimed">TITANC待激活</string>
+    <string name="usd_to_be_airdropped">USD待空投</string>
+    <string name="qty_to_be_airdropped">待空投数量</string>
+    <string name="qty_unclaimed">待领取数量</string>
+    <string name="airdrop">空投</string>
+    <string name="airdrop_release">空投释放</string>
+    <string name="airdrop_matching">空投配比</string>
+    <string name="level_drop">等级空投</string>
+
+    <string name="airdrop_qty">空投数量</string>
+    <string name="titanc_conversion_qty">激活TITANC数量</string>
+    <string name="titanc_award_qty">空投TITANC数量</string>
+    <string name="titanc_get_qty">获得TITANC数量</string>
+    <string name="usd_award_qty">空投USD数量</string>
+    <string name="usd_release_qty">释放USD数量</string>
+    <string name="get_usd_award_qty">获得USD数量</string>
+
+    <string name="wallet_list">钱包列表</string>
+
+    <string name="import_new_wallet">导入新钱包</string>
+    <string name="set_wallet">设置钱包</string>
+
+    <string name="pls_input_wallet_name">请输入钱包备注</string>
+
+
+    <!--资讯新闻-->
+    <string name="information_and_news">资讯新闻</string>
+    <string name="notice">公告</string>
+    <string name="notices">公告：</string>
+    <string name="notice_details">公告详情</string>
+    <string name="tip">亲爱的用户:</string>
+
+    <!--币币交易-->
+    <string name="intelligent_transaction">智能交易</string>
+    <string name="Qty">数量</string>
+    <string name="exchange_volume">交易额</string>
+    <string name="current_entrustment">当前委托</string>
+    <string name="historical_entrustment">历史委托</string>
+    <string name="direction">方向</string>
+    <string name="price">价格</string>
+    <string name="prices">单价</string>
+
+    <string name="tip_one">1.开启智能交易后，将会每个小时整点根据您的TITAN余额进行自动交易；</string>
+    <string name="tip_two">2.自动挂单的额度：</string>
+    <string name="tip_three">a.如果用户的TITANC*20小于转入TITAN的剩余量，则为用户的TITANC*20；</string>
+    <string name="tip_four">b.如果用户的TITANC*20大于转入TITAN的剩余量，则为用户的入TITAN的剩余量；</string>
+    <string name="confirm_to_open">确认开启</string>
+
+    <!--我的-->
+    <string name="inviting_code">邀请码：</string>
+    <string name="asset_balance">资产余额</string>
+    <string name="security_center">安全中心</string>
+    <string name="billing_details">账单明细</string>
+    <string name="my_invitation">我的邀请</string>
+    <string name="online_customer_service">在线客服</string>
+    <string name="advice_feedback">建议反馈</string>
+    <string name="feedback_list">反馈列表</string>
+    <string name="feedback_details">反馈详情</string>
+    <string name="disclaimer">免责声明</string>
+
+    <!--账单记录-->
+    <string name="transaction_release">交易发布</string>
+
+    <!--修改个人资料-->
+    <string name="personal_data">个人资料</string>
+    <string name="my_profile_picture">我的头像</string>
+    <string name="my_nickname">我的昵称</string>
+    <!--安全中心-->
+    <string name="binding">绑定</string>
+    <string name="phone">手机号</string>
+    <string name="log_out">安全退出</string>
+    <!--安全中心  绑定手机号-->
+    <string name="binding_phone">绑定手机号</string>
+    <string name="verification_code">验证码</string>
+    <string name="get_verification_code">获取验证码</string>
+    <!--安全中心  绑定手机号之后根据情况重置信息  Reset information-->
+    <string name="reset_information">重置信息</string>
+    <!--安全中心  修改登录密码-->
+    <string name="modify_login_pwd">修改登录密码</string>
+    <string name="old_login_pwd">原密码</string>
+    <string name="new_login_pwd">新密码</string>
+    <string name="confirm_new_login_pwd">确认新密码</string>
+    <!--安全中心  修改交易密码-->
+    <string name="modify_deal_pwd">修改交易密码</string>
+    <string name="new_deal_pwd">新交易密码</string>
+    <string name="confirm">确认</string>
+    <!--账单明细-->
+    <string name="cash_value">充值提现</string>
+    <string name="coin_currency_trading">币币交易</string>
+    <string name="award">奖励</string>
+    <string name="withdraw_service_fee">提现手续费</string>
+    <string name="withdraw">提现</string>
+    <string name="top_up">充值</string>
+    <string name="buy">买入</string>
+    <string name="sell">卖出</string>
+    <string name="qty_buy">买入数量</string>
+    <string name="qty_sell">卖出数量</string>
+    <string name="qty_cost">花费数量</string>
+    <string name="qty_acquire">获得数量</string>
+    <string name="cost">花费</string>
+    <string name="service_fee">手续费</string>
+    <string name="sell_release">卖出释放</string>
+    <string name="trade_get">交易获得</string>
+    <string name="direct_push_trade_gains">直推交易获得</string>
+    <string name="rank_trading_weight">等级交易获得</string>
+    <string name="rank_trading_weight2">等级交易获得</string>
+    <string name="peer_acquisition">同级交易获得</string>
+    <string name="delete">删除</string>
+
+    <!--我的邀请-->
+    <string name="my_invite">我的邀请</string>
+    <string name="invited_friends">已邀请好友</string>
+    <string name="amount_of_reward">奖励数额 (TITAN)</string>
+    <string name="download_ure">下载链接</string>
+    <string name="invite_url">邀请链接</string>
+    <string name="register_url">注册链接</string>
+    <string name="friend_list">好友列表</string>
+    <string name="register_time">注册时间</string>
+    <string name="total_number">团队预挖人数</string>
+    <string name="total_number_sun">团队预挖总额(USD)</string>
+    <!--在线客服-->
+    <string name="send">发送</string>
+
+
+    <!--弹窗文本-->
+    <string name="whether_to_exit_the_current_account">是否退出当前账号!</string>
+    <string name="confirm_dialog">确定</string>
+    <string name="cancel">取消</string>
+    <string name="do_not_take_screenshot">请勿截图</string>
+    <string name="do_not_take_screenshot_content">他人若得到您得助记词，可直接获取你得资产。请务必抄写备份好您得助记词，并存放在安全位置。</string>
+    <string name="got_it">知道了</string>
+    <string name="warm_prompt">温馨提示</string>
+    <string name="you_have_not_set_the_wallet_address_please_set_it_first">您还没有设置钱包地址，请先去设置！</string>
+    <string name="real_name_tip">您还未进行实名认证，请前去认证！</string>
+    <string name="please_enter_transaction_PW">请输入交易密码</string>
+    <string name="PW">密码</string>
+    <string name="take_photo">拍照</string>
+    <string name="photo_album">从相册获取图片</string>
+    <string name="modify_nickname">修改昵称</string>
+    <string name="enter_a_new_nickname">输入新的昵称</string>
+    <string name="simplified_chinese">简体中文</string>
+    <string name="english">English</string>
+
+
+    <!--所有提示-->
+    <string name="login_center">登录中。。。</string>
+    <string name="verification_code_sent">已发送验证码</string>
+    <string name="user_name_cannot_be_empty">用户名不能为空</string>
+    <string name="nick_name_cannot_be_empty">昵称不能为空</string>
+    <string name="the_cell_phone_number_cannot_be_empty">手机号不能为空</string>
+    <string name="please_input_the_correct_mobile_phone_number">请输入正确的手机号</string>
+    <string name="the_verification_code_cannot_be_empty">验证码不能为空</string>
+    <string name="the_login_password_cannot_be_empty">登录密码不能为空</string>
+    <string name="confirm_the_login_password_cannot_be_empty">确认登录密码不能为空</string>
+    <string name="Passwords_must_contain_both_Numbers_and_letters_8_18_bits_long">密码必须同时包含数字和字母,长度8-18位</string>
+    <string name="account_must_contain_both_Numbers_and_letters_8_18_bits_long">用户名必须同时包含数字和字母,长度8-18位</string>
+    <string name="the_transaction_password_cannot_be_empty">交易密码不能为空</string>
+    <string name="please_enter_six_digit_trading_password">请输入6位交易密码</string>
+    <string name="confirm_the_transaction_password_cannot_be_empty">确认交易密码不能为空</string>
+    <string name="again_input_the_transaction_password_cannot_be_empty">再次输入交易密码不能为空</string>
+    <string name="the_credit_ID_cannot_be_empty">信用ID不能为空</string>
+    <string name="agree_to_continue_after_the_agreement">同意协议后继续</string>
+    <string name="registration_successful_later_enter_the_login_page_to_log_in">注册成功，稍后进入到登录页面进行登录！</string>
+    <string name="create_success">创建成功！请设置助记词</string>
+    <string name="login_successfully">登录成功！</string>
+    <string name="mobile_phone_or_account_cannot_be_empty">手机/账号不能为空</string>
+    <string name="program_exits">程序退出</string>
+    <string name="the_account_has_been_frozen">账号已被冻结</string>
+    <string name="the_two_passwords_do_not_match">两次密码输入不一致</string>
+    <string name="the_two_deal_passwords_do_not_match">两次交易密码输入不一致</string>
+    <string name="the_transaction_password_was_changed_successfully">修改交易密码成功!</string>
+    <string name="the_modification_was_successful_Please_login_again_later">修改成功，稍后请重新登录！</string>
+    <string name="phone_number_changed_successfully">修改手机号码成功!</string>
+    <string name="please_enter_your_original_login_password">请输入原登录密码</string>
+    <string name="please_enter_your_new_login_password">请输入新登录密码</string>
+    <string name="the_new_login_password_cannot_be_the_same_as_the_original_password">新登录密码不能和原密码一样</string>
+    <string name="please_enter_your_new_login_password_again">请再次输入新登录密码</string>
+    <string name="address_copied">地址已复制</string>
+    <string name="word_copy_tip">助记词已复制</string>
+    <string name="key_copy_tip">私钥已复制</string>
+    <string name="deal_id_copied">交易号已复制</string>
+    <string name="the_wallet_address_has_been_copied">钱包地址已复制</string>
+    <string name="current_maximum_input">当前最多输入</string>
+    <string name="please_enter_the_transfer_amount">请输入转出金额</string>
+    <string name="the_amount_transferred_must_be_greater_than_zero">转出金额必须大于0</string>
+    <string name="please_enter_the_outgoing_address_to_copy_or_scan_the_qr_code">请输入转出地址，可以复制或者扫描二维码获得</string>
+    <string name="permission_not_opened">权限未开启！</string>
+    <string name="save_photo_successfully">保存相片成功</string>
+    <string name="failed_to_save_photo">保存相片失败</string>
+    <string name="please_make_sure_you_remember">请确认你已记住</string>
+    <string name="mnemonic_error">助记词错误</string>
+    <string name="successful_authentication">验证成功！</string>
+    <string name="congratulations_to_you_ETH_wallet_was_created_successfully">恭喜您！创建ETH钱包成功</string>
+
+
+    <string name="available_balance">可用余额：</string>
+    <string name="get_gasprice_error">获取旷工费失败</string>
+    <string name="the_total_value_of_the_deposit_shall_not_be_less_than">存入金额的总价值应不小于500美金</string>
+    <string name="open_the_success">开启成功！</string>
+    <string name="Start_time">开始计息时间：</string>
+    <string name="press_exit_again">再按一次退出</string>
+    <string name="nickname_cannot_be_empty">昵称不能为空</string>
+    <string name="image_acquisition_failed">图片获取失败</string>
+    <string name="modify_avatar_successfully">修改头像成功！</string>
+    <string name="modify_nickname_successfully">修改昵称成功！</string>
+    <string name="please_add_the_payment_code_of_alipay">请添加支付宝收款码</string>
+    <string name="add_payment_code_of_alipay_successfully">添加支付宝收款码成功！</string>
+    <string name="please_add_weChat_collection_code">请添加微信收款码</string>
+    <string name="add_weChat_collection_code_successfully">添加微信收款码成功！</string>
+    <string name="please_add_bank_card">请添加银行卡</string>
+    <string name="add_bank_card_success">添加银行卡成功！</string>
+    <string name="please_enter_your_bank_card_number">请输入银行卡号</string>
+    <string name="please_enter_the_bank_name">请输入银行名称</string>
+    <string name="please_enter_the_name_of_the_account_holder">请输入开户人姓名</string>
+
+    <string name="all_enquired">已查询全部数据</string>
+    <string name="the_carrier_pigeon_dividend_has_been_inquired">已查询信鸽分红</string>
+    <string name="the_team_bonus_has_been_checked">已查询信用分红</string>
+    <string name="community_dividend_has_been_checked">已查询社区分红</string>
+    <string name="inquiry_recommended_bonus">已查询推荐分红</string>
+    <string name="other_proceeds_have_been_queried">已查询其他收益</string>
+    <string name="have_inquired_income_management">已查询收益理财</string>
+    <string name="the_earnings_exchange_has_been_checked">已查询收益兑换</string>
+    <string name="income_withdrawal_has_been_checked">已查询收益提现</string>
+
+    <string name="have_query_usdt">已查询USDT</string>
+    <string name="have_query_usdt_buy">已查询USDT买入</string>
+    <string name="have_query_usdt_chain_up">已查询USDT上链中</string>
+    <string name="have_query_usdt_fail">已查询USDT失败</string>
+    <string name="have_query_usdt_turn_out">已查询USDT转出</string>
+    <string name="have_query_usdt_convert">已查询USDT转换</string>
+    <string name="have_query_usdt_complete">已查询USDT已完成</string>
+
+    <string name="have_query_eth">已查询ETH</string>
+    <string name="have_query_eth_buy">已查询ETH买入</string>
+    <string name="have_query_eth_chain_up">已查询ETH上链中</string>
+    <string name="have_query_eth_fail">已查询ETH失败</string>
+    <string name="have_query_eth_turn_out">已查询ETH转出</string>
+    <string name="have_query_eth_convert">已查询ETH转换</string>
+    <string name="have_query_eth_complete">已查询ETH已完成</string>
+
+    <string name="have_query_bemt">已查询BEMT</string>
+    <string name="have_query_bemt_buy">已查询BEMT买入</string>
+    <string name="have_query_bemt_chain_up">已查询BEMT上链中</string>
+    <string name="have_query_bemt_fail">已查询BEMT失败</string>
+    <string name="have_query_bemt_turn_out">已查询BEMT转出</string>
+    <string name="have_query_bemt_convert">已查询BEMT转换</string>
+    <string name="have_query_bemt_complete">已查询BEMT已完成</string>
+    <string name="restore_wallet_successfully">恭喜您！ETH钱包恢复成功!</string>
+    <string name="mnemonic_derived_successfully">导出助记词成功!</string>
+    <string name="the_private_key_was_successfully_exported">导出私钥成功!</string>
+
+    <string name="save_real_name_tip">已提交申请，审核中</string>
+    <string name="please_enter_your_real_name">请输入真实姓名</string>
+    <string name="please_enter_your_id_number">请输入身份证号</string>
+    <string name="please_enter_the_correct_id_number">请输入正确的身份证号</string>
+    <string name="please_upload_your_id_card_face">请上传身份证人像面</string>
+    <string name="please_upload_the_national_emblem_of_your_id_card">请上传身份证国徽面</string>
+    <string name="Successful_withdrawal_of_income">收益提取成功！</string>
+
+    <string name="have_query_buy">已查询买入数据</string>
+    <string name="have_query_chain_up">已查询上链中数据</string>
+    <string name="have_query_fail">已查询失败数据</string>
+    <string name="have_query_turn_out">已查询转出数据</string>
+    <string name="have_query_convert">已查询转换数据</string>
+    <string name="have_query_complete">已查询已完成数据</string>
+
+    <string name="transfer_out_success">转出成功！</string>
+    <string name="conversion_success">转换成功！</string>
+
+    <string name="transfer_tip">已是最长理财，暂不可转换</string>
+    <string name="problem_tip">请输入你要反馈的问题</string>
+
+    <string name="income_financial_success">收益理财成功！</string>
+    <string name="exchange_game_currency_success">兑换游戏币成功！</string>
+    <string name="exchange_tip">请输入兑换数量</string>
+    <string name="exchange_zero_tip">兑换数量必须大于0</string>
+    <string name="submit_successfully">提交成功</string>
+    <string name="no_data_yet">暂时没有数据</string>
+
+    <string name="create_success_tip">创建完成，进入登录页面进行登录</string>
+    <string name="please_right_validation">请右滑动验证</string>
+
+    <string name="please_ed_one_word">请输入第一个助记词</string>
+    <string name="please_ed_two_word">请输入第二个助记词</string>
+    <string name="please_ed_three_word">请输入第三个助记词</string>
+    <string name="please_check_one_word">请选择第一个助记词</string>
+    <string name="please_check_two_word">请选择第二个助记词</string>
+    <string name="please_check_three_word">请选择第三个助记词</string>
+    <string name="please_ed_key">请输入私钥</string>
+    <string name="import_success">导入成功,请设置密码！</string>
+    <string name="successfully_set">设置成功</string>
+    <string name="please_fill_in_the_referee_id">请填写推荐人ID</string>
+    <string name="binding_success">绑定成功，请设置密码！</string>
+    <string name="binding_success_tip">绑定成功</string>
+    <string name="please_enter_your_new_deal_password">请输入新交易密码</string>
+    <string name="successful">验证成功！</string>
+
+    <string name="present_price">当前价格</string>
+    <string name="s">卖</string>
+    <string name="b">买</string>
+    <string name="switch_success">切换成功</string>
+    <string name="modify_wallet_success">修改钱包名称成功</string>
+    <string name="please_bill_phone">请先绑定手机号</string>
+    <string name="please_ed_wallet_name">请输入钱包名称</string>
+    <string name="chang_phone_tip">你当前已绑定手机号，是否继续？</string>
+    <string name="security_verification">安全验证</string>
+    <string name="sure_delete">确认删除？</string>
+    <string name="repeal">撤销</string>
+
+    <string name="buy_usd_num">获得TITAN数量</string>
+    <string name="sell_titan_num">获得USD数量</string>
+    <string name="buy_usd_num2">消耗TITAN数量</string>
+    <string name="sell_titan_num2">消耗USD数量</string>
+
+    <string name="confirm_recall">您确定要撤销吗？</string>
+    <string name="recall_success">撤销成功</string>
+    <string name="delete_success">删除钱包成功！</string>
+    <string name="finish">已完成</string>
+    <string name="had_withdrawn">已撤销</string>
+    <string name="underway">进行中</string>
+    <string name="confirm_close">确定要关闭智能模式吗？</string>
+    <string name="digit2">4位</string>
+    <string name="digit1">1位</string>
+    <string name="digit0">0位</string>
+    <string name="advice_title">标题</string>
+    <string name="advice_content">内容</string>
+    <string name="answer">客服回复</string>
+    <string name="please_ed_title">请输入标题</string>
+    <string name="please_ed_content">请输入内容</string>
+    <string name="node">节点</string>
+    <string name="committee">委员会</string>
+    <string name="management_committee">管理委员会</string>
+    <string name="Management_board_notice">管理委员会公告</string>
+    <string name="inter_title">智能交易</string>
+    <string name="inter_tip">1.开启智能交易后，机器人将会根据您的TITAN余额进行自动交易。</string>
+    <string name="inter_tip2">2.自动挂单的额度：</string>
+    <string name="inter_tip3">①如果用户的TITANC*20小于转入TITAN的剩余量，则为用户的TITANC*20；</string>
+    <string name="inter_tip4">②如果用户的TITANC*20大于转入TITAN的剩余量，则为用户的转入TITAN剩余量。</string>
+
+    <string name="node_tip">今日节点配比USD额度</string>
+    <string name="please_login_again">账号异常或用户信息过期，请重新登录!</string>
+    <string name="buy_tip">请输入TITAN数量</string>
+    <string name="sell_tip">请输入USD数量</string>
+    <string name="num_tip">请输入有效数字</string>
+    <string name="success">发布成功！</string>
+    <string name="bing_tip">您还未绑定手机号，现在去绑定？</string>
+    <string name="please_ed_wallet_address">请输入提币地址</string>
+    <string name="please_ed_wallet_id">请输入地址标签</string>
+    <string name="please_ed_tibi_num">请输入提币数量</string>
+    <string name="submitted_request">已提交请求</string>
+    <string name="unexecutable">超出可用，不可执行</string>
+    <string name="minimum_withdrawal">提币最低100</string>
+    <string name="service_agreement">服务协议</string>
+    <string name="tx_one">空投等级加权</string>
+    <string name="tx_two">空投分享加权</string>
+    <string name="tx_three">释放等级加权</string>
+    <string name="tx_four">释放分享加权</string>
+    <string name="tx_five">治理委员会奖励</string>
+    <string name="tx_six">交易直推增加</string>
+    <string name="tx_seven">空投释放</string>
+    <string name="tx_eight">卖出释放减少</string>
+    <string name="tx_nine">交易分享减少</string>
+    <string name="tx_ten">交易等级减少</string>
+    <string name="tx_eleven">交易直接减少</string>
+
+
+    <string name="tip_phone_tx">例：新加坡区号 + 号码</string>
+    <string name="tip_phone">例：65 + 88888888</string>
+    <string name="available">可用</string>
+    <!--中国，韩国，日本，泰国，香港，台湾，新加坡，澳大利亚，美国，俄罗斯-->
+    <string name="china">中国</string>
+    <string name="korea">韩国</string>
+    <string name="japan">日本</string>
+    <string name="thailand">泰国</string>
+    <string name="hong_kong_china">香港</string>
+    <string name="taiwan_china">台湾</string>
+    <string name="singapore">新加坡</string>
+    <string name="australia">澳大利亚</string>
+    <string name="america">美国</string>
+    <string name="russia">俄罗斯</string>
+    <string name="malaysia">马来西亚</string>
+    <string name="viet_nam">越南</string>
+    <string name="cambodia">柬埔寨</string>
+    <string name="indonesia">印度尼西亚</string>
+    <string name="brunei">文莱</string>
+    <string name="the_philippines">菲律宾</string>
+    <string name="east_timor">东帝汶</string>
+    <string name="new_zealand">新西兰</string>
+    <string name="share_dropped">分享空投</string>
+    <string name="weighted_activation">加权激活</string>
+    <string name="h">24h 量 </string>
+    <string name="titanc_one">分享加权</string>
+    <string name="titanc_two">等级加权</string>
+    <string name="titanc_three">直推交易激活</string>
+    <string name="titanc_four">等级交易激活</string>
+    <string name="titanc_five">同级交易激活</string>
+    <string name="update_yes">是否升级到</string>
+    <string name="update_version">版本</string>
+    <string name="upgrade">升级</string>
+</resources>
+

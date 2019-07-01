@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="language_auto">self-motion</string>
+    <string name="language_cn">Chinese</string>
+    <string name="language_en">ENGLISH</string>
+</resources>

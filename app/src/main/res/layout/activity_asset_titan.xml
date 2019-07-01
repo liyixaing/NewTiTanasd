@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="lanjing.com.titan.activity.AssetTITANActivity">
+
+    <com.lxh.baselibray.view.TitleView
+        android:id="@+id/title_lay"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/titil_view_height"
+        android:background="@color/default_white_bg"
+        app:ivLeftPic="@mipmap/icon_page_return"
+        app:titleTextColor="@color/common_black"
+        app:tvTitleText="TITAN" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/bottom_lay"
+        android:layout_below="@+id/title_lay"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dp_15"
+            android:background="@drawable/img_my_bg"
+            android:orientation="vertical"
+            android:padding="@dimen/dp_15">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/asset_balance"
+                android:textColor="@color/white"
+                android:textSize="@dimen/sp_12" />
+
+            <TextView
+                android:id="@+id/tv_asset_balance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_5"
+
+                android:textColor="@color/white"
+                android:textSize="@dimen/sp_30" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_15"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="left|center"
+                        android:maxEms="16"
+                        android:maxLength="24"
+                        android:maxLines="1"
+                        android:text="@string/cash_withdraw_balance"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/sp_11" />
+
+                    <TextView
+                        android:id="@+id/tv_tixian_balance"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="left|center"
+                        android:layout_marginTop="@dimen/dp_10"
+                        android:maxLength="24"
+                        android:maxLines="1"
+
+                        android:textColor="@color/white"
+                        android:textSize="13sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:maxEms="16"
+                        android:maxLength="24"
+                        android:maxLines="1"
+                        android:text="@string/exchange_transfer"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/sp_11" />
+
+
+                    <TextView
+                        android:id="@+id/tv_titan_not_trading"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="@dimen/dp_10"
+                        android:maxLength="24"
+                        android:maxLines="1"
+
+                        android:textColor="@color/white"
+                        android:textSize="13sp" />
+                </LinearLayout>
+
+                <LinearLayout
+
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right"
+                        android:maxEms="16"
+                        android:maxLength="24"
+                        android:maxLines="1"
+                        android:text="@string/frozen"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/sp_11" />
+
+                    <TextView
+                        android:id="@+id/tv_titan_trading_frozen"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right"
+                        android:layout_marginTop="@dimen/dp_10"
+                        android:maxLength="24"
+                        android:maxLines="1"
+
+                        android:textColor="@color/white"
+                        android:textSize="13sp" />
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_15"
+            android:layout_marginRight="@dimen/dp_15"
+            android:layout_marginTop="@dimen/dp_10"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/billing_records"
+                android:textColor="#182146"
+                android:textSize="@dimen/sp_15" />
+
+            <TextView
+                android:id="@+id/tv_titan_screen"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="right"
+                android:text="@string/screen"
+                android:textColor="@color/blue"
+                android:textSize="@dimen/sp_15" />
+        </LinearLayout>
+
+        <com.scwang.smartrefresh.layout.SmartRefreshLayout
+            android:id="@+id/refresh"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/dp_10">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/rv_normal_show"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="68dp"
+                        android:layout_height="52dp"
+                        android:background="@mipmap/icon_normal" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/normal_data"
+                        android:textSize="@dimen/sp_12" />
+                </LinearLayout>
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/rv"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layoutAnimation="@anim/layout_animation_from_bottom"
+                    android:visibility="gone" />
+            </RelativeLayout>
+        </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/bottom_lay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:padding="@dimen/dp_10">
+
+        <TextView
+            android:id="@+id/top_up_c_btn"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/dp_39"
+            android:layout_marginLeft="@dimen/dp_2"
+            android:layout_marginRight="@dimen/dp_2"
+            android:layout_weight="1"
+            android:background="@drawable/btn_radius_blue"
+            android:foreground="@drawable/bg_white"
+            android:gravity="center"
+            android:text="@string/top_up_c"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_15" />
+
+        <TextView
+            android:id="@+id/withdraw_c_btn"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/dp_39"
+            android:layout_marginLeft="@dimen/dp_2"
+            android:layout_marginRight="@dimen/dp_2"
+            android:layout_weight="1"
+            android:background="@drawable/btn_radius_blue"
+            android:foreground="@drawable/bg_white"
+            android:gravity="center"
+            android:text="@string/withdraw_c"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_15" />
+
+        <TextView
+            android:id="@+id/exchange_btn"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/dp_39"
+            android:layout_marginLeft="@dimen/dp_2"
+            android:layout_marginRight="@dimen/dp_2"
+            android:layout_weight="1"
+            android:background="@drawable/btn_radius_blue"
+            android:foreground="@drawable/bg_white"
+            android:gravity="center"
+            android:text="@string/exchange"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_15" />
+    </LinearLayout>
+</RelativeLayout>

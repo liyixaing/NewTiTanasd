@@ -1,0 +1,510 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--语言-->
+    <string name="language_cn">Chinese</string>
+    <string name="language_en">ENGLISH</string>
+    <string name="language_auto">self-motion</string>
+
+    <string name="app_name">TITAN</string>
+    <string name="get_code">Get</string>
+    <!--引导页-->
+    <string name="language">Language</string>
+    <string name="start">Start</string>
+    <!--登陆-->
+    <string name="titan_plan">TITAN</string>
+    <string name="user_name">Account</string>
+    <string name="user_names">Account：</string>
+    <string name="login_pwd">Login Password</string>
+    <string name="login">LOGIN</string>
+    <string name="right_validation">Slide to Verify></string>
+    <string name="finish_validation">To complete the verification</string>
+    <string name="create_wallet">Create Wallet</string>
+    <string name="import_wallet">Import Wallet?</string>
+    <!--注册-->
+    <string name="creation">Create Wallet</string>
+    <string name="nick_name">Nickname</string>
+    <string name="confirm_login_pwd">Login Password Confirmation</string>
+    <string name="deal_pwd">Transaction Password</string>
+    <string name="confirm_deal_pwd">Transaction Password Confirmation</string>
+    <string name="invite_code">Invitation Code (Optional)</string>
+    <string name="agreement">I have read and agreed to the Credit Wallet User Service Agreement.</string>
+    <string name="create">Create</string>
+    <!--注册 第二步-->
+    <string name="wallet_mnemonic">Wallet Prompts</string>
+    <string name="set_wallet_mnemonic">Prompt Words Setting</string>
+    <string name="set_wallet_mnemonic_tip">Please select three prompt words which are provided randomly and click “Next”</string>
+    <string name="next_step">Next</string>
+    <!--注册 第三步-->
+    <string name="my_wallet">My Wallet</string>
+    <string name="wallet_secret_key">Wallet Secret Key</string>
+    <string name="onclick_copy">Click to Copy</string>
+    <string name="complete">Complete</string>
+
+    <!--  导入钱包-->
+    <string name="import_the_wallet">Import Wallet</string>
+    <string name="please_input_word">Pls Input Prompt Words</string>
+    <string name="please_input_private_key">Pls Input Wallet Secret Key</string>
+    <string name="submit">Submit</string>
+    <string name="bind_references">Recommender</string>
+    <string name="vault">Skip</string>
+    <string name="references_id">Recommender ID</string>
+    <!--底部导航-->
+    <string name="network_error">Request timeout, try later!</string>
+    <string name="in_the_loading">In the loading...</string>
+    <string name="setting_title">Setting</string>
+    <string name="rb_wallet">Wallet</string>
+    <string name="rb_market">Market</string>
+    <string name="rb_deal">OTC</string>
+    <string name="rb_information">Information</string>
+    <string name="rb_my">Mine</string>
+
+    <string name="normal_data">There is no data to show</string>
+    <!--钱包-->
+    <string name="total_assets">Total Assets</string>
+    <string name="assets">Assets</string>
+    <string name="unexchanged">Unexchanged</string>
+    <string name="to_be_airdropped">To be Airdropped</string>
+    <string name="wallet_address">Wallet Address</string>
+    <string name="address_label">Address Label</string>
+    <string name="prompt_words_export">Prompt Words Export</string>
+    <string name="secret_key_export">Secret Key Export</string>
+    <string name="wallet_prompt_words">Wallet Prompt Words</string>
+    <string name="balance">Balance</string>
+    <string name="frozen">Frozen</string>
+    <string name="qty">Qty</string>
+    <string name="please_ed">please input</string>
+    <string name="billing_records">Billing Records</string>
+    <string name="status">Status</string>
+    <string name="address">Currency withdrawal address</string>
+    <string name="label">Ticket label</string>
+    <string name="screen">Filter</string>
+    <string name="time">Time</string>
+    <string name="system">System</string>
+    <string name="exchange">Exchange</string>
+    <string name="others">Others</string>
+    <string name="type">Type</string>
+    <string name="top_up_address">Top Up Address</string>
+    <string name="copy">Copy</string>
+    <string name="over_copy">Replicated</string>
+    <string name="werm_tip">Tips: Please fill in and check the address label carefully, which is the only identification of your account, otherwise the assets will not be recovered.</string>
+    <string name="wallet_management">Wallet Management</string>
+
+    <string name="all">All</string>
+    <string name="unfrozen">Trading activation</string>
+    <string name="top_up_c">Top Up</string>
+    <string name="withdraw_c">Withdraw</string>
+
+    <string name="cash_withdraw_balance">Cash Withdraw Balance</string>
+    <string name="exchange_transfer">Exchange Transfer In (Unexchanged)</string>
+
+    <string name="titan_top_up">TITAN Top Up</string>
+    <string name="titan_withdraw">TITAN Withdraw</string>
+    <string name="titan_trading_particulars">TITAN Trading Particulars</string>
+
+    <string name="pls_one">Pls Input Withdraw Address</string>
+    <string name="pls_two">Pls Input Address Label(Please fill in and check the ID carefully)</string>
+    <string name="pls_three">Pls Input Withdraw Qty</string>
+    <string name="pls_four">Withdraw Service Fee：</string>
+
+    <string name="confirm_to_mention_money">Confirm to mention money</string>
+
+    <string name="deal_time">Trade Time</string>
+    <string name="blockchain_trade_id">Blockchain Trade ID</string>
+
+    <string name="titan_unclaimed">TITANC To Activate</string>
+    <string name="usd_to_be_airdropped">USD To Be Airdropped</string>
+    <string name="qty_to_be_airdropped">Qty To Be Airdropped</string>
+    <string name="qty_unclaimed">Qty Unclaimed</string>
+    <string name="airdrop">Airdrop</string>
+    <string name="airdrop_release">Airdrop Release</string>
+    <string name="airdrop_matching">The ratio of dropping</string>
+    <string name="level_drop">Level drop</string>
+    <string name="airdrop_qty">Airdrop Qty</string>
+    <string name="titanc_conversion_qty">Activate TITANC Qty</string>
+    <string name="titanc_award_qty">Drop TITANC quantities</string>
+    <string name="titanc_get_qty">Get TITANC quantities</string>
+    <string name="usd_release_qty">Release USD quantities</string>
+    <string name="usd_award_qty">Drop USD quantities</string>
+    <string name="get_usd_award_qty">Get USD quantity</string>
+
+    <string name="wallet_list">Wallet List</string>
+    <string name="import_new_wallet">Import New Wallet</string>
+
+    <string name="set_wallet">Set up the purse</string>
+    <string name="pls_input_wallet_name">Please enter wallet notes</string>
+    <!--资讯新闻-->
+    <string name="information_and_news">Information and news</string>
+
+    <string name="notice">Notice</string>
+    <string name="notices">Notice：</string>
+    <string name="notice_details">Notice details</string>
+    <string name="tip">Dear users:</string>
+
+    <!--币币交易-->
+    <string name="intelligent_transaction">Intelligent Transaction</string>
+    <string name="Qty">Qty</string>
+    <string name="exchange_volume">Exchange Volume</string>
+    <string name="current_entrustment">Current Entrustment</string>
+    <string name="historical_entrustment">Historical Entrustment</string>
+    <string name="direction">Direction</string>
+    <string name="price">price</string>
+    <string name="prices">price</string>
+    <string name="tip_one">1. After Intelligent Transaction is open, transactions will be done automatically according to your TITAN balance every one hour clock.</string>
+    <string name="tip_two">2. Quota for Automatic Transaction：</string>
+    <string name="tip_three">A. If Users TITAN*20 is less than the remaining quantity of TITAN transferred-in, the quota will be Users TITAN*20</string>
+    <string name="tip_four">B. If Users TITAN*20 is more than the remaining quantity of TITAN transferred-in, the quota will be the remaining quantity of TITAN transferred-in</string>
+    <string name="confirm_to_open">Confirm to Open</string>
+    <!--我的-->
+    <string name="inviting_code">Invitation Code：</string>
+    <string name="asset_balance">Balance</string>
+    <string name="security_center">Security Center</string>
+    <string name="billing_details">Billing Details</string>
+    <string name="my_invitation">My Invitation</string>
+    <string name="online_customer_service">Customer Service</string>
+    <string name="advice_feedback">Feedback</string>
+    <string name="feedback_list">Feedback list</string>
+    <string name="feedback_details">Feedback the details</string>
+    <string name="disclaimer">Disclaimer</string>
+
+    <!--修改个人资料-->
+    <string name="personal_data">My Profile</string>
+    <string name="my_profile_picture">Profile Photo</string>
+    <string name="my_nickname">My Nickname</string>
+    <!--安全中心-->
+    <string name="binding">Link</string>
+    <string name="phone">Phone NO.</string>
+    <string name="log_out">Log Out</string>
+    <!--安全中心  绑定手机号-->
+    <string name="binding_phone">Phone NO.</string>
+    <string name="verification_code">Verification Code</string>
+    <string name="get_verification_code">Get</string>
+    <!--安全中心  绑定手机号之后根据情况重置信息  Reset information-->
+    <string name="reset_information">Information Reset</string>
+    <!--安全中心  修改登录密码-->
+    <string name="modify_login_pwd">Reset Login Password</string>
+    <string name="old_login_pwd">Old Password</string>
+    <string name="new_login_pwd">New Password</string>
+    <string name="confirm_new_login_pwd">New Password Confirmation</string>
+    <!--安全中心  修改交易密码-->
+    <string name="modify_deal_pwd">Reset Transaction Password</string>
+    <string name="new_deal_pwd">New Transaction Password</string>
+    <string name="confirm">Confirm</string>
+    <!--账单明细-->
+    <string name="cash_value">Top Up/Withdraw</string>
+    <string name="coin_currency_trading">Exchange</string>
+    <string name="award">Award</string>
+    <string name="withdraw_service_fee">Withdraw Service Fee</string>
+    <string name="withdraw">Withdraw</string>
+    <string name="top_up">Top Up</string>
+    <string name="buy">Buy</string>
+    <string name="sell">Sell</string>
+    <string name="qty_buy">Qty Buy</string>
+    <string name="qty_sell">Qty Sell</string>
+    <string name="qty_cost">Qty Cost</string>
+    <string name="qty_acquire">Qty Acquire</string>
+    <string name="cost">Cost</string>
+    <string name="service_fee">Service Fee</string>
+    <string name="sell_release">Sell to release</string>
+    <string name="trade_get">Mining</string>
+    <string name="direct_push_trade_gains">Recommend</string>
+    <string name="rank_trading_weight">Level trading acquisition</string>
+    <string name="rank_trading_weight2">Level trading acquisition</string>
+    <string name="peer_acquisition">Equality</string>
+    <string name="delete">Delete</string>
+
+
+    <!--账单记录-->
+
+    <!--账单记录-->
+    <string name="transaction_release">transaction release</string>
+
+    <!--我的邀请-->
+    <string name="my_invite">My Invitation</string>
+    <string name="invited_friends">Friends Invited</string>
+    <string name="amount_of_reward">Bonus Amount (TITAN)</string>
+    <string name="download_ure">Download Link</string>
+    <string name="invite_url">Invite link</string>
+    <string name="register_url">Registration Link</string>
+    <string name="friend_list">Friend List</string>
+    <string name="register_time">Registration Time</string>
+    <string name="total_number">Number of team pre-excavators</string>
+    <string name="total_number_sun">Total team pre-excavation(USD)</string>
+    <!--在线客服-->
+    <string name="send">Send</string>
+    <!--弹窗文本-->
+    <string name="whether_to_exit_the_current_account">Whether to exit the current account!</string>
+    <string name="confirm_dialog">Confirm</string>
+    <string name="cancel">Cancel</string>
+    <string name="do_not_take_screenshot">Do not take screenshot</string>
+    <string name="do_not_take_screenshot_content">If someone acquires your private key, they will directly acquire your assets! Please copy the private key and store it in a safe place.</string>
+    <string name="got_it">Got it</string>
+    <string name="warm_prompt">Warm prompt</string>
+    <string name="you_have_not_set_the_wallet_address_please_set_it_first">You have not set the wallet address, please set it first！</string>
+    <string name="real_name_tip">You have not verified your real name, please go to the authentication!</string>
+    <string name="please_enter_transaction_PW">Please enter your transaction password</string>
+    <string name="PW">PW</string>
+    <string name="take_photo">Take photo</string>
+    <string name="photo_album">Photo album</string>
+    <string name="modify_nickname">Reset Nickname</string>
+    <string name="enter_a_new_nickname">Pls Input New Nickname</string>
+    <string name="simplified_chinese">简体中文</string>
+    <string name="english">English</string>
+
+    <!--所有提示-->
+    <string name="login_center">be logging in。。。</string>
+    <string name="verification_code_sent">Verification code sent</string>
+    <string name="user_name_cannot_be_empty">The user name cannot be empty</string>
+    <string name="nick_name_cannot_be_empty">A nickname cannot be empty</string>
+    <string name="the_cell_phone_number_cannot_be_empty">The cell phone number cannot be empty</string>
+    <string name="please_input_the_correct_mobile_phone_number">Please input the correct mobile phone number</string>
+    <string name="the_verification_code_cannot_be_empty">The verification code cannot be empty</string>
+    <string name="the_login_password_cannot_be_empty">The login password cannot be empty</string>
+    <string name="confirm_the_login_password_cannot_be_empty">Confirm that the login password cannot be empty</string>
+    <string name="Passwords_must_contain_both_Numbers_and_letters_8_18_bits_long">Passwords must contain both Numbers and letters, 8-18 bits long</string>
+    <string name="account_must_contain_both_Numbers_and_letters_8_18_bits_long">Account must contain both Numbers and letters, 8-18 bits long</string>
+
+    <string name="the_transaction_password_cannot_be_empty">The transaction password cannot be empty</string>
+    <string name="please_enter_six_digit_trading_password">Please enter 6 digit trading password</string>
+    <string name="confirm_the_transaction_password_cannot_be_empty">Confirm that the transaction password cannot be empty</string>
+    <string name="again_input_the_transaction_password_cannot_be_empty">The transaction password entered again cannot be empty</string>
+    <string name="the_credit_ID_cannot_be_empty">The credit ID cannot be empty</string>
+    <string name="agree_to_continue_after_the_agreement">Agree to continue after the agreement</string>
+    <string name="registration_successful_later_enter_the_login_page_to_log_in">Registration successful, later enter the login page to log in!</string>
+    <string name="create_success">Created successfully! Please set mnemonic</string>
+    <string name="login_successfully">Login was successful!</string>
+    <string name="mobile_phone_or_account_cannot_be_empty">Mobile phone/account cannot be empty</string>
+    <string name="program_exits">Program exits</string>
+    <string name="the_account_has_been_frozen">The account has been frozen</string>
+    <string name="the_two_passwords_do_not_match">The two passwords do not match</string>
+    <string name="the_two_deal_passwords_do_not_match">Two trades password input is inconsistent</string>
+    <string name="the_transaction_password_was_changed_successfully">The transaction password was changed successfully!</string>
+    <string name="the_modification_was_successful_Please_login_again_later">The modification was successful. Please login again later</string>
+    <string name="phone_number_changed_successfully">Phone number changed successfully!</string>
+    <string name="please_enter_your_original_login_password">Please enter your original login password</string>
+    <string name="please_enter_your_new_login_password">Please enter your new login password</string>
+    <string name="the_new_login_password_cannot_be_the_same_as_the_original_password">The new login password cannot be the same as the original password</string>
+    <string name="please_enter_your_new_login_password_again">Please enter your new login password again</string>
+    <string name="address_copied">Address copied</string>
+    <string name="word_copy_tip">The mnemonic word has been duplicated</string>
+    <string name="key_copy_tip">The private key has been copied</string>
+    <string name="deal_id_copied">The transaction number has been copied</string>
+    <string name="the_wallet_address_has_been_copied">The wallet address has been copied</string>
+    <string name="current_maximum_input">Current maximum input</string>
+    <string name="please_enter_the_transfer_amount">Please enter the transfer amount</string>
+    <string name="the_amount_transferred_must_be_greater_than_zero">The amount transferred must be greater than 0</string>
+    <string name="please_enter_the_outgoing_address_to_copy_or_scan_the_qr_code">Please enter the outgoing address to copy or scan the qr code</string>
+    <string name="permission_not_opened">Permission not opened！</string>
+    <string name="save_photo_successfully">Save photo successfully</string>
+    <string name="failed_to_save_photo">Failed to save photo</string>
+    <string name="please_make_sure_you_remember">Please make sure you remember</string>
+    <string name="mnemonic_error">Mnemonic error</string>
+    <string name="successful_authentication">Successful Authentication！</string>
+    <string name="congratulations_to_you_ETH_wallet_was_created_successfully">Congratulations to you! ETH wallet was created successfully</string>
+
+    <string name="available_balance">Available balance：</string>
+    <string name="get_gasprice_error">Failure to obtain absenteeism pay</string>
+    <string name="the_total_value_of_the_deposit_shall_not_be_less_than">The total value of the deposit shall not be less than $500</string>
+    <string name="open_the_success">Open the success！</string>
+    <string name="Start_time">start calculation time：</string>
+    <string name="press_exit_again">Press exit again</string>
+    <string name="nickname_cannot_be_empty">A nickname cannot be empty</string>
+    <string name="image_acquisition_failed">Image acquisition failed</string>
+    <string name="modify_avatar_successfully">Modify avatar successfully！</string>
+    <string name="modify_nickname_successfully">Modify nickname successfully！</string>
+    <string name="please_add_the_payment_code_of_alipay">Please add the payment code of alipay</string>
+    <string name="add_payment_code_of_alipay_successfully">Add payment code of alipay successfully！</string>
+    <string name="please_add_weChat_collection_code">Please add WeChat collection code</string>
+    <string name="add_weChat_collection_code_successfully">Add WeChat collection code successfully！</string>
+    <string name="please_add_bank_card">Please add bank card</string>
+    <string name="add_bank_card_success">Add bank card successfully！</string>
+    <string name="please_enter_your_bank_card_number">Please enter your bank card number</string>
+    <string name="please_enter_the_bank_name">Please enter the bank name</string>
+    <string name="please_enter_the_name_of_the_account_holder">Please enter the name of the account holder</string>
+
+    <string name="all_enquired">All enquired</string>
+    <string name="the_carrier_pigeon_dividend_has_been_inquired">The carrier pigeon dividend has been inquired</string>
+    <string name="the_team_bonus_has_been_checked">The credit bonus has been checked</string>
+    <string name="community_dividend_has_been_checked">Community dividend has been checked</string>
+    <string name="inquiry_recommended_bonus">Inquiry recommended bonus</string>
+    <string name="other_proceeds_have_been_queried">Other proceeds have been queried</string>
+    <string name="have_inquired_income_management">Have inquired income management</string>
+    <string name="the_earnings_exchange_has_been_checked">The earnings exchange has been checked</string>
+    <string name="income_withdrawal_has_been_checked">Income withdrawal has been checked</string>
+
+    <string name="have_query_usdt">Have a query USDT</string>
+    <string name="have_query_usdt_buy">The USDT buy has been queried</string>
+    <string name="have_query_usdt_chain_up">Query in USDT chain</string>
+    <string name="have_query_usdt_fail">The query USDT failed</string>
+    <string name="have_query_usdt_turn_out">The USDT has been checked out</string>
+    <string name="have_query_usdt_convert">The USDT transformation has been queried</string>
+    <string name="have_query_usdt_complete">The query USDT is complete</string>
+
+    <string name="have_query_eth">Have a query ETH</string>
+    <string name="have_query_eth_buy">The ETH buy has been queried</string>
+    <string name="have_query_eth_chain_up">Query in ETH chain</string>
+    <string name="have_query_eth_fail">The ETH query has failed</string>
+    <string name="have_query_eth_turn_out">The ETH has been checked out</string>
+    <string name="have_query_eth_convert">The ETH transformation has been queried</string>
+    <string name="have_query_eth_complete">The query ETH is complete</string>
+
+    <string name="have_query_bemt">Have a query BEMT</string>BEMT
+    <string name="have_query_bemt_buy">The BEMT buy has been queried</string>
+    <string name="have_query_bemt_chain_up">Query in BEMT chain</string>
+    <string name="have_query_bemt_fail">The BEMT query has failed</string>
+    <string name="have_query_bemt_turn_out">The BEMT has been checked out</string>
+    <string name="have_query_bemt_convert">The BEMT transformation has been queried</string>
+    <string name="have_query_bemt_complete">The query BEMT is complete</string>
+    <string name="restore_wallet_successfully">Congratulations to you! ETH wallet recovers successfully!</string>
+    <string name="mnemonic_derived_successfully">Mnemonic derived successfully!</string>
+    <string name="the_private_key_was_successfully_exported">The private key was successfully exported!</string>
+
+    <string name="save_real_name_tip">The application has been submitted and is under review</string>
+    <string name="please_enter_your_real_name">Please enter your real name</string>
+    <string name="please_enter_your_id_number">Please enter your id number</string>
+    <string name="please_enter_the_correct_id_number">Please enter the correct id number</string>
+    <string name="please_upload_your_id_card_face">Please upload your id card face</string>
+    <string name="please_upload_the_national_emblem_of_your_id_card">Please upload the national emblem of your id card</string>
+    <string name="Successful_withdrawal_of_income">Successful withdrawal of income!</string>
+
+    <string name="have_query_buy">Queried buy</string>
+    <string name="have_query_chain_up">The query is in the chain</string>
+    <string name="have_query_fail">Query failed</string>
+    <string name="have_query_turn_out">The query has been rolled out</string>
+    <string name="have_query_convert">Queried transformation</string>
+    <string name="have_query_complete">The query has been completed</string>
+
+    <string name="transfer_out_success">Transfer success！</string>
+    <string name="conversion_success">Conversion success！</string>
+
+    <string name="transfer_tip">Has been the longest financial management, temporary conversion</string>
+    <string name="problem_tip">Please enter your feedback questions</string>
+
+    <string name="income_financial_success">Income management success！</string>
+    <string name="exchange_game_currency_success">Exchange game currency success！</string>
+    <string name="exchange_tip">Please enter the quantity of exchange</string>
+    <string name="exchange_zero_tip">The amount of exchange must be greater than zero</string>
+    <string name="submit_successfully">submit successfully</string>
+    <string name="no_data_yet">No data yet</string>
+    <string name="create_success_tip">After the creation, enter the login page to log in</string>
+
+    <string name="please_ed_one_word">Please enter the first mnemonic word</string>
+    <string name="please_ed_two_word">Please enter the second mnemonic</string>
+    <string name="please_ed_three_word">Please enter the third mnemonic word</string>
+    <string name="please_check_one_word">Please choose the first mnemonic</string>
+    <string name="please_check_two_word">Please choose the second mnemonic</string>
+    <string name="please_check_three_word">Please choose the third mnemonic</string>
+    <string name="please_ed_key">Please enter your private key</string>
+    <string name="import_success">Import successful, please set password!</string>
+
+    <string name="successfully_set">successfully set</string>
+    <string name="please_fill_in_the_referee_id">Please fill in the referee ID</string>
+    <string name="binding_success">The binding is successful, please set the password！</string>
+    <string name="binding_success_tip">Binding success</string>
+    <string name="please_enter_your_new_deal_password">Please enter your new transaction password</string>
+    <string name="please_right_validation">Please swipe right to verify</string>
+    <string name="successful">verify successfully！</string>
+    <string name="present_price">Present Price</string>
+    <string name="s">Sell</string>
+    <string name="b">Buy</string>
+    <string name="switch_success">Switch success</string>
+    <string name="modify_wallet_success">The name of the wallet was changed successfully</string>
+    <string name="please_bill_phone">Please bind the phone number first</string>
+    <string name="please_ed_wallet_name">Please enter the name of the wallet</string>
+    <string name="chang_phone_tip">You are currently bound to your mobile phone number. Do you want to continue?</string>
+    <string name="security_verification">Security Verification</string>
+    <string name="sure_delete">Confirm the deletion?</string>
+    <string name="repeal">Repeal</string>
+    <string name="account">Account</string>
+    <string name="buy_usd_num">Quantity TITAN Acquire</string>
+    <string name="sell_titan_num">Quantity USD Acquire</string>
+
+    <string name="buy_usd_num2">Quantity TITAN Expend</string>
+    <string name="sell_titan_num2">Quantity USD Expend</string>
+
+    <string name="confirm_recall">Are you sure you want to cancel?</string>
+    <string name="recall_success">Revocation of success</string>
+    <string name="delete_success">Delete wallet successfully!</string>
+
+    <string name="finish">completed</string>
+    <string name="had_withdrawn">Had withdrawn</string>
+    <string name="underway">under way</string>
+    <string name="confirm_close">Are you sure you want to turn off smart mode?</string>
+    <string name="digit2">4-digit</string>
+    <string name="digit1">1-digit</string>
+    <string name="digit0">0-digit</string>
+    <string name="advice_title">Title</string>
+    <string name="advice_content">Content</string>
+    <string name="answer">The response of the service</string>
+    <string name="please_ed_title">Please enter the title</string>
+    <string name="please_ed_content">Please enter content</string>
+    <string name="node">Node</string>
+    <string name="committee">Committee</string>
+    <string name="management_committee">management committee</string>
+    <string name="Management_board_notice">Management board notice</string>
+    <string name="inter_title">Intelligent trading</string>
+    <string name="inter_tip">1.After the intelligent trading is started, the robot will automatically trade according to your TITAN balance.</string>
+    <string name="inter_tip2">2.Automatic credit：</string>
+    <string name="inter_tip3">①If the user TITANC*20 is smaller than the remaining amount transferred to TITAN, it is the user TITANC*20；</string>
+    <string name="inter_tip4">②If the user TITANC*20 is larger than the rolled TITAN surplus, the user rolled TITAN surplus.</string>
+    <string name="node_tip">Today node is matched with USD quota</string>
+    <string name="please_login_again">Account abnormal or user information expired, please login again!</string>
+    <string name="buy_tip">Please enter the number of TITAN</string>
+    <string name="sell_tip">Please enter the USD quantity</string>
+    <string name="num_tip">Please enter a valid number</string>
+    <string name="success">Release success!</string>
+    <string name="bing_tip">You have not bound the mobile phone number, now to bind?</string>
+
+    <string name="please_ed_wallet_address">Please enter the withdrawal address</string>
+    <string name="please_ed_wallet_id">Please enter the address label</string>
+    <string name="please_ed_tibi_num">Please enter the withdrawal amount</string>
+    <string name="submitted_request">Submitted request</string>
+    <string name="unexecutable">The available quantity is exceeded and cannot be executed</string>
+    <string name="minimum_withdrawal">The minimum withdrawal is 100</string>
+    <string name="service_agreement">Service Agreement</string>
+    <string name="tx_one">Airdrop rating weighting</string>
+    <string name="tx_two">Airdrop share weights</string>
+    <string name="tx_three">Release rank weighting</string>
+    <string name="tx_four">Unshared weights</string>
+    <string name="tx_five">Governance board awards</string>
+    <string name="tx_six" >Transaction push increased</string>
+    <string name="tx_seven">Airdrop Release</string>
+    <string name="tx_eight">Sell to release decreased</string>
+    <string name="tx_nine">Transaction sharing decreased</string>
+    <string name="tx_ten">Transaction grade reduction</string>
+    <string name="tx_eleven">Direct reduction of transactions</string>
+
+    <string name="tip_phone_tx">Example: Singapore area code + number</string>
+    <string name="tip_phone">Example：65 + 88888888</string>
+    <string name="available">Available</string>
+
+    <!--中国，韩国，日本，泰国，香港，台湾，新加坡，澳大利亚，美国，俄罗斯-->
+    <string name="china">China</string>
+    <string name="korea">Korea</string>
+    <string name="japan">Japan</string>
+    <string name="thailand">Thailand</string>
+    <string name="hong_kong_china">Hong Kong, China</string>
+    <string name="taiwan_china">Taiwan, China</string>
+    <string name="singapore">Singapore</string>
+    <string name="australia">Australia</string>
+    <string name="america">America</string>
+    <string name="russia">Russia</string>
+    <string name="malaysia">Malaysia</string>
+    <string name="viet_nam">Viet Nam</string>
+    <string name="cambodia">Cambodia</string>
+    <string name="indonesia">Indonesia</string>
+    <string name="brunei">Brunei</string>
+    <string name="the_philippines">Philippines</string>
+    <string name="east_timor">East Timor</string>
+    <string name="new_zealand">New Zealand</string>
+    <string name="share_dropped">Share dropped</string>
+    <string name="weighted_activation">Weighted activation</string>
+    <string name="h">24h Qty </string>
+    <string name="titanc_one">Share</string>
+    <string name="titanc_two">Grade weighted</string>
+    <string name="titanc_three">Recommend</string>
+    <string name="titanc_four">Leader</string>
+    <string name="titanc_five">Equality</string>
+    <string name="update_yes">Whether to upgrade to</string>
+    <string name="update_version">versions</string>
+    <string name="upgrade">Upgrade</string>
+</resources>

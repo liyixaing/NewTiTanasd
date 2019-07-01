@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="lanjing.com.titan.activity.OnlineServiceActivity">
+    <com.lxh.baselibray.view.TitleView
+        android:id="@+id/title_lay"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/titil_view_height"
+        android:background="@color/default_white_bg"
+        app:ivLeftPic="@mipmap/icon_page_return"
+        app:titleTextColor="@color/common_black"
+        app:tvTitleText="@string/online_customer_service" />
+    <ScrollView
+        android:background="@color/bg_gray"
+        android:layout_below="@+id/title_lay"
+        android:layout_above="@+id/bottom_input"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        </LinearLayout>
+    </ScrollView>
+    <LinearLayout
+        android:gravity="center_vertical"
+        android:layout_alignParentBottom="true"
+        android:id="@+id/bottom_input"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <EditText
+            android:cursorVisible="false"
+            android:textCursorDrawable="@drawable/cursor_style"
+            android:layout_marginLeft="@dimen/dp_20"
+            android:id="@+id/ed_input_question"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:background="@drawable/shape_gray_bg"
+            android:layout_height="@dimen/dp_30" />
+        <TextView
+            android:id="@+id/send"
+            android:layout_margin="@dimen/dp_20"
+            android:textSize="@dimen/sp_17"
+            android:textColor="@color/blue"
+            android:text="@string/send"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+</RelativeLayout>

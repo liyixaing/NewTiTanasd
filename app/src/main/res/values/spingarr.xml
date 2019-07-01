@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="spingarr">
+        <item>@string/china</item>
+        <item>@string/korea</item>
+        <item>@string/japan</item>
+        <item>@string/thailand</item>
+        <item>@string/hong_kong_china</item>
+        <item>@string/taiwan_china</item>
+        <item>@string/singapore</item>
+        <item>@string/australia</item>
+        <item>@string/america</item>
+        <item>@string/russia</item>
+        <item>@string/malaysia</item>
+        <item>@string/viet_nam</item>
+        <item>@string/cambodia</item>
+        <item>@string/indonesia</item>
+        <item>@string/brunei</item>
+        <item>@string/the_philippines</item>
+        <item>@string/east_timor</item>
+        <item>@string/new_zealand</item>
+    </string-array>
+</resources>

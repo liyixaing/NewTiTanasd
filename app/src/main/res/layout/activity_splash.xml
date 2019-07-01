@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="lanjing.com.titan.activity.SplashActivity">
+
+    <RelativeLayout
+        android:visibility="gone"
+        android:id="@+id/guide_lay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+            <lanjing.com.titan.view.CustomVideoView
+                android:id="@+id/videoview"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        <TextView
+            android:textColor="@color/blue"
+            android:id="@+id/btn_skip"
+            android:gravity="center"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="20dp"
+            android:text="@string/vault" />
+    </RelativeLayout>
+
+    <RelativeLayout
+
+        android:id="@+id/welcome_bg"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/splash_bg">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="@dimen/dp_50"
+            android:layout_marginLeft="@dimen/dp_20"
+            android:layout_marginRight="@dimen/dp_20">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <TextView
+                    android:id="@+id/tv_language"
+                    android:layout_width="@dimen/dp_90"
+                    android:layout_height="@dimen/dp_35"
+                    android:background="@drawable/btn_radius_white"
+                    android:gravity="center"
+                    android:text="@string/language"
+                    android:textColor="@drawable/selector_text" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="right">
+
+                <TextView
+                    android:id="@+id/tv_start"
+                    android:layout_width="@dimen/dp_90"
+                    android:layout_height="@dimen/dp_35"
+                    android:background="@drawable/btn_radius_white"
+                    android:gravity="center"
+                    android:text="@string/start"
+                    android:textColor="@drawable/selector_text" />
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+
+
+</RelativeLayout>

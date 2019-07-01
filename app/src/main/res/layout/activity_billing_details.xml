@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="lanjing.com.titan.activity.BillingDetailsActivity">
+
+    <com.lxh.baselibray.view.TitleView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/titil_view_height"
+        android:background="@color/default_white_bg"
+        app:ivLeftPic="@mipmap/icon_page_return"
+        app:titleTextColor="@color/common_black"
+        app:tvTitleText="@string/billing_details" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_32"
+        android:layout_margin="@dimen/dp_10"
+        android:orientation="horizontal">
+
+        <RadioGroup
+            android:id="@+id/rg"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <RadioButton
+                android:id="@+id/tv_cash_value"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginRight="@dimen/dp_2"
+                android:textSize="@dimen/sp_13"
+                android:button="@null"
+                android:layout_weight="1"
+                android:background="@drawable/btn_radius_gray_rb"
+                android:gravity="center"
+                android:text="@string/cash_value"
+                android:textColor="@drawable/selector_text_black_to_white_rb" />
+
+            <RadioButton
+                android:id="@+id/tv_coin_currency_trading"
+                android:layout_width="0dp"
+                android:textSize="@dimen/sp_13"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/dp_2"
+                android:layout_marginRight="@dimen/dp_2"
+                android:layout_weight="1"
+                android:button="@null"
+                android:background="@drawable/btn_radius_gray_rb"
+                android:gravity="center"
+                android:text="@string/coin_currency_trading"
+                android:textColor="@drawable/selector_text_black_to_white_rb" />
+
+            <RadioButton
+                android:id="@+id/tv_reward_drop"
+                android:layout_width="0dp"
+                android:textSize="@dimen/sp_13"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/dp_2"
+
+                android:layout_weight="1"
+                android:button="@null"
+                android:background="@drawable/btn_radius_gray_rb"
+                android:gravity="center"
+                android:text="@string/award"
+                android:textColor="@drawable/selector_text_black_to_white_rb" />
+        </RadioGroup>
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/fragment_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="@dimen/dp_10"
+        android:layout_marginRight="@dimen/dp_10" />
+</LinearLayout>
