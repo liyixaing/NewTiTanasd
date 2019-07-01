@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
@@ -138,7 +139,8 @@ public class TItanWithdrawActivity extends MvpActivity<WalletWithdrawContact.Wal
             ToastUtils.showShortToast(context, getResources().getString(R.string.submitted_request));
             finish();
         } else {
-            ToastUtils.showShortToast(context, response.body().getMsg());
+//            ToastUtils.showShortToast(context, response.body().getMsg());
+            ToastUtils.showShortToast(context, "信息填写错误");
         }
     }
 
@@ -149,7 +151,7 @@ public class TItanWithdrawActivity extends MvpActivity<WalletWithdrawContact.Wal
             String walletId = edAddressId.getText().toString().trim();
             String num = edNum.getText().toString().trim();
             showLoadingDialog();
-            mPresent.walletWithdraw(context, address,walletId, num);
+            mPresent.walletWithdraw(context, address, walletId, num);
         } else {
             ToastUtils.showShortToast(context, response.body().getMsg());
         }
@@ -182,8 +184,8 @@ public class TItanWithdrawActivity extends MvpActivity<WalletWithdrawContact.Wal
                     ToastUtils.showShortToast(context, getResources().getString(R.string.please_ed_tibi_num));
                     return;
                 }
-                if(Integer.parseInt(num) < 100){
-                    ToastUtils.showShortToast(context,getResources().getString(R.string.minimum_withdrawal));
+                if (Integer.parseInt(num) < 100) {
+                    ToastUtils.showShortToast(context, getResources().getString(R.string.minimum_withdrawal));
                     return;
                 }
                 showPwdBuyDialog();
