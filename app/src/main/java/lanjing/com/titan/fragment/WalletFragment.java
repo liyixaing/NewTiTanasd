@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
-import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -15,7 +14,6 @@ import com.lxh.baselibray.dialog.AlertDialog;
 import com.lxh.baselibray.mvp.MvpFragment;
 import com.lxh.baselibray.util.ObjectUtils;
 import com.lxh.baselibray.util.SPUtils;
-import com.lxh.baselibray.util.SizeUtils;
 import com.lxh.baselibray.util.ToastUtils;
 import com.tbruyelle.rxpermissions2.RxPermissions;
 
@@ -93,22 +91,23 @@ public class WalletFragment extends MvpFragment<WalletDataContact.WalletDataPres
     String labelAddress;//标签地址
     int versionCode;
     private List<String> title = new ArrayList<>();
+
     @Override
     public void initData(Bundle savedInstanceState) {
         versionCode = APKVersionCodeUtils.getVersionCode(context);
-        mPresent.notice(context,String.valueOf(page),String.valueOf(pageSize));
+        mPresent.notice(context, String.valueOf(page), String.valueOf(pageSize));
 
 
-        mPresent.updateApp(context,1,versionCode);
+        mPresent.updateApp(context, 1, versionCode);
 //        initUpdate();
         mPresent.walletData(context);
         mPresent.person(context);
-        tvWalletName.setText(SPUtils.getString(Constant.WALLET_NAME,null,context));
+        tvWalletName.setText(SPUtils.getString(Constant.WALLET_NAME, null, context));
 
         listNoticeContent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(context,NoticeActivity.class);
+                Intent intent = new Intent(context, NoticeActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS);
                 startActivity(intent);
             }
@@ -118,13 +117,13 @@ public class WalletFragment extends MvpFragment<WalletDataContact.WalletDataPres
 
     AlertDialog UpdateDialog = null;
 
-    private void showUpdateDialog(String VersionName,String VersionInfo,String downloadUrl) {
+    private void showUpdateDialog(String VersionName, String VersionInfo, String downloadUrl) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity())
                 .addDefaultAnimation()//默认弹窗动画
                 .setContentView(R.layout.dialog_update_app)//载入布局文件
                 .setWidthAndHeight(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT)//设置弹窗宽高
-                .setText(R.id.tv_title,getResources().getString(R.string.update_yes)+VersionName+getResources().getString(R.string.update_version))
-                .setText(R.id.tv_update_info,VersionInfo)
+                .setText(R.id.tv_title, getResources().getString(R.string.update_yes) + VersionName + getResources().getString(R.string.update_version))
+                .setText(R.id.tv_update_info, VersionInfo)
                 .setOnClickListener(R.id.btn_ok, v -> {//设置点击事件  打开网页
 
                     Intent intent = new Intent(Intent.ACTION_VIEW,
@@ -139,7 +138,7 @@ public class WalletFragment extends MvpFragment<WalletDataContact.WalletDataPres
 
     }
 
-    private void initUpdate(){
+    private void initUpdate() {
         //版本更新
         new RxPermissions(getActivity()).request(Manifest.permission.WRITE_EXTERNAL_STORAGE).subscribe(aBoolean -> {
             if (aBoolean) {
@@ -155,19 +154,20 @@ public class WalletFragment extends MvpFragment<WalletDataContact.WalletDataPres
         versionCode = APKVersionCodeUtils.getVersionCode(context);
 
 
-        mPresent.updateApp(context,1,versionCode);
+        mPresent.updateApp(context, 1, versionCode);
 
         mPresent.walletData(context);
         super.onResume();
     }
 
-    private void initShow(){
+    private void initShow() {
         mPresent.walletData(context);
     }
-    private void initHide(){
+
+    private void initHide() {
         tvAmount.setText("****");
         titanNum.setText("****");
-        titanPrice.setText("$"+"****");
+        titanPrice.setText("$" + "****");
         usdNum.setText("****");
         usdPrice.setText("****");
         titancNum.setText("****");
@@ -181,7 +181,7 @@ public class WalletFragment extends MvpFragment<WalletDataContact.WalletDataPres
     }
 
 
-    @OnClick({R.id.checkbox_private_mode,R.id.tv_wallet_name, R.id.manage_wallet, R.id.titan_lay, R.id.usd_lay, R.id.titanc_lay, R.id.usd2_lay})
+    @OnClick({R.id.checkbox_private_mode, R.id.tv_wallet_name, R.id.manage_wallet, R.id.titan_lay, R.id.usd_lay, R.id.titanc_lay, R.id.usd2_lay})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.checkbox_private_mode:
@@ -198,8 +198,8 @@ public class WalletFragment extends MvpFragment<WalletDataContact.WalletDataPres
                 break;
             case R.id.manage_wallet://进入   钱包管理  可以导出私钥和助记词
                 Intent intent = new Intent(context, WalletManagerActivity.class);
-                intent.putExtra("walletAddress",walletAddress);
-                intent.putExtra("labelAddress",labelAddress);
+                intent.putExtra("walletAddress", walletAddress);
+                intent.putExtra("labelAddress", labelAddress);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS);
                 startActivity(intent);
                 break;
@@ -245,7 +245,7 @@ public class WalletFragment extends MvpFragment<WalletDataContact.WalletDataPres
             tvAmount.setText("$" + MoneyUtil.formatFour(response.body().getSum()));
             tvWalletId.setText("ID：" + response.body().getWelletId());
             titanNum.setText(MoneyUtil.formatFour(response.body().getData().getTitannum()));//TITAN数量
-            titanPrice.setText("$"+MoneyUtil.formatFour(response.body().getData().getTitanprice()));//TITAN单价
+            titanPrice.setText("$" + MoneyUtil.formatFour(response.body().getData().getTitanprice()));//TITAN单价
             usdNum.setText(MoneyUtil.formatFour(response.body().getData().getUSD1num()));//USD数量
             usdPrice.setText(MoneyUtil.formatFour(response.body().getData().getUSD1price()));//USD  价格
             titancNum.setText(MoneyUtil.formatFour(response.body().getData().getTitancnum()));//TITANC  数量
@@ -257,7 +257,6 @@ public class WalletFragment extends MvpFragment<WalletDataContact.WalletDataPres
             usd2Id = response.body().getData().getUSD2coinId();
 
 
-
         } else {
             ToastUtils.showShortToast(context, response.body().getMsg());
         }
@@ -266,9 +265,9 @@ public class WalletFragment extends MvpFragment<WalletDataContact.WalletDataPres
 
     @Override
     public void getNoticeResult(Response<InfoNoticeResponse> response) {
-        if(response.body().getCode() == Constant.SUCCESS_CODE){
+        if (response.body().getCode() == Constant.SUCCESS_CODE) {
             Locale locale = getResources().getConfiguration().locale;
-            if(locale.equals(Locale.SIMPLIFIED_CHINESE)){
+            if (locale.equals(Locale.SIMPLIFIED_CHINESE)) {
                 List<InfoNoticeResponse.DataCHBean> data = response.body().getDataCH();
                 if (ObjectUtils.isEmpty(data)) return;
                 title.clear();
@@ -277,7 +276,7 @@ public class WalletFragment extends MvpFragment<WalletDataContact.WalletDataPres
                 }
                 listNoticeContent.setList(title);
                 listNoticeContent.startScroll();
-            }else if(locale.equals(Locale.ENGLISH)){
+            } else if (locale.equals(Locale.ENGLISH)) {
                 List<InfoNoticeResponse.DataEHBean> data = response.body().getDataEH();
                 if (ObjectUtils.isEmpty(data)) return;
                 title.clear();
@@ -287,52 +286,53 @@ public class WalletFragment extends MvpFragment<WalletDataContact.WalletDataPres
                 listNoticeContent.setList(title);
                 listNoticeContent.startScroll();
             }
-        }else {
-            ToastUtils.showShortToast(context,response.body().getMsg());
+        } else {
+            ToastUtils.showShortToast(context, response.body().getMsg());
         }
     }
 
     @Override
     public void getPersonResult(Response<PersonResponse> response) {
-        if(response.body().getCode() == Constant.SUCCESS_CODE){
-            SPUtils.putString(Constant.PHONE,response.body().getData().getPhonenum(),context);
-            SPUtils.putString(Constant.WALLET_NAME,response.body().getData().getUsername(),context);
-            SPUtils.putString(Constant.PORTRAIT,response.body().getData().getPicture(),context);
+        if (response.body().getCode() == Constant.SUCCESS_CODE) {
+            SPUtils.putString(Constant.PHONE, response.body().getData().getPhonenum(), context);
+            SPUtils.putString(Constant.WALLET_NAME, response.body().getData().getUsername(), context);
+            SPUtils.putString(Constant.PORTRAIT, response.body().getData().getPicture(), context);
             String walletName = response.body().getData().getWelletname();
-            SPUtils.putString(Constant.NODE,String.valueOf(response.body().getData().getIsnode()),context);
-            SPUtils.putString(Constant.ISVIP,String.valueOf(response.body().getData().getIsVip()),context);
-            SPUtils.putString(Constant.NODE_NUM,String.valueOf(response.body().getData().getNodenum()),context);
-            SPUtils.putInt(Constant.LEVEL,response.body().getGrede(),context);
+            SPUtils.putString(Constant.NODE, String.valueOf(response.body().getData().getIsnode()), context);
+            SPUtils.putString(Constant.ISVIP, String.valueOf(response.body().getData().getIsVip()), context);
+            SPUtils.putString(Constant.NODE_NUM, String.valueOf(response.body().getData().getNodenum()), context);
+            SPUtils.putInt(Constant.LEVEL, response.body().getGrede(), context);
 
-            SPUtils.putInt(Constant.ISAUTO,response.body().getData().getIsauto(),context);
+            SPUtils.putInt(Constant.ISAUTO, response.body().getData().getIsauto(), context);
 
-            if(!ObjectUtils.isEmpty(walletName) && walletName.toString().trim() != ""){
+            if (!ObjectUtils.isEmpty(walletName) && walletName.toString().trim() != "") {
                 tvWalletName.setText(walletName);
-            }else {
+            } else {
                 tvWalletName.setText(response.body().getData().getUsername());
             }
 
-        }else {
-            ToastUtils.showShortToast(context,response.body().getMsg());
+        } else {
+            ToastUtils.showShortToast(context, response.body().getMsg());
         }
     }
+
     //版本更新
     @Override
     public void getupdateAppResult(Response<VersionResponse> response) {
-        if(response.body().getCode() == Constant.SUCCESS_CODE){
+        if (response.body().getCode() == Constant.SUCCESS_CODE) {
 
-        }else if(response.body().getCode()  == 201){
+        } else if (response.body().getCode() == 201) {
             int systemCode = Integer.parseInt(response.body().getData().getVersioncode());
-            if(systemCode>versionCode){
-                showUpdateDialog(response.body().getData().getVersionname(),response.body().getData().getRemarks(),response.body().getData().getUrl());
+            if (systemCode > versionCode) {
+                showUpdateDialog(response.body().getData().getVersionname(), response.body().getData().getRemarks(), response.body().getData().getUrl());
             }
-        } else if(response.body().getCode() == 202){
+        } else if (response.body().getCode() == 202) {
             int systemCode = Integer.parseInt(response.body().getData().getVersioncode());
-            if(systemCode>versionCode){
-                showUpdateDialog(response.body().getData().getVersionname(),response.body().getData().getRemarks(),response.body().getData().getUrl());
+            if (systemCode > versionCode) {
+                showUpdateDialog(response.body().getData().getVersionname(), response.body().getData().getRemarks(), response.body().getData().getUrl());
             }
-        }else {
-            ToastUtils.showShortToast(context,response.body().getMsg());
+        } else {
+            ToastUtils.showShortToast(context, response.body().getMsg());
         }
     }
 

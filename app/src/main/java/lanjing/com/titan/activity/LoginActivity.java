@@ -1,34 +1,22 @@
 package lanjing.com.titan.activity;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
 import android.provider.Settings;
-import android.telephony.TelephonyManager;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
-import com.jaydenxiao.guider.HighLightGuideView;
 import com.lxh.baselibray.BaseApplication;
 import com.lxh.baselibray.mvp.MvpActivity;
-import com.lxh.baselibray.util.Md5Utils;
 import com.lxh.baselibray.util.ObjectUtils;
-import com.lxh.baselibray.util.RegexUtils;
 import com.lxh.baselibray.util.SPUtils;
 import com.lxh.baselibray.util.ToastUtils;
 
-import net.steamcrafted.loadtoast.LoadToast;
-
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 import lanjing.com.titan.R;
 import lanjing.com.titan.constant.Constant;

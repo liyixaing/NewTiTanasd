@@ -14,7 +14,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import lanjing.com.titan.R;
 import lanjing.com.titan.adapter.MainFragmentPagerAdapter;
 import lanjing.com.titan.fragment.DealFragment;

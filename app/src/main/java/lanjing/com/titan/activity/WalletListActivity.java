@@ -34,7 +34,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 import lanjing.com.titan.R;
 import lanjing.com.titan.adapter.WalletListAdapter;
@@ -46,7 +45,6 @@ import lanjing.com.titan.response.WalletListResponse;
 import retrofit2.Response;
 
 import static android.view.ViewGroup.LayoutParams.MATCH_PARENT;
-import static lanjing.com.titan.constant.Constant.LOG_BACK_IN;
 import static lanjing.com.titan.util.RecyclerViewAnimation.runLayoutAnimation;
 
 /**
@@ -56,11 +54,11 @@ public class WalletListActivity extends MvpActivity<WalletContact.WalletPresent>
 
     @BindView(R.id.import_new_wallet_btn)
     TextView importNewWalletBtn;
-
     @BindView(R.id.refresh)
     SmartRefreshLayout refresh;
     WalletListAdapter mAdapter;
     List<WalletListResponse.DataBean> mList;
+
     String token;
     @BindView(R.id.rv)
     SwipeMenuRecyclerView rv;
@@ -102,6 +100,7 @@ public class WalletListActivity extends MvpActivity<WalletContact.WalletPresent>
         });
         refresh.setEnableLoadMore(false);//不进行上拉加载
 
+
         new Thread() {
             public void run() {
                 Message msg = hand.obtainMessage();
@@ -110,7 +109,9 @@ public class WalletListActivity extends MvpActivity<WalletContact.WalletPresent>
 
         }.start();
 
+
     }
+
 
     Handler hand = new Handler() {
         public void handleMessage(android.os.Message msg) {
@@ -221,7 +222,6 @@ public class WalletListActivity extends MvpActivity<WalletContact.WalletPresent>
         deleteWalletDialog.show();
 
     }
-
 
     @Override
     public int getLayoutId() {
