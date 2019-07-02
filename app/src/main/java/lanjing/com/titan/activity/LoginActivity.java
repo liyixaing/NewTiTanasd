@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.provider.Settings;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.EditText;
@@ -96,18 +97,10 @@ public class LoginActivity extends MvpActivity<LoginContact.LoginPresent> implem
                     ToastUtils.showLongToast(context, getResources().getString(R.string.user_name_cannot_be_empty));
                     return;
                 }
-//                if (!RegexUtils.isAccount(userName)) {
-//                    ToastUtils.showLongToast(context, getResources().getString(R.string.account_must_contain_both_Numbers_and_letters_8_18_bits_long));
-//                    return;
-//                }
                 if (ObjectUtils.isEmpty(loginPwd)) {
                     ToastUtils.showLongToast(context, getResources().getString(R.string.the_login_password_cannot_be_empty));
                     return;
                 }
-//                if (!RegexUtils.isLoginPwd(loginPwd)) {
-//                    ToastUtils.showLongToast(context, getResources().getString(R.string.Passwords_must_contain_both_Numbers_and_letters_8_18_bits_long));
-//                    return;
-//                }
                 if (sb.getProgress() != 100) {
                     ToastUtils.showShortToast(context, getResources().getString(R.string.please_right_validation));
                     return;
@@ -184,6 +177,7 @@ public class LoginActivity extends MvpActivity<LoginContact.LoginPresent> implem
     public void getLoginResult(Response<LoginResponse> response) {
         dismissLoadingDialog();
         if (response.body().getCode() == Constant.SUCCESS_CODE) {
+
             SPUtils.putString(Constant.ACCOUNT, edUserName.getText().toString().trim(), context);
             SPUtils.putString(Constant.LOGIN_PWD, edLoginPwd.getText().toString().trim(), context);
             SPUtils.putString(Constant.TOKEN, response.body().getToken(), context);

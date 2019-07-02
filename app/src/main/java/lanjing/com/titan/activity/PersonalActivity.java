@@ -7,6 +7,8 @@ import android.graphics.BitmapFactory;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
+import android.text.InputFilter;
+import android.text.Spanned;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,6 +35,8 @@ import com.tbruyelle.rxpermissions2.RxPermissions;
 import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -95,9 +99,25 @@ public class PersonalActivity extends MvpActivity<PersonDataChangeContact.Person
                 showTakePhotoDialog();
                 break;
             case R.id.change_nick_lay:
-                showUpdateNicknameDialog();
+                    showUpdateNicknameDialog();
                 break;
         }
+    }
+
+    //限制输入文本内容
+    public static void setEditTextInhibitInputSpeChat(EditText editText){
+
+        InputFilter filter=new InputFilter() {
+            @Override
+            public CharSequence filter(CharSequence source, int start, int end, Spanned dest, int dstart, int dend) {
+                String speChat="[`~!@#$%^&*()+=|{}':;',\\[\\].<>/?~！@#￥%……&*（）——+|{}【】‘；：”“’。，、？]";
+                Pattern pattern = Pattern.compile(speChat);
+                Matcher matcher = pattern.matcher(source.toString());
+                if(matcher.find())return "";
+                else return null;
+            }
+        };
+        editText.setFilters(new InputFilter[]{filter});
     }
 
     //修改头像弹窗
@@ -138,6 +158,7 @@ public class PersonalActivity extends MvpActivity<PersonDataChangeContact.Person
     AlertDialog updateNicknameDialog = null;
 
     private void showUpdateNicknameDialog() {
+
         AlertDialog.Builder builder = new AlertDialog.Builder(this)
                 .addDefaultAnimation()//默认弹窗动画
                 .setCancelable(true)
@@ -150,11 +171,12 @@ public class PersonalActivity extends MvpActivity<PersonDataChangeContact.Person
                         ToastUtils.showLongToast(context, getResources().getString(R.string.nickname_cannot_be_empty));
                         return;
                     }
-                    mPresent.modifyNickname(context,nickname);
+                    mPresent.modifyNickname(context, nickname);
                     updateNicknameDialog.dismiss();
                 }).setOnClickListener(R.id.tx_cancel, v -> updateNicknameDialog.dismiss());
         updateNicknameDialog = builder.create();
         updateNicknameDialog.show();
+        setEditTextInhibitInputSpeChat(updateNicknameDialog.getView(R.id.ed_new_nickname));
 
     }
 
@@ -176,7 +198,7 @@ public class PersonalActivity extends MvpActivity<PersonDataChangeContact.Person
 
             CameraUtils.ImgUpdateDirection(imagePath, orc_bitmap, iv);//显示图片,并且判断图片显示的方向,如果不正就放正
 
-            mPresent.modifyHead(context,base64Pic);
+            mPresent.modifyHead(context, base64Pic);
 
         } else {
             ToastUtils.showLongToast(this, getResources().getString(R.string.image_acquisition_failed));
@@ -226,33 +248,35 @@ public class PersonalActivity extends MvpActivity<PersonDataChangeContact.Person
     protected PersonDataChangeContact.PersonDataChangePresent createPresent() {
         return new PersonDataChangeContact.PersonDataChangePresent();
     }
+
     //修改头像返回
     @Override
     public void getmodifyHeadResult(Response<ModifyHeadResponse> response) {
-        if(response.body().getCode() == Constant.SUCCESS_CODE){
+        if (response.body().getCode() == Constant.SUCCESS_CODE) {
             ToastUtils.showShortToast(context, getResources().getString(R.string.modify_avatar_successfully));
-            SPUtils.putString(Constant.PORTRAIT,response.body().getPicture(),context);
+            SPUtils.putString(Constant.PORTRAIT, response.body().getPicture(), context);
             BusFactory.getBus().post(new EventImpl.UpdatePortraitEvent());
             finish();
-        }else {
-            ToastUtils.showShortToast(context,response.body().getMsg());
+        } else {
+            ToastUtils.showShortToast(context, response.body().getMsg());
         }
 
     }
+
     //修改昵称返回
     @Override
     public void getmodifyNicknameResult(Response<ResultDTO> response) {
-        if(response.body().getCode() == Constant.SUCCESS_CODE){
+        if (response.body().getCode() == Constant.SUCCESS_CODE) {
             ToastUtils.showShortToast(context, getResources().getString(R.string.modify_nickname_successfully));
             BusFactory.getBus().post(new EventImpl.UpdateNicknameEvent());
             finish();
-        }else {
-            ToastUtils.showShortToast(context,response.body().getMsg());
+        } else {
+            ToastUtils.showShortToast(context, response.body().getMsg());
         }
     }
 
     @Override
     public void getDataFailed() {
-        ToastUtils.showShortToast(context,getResources().getString(R.string.network_error));
+        ToastUtils.showShortToast(context, getResources().getString(R.string.network_error));
     }
 }

@@ -3,22 +3,16 @@ package lanjing.com.titan.activity;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.media.MediaPlayer;
-import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.Message;
 import android.provider.Settings;
-import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.jaydenxiao.guider.HighLightGuideView;
 import com.lxh.baselibray.dialog.AlertDialog;
 import com.lxh.baselibray.mvp.MvpActivity;
 import com.lxh.baselibray.util.LocalManageUtil;
@@ -30,7 +24,6 @@ import com.lxh.baselibray.util.ToastUtils;
 import java.util.Locale;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 import lanjing.com.titan.R;
 import lanjing.com.titan.constant.Constant;
@@ -159,7 +152,7 @@ public class SplashActivity extends MvpActivity<LoginContact.LoginPresent> imple
         return R.layout.activity_splash;
     }
 
-    @OnClick({R.id.btn_skip,R.id.tv_language, R.id.tv_start})
+    @OnClick({R.id.btn_skip, R.id.tv_language, R.id.tv_start})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.btn_skip://跳过引导
@@ -241,17 +234,19 @@ public class SplashActivity extends MvpActivity<LoginContact.LoginPresent> imple
 
         } else {
             ToastUtils.showShortToast(context, response.body().getMsg());
-            Intent intent = new Intent(context,LoginActivity.class);
+            Intent intent = new Intent(context, LoginActivity.class);
             startActivity(intent);
         }
     }
+
     String inviteCode;
+
     @Override
     public void getPersonResult(Response<PersonResponse> response) {
-        if(response.body().getCode() == Constant.SUCCESS_CODE){
+        if (response.body().getCode() == Constant.SUCCESS_CODE) {
             if (ObjectUtils.isEmpty(response.body().getData().getPhonenum())) {
                 Intent intent = new Intent(context, RegisterBindingPhoneActivity.class);
-                intent.putExtra("code",inviteCode);
+                intent.putExtra("code", inviteCode);
                 startActivity(intent);
                 return;
             }
@@ -271,7 +266,7 @@ public class SplashActivity extends MvpActivity<LoginContact.LoginPresent> imple
             startActivity(intent);
             finish();
 
-        }else {
+        } else {
             ToastUtils.showShortToast(context, response.body().getMsg());
         }
     }
@@ -279,7 +274,7 @@ public class SplashActivity extends MvpActivity<LoginContact.LoginPresent> imple
     @Override
     public void getDataFailed() {
         ToastUtils.showShortToast(context, getResources().getString(R.string.network_error));
-        Intent intent = new Intent(context,LoginActivity.class);
+        Intent intent = new Intent(context, LoginActivity.class);
         startActivity(intent);
     }
 

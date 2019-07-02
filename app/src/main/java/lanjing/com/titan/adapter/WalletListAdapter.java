@@ -1,6 +1,8 @@
 package lanjing.com.titan.adapter;
 
 import android.support.annotation.Nullable;
+import android.view.View;
+import android.widget.LinearLayout;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
@@ -8,7 +10,6 @@ import com.chad.library.adapter.base.BaseViewHolder;
 import java.util.List;
 
 import lanjing.com.titan.R;
-import lanjing.com.titan.response.WalletDataResponse;
 import lanjing.com.titan.response.WalletListResponse;
 
 /**
@@ -19,10 +20,11 @@ public class WalletListAdapter extends BaseQuickAdapter<WalletListResponse.DataB
     public WalletListAdapter(int layoutResId, @Nullable List<WalletListResponse.DataBean> data) {
         super(layoutResId, data);
     }
+
     @Override
     protected void convert(BaseViewHolder helper, WalletListResponse.DataBean item) {
         helper.setText(R.id.tv_wallet_name, item.getWelletName())//钱包名
-                .setText(R.id.tv_user_name,"("+item.getUsername()+")")//用户名
+                .setText(R.id.tv_user_name, "(" + item.getUsername() + ")")//用户名
                 .setText(R.id.tv_wallet_id, item.getWId());//钱包ID
         helper.addOnLongClickListener(R.id.tv_set_wallet_name);
         helper.addOnClickListener(R.id.tv_set_wallet_name);//点击事件

@@ -2,6 +2,8 @@ package lanjing.com.titan.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputFilter;
+import android.text.Spanned;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -10,6 +12,9 @@ import android.widget.TextView;
 import com.lxh.baselibray.mvp.MvpActivity;
 import com.lxh.baselibray.util.ObjectUtils;
 import com.lxh.baselibray.util.ToastUtils;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -37,7 +42,8 @@ public class AdviceFeedbackActivity extends MvpActivity<FeedbackContact.Feedback
 
     @Override
     public void initData(Bundle savedInstanceState) {
-
+        setEditTextInhibitInputSpeChat(editProblemTitle);
+        setEditTextInhibitInputSpeChat(editProblem);
     }
 
     @Override
@@ -72,7 +78,21 @@ public class AdviceFeedbackActivity extends MvpActivity<FeedbackContact.Feedback
                 break;
         }
     }
+    //限制输入文本内容
+    public static void setEditTextInhibitInputSpeChat(EditText editText){
 
+        InputFilter filter=new InputFilter() {
+            @Override
+            public CharSequence filter(CharSequence source, int start, int end, Spanned dest, int dstart, int dend) {
+                String speChat="[`~@ #_$%^&*()+=|{}':;'\\[\\].<>\\-/~@#￥%……&*（）\"——+|{}【】‘；：”“’、]";
+                Pattern pattern = Pattern.compile(speChat);
+                Matcher matcher = pattern.matcher(source.toString());
+                if(matcher.find())return "";
+                else return null;
+            }
+        };
+        editText.setFilters(new InputFilter[]{filter});
+    }
     @Override
     protected FeedbackContact.FeedbackPresent createPresent() {
         return new FeedbackContact.FeedbackPresent();

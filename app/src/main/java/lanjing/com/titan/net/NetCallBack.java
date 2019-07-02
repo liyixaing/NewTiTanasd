@@ -1,7 +1,5 @@
 package lanjing.com.titan.net;
 
-import android.app.Application;
-import android.content.Context;
 import android.content.Intent;
 
 import com.google.gson.Gson;
@@ -12,7 +10,6 @@ import com.lxh.baselibray.util.ToastUtils;
 
 import java.util.Locale;
 
-import lanjing.com.titan.R;
 import lanjing.com.titan.activity.LoginActivity;
 import lanjing.com.titan.constant.Constant;
 import retrofit2.Call;

@@ -66,7 +66,6 @@ public class WalletListActivity extends MvpActivity<WalletContact.WalletPresent>
     @Override
     public void initData(Bundle savedInstanceState) {
         setSideslipMenu();
-
         mList = new ArrayList<>();
         mAdapter = new WalletListAdapter(R.layout.recy_item_wallet_list, mList);
         LinearLayoutManager manager = new LinearLayoutManager(context);
@@ -86,11 +85,16 @@ public class WalletListActivity extends MvpActivity<WalletContact.WalletPresent>
                     startActivity(intentWalletName);
 
                 } else if (view.getId() == R.id.wallet_change) {//切换钱包
-                    Intent intent = new Intent(context, MainActivity.class);
-                    intent.putExtra("flag", 0);
-                    SPUtils.putString(Constant.TOKEN, mList.get(position).getToken(), context);
-                    ToastUtils.showShortToast(context, getResources().getString(R.string.switch_success));
-                    startActivity(intent);
+                    if (mList.get(position).getToken().equals("")) {
+                        ToastUtils.showShortToast(context, "登陆信息已过期请重新登陆");
+                    } else {
+                        Intent intent = new Intent(context, MainActivity.class);
+                        intent.putExtra("flag", 0);
+                        SPUtils.putString(Constant.TOKEN, mList.get(position).getToken(), context);
+                        ToastUtils.showShortToast(context, getResources().getString(R.string.switch_success));
+                        startActivity(intent);
+                    }
+
                 }
             }
         });
@@ -204,7 +208,7 @@ public class WalletListActivity extends MvpActivity<WalletContact.WalletPresent>
 
     AlertDialog deleteWalletDialog = null;
 
-    //删除钱包
+    //删除钱包1100011
     private void showDeleteWalletDialog(String token) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this)
                 .addDefaultAnimation()//默认弹窗动画

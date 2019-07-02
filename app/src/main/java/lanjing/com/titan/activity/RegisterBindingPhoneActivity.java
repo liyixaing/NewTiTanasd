@@ -1,32 +1,33 @@
 package lanjing.com.titan.activity;
 
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-import com.lxh.baselibray.event.BusFactory;
 import com.lxh.baselibray.mvp.MvpActivity;
 import com.lxh.baselibray.util.ObjectUtils;
 import com.lxh.baselibray.util.SPUtils;
 import com.lxh.baselibray.util.ToastUtils;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 import lanjing.com.titan.R;
 import lanjing.com.titan.constant.Constant;
 import lanjing.com.titan.contact.SetPhoneContact;
-import lanjing.com.titan.eventbus.EventImpl;
 import lanjing.com.titan.response.ResultDTO;
 import lanjing.com.titan.response.SetPhoneResponse;
 import lanjing.com.titan.util.CountDownTimerUtils;
 import retrofit2.Response;
+
+/**
+ * 绑定手机号界面
+ */
 
 public class RegisterBindingPhoneActivity extends MvpActivity<SetPhoneContact.SetPhonePresent> implements SetPhoneContact.ISetPhoneView {
     @BindView(R.id.ed_phone)
@@ -42,18 +43,20 @@ public class RegisterBindingPhoneActivity extends MvpActivity<SetPhoneContact.Se
     String areaCode;//区号
     //登录之后绑定手机号
     String inviteCode;
+
     @Override
     public void initData(Bundle savedInstanceState) {
         inviteCode = getIntent().getStringExtra("code");
+        Log.e("xiaoqiang", inviteCode);
         areaCode = "86";
         initSpinner();
     }
 
-    private void initSpinner(){
+    private void initSpinner() {
         spinner1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                switch (position){ //中国，韩国，日本，泰国，香港，台湾，新加坡，澳大利亚，美国，俄罗斯
+                switch (position) { //中国，韩国，日本，泰国，香港，台湾，新加坡，澳大利亚，美国，俄罗斯
                     case 0://中国
                         areaCode = "86";
                         break;
@@ -127,18 +130,25 @@ public class RegisterBindingPhoneActivity extends MvpActivity<SetPhoneContact.Se
     protected SetPhoneContact.SetPhonePresent createPresent() {
         return new SetPhoneContact.SetPhonePresent();
     }
+
     //绑定手机号返回
     @Override
     public void getSetPhoneResult(Response<SetPhoneResponse> response) {
         if (response.body().getCode() == Constant.SUCCESS_CODE) {
             ToastUtils.showShortToast(context, getResources().getString(R.string.binding_success_tip));
             SPUtils.putString(Constant.PHONE, edPhone.getText().toString().trim(), context);
-
-            if (inviteCode.equals("")) {
+            dismissLoadingDialog();
+            //判断是否有绑定推荐人id
+            if (inviteCode.equals("")) {//如果没有跳转到绑定界面
                 Intent intent = new Intent(context, ImportWalletBindActivity.class);
                 startActivity(intent);
                 finish();
+//                return;
+            } else {//反之则进入首页面
+                Intent intent = new Intent(context, MainActivity.class);
+                startActivity(intent);
                 return;
+
             }
 
 //            Intent intent = new Intent(context, ResetInformationActivity.class);
@@ -147,16 +157,19 @@ public class RegisterBindingPhoneActivity extends MvpActivity<SetPhoneContact.Se
 
         } else {
             ToastUtils.showShortToast(context, response.body().getMsg());
+            Log.e("登陆输出", response.body().getMsg());
+            dismissLoadingDialog();
         }
     }
 
     @Override
     public void getSendCodeResult(Response<ResultDTO> response) {
-        if (response.body().getCode() == Constant.SUCCESS_CODE) {//18124073755
+        if (response.body().getCode() == Constant.SUCCESS_CODE) {
             ToastUtils.showShortToast(context, getResources().getString(R.string.verification_code_sent));
             CountDownTimerUtils countDownTimerUtils = new CountDownTimerUtils(aginVerificationCode, 60000, 1000);
             countDownTimerUtils.start();
         } else {
+            Log.e("调试输出", response.body().getMsg());
             ToastUtils.showShortToast(context, response.body().getMsg());
             dismissLoadingDialog();
         }
@@ -171,7 +184,7 @@ public class RegisterBindingPhoneActivity extends MvpActivity<SetPhoneContact.Se
     @OnClick({R.id.ed_phone, R.id.agin_verification_code, R.id.next_step_btn})
     public void onViewClicked(View view) {
         String phone = edPhone.getText().toString().trim();
-        String phones = areaCode+phone;
+        String phones = areaCode + phone;
         switch (view.getId()) {
             case R.id.agin_verification_code:
                 if (ObjectUtils.isEmpty(phone)) {

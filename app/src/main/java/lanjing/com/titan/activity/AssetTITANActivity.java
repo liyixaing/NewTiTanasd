@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
@@ -17,6 +18,8 @@ import com.lxh.baselibray.util.ToastUtils;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import butterknife.BindView;
@@ -74,14 +77,12 @@ public class AssetTITANActivity extends MvpActivity<WalletDetailContact.WalletDe
     @Override
     public void initData(Bundle savedInstanceState) {
         walletId = getIntent().getStringExtra("walletId");
-
         mList = new ArrayList<>();
         mAdapter = new CoinTitanAdapter(R.layout.recy_item_titan_list, mList);
         LinearLayoutManager manager = new LinearLayoutManager(context);
         rv.setLayoutManager(manager);
         rv.setAdapter(mAdapter);
         mPresent.walletDetail(context, walletId, "", String.valueOf(page), String.valueOf(pageSize));
-
         mAdapter.setOnItemChildClickListener(new CoinTitanAdapter.OnItemChildClickListener() {
 
             @Override
@@ -122,7 +123,7 @@ public class AssetTITANActivity extends MvpActivity<WalletDetailContact.WalletDe
     @OnClick({R.id.tv_titan_screen, R.id.top_up_c_btn, R.id.withdraw_c_btn, R.id.exchange_btn})
     public void onViewClicked(View view) {
         switch (view.getId()) {
-            case R.id.tv_titan_screen://筛选   弹框选择
+            case R.id.tv_titan_screen://筛选 弹框选择
                 showScreenDialog();
                 break;
             case R.id.top_up_c_btn://充币
@@ -155,42 +156,52 @@ public class AssetTITANActivity extends MvpActivity<WalletDetailContact.WalletDe
                 .setWidthAndHeight(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT)//设置弹窗宽高
                 .setOnClickListener(R.id.nine, v -> {//同级交易获得
                     type = "7";
+                    tvTitanScreen.setText("同级交易获得");
                     mPresent.walletDetail(context, walletId, type, String.valueOf(page), String.valueOf(pageSize));
                     screenDialog.dismiss();
                 }).setOnClickListener(R.id.all, v -> {//查询所有
                     type = "";
+                    tvTitanScreen.setText("全部");
                     mPresent.walletDetail(context, walletId, type, String.valueOf(page), String.valueOf(pageSize));
                     screenDialog.dismiss();
                 }).setOnClickListener(R.id.tv_buy, v -> {//买入查询
                     type = "34";
+                    tvTitanScreen.setText("买入");
                     mPresent.walletDetail(context, walletId, type, String.valueOf(page), String.valueOf(pageSize));
                     screenDialog.dismiss();
                 }).setOnClickListener(R.id.tv_sell, v -> {//卖出查询
                     type = "35";
+                    tvTitanScreen.setText("卖出");
                     mPresent.walletDetail(context, walletId, type, String.valueOf(page), String.valueOf(pageSize));
                     screenDialog.dismiss();
                 }).setOnClickListener(R.id.tv_service_fee, v -> {//手续费查询
                     type = "30";
+                    tvTitanScreen.setText("手续费");
                     mPresent.walletDetail(context, walletId, type, String.valueOf(page), String.valueOf(pageSize));
                     screenDialog.dismiss();
                 }).setOnClickListener(R.id.tv_unfrozen, v -> {//交易释放查询
                     type = "1";
+                    tvTitanScreen.setText("交易获得");
                     mPresent.walletDetail(context, walletId, type, String.valueOf(page), String.valueOf(pageSize));
                     screenDialog.dismiss();
                 }).setOnClickListener(R.id.tv_top_up, v -> {//充币查询
                     type = "2";
+                    tvTitanScreen.setText("充币");
                     mPresent.walletDetail(context, walletId, type, String.valueOf(page), String.valueOf(pageSize));
                     screenDialog.dismiss();
                 }).setOnClickListener(R.id.tv_withdraw, v -> {//提币查询
                     type = "3";
+                    tvTitanScreen.setText("提币");
                     mPresent.walletDetail(context, walletId, type, String.valueOf(page), String.valueOf(pageSize));
                     screenDialog.dismiss();
                 }).setOnClickListener(R.id.tv_seven, v -> {//直推交易获得
                     type = "5";
+                    tvTitanScreen.setText("直推交易获得");
                     mPresent.walletDetail(context, walletId, type, String.valueOf(page), String.valueOf(pageSize));
                     screenDialog.dismiss();
                 }).setOnClickListener(R.id.tv_eight, v -> {//等级交易加权
                     type = "6";
+                    tvTitanScreen.setText("等级交易获得");
                     mPresent.walletDetail(context, walletId, type, String.valueOf(page), String.valueOf(pageSize));
                     screenDialog.dismiss();
                 });
@@ -207,7 +218,6 @@ public class AssetTITANActivity extends MvpActivity<WalletDetailContact.WalletDe
         if (response.body().getCode() == Constant.SUCCESS_CODE) {
             tvAssetBalance.setText(MoneyUtil.priceFormatDoubleFour(response.body().getData().getSum()) + " TITAN");//可用余额
             tvTixianBalance.setText(MoneyUtil.priceFormatDoubleFour(response.body().getData().getCoinnum()));//提现余额
-
             tvTitanNotTrading.setText(MoneyUtil.priceFormatDoubleFour(response.body().getData().getShiftnum()));//转入
             tvTitanTradingFrozen.setText(MoneyUtil.priceFormatDoubleFour(response.body().getData().getFrozennum()));//交易冻结
 
@@ -215,6 +225,13 @@ public class AssetTITANActivity extends MvpActivity<WalletDetailContact.WalletDe
                 mList.clear();
             }
             data = response.body().getHistory();
+            //按照时间升序排序
+            Collections.sort(data, new Comparator<WalletDetailResponse.HistoryBean>() {
+                @Override
+                public int compare(WalletDetailResponse.HistoryBean o1, WalletDetailResponse.HistoryBean o2) {
+                    return o2.getTime().compareTo(o1.getTime());
+                }
+            });
             if (!ObjectUtils.isEmpty(data)) {
                 rvNormalShow.setVisibility(View.GONE);
                 mList.clear();
