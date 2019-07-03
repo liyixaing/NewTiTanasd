@@ -1,8 +1,11 @@
 package lanjing.com.titan.activity;
 
 
+import android.content.ClipboardManager;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -66,7 +69,7 @@ public class AssetTitanDetailActivity extends MvpActivity<BillDetailContact.Bill
         type = getIntent().getStringExtra("name");
         mPresent.billDetail(context, id);
         initTypeData();
-//        TvTitleNameId.setTitleText(type);
+        //TextViewCopy();
     }
 
     public void initTypeData() {
@@ -113,6 +116,20 @@ public class AssetTitanDetailActivity extends MvpActivity<BillDetailContact.Bill
             tvTitanType.setText("手续费");
         }
 
+    }
+
+
+    //实现长按弹出系统复制方法
+    public void TextViewCopy() {
+        tvTitanBlockchainId.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                ClipboardManager cmb = (ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE);
+                cmb.setText(tvTitanBlockchainId.getText());
+                ToastUtils.showShortToast(context, "已复制");
+                return false;
+            }
+        });
     }
 
 

@@ -227,6 +227,7 @@
                     android:layout_weight="1"
                     android:gravity="right"
                     android:textColor="#182146"
+                    android:textColorHighlight="#00ff37"
                     android:textIsSelectable="true" />
             </LinearLayout>
 
