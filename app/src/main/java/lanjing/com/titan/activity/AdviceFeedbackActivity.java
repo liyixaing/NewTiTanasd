@@ -52,11 +52,11 @@ public class AdviceFeedbackActivity extends MvpActivity<FeedbackContact.Feedback
     }
 
 
-    @OnClick({R.id.edit_problem_title, R.id.submit_advice_btn,R.id.img_feedback_list})
+    @OnClick({R.id.edit_problem_title, R.id.submit_advice_btn, R.id.img_feedback_list})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.img_feedback_list:
-                Intent intent = new Intent(context,FeedbackListActivity.class);
+                Intent intent = new Intent(context, FeedbackListActivity.class);
                 startActivity(intent);
                 break;
             case R.id.edit_problem_title:
@@ -78,21 +78,23 @@ public class AdviceFeedbackActivity extends MvpActivity<FeedbackContact.Feedback
                 break;
         }
     }
-    //限制输入文本内容
-    public static void setEditTextInhibitInputSpeChat(EditText editText){
 
-        InputFilter filter=new InputFilter() {
+    //限制输入文本内容
+    public static void setEditTextInhibitInputSpeChat(EditText editText) {
+        InputFilter filter = new InputFilter() {
             @Override
             public CharSequence filter(CharSequence source, int start, int end, Spanned dest, int dstart, int dend) {
-                String speChat="[`~@ #_$%^&*()+=|{}':;'\\[\\].<>\\-/~@#￥%……&*（）\"——+|{}【】‘；：”“’、]";
+                String speChat = "[`~@ #_$%^&*()+=|{}':;'\\[\\].<>\\-/~@#￥%……&*（）\"——+|{}【】‘；：”“’、]";
                 Pattern pattern = Pattern.compile(speChat);
                 Matcher matcher = pattern.matcher(source.toString());
-                if(matcher.find())return "";
+                if (matcher.find()) return "";
                 else return null;
             }
         };
         editText.setFilters(new InputFilter[]{filter});
+
     }
+
     @Override
     protected FeedbackContact.FeedbackPresent createPresent() {
         return new FeedbackContact.FeedbackPresent();

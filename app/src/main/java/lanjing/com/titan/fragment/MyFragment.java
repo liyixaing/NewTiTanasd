@@ -212,6 +212,11 @@ public class MyFragment extends MvpFragment<PersonContact.PersonPresent> impleme
         }
     }
 
+    @Override
+    public void onResume() {
+        checkboxPrivacyMode.setChecked(false);
+        super.onResume();
+    }
 
     Handler hand = new Handler() {
         public void handleMessage(Message msg) {

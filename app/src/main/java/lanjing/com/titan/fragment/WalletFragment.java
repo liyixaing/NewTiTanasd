@@ -152,8 +152,7 @@ public class WalletFragment extends MvpFragment<WalletDataContact.WalletDataPres
     @Override
     public void onResume() {
         versionCode = APKVersionCodeUtils.getVersionCode(context);
-
-
+        checkboxPrivateMode.setChecked(false);
         mPresent.updateApp(context, 1, versionCode);
 
         mPresent.walletData(context);
@@ -167,7 +166,7 @@ public class WalletFragment extends MvpFragment<WalletDataContact.WalletDataPres
     private void initHide() {
         tvAmount.setText("****");
         titanNum.setText("****");
-        titanPrice.setText("$" + "****");
+        titanPrice.setText("*****");
         usdNum.setText("****");
         usdPrice.setText("****");
         titancNum.setText("****");
