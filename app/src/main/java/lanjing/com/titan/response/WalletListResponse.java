@@ -9,7 +9,7 @@ import java.util.List;
 public class WalletListResponse {
 
 
-     /**
+    /**
      * msg : ok
      * code : 200
      * data : [{"wId":"99999906","address":"fafagagsgfnfklvdsfsmg","welletName":"123456??","username":"Asd","token":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1NTgwNjYwNjY1MzEsInBheWxvYWQiOiJ7XCJkZXZpY2VcIjpcInRlc3QxXCIsXCJrZXllc1wiOlwiOTk5OTk5MDZcIn0ifQ.6b4ZvpX5FBLcaxKZ6T653RIWvxbwKCJN5xH0uf6FJcA"}]
@@ -57,6 +57,24 @@ public class WalletListResponse {
         private String welletName;
         private String username;
         private String token;
+        private String phone;
+        private String inviter;
+
+        public String getPhone() {
+            return phone;
+        }
+
+        public void setPhone(String phone) {
+            this.phone = phone;
+        }
+
+        public String getInviter() {
+            return inviter;
+        }
+
+        public void setInviter(String inviter) {
+            this.inviter = inviter;
+        }
 
         public String getWId() {
             return wId;

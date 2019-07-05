@@ -2,6 +2,7 @@ package lanjing.com.titan.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
@@ -10,6 +11,7 @@ import android.widget.TextView;
 import com.lxh.baselibray.BaseApplication;
 import com.lxh.baselibray.base.XActivity;
 import com.lxh.baselibray.dialog.AlertDialog;
+import com.lxh.baselibray.net.ServiceGenerator;
 import com.lxh.baselibray.util.CountDownTimerUtils;
 import com.lxh.baselibray.util.ObjectUtils;
 import com.lxh.baselibray.util.SPUtils;
@@ -17,10 +19,13 @@ import com.lxh.baselibray.util.SizeUtils;
 import com.lxh.baselibray.util.ToastUtils;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 import lanjing.com.titan.R;
+import lanjing.com.titan.api.ApiService;
 import lanjing.com.titan.constant.Constant;
+import lanjing.com.titan.net.NetCallBack;
+import lanjing.com.titan.request.SendCodeRequest;
+import lanjing.com.titan.response.ResultDTO;
 
 /**
  * 安全中心  用户可以绑定手机号  修改交易密码  登录密码   重置信息
@@ -73,33 +78,60 @@ public class SecurityCenterActivity extends XActivity {
                 .addDefaultAnimation()//默认弹窗动画
                 .setCancelable(true)
                 .setContentView(R.layout.dialog_change_phone_tip)//载入布局文件
+                .setText(R.id.tv_home_sun, phone)
                 .setWidthAndHeight(SizeUtils.dp2px(context, 250), ViewGroup.LayoutParams.WRAP_CONTENT)//设置弹窗宽高
                 .setOnClickListener(R.id.tx_cancel, v -> {//取消切换手机号
                     changPhoneDialog.dismiss();
                 }).setOnClickListener(R.id.tx_sure, v -> {//确定切换手机号
-                    //点击确定之后直接进行跳转
-//                    Intent intentPhone = new Intent(context, BindingPhoneActivity.class);
-//                    startActivity(intentPhone);
-//                    changPhoneDialog.dismiss();
+
                     tv_Code = changPhoneDialog.getView(R.id.et_code);
                     //判断输入框状态
                     if (tv_Code.length() == 0) {
                         ToastUtils.showShortToast(context, "请输入验证码");
                     } else {
-                        ToastUtils.showLongToast(context, "验证码错误");
+                        //当验证码输入框不为空时直接跳转进修改密码
+                        Intent intentPhone = new Intent(context, BindingPhoneActivity.class);
+                        startActivity(intentPhone);
+                        changPhoneDialog.dismiss();
                     }
+                })
+                .setOnClickListener(R.id.tv_msg_code, v -> {//发送验证码按钮
+                    tv_msg_code = changPhoneDialog.getView(R.id.tv_msg_code);
+                    InitGetCode();
+                    CountDownTimerUtils countDownTimerUtils = new CountDownTimerUtils(tv_msg_code, 60000, 1000);
+                    countDownTimerUtils.start();
+
+
                 });
         changPhoneDialog = builder.create();
         changPhoneDialog.show();
 
     }
 
-    /**
-     * 验证码倒计时
-     * CountDownTimerUtils countDownTimerUtils = new CountDownTimerUtils(aginVerificationCode, 60000, 1000);
-     * countDownTimerUtils.start();
-     */
+    //获取验证码
+    public void InitGetCode() {
+        String token = SPUtils.getString(Constant.TOKEN, "", context);
+        Log.e("token", token);
+        Log.e("phone", phone);
+        ApiService service = ServiceGenerator.createService(ApiService.class);
+        SendCodeRequest sendCodeRequest = new SendCodeRequest(phone);
+        service.sendCode(token, sendCodeRequest).enqueue(new NetCallBack<ResultDTO>() {
+            @Override
+            public void onSuccess(retrofit2.Call<ResultDTO> call, retrofit2.Response<ResultDTO> response) {
+                Log.e("xiaoqaing", String.valueOf(response.body().getCode()));
+                Log.e("xiaoqaing", response.body().getMsg());
+                if (response.body().getCode() == 200) {
+                } else {
+                    ToastUtils.showShortToast(context, response.body().getMsg());
+                }
+            }
 
+            @Override
+            public void onFailed() {
+            }
+        });
+
+    }
 
     @Override
     public int getLayoutId() {
@@ -112,7 +144,10 @@ public class SecurityCenterActivity extends XActivity {
         switch (view.getId()) {
             case R.id.tv_phone://绑定手机号
                 if (phone != null) {
-                    showChangPhoneDialog();
+//                    showChangPhoneDialog();//弹出选择框
+                    Intent intentPhone = new Intent(context, BindingPhoneActivity.class);
+                    intentPhone.putExtra("phone",phone);
+                    startActivity(intentPhone);
                     return;
                 }
                 Intent intentPhone = new Intent(context, BindingPhoneActivity.class);

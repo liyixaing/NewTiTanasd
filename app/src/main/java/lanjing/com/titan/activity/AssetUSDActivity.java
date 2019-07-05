@@ -167,18 +167,22 @@ public class AssetUSDActivity extends MvpActivity<WalletDetailContact.WalletDeta
                 .setWidthAndHeight(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT)//设置弹窗宽高
                 .setOnClickListener(R.id.all, v -> {//查询所有
                     type = "";
+                    tvUsdScreen.setText("全部");
                     mPresent.walletDetail(context, walletId, type, String.valueOf(page), String.valueOf(pageSize));
                     screenDialog.dismiss();
                 }).setOnClickListener(R.id.tv_buy, v -> {//买入查询
                     type = "34";
+                    tvUsdScreen.setText("买入");
                     mPresent.walletDetail(context, walletId, type, String.valueOf(page), String.valueOf(pageSize));
                     screenDialog.dismiss();
                 }).setOnClickListener(R.id.tv_sell, v -> {//卖出查询
                     type = "35";
+                    tvUsdScreen.setText("卖出");
                     mPresent.walletDetail(context, walletId, type, String.valueOf(page), String.valueOf(pageSize));
                     screenDialog.dismiss();
                 }).setOnClickListener(R.id.tv_service_fee, v -> {//手续费查询
                     type = "30";
+                    tvUsdScreen.setText("手续费");
                     mPresent.walletDetail(context, walletId, type, String.valueOf(page), String.valueOf(pageSize));
                     screenDialog.dismiss();
                 }).setOnClickListener(R.id.tv_system, v -> {//系统查询

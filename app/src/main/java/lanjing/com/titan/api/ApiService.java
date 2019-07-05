@@ -24,6 +24,7 @@ import lanjing.com.titan.request.RegisterRequest;
 import lanjing.com.titan.request.SaveWalletRequest;
 import lanjing.com.titan.request.SendCodeRequest;
 import lanjing.com.titan.request.SetHelpRequest;
+import lanjing.com.titan.request.SetNewPhoneRequest;
 import lanjing.com.titan.request.SetPhoneRequest;
 import lanjing.com.titan.request.UpdatePwdRequest;
 import lanjing.com.titan.request.VersionRequest;
@@ -52,11 +53,12 @@ import lanjing.com.titan.response.PersonResponse;
 import lanjing.com.titan.response.RegisterResponse;
 import lanjing.com.titan.response.ResultDTO;
 import lanjing.com.titan.response.SetHelpResponse;
+import lanjing.com.titan.response.SetNewPhoneResponse;
 import lanjing.com.titan.response.SetPhoneResponse;
 import lanjing.com.titan.response.SixTradeResponse;
 import lanjing.com.titan.response.VersionResponse;
-import lanjing.com.titan.response.WalletDetailResponse;
 import lanjing.com.titan.response.WalletDataResponse;
+import lanjing.com.titan.response.WalletDetailResponse;
 import lanjing.com.titan.response.WalletListResponse;
 import lanjing.com.titan.response.WithdrawalResponse;
 import retrofit2.Call;
@@ -141,6 +143,11 @@ public interface ApiService {
     @POST("/app/setphone")
     Call<SetPhoneResponse> setPhone(@Header("token") String token, @Body SetPhoneRequest data);
 
+    /**
+     * 新绑定手
+     */
+    @POST("/app/unbindPhone")
+    Call<SetNewPhoneResponse> setNewPhone(@Header("token") String token, @Body SetNewPhoneRequest data);
 
     /**
      * 修改密码  交易和登录密码
@@ -213,7 +220,7 @@ public interface ApiService {
      * 提币
      */
     @POST("/app/withdraw")
-    Call<ResultDTO> withdraw(@Header("token") String token,@Body WithdrawRequest data);
+    Call<ResultDTO> withdraw(@Header("token") String token, @Body WithdrawRequest data);
 
 //    /**
 //     * 钱包列表
@@ -328,7 +335,6 @@ public interface ApiService {
      */
     @POST("/version/findVersion")
     Call<VersionResponse> updateApp(@Body VersionRequest data);
-
 
 
 //    /**

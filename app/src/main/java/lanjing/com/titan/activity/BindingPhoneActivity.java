@@ -2,6 +2,7 @@ package lanjing.com.titan.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
@@ -22,6 +23,7 @@ import lanjing.com.titan.constant.Constant;
 import lanjing.com.titan.contact.SetPhoneContact;
 import lanjing.com.titan.eventbus.EventImpl;
 import lanjing.com.titan.response.ResultDTO;
+import lanjing.com.titan.response.SetNewPhoneResponse;
 import lanjing.com.titan.response.SetPhoneResponse;
 import lanjing.com.titan.util.CountDownTimerUtils;
 import retrofit2.Response;
@@ -42,10 +44,20 @@ public class BindingPhoneActivity extends MvpActivity<SetPhoneContact.SetPhonePr
     @BindView(R.id.spinner1)
     Spinner spinner1;
     String areaCode;//区号
+    @BindView(R.id.tv_home_sun)
+    TextView TvHomeSun;
+    @BindView(R.id.tv_used_pwd)
+    TextView TvUsedPwd;
+    @BindView(R.id.et_used_code)
+    TextView EtUsedCode;
+    String Oldphone;
 
     @Override
     public void initData(Bundle savedInstanceState) {
         areaCode = "86";
+        Oldphone = getIntent().getStringExtra("phone");
+        TvHomeSun.setText(Oldphone);
+        Log.e("原手机号码", Oldphone);
         initSpinner();
     }
 
@@ -59,11 +71,11 @@ public class BindingPhoneActivity extends MvpActivity<SetPhoneContact.SetPhonePr
         return new SetPhoneContact.SetPhonePresent();
     }
 
-    private void initSpinner(){
+    private void initSpinner() {
         spinner1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                switch (position){ //中国，韩国，日本，泰国，香港，台湾，新加坡，澳大利亚，美国，俄罗斯
+                switch (position) { //中国，韩国，日本，泰国，香港，台湾，新加坡，澳大利亚，美国，俄罗斯
                     case 0://中国
                         areaCode = "86";
                         break;
@@ -133,7 +145,7 @@ public class BindingPhoneActivity extends MvpActivity<SetPhoneContact.SetPhonePr
         if (response.body().getCode() == Constant.SUCCESS_CODE) {
             ToastUtils.showShortToast(context, getResources().getString(R.string.binding_success_tip));
             SPUtils.putString(Constant.PHONE, edPhone.getText().toString().trim(), context);
-            Intent intent = new Intent(context,SecurityCenterActivity.class);
+            Intent intent = new Intent(context, SecurityCenterActivity.class);
             BusFactory.getBus().post(new EventImpl.UpdatePhoneEvent());
             startActivity(intent);
 
@@ -146,13 +158,41 @@ public class BindingPhoneActivity extends MvpActivity<SetPhoneContact.SetPhonePr
         }
     }
 
+    @Override
+    public void getNewSetPhoneResult(Response<SetNewPhoneResponse> response) {
+        if (response.body().getCode() == Constant.SUCCESS_CODE) {
+            ToastUtils.showShortToast(context, getResources().getString(R.string.binding_success_tip));
+            SPUtils.putString(Constant.PHONE, edPhone.getText().toString().trim(), context);
+//            Intent intent = new Intent(context, SecurityCenterActivity.class);
+//            BusFactory.getBus().post(new EventImpl.UpdatePhoneEvent());
+//            startActivity(intent);
+            Intent newIntent = new Intent(context, MainActivity.class);
+            startActivity(newIntent);
+
+//            Intent intent = new Intent(context, ResetInformationActivity.class);
+//            intent.putExtra("userId", response.body().getUserId());
+//            startActivity(intent);
+
+        } else {
+            ToastUtils.showShortToast(context, response.body().getMsg());
+        }
+    }
+
+    int asd;
+
     //获取验证码返回
     @Override
     public void getSendCodeResult(Response<ResultDTO> response) {
         if (response.body().getCode() == Constant.SUCCESS_CODE) {//18124073755
-            ToastUtils.showShortToast(context, getResources().getString(R.string.verification_code_sent));
-            CountDownTimerUtils countDownTimerUtils = new CountDownTimerUtils(aginVerificationCode, 60000, 1000);
-            countDownTimerUtils.start();
+            if (asd == 1) {
+                ToastUtils.showShortToast(context, getResources().getString(R.string.verification_code_sent));
+                CountDownTimerUtils countDownTimerUtils = new CountDownTimerUtils(TvUsedPwd, 60000, 1000);
+                countDownTimerUtils.start();
+            } else {
+                ToastUtils.showShortToast(context, getResources().getString(R.string.verification_code_sent));
+                CountDownTimerUtils countDownTimerUtils = new CountDownTimerUtils(aginVerificationCode, 60000, 1000);
+                countDownTimerUtils.start();
+            }
         } else {
             ToastUtils.showShortToast(context, response.body().getMsg());
             dismissLoadingDialog();
@@ -165,11 +205,15 @@ public class BindingPhoneActivity extends MvpActivity<SetPhoneContact.SetPhonePr
         dismissLoadingDialog();
     }
 
-    @OnClick({R.id.ed_phone, R.id.agin_verification_code, R.id.next_step_btn})
+    @OnClick({R.id.tv_used_pwd, R.id.ed_phone, R.id.agin_verification_code, R.id.next_step_btn})
     public void onViewClicked(View view) {
         String phone = edPhone.getText().toString().trim();
-        String phones = areaCode+phone;
+        String phones = areaCode + phone;
         switch (view.getId()) {
+            case R.id.tv_used_pwd:
+                mPresent.getCode(context, Oldphone);
+                asd = 1;
+                return;
             case R.id.ed_phone:
                 edPhone.setCursorVisible(true);//光标显示
                 break;
@@ -179,15 +223,19 @@ public class BindingPhoneActivity extends MvpActivity<SetPhoneContact.SetPhonePr
                     return;
                 }
                 mPresent.getCode(context, phones);// 1  綁定手机号
+                asd = 2;
                 break;
             case R.id.next_step_btn:
                 String code = edVerificationCode.getText().toString().trim();
-                if (ObjectUtils.isEmpty(code)) {
-                    ToastUtils.showLongToast(context, getResources().getString(R.string.the_verification_code_cannot_be_empty));
+                String oldcode = EtUsedCode.getText().toString().trim();
+                String phonesun = edPhone.getText().toString().trim();
+                if (ObjectUtils.isEmpty(code) || ObjectUtils.isEmpty(oldcode) || ObjectUtils.isEmpty(phonesun)) {
+                    ToastUtils.showLongToast(context, "验证码或手机号码错误");
                     return;
                 }
+
                 showLoadingDialog();
-                mPresent.setPhone(context, phones, code);
+                mPresent.setnewPhone(context, Oldphone, oldcode, phonesun, code);
                 break;
         }
     }

@@ -18,7 +18,7 @@ public class ServiceGenerator {
     /**
      * 正式上线
      */
-   //public static final String BASE_URL = "http://38.21.243.86";
+    //public static final String BASE_URL = "http://38.21.243.86";
 //     public static final String BASE_URL = "http://114.55.165.42";//公司测试服务器
 //    public static final String BASE_URL = "http://app.titans.world";
     public static final String BASE_URL = "http://120.79.169.58";
@@ -26,6 +26,7 @@ public class ServiceGenerator {
     public static <T> T createService(Class<T> serviceClass) {
         OkHttpClient.Builder okHttpClientBuilder = new OkHttpClient.Builder();
         okHttpClientBuilder.connectTimeout(10000, TimeUnit.MILLISECONDS);
+        //输出okhttp一些log
         HttpLoggingInterceptor httpLoggingInterceptor = new HttpLoggingInterceptor();
         httpLoggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
         okHttpClientBuilder.addInterceptor(httpLoggingInterceptor);

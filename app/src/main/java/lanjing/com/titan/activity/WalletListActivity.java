@@ -10,6 +10,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.jaydenxiao.guider.HighLightGuideView;
@@ -87,6 +88,10 @@ public class WalletListActivity extends MvpActivity<WalletContact.WalletPresent>
                 } else if (view.getId() == R.id.wallet_change) {//切换钱包
                     if (mList.get(position).getToken().equals("")) {
                         ToastUtils.showShortToast(context, "登陆信息已过期请重新登陆");
+                    } else if (mList.get(position).getPhone().equals("")) {
+                        ToastUtils.showShortToast(context, "该账号未绑定手机号不能直接进行切换");
+                    } else if (mList.get(position).getInviter().equals("")) {
+                        ToastUtils.showShortToast(context, "该账号未绑定推荐人id");
                     } else {
                         Intent intent = new Intent(context, MainActivity.class);
                         intent.putExtra("flag", 0);

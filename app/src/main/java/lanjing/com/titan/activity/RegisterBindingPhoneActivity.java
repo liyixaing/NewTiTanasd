@@ -21,6 +21,7 @@ import lanjing.com.titan.R;
 import lanjing.com.titan.constant.Constant;
 import lanjing.com.titan.contact.SetPhoneContact;
 import lanjing.com.titan.response.ResultDTO;
+import lanjing.com.titan.response.SetNewPhoneResponse;
 import lanjing.com.titan.response.SetPhoneResponse;
 import lanjing.com.titan.util.CountDownTimerUtils;
 import retrofit2.Response;
@@ -163,6 +164,11 @@ public class RegisterBindingPhoneActivity extends MvpActivity<SetPhoneContact.Se
     }
 
     @Override
+    public void getNewSetPhoneResult(Response<SetNewPhoneResponse> response) {
+
+    }
+
+    @Override
     public void getSendCodeResult(Response<ResultDTO> response) {
         if (response.body().getCode() == Constant.SUCCESS_CODE) {
             ToastUtils.showShortToast(context, getResources().getString(R.string.verification_code_sent));
@@ -204,7 +210,7 @@ public class RegisterBindingPhoneActivity extends MvpActivity<SetPhoneContact.Se
                     ToastUtils.showLongToast(context, getResources().getString(R.string.the_verification_code_cannot_be_empty));
                     return;
                 }
-                showLoadingDialog();
+//                showLoadingDialog();//弹出等待弹窗
                 mPresent.setPhone(context, phones, code);
                 break;
         }

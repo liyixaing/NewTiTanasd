@@ -37,6 +37,7 @@ public class ImportNewWalletActivity extends MvpActivity<WalletListImportContact
     @BindView(R.id.next_step_btn)
     TextView nextStepBtn;
     String adminNo;
+
     @Override
     public void initData(Bundle savedInstanceState) {
         adminNo = Settings.System.getString(context.getContentResolver(), Settings.System.ANDROID_ID);
@@ -54,15 +55,16 @@ public class ImportNewWalletActivity extends MvpActivity<WalletListImportContact
 
     @Override
     public void getImportWalletListResult(Response<ListWalletImportResponse> response) {
-        if (response.body().getCode() == Constant.SUCCESS_CODE){
-            Intent intent = new Intent(context,SetWalletActivity.class);
-            intent.putExtra("userName",response.body().getUserName());
-            intent.putExtra("address",response.body().getAddress());
-            intent.putExtra("addressLabel",response.body().getKeyes());
-            SPUtils.putString(Constant.TOKEN2,response.body().getToken(),context);
+        if (response.body().getCode() == Constant.SUCCESS_CODE) {
+            Intent intent = new Intent(context, SetWalletActivity.class);
+            intent.putExtra("userName", response.body().getUserName());
+            intent.putExtra("address", response.body().getAddress());
+            intent.putExtra("addressLabel", response.body().getKeyes());
+            SPUtils.putString(Constant.TOKEN2, response.body().getToken(), context);
             startActivity(intent);
-        }else {
-            ToastUtils.showShortToast(context,response.body().getMsg());
+            finish();
+        } else {
+            ToastUtils.showShortToast(context, response.body().getMsg());
             dismissLoadingDialog();
         }
     }
@@ -84,16 +86,16 @@ public class ImportNewWalletActivity extends MvpActivity<WalletListImportContact
                 String word2 = edWordTwo.getText().toString();
                 String word3 = edWordThree.getText().toString();
                 String key = edPrivateKey.getText().toString();
-                if (validate(word1,word2,word3,key))
+                if (validate(word1, word2, word3, key))
                     return;
                 showLoadingDialog();
-                String help = word1+","+word2+","+word3;
-                mPresent.importWalletlist(context,help,key,adminNo);
+                String help = word1 + "," + word2 + "," + word3;
+                mPresent.importWalletlist(context, help, key, adminNo);
                 break;
         }
     }
 
-    private boolean validate(String word1, String word2, String word3,String key) {
+    private boolean validate(String word1, String word2, String word3, String key) {
         if (ObjectUtils.isEmpty(word1)) {
             ToastUtils.showLongToast(context, getResources().getString(R.string.please_ed_one_word));
             return true;
