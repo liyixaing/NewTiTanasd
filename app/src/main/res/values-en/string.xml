@@ -177,6 +177,7 @@
     <string name="log_out">Log Out</string>
     <!--安全中心  绑定手机号-->
     <string name="binding_phone">Phone NO.</string>
+    <string name="binding_newphone">Phone NO.</string>
     <string name="verification_code">Verification Code</string>
     <string name="get_verification_code">Get</string>
     <!--安全中心  绑定手机号之后根据情况重置信息  Reset information-->

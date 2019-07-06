@@ -134,13 +134,13 @@ public class TItanWithdrawActivity extends MvpActivity<WalletWithdrawContact.Wal
 
     @Override
     public void getWalletWithdrawResult(Response<ResultDTO> response) {
+
         dismissLoadingDialog();
         if (response.body().getCode() == Constant.SUCCESS_CODE) {
-            ToastUtils.showShortToast(context, getResources().getString(R.string.submitted_request));
+            ToastUtils.showShortToast(context, response.body().getMsg());
             finish();
         } else {
-//            ToastUtils.showShortToast(context, response.body().getMsg());
-            ToastUtils.showShortToast(context, "信息填写错误");
+            ToastUtils.showShortToast(context, response.body().getMsg());
         }
     }
 
@@ -154,6 +154,7 @@ public class TItanWithdrawActivity extends MvpActivity<WalletWithdrawContact.Wal
             mPresent.walletWithdraw(context, address, walletId, num);
         } else {
             ToastUtils.showShortToast(context, response.body().getMsg());
+
         }
     }
 

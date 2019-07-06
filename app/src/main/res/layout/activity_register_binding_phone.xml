@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/white"
-    android:orientation="vertical"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
     tools:context="lanjing.com.titan.activity.RegisterBindingPhoneActivity">
 
     <com.lxh.baselibray.view.TitleView
@@ -16,11 +16,11 @@
         app:titleTextColor="@color/common_black"
         app:tvTitleText="@string/binding_phone" />
 
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp_15"
-        android:background="@color/public_bg">
-    </LinearLayout>
+        android:background="@color/public_bg"></LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -31,25 +31,29 @@
         android:orientation="vertical">
         <!--手机号-->
         <LinearLayout
-            android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
             <Spinner
-                android:layout_gravity="bottom"
                 android:id="@+id/spinner1"
-                android:background="@drawable/spinner_style"
                 android:layout_width="@dimen/dp_100"
                 android:layout_height="@dimen/dp_30"
+                android:layout_gravity="bottom"
+                android:background="@drawable/spinner_style"
                 android:entries="@array/spingarr"
                 android:theme="@style/itemSpinner" />
+
             <LinearLayout
-                android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
                 <com.wrapp.floatlabelededittext.FloatLabeledEditText
-                    android:layout_marginLeft="@dimen/dp_5"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp_5">
+
                     <EditText
                         android:id="@+id/ed_phone"
                         android:layout_width="match_parent"
@@ -63,33 +67,32 @@
                         android:textCursorDrawable="@drawable/cursor_style"
                         android:textSize="@dimen/sp_15" />
                 </com.wrapp.floatlabelededittext.FloatLabeledEditText>
+
                 <View
-                    android:layout_marginLeft="@dimen/dp_5"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/dp_1"
                     android:layout_centerHorizontal="true"
+                    android:layout_marginLeft="@dimen/dp_5"
                     android:background="@color/line_gray" />
             </LinearLayout>
         </LinearLayout>
 
 
-
-
         <TextView
-            android:visibility="gone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dp_5"
             android:text="@string/tip_phone_tx"
-            android:textColor="@color/gray" />
+            android:textColor="@color/gray"
+            android:visibility="gone" />
 
         <TextView
-            android:visibility="gone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dp_5"
             android:text="@string/tip_phone"
-            android:textColor="@color/gray" />
+            android:textColor="@color/gray"
+            android:visibility="gone" />
 
         <LinearLayout
             android:layout_width="match_parent"

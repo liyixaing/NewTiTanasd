@@ -13,7 +13,7 @@
         android:background="@color/default_white_bg"
         app:ivLeftPic="@mipmap/icon_page_return"
         app:titleTextColor="@color/common_black"
-        app:tvTitleText="@string/binding_phone" />
+        app:tvTitleText="@string/binding_newphone" />
 
     <LinearLayout
         android:layout_width="match_parent"

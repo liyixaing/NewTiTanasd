@@ -243,9 +243,10 @@ public class SplashActivity extends MvpActivity<LoginContact.LoginPresent> imple
 
     @Override
     public void getPersonResult(Response<PersonResponse> response) {
+        //判断有没有绑定手机号码
         if (response.body().getCode() == Constant.SUCCESS_CODE) {
             if (ObjectUtils.isEmpty(response.body().getData().getPhonenum())) {
-                Intent intent = new Intent(context, RegisterBindingPhoneActivity.class);
+                Intent intent = new Intent(context, LoginActivity.class);
                 intent.putExtra("code", inviteCode);
                 startActivity(intent);
                 return;
@@ -257,8 +258,9 @@ public class SplashActivity extends MvpActivity<LoginContact.LoginPresent> imple
 //                return;
 //            }
 
+            //判断有没有推荐人
             if (inviteCode.equals("")) {
-                Intent intent = new Intent(context, ImportWalletBindActivity.class);
+                Intent intent = new Intent(context, LoginActivity.class);
                 startActivity(intent);
                 return;
             }

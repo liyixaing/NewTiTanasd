@@ -89,7 +89,7 @@ public class WalletListActivity extends MvpActivity<WalletContact.WalletPresent>
                     if (mList.get(position).getToken().equals("")) {
                         ToastUtils.showShortToast(context, "登陆信息已过期请重新登陆");
                     } else if (mList.get(position).getPhone().equals("")) {
-                        ToastUtils.showShortToast(context, "该账号未绑定手机号不能直接进行切换");
+                        ToastUtils.showShortToast(context, "该账号未绑定手机号");
                     } else if (mList.get(position).getInviter().equals("")) {
                         ToastUtils.showShortToast(context, "该账号未绑定推荐人id");
                     } else {

@@ -211,10 +211,18 @@ public class AssetTITANActivity extends MvpActivity<WalletDetailContact.WalletDe
 
     List<WalletDetailResponse.HistoryBean> data;
 
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        refresh.autoRefresh();//自动刷新
+    }
+
     @Override
     public void getWalletDeatilResult(Response<WalletDetailResponse> response) {
         refresh.finishRefresh();
         refresh.finishLoadMore();
+
         if (response.body().getCode() == Constant.SUCCESS_CODE) {
             tvAssetBalance.setText(MoneyUtil.priceFormatDoubleFour(response.body().getData().getSum()) + " TITAN");//可用余额
             tvTixianBalance.setText(MoneyUtil.priceFormatDoubleFour(response.body().getData().getCoinnum()));//提现余额
