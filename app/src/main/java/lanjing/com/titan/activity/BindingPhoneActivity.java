@@ -71,6 +71,7 @@ public class BindingPhoneActivity extends MvpActivity<SetPhoneContact.SetPhonePr
         return new SetPhoneContact.SetPhonePresent();
     }
 
+
     private void initSpinner() {
         spinner1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -155,6 +156,7 @@ public class BindingPhoneActivity extends MvpActivity<SetPhoneContact.SetPhonePr
             finish();
         } else {
             ToastUtils.showShortToast(context, response.body().getMsg());
+            dismissLoadingDialog();
         }
     }
 
@@ -175,6 +177,7 @@ public class BindingPhoneActivity extends MvpActivity<SetPhoneContact.SetPhonePr
 
         } else {
             ToastUtils.showShortToast(context, response.body().getMsg());
+            dismissLoadingDialog();
         }
     }
 
@@ -228,7 +231,7 @@ public class BindingPhoneActivity extends MvpActivity<SetPhoneContact.SetPhonePr
             case R.id.next_step_btn:
                 String code = edVerificationCode.getText().toString().trim();
                 String oldcode = EtUsedCode.getText().toString().trim();
-                String phonesun = edPhone.getText().toString().trim();
+                String phonesun = areaCode + edPhone.getText().toString().trim();
                 if (ObjectUtils.isEmpty(code) || ObjectUtils.isEmpty(oldcode) || ObjectUtils.isEmpty(phonesun)) {
                     ToastUtils.showLongToast(context, "验证码或手机号码错误");
                     return;

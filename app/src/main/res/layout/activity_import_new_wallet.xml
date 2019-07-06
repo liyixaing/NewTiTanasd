@@ -52,7 +52,6 @@
                 android:gravity="center_vertical"
                 android:maxLength="11"
                 android:paddingLeft="@dimen/dp_10"
-                android:text="citizen"
                 android:textColor="@color/common_black"
                 android:textCursorDrawable="@drawable/cursor_style"
                 android:textSize="@dimen/sp_16" />
@@ -80,7 +79,6 @@
                 android:gravity="center_vertical"
                 android:maxLength="11"
                 android:paddingLeft="@dimen/dp_10"
-                android:text="journey"
                 android:textColor="@color/common_black"
                 android:textCursorDrawable="@drawable/cursor_style"
                 android:textSize="@dimen/sp_16" />
@@ -108,7 +106,6 @@
                 android:gravity="center_vertical"
                 android:maxLength="11"
                 android:paddingLeft="@dimen/dp_10"
-                android:text="left"
                 android:textColor="@color/common_black"
                 android:textCursorDrawable="@drawable/cursor_style"
                 android:textSize="@dimen/sp_16" />
@@ -130,7 +127,6 @@
             android:background="@drawable/shape_gray_bg"
             android:gravity="center_vertical"
             android:padding="@dimen/dp_10"
-            android:text="18de5283ceb04ddaba2953fc0086a7d9"
             android:textColor="@color/common_black"
             android:textCursorDrawable="@drawable/cursor_style"
             android:textSize="@dimen/sp_16" />

@@ -132,6 +132,7 @@ public class AssetTITANActivity extends MvpActivity<WalletDetailContact.WalletDe
                 break;
             case R.id.withdraw_c_btn://提币
                 Intent withdrwa = new Intent(context, TItanWithdrawActivity.class);
+            withdrwa.putExtra("taitanSum", tvAssetBalance.getText().toString());
                 withdrwa.putExtra("balance", tvTixianBalance.getText().toString());
                 startActivity(withdrwa);
                 break;

@@ -20,8 +20,8 @@ public class ServiceGenerator {
      */
     //public static final String BASE_URL = "http://38.21.243.86";
 //     public static final String BASE_URL = "http://114.55.165.42";//公司测试服务器
-//    public static final String BASE_URL = "http://app.titans.world";
-    public static final String BASE_URL = "http://120.79.169.58";
+    public static final String BASE_URL = "http://app.titans.world";
+//    public static final String BASE_URL = "http://120.79.169.58";
 
     public static <T> T createService(Class<T> serviceClass) {
         OkHttpClient.Builder okHttpClientBuilder = new OkHttpClient.Builder();
@@ -31,8 +31,8 @@ public class ServiceGenerator {
         httpLoggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
         okHttpClientBuilder.addInterceptor(httpLoggingInterceptor);
 
-        Retrofit retrofit = new Retrofit.Builder().baseUrl(BASE_URL + ":8888")//8080
-//                Retrofit retrofit = new Retrofit.Builder().baseUrl(BASE_URL + ":80")//8080
+//        Retrofit retrofit = new Retrofit.Builder().baseUrl(BASE_URL + ":8888")//8080
+                Retrofit retrofit = new Retrofit.Builder().baseUrl(BASE_URL + ":80")//8080
 //        Retrofit retrofit = new Retrofit.Builder().baseUrl(BASE_URL)//8080
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(okHttpClientBuilder.build())

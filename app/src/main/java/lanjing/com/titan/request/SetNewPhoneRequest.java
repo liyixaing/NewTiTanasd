@@ -8,12 +8,12 @@ public class SetNewPhoneRequest {
     private String oldPhone;
     private String oldCode;
     private String newPhone;
-    private String newColde;
+    private String newCode;
 
-    public SetNewPhoneRequest(String oldPhone, String oldCode, String newPhone, String newColde) {
+    public SetNewPhoneRequest(String oldPhone, String oldCode, String newPhone, String newCode) {
         this.oldPhone = oldPhone;
         this.oldCode = oldCode;
         this.newPhone = newPhone;
-        this.newColde = newColde;
+        this.newCode = newCode;
     }
 }
