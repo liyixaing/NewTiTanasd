@@ -249,7 +249,6 @@ public class WalletFragment extends MvpFragment<WalletDataContact.WalletDataPres
             usdPrice.setText(MoneyUtil.formatFour(response.body().getData().getUSD1price()));//USD  价格
             titancNum.setText(MoneyUtil.formatFour(response.body().getData().getTitancnum()));//TITANC  数量
             usd2Num.setText(MoneyUtil.formatFour(response.body().getData().getUSD2num()));// USD2 数量
-
             titanId = response.body().getData().getTitancoinId();
             usdId = response.body().getData().getUSD1coinId();
             titancId = response.body().getData().getTitanccoinId();

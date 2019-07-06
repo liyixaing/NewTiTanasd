@@ -40,6 +40,7 @@ public class ImportNewWalletActivity extends MvpActivity<WalletListImportContact
 
     @Override
     public void initData(Bundle savedInstanceState) {
+        //获取设备唯一标示
         adminNo = Settings.System.getString(context.getContentResolver(), Settings.System.ANDROID_ID);
     }
 
