@@ -235,32 +235,7 @@
                         android:layout_weight="1"
                         android:gravity="right"
                         android:text="0.00" />
-                    <TextView
-                        android:id="@+id/tv_numusd"
-                        android:layout_width="0dp"
-                        android:visibility="gone"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="right"
-                        android:text="0.00" />
 
-
-                    <!--<TextView-->
-                        <!--android:id="@+id/tv_titan_num"-->
-                        <!--android:layout_width="0dp"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:layout_weight="1"-->
-                        <!--android:gravity="right"-->
-                        <!--android:text="0" />-->
-
-                    <!--<TextView-->
-                        <!--android:visibility="gone"-->
-                        <!--android:id="@+id/tv_usd_num"-->
-                        <!--android:layout_width="0dp"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:layout_weight="1"-->
-                        <!--android:gravity="right"-->
-                        <!--android:text="0" />-->
 
                     <TextView
                         android:id="@+id/tv_coin_type"

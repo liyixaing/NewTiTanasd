@@ -11,9 +11,7 @@ import android.text.Selection;
 import android.text.Spannable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.KeyEvent;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
@@ -31,14 +29,11 @@ import com.lxh.baselibray.util.SPUtils;
 import com.lxh.baselibray.util.SizeUtils;
 import com.lxh.baselibray.util.ToastUtils;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
-import com.vector.update_app.view.NumberProgressBar;
 
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
 import java.math.BigDecimal;
-import java.text.DecimalFormat;
-import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -48,7 +43,6 @@ import butterknife.Unbinder;
 import lanjing.com.titan.R;
 import lanjing.com.titan.activity.BindingPhoneActivity;
 import lanjing.com.titan.activity.HistoryEntrustActivity;
-import lanjing.com.titan.activity.MainActivity;
 import lanjing.com.titan.adapter.BuySixAdapter;
 import lanjing.com.titan.adapter.BuySixOneAdapter;
 import lanjing.com.titan.adapter.BuySixZeroAdapter;
@@ -76,6 +70,7 @@ public class DealFragment extends MvpFragment<DealContact.DealPresent> implement
     @BindView(R.id.tv_service_charge)
     TextView tvServiceCharge;
     @BindView(R.id.buy_btn)
+
     RadioButton buyBtn;
     @BindView(R.id.sell_btn)
     RadioButton sellBtn;
@@ -127,8 +122,6 @@ public class DealFragment extends MvpFragment<DealContact.DealPresent> implement
 
     @BindView(R.id.tv_num)
     TextView tvNum;
-    @BindView(R.id.tv_numusd)
-    TextView tvNumusd;
     @BindView(R.id.tv_deal_num)
     TextView tvDealNum;
     @BindView(R.id.img_refresh)
@@ -165,16 +158,8 @@ public class DealFragment extends MvpFragment<DealContact.DealPresent> implement
     BigDecimal totalAmount;
     //    private Timer timer;
     String keyong;
-    String suntaitan;
-    String sunusd;
-    Boolean timenttaitan = false;
-    Boolean timentusd = false;
+    int typeDatae = 1;
 
-    //测试数据
-    String a, b;
-    Double x, y, dasd;
-    String aa, ba;
-    Double xa, ya, dasda;
 
     @Override
     public void initData(Bundle savedInstanceState) {
@@ -276,7 +261,6 @@ public class DealFragment extends MvpFragment<DealContact.DealPresent> implement
         }
     };
 
-
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void receiveActivity(EventImpl.UpdateNicknameEvent event) {
         if (!ObjectUtils.isEmpty(event)) {
@@ -293,30 +277,17 @@ public class DealFragment extends MvpFragment<DealContact.DealPresent> implement
 //        }
 //    };
 
-    //onOptionsItemSelected
-
     @Override
     public void onResume() {
         buyBtn.setChecked(true);
+        btnSell.setVisibility(View.GONE);
+        btnBuy.setVisibility(View.VISIBLE);
+        tvCoinType.setText("TITAN");
         //查询数据
         checkTwo();
         tvDealNum.setText("0");
-        tvNum.setVisibility(View.VISIBLE);
-        tvNumusd.setVisibility(View.GONE);
         phone = SPUtils.getString(Constant.PHONE, "", context);
-        tvNum.setText(titan);
-        //判断当前显示的是买入还是卖出 使底部按钮与顶部按钮同步
-        if (type == 0) {
-            tvCoinType.setText("TITAN");
-            tvCoinType2.setText("USD");
-            btnBuy.setVisibility(View.VISIBLE);
-            btnSell.setVisibility(View.GONE);
-        } else {
-            tvCoinType.setText("USD");
-            tvCoinType2.setText("TITAN");
-            btnBuy.setVisibility(View.GONE);
-            btnSell.setVisibility(View.VISIBLE);
-        }
+
         if (ObjectUtils.isEmpty(phone)) {
             checkboxInter.setChecked(false);
         }
@@ -346,7 +317,6 @@ public class DealFragment extends MvpFragment<DealContact.DealPresent> implement
     public int getLayoutId() {
         return R.layout.fragment_deal;
     }
-
 
     @OnClick({R.id.img_refresh, R.id.checkbox_inter, R.id.buy_btn, R.id.sell_btn, R.id.ed_number, R.id.rb_two, R.id.rb_one, R.id.rb_zero, R.id.btn_buy, R.id.btn_sell, R.id.tv_history_entrust})
     public void onViewClicked(View view) {
@@ -378,14 +348,10 @@ public class DealFragment extends MvpFragment<DealContact.DealPresent> implement
 //                    indicatorSeekBar.setEnabled(false);
 //                }
 //                indicatorSeekBar.setProgress(0);
-                if (timenttaitan.equals(false)) {
-                    tvNum.setText(titan);
-                    timenttaitan = true;
-                }
+                mPresent.walletDataTitan(context);
+                tvNum.setText(titan);
                 btnBuy.setVisibility(View.VISIBLE);
                 btnSell.setVisibility(View.GONE);
-                tvNumusd.setVisibility(View.GONE);
-                tvNum.setVisibility(View.VISIBLE);
                 tvCoinType.setText("TITAN");
                 tvCoinType2.setText("USD");
 
@@ -402,15 +368,10 @@ public class DealFragment extends MvpFragment<DealContact.DealPresent> implement
 //                    indicatorSeekBar.setEnabled(false);
 //                }
 //                indicatorSeekBar.setProgress(0);
-                if (timentusd.equals(false)) {
-                    tvNumusd.setText(usd);
-                    timentusd = true;
-                }
-//                tvNumusd.setText(usd);
+                tvNum.setText(usd);
+                mPresent.walletDataUsd(context);
                 btnBuy.setVisibility(View.GONE);
                 btnSell.setVisibility(View.VISIBLE);
-                tvNumusd.setVisibility(View.VISIBLE);
-                tvNum.setVisibility(View.GONE);
                 tvCoinType.setText("USD");
                 tvCoinType2.setText("TITAN");
 
@@ -429,7 +390,7 @@ public class DealFragment extends MvpFragment<DealContact.DealPresent> implement
                 break;
             case R.id.btn_buy://执行买入
 //                checkTwo();//点击买入时执行
-
+                typeDatae = 1;
                 if (ObjectUtils.isEmpty(phone)) {
                     showBindingPhoneDialog();
                     return;
@@ -447,21 +408,13 @@ public class DealFragment extends MvpFragment<DealContact.DealPresent> implement
                     ToastUtils.showShortToast(context, getResources().getString(R.string.unexecutable));
                     return;
                 }
-                a = tvNum.getText().toString();
-                b = edNumber.getText().toString();
-                x = Double.parseDouble(a);
-                y = Double.parseDouble(b);
-                Log.e("x", String.valueOf(x));
-                Log.e("y", String.valueOf(y));
-                dasd = x - y;
-                suntaitan = String.valueOf(dasd);
-                Log.e("he", suntaitan);
 
                 showPwdBuyDialog();
 
                 break;
             case R.id.btn_sell://执行卖出
 //                checkTwo();//点击卖出时执行
+                typeDatae = 2;
                 if (ObjectUtils.isEmpty(phone)) {
                     showBindingPhoneDialog();
                     return;
@@ -479,15 +432,7 @@ public class DealFragment extends MvpFragment<DealContact.DealPresent> implement
                     edNumber.setText("");
                     return;
                 }
-                aa = tvNumusd.getText().toString();
-                ba = edNumber.getText().toString();
-                xa = Double.parseDouble(aa);
-                ya = Double.parseDouble(ba);
-                Log.e("xa", String.valueOf(xa));
-                Log.e("ya", String.valueOf(ya));
-                dasda = xa - ya;
-                sunusd = String.valueOf(dasda);
-                Log.e("hea", sunusd);
+
                 showPwdSellDialog();
 
                 break;
@@ -503,8 +448,7 @@ public class DealFragment extends MvpFragment<DealContact.DealPresent> implement
     //弹出 买入 密码框
     AlertDialog pwdBuyDialog = null;
 
-    private void
-    showPwdBuyDialog() {
+    private void showPwdBuyDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity())
                 .addDefaultAnimation()//默认弹窗动画
                 .setCancelable(true)
@@ -912,59 +856,6 @@ public class DealFragment extends MvpFragment<DealContact.DealPresent> implement
     };
 
 
-    //进度条监听
-//    private void initSeekBar() {
-//        final LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) tvIndicator.getLayoutParams();
-//        //进度条
-//        indicatorSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-//            @Override
-//            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-//                if (fromUser) {
-//
-//                    if (!isEdit) {
-//                        isSeek = true;
-//                        edNumber.setText(progress + "");
-//                        tvDealNum.setText(progress + "");
-////                        tvIndicator.setText(progress + "%");
-//
-//                        Integer max = 0;
-//                        if (type == 0) {
-//                            max = titanMax;
-//                        } else if (type == 1) {
-//                            max = usdMax;
-//                        }
-//                        try{
-//                            String baifen = (new BigDecimal(progress).divide(new BigDecimal(max)) + "");
-//                            tvIndicator.setText(MoneyUtil.priceFormatBaiToString(baifen));
-//                        }catch (Exception e){
-//                            e.printStackTrace();
-//                        }
-//
-//
-//
-//                    } else {
-//
-//                        isEdit = false;
-//
-//                    }
-//
-//                }
-//
-//            }
-//
-//
-//            @Override
-//            public void onStartTrackingTouch(SeekBar seekBar) {
-//
-//            }
-//
-//            @Override
-//            public void onStopTrackingTouch(SeekBar seekBar) {
-//
-//            }
-//        });
-//    }
-
     @Override
     protected DealContact.DealPresent createPresent() {
         return new DealContact.DealPresent();
@@ -1015,6 +906,7 @@ public class DealFragment extends MvpFragment<DealContact.DealPresent> implement
     public void getWalletDataUsdResult(Response<WalletDataResponse> response) {
         if (response.body().getCode() == Constant.SUCCESS_CODE) {
             tvNum.setText(MoneyUtil.formatFour(response.body().getData().getUSD1num()));
+
             usd = MoneyUtil.formatFour(response.body().getData().getUSD1num());
             titan = MoneyUtil.formatFour(response.body().getData().getTitannum());
         } else {
@@ -1071,8 +963,7 @@ public class DealFragment extends MvpFragment<DealContact.DealPresent> implement
             }
 
         } else {
-            //删除输出
-//            ToastUtils.showShortToast(context, response.body().getMsg());
+            ToastUtils.showShortToast(context, response.body().getMsg());
         }
     }
 
@@ -1130,9 +1021,7 @@ public class DealFragment extends MvpFragment<DealContact.DealPresent> implement
                 rv.setVisibility(View.GONE);
             }
         } else {
-
-            //删除输出
-//            ToastUtils.showShortToast(context, response.body().getMsg());
+            ToastUtils.showShortToast(context, response.body().getMsg());
         }
     }
 
@@ -1153,10 +1042,9 @@ public class DealFragment extends MvpFragment<DealContact.DealPresent> implement
         if (response.body().getCode() == Constant.SUCCESS_CODE) {
             String count = edNumber.getText().toString();
             mPresent.buyOrSell(context, count, "1");
-            tvNum.setText(suntaitan);
 //            ToastUtils.showShortToast(context, getResources().getString(R.string.submit_successfully));
             recallList();
-            mPresent.walletDataTitan(context);
+//            mPresent.walletDataTitan(context);//获取数据
         } else {
             ToastUtils.showShortToast(context, response.body().getMsg());
         }
@@ -1168,10 +1056,9 @@ public class DealFragment extends MvpFragment<DealContact.DealPresent> implement
         if (response.body().getCode() == Constant.SUCCESS_CODE) {
             String count = edNumber.getText().toString();
             mPresent.buyOrSell(context, count, "2");
-            tvNumusd.setText(sunusd);
 //            ToastUtils.showShortToast(context, getResources().getString(R.string.submit_successfully));
             recallList();
-            mPresent.walletDataUsd(context);
+//            mPresent.walletDataUsd(context);//获取数据
         } else {
             ToastUtils.showShortToast(context, response.body().getMsg());
         }
@@ -1183,13 +1070,40 @@ public class DealFragment extends MvpFragment<DealContact.DealPresent> implement
         if (response.body().getCode() == Constant.SUCCESS_CODE) {
             ToastUtils.showShortToast(context, getResources().getString(R.string.success));
             edNumber.setText(0 + "");
-            tvNum.setText(suntaitan);
+            Integer time = 1000;
+            Handler handler = new Handler();
+            //当计时结束时，跳转至主界面
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    if (typeDatae == 1) {
+                        mPresent.walletDataTitan(context);
+                    } else {
+                        mPresent.walletDataUsd(context);
+                    }
+                }
+            }, time);
 //            indicatorSeekBar.setProgress(0);
             recallList();
         } else {
             ToastUtils.showShortToast(context, response.body().getMsg());
         }
     }
+
+    //定时执行
+    public void inittime() {
+        Integer time = 1000;
+        Handler handler = new Handler();
+        //当计时结束时，跳转至主界面
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                mPresent.walletDataTitan(context);
+                mPresent.walletDataUsd(context);
+            }
+        }, time);
+    }
+
 
     @Override
     public void getDataFailed() {

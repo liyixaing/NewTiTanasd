@@ -4,6 +4,7 @@ import android.Manifest;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
@@ -41,6 +42,8 @@ import lanjing.com.titan.response.WalletDataResponse;
 import lanjing.com.titan.util.APKVersionCodeUtils;
 import lanjing.com.titan.util.MoneyUtil;
 import lanjing.com.titan.view.ScrollTextView;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
 import retrofit2.Response;
 
 //钱包  页面
@@ -125,7 +128,6 @@ public class WalletFragment extends MvpFragment<WalletDataContact.WalletDataPres
                 .setText(R.id.tv_title, getResources().getString(R.string.update_yes) + VersionName + getResources().getString(R.string.update_version))
                 .setText(R.id.tv_update_info, VersionInfo)
                 .setOnClickListener(R.id.btn_ok, v -> {//设置点击事件  打开网页
-
                     Intent intent = new Intent(Intent.ACTION_VIEW,
                             (Uri.parse(downloadUrl))
                     ).addCategory(Intent.CATEGORY_BROWSABLE)
@@ -194,6 +196,7 @@ public class WalletFragment extends MvpFragment<WalletDataContact.WalletDataPres
                 Intent walletList = new Intent(context, WalletListActivity.class);
                 walletList.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS);
                 startActivity(walletList);
+
                 break;
             case R.id.manage_wallet://进入   钱包管理  可以导出私钥和助记词
                 Intent intent = new Intent(context, WalletManagerActivity.class);
@@ -207,6 +210,7 @@ public class WalletFragment extends MvpFragment<WalletDataContact.WalletDataPres
                 titan.putExtra("walletId", titanId);
                 titan.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS);
                 startActivity(titan);
+                //initOkhttp();
                 break;
             case R.id.usd_lay://进入   USD 的资产页面
                 Intent usd = new Intent(context, AssetUSDActivity.class);
@@ -228,6 +232,27 @@ public class WalletFragment extends MvpFragment<WalletDataContact.WalletDataPres
                 break;
         }
     }
+
+
+    //解决跟新地址重向问题
+//    public void initOkhttp() {
+//
+//        Request request = new Request.Builder().url("http://www.titans.world/app/titan.apk").build();
+//
+//        OkHttpClient okHttpClient = new OkHttpClient();
+//        new Thread(() -> {
+//            try {
+//
+//                okhttp3.Response response = okHttpClient.newCall(request).execute();
+//                response.request().url();
+//                Log.e("xiaozaidiz", String.valueOf(response.request().url()));
+//                System.out.print("Response:" + response.body().toString());
+//                Log.e("xaioqaing", response.body().toString());
+//            } catch (Exception e) {
+//                Log.e("xiaqopiang", String.valueOf(e));
+//            }
+//        }).start();
+//    }
 
     @Override
     protected WalletDataContact.WalletDataPresent createPresent() {

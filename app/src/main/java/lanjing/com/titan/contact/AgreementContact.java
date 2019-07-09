@@ -5,13 +5,10 @@ import android.content.Context;
 import com.lxh.baselibray.mvp.BasePresent;
 import com.lxh.baselibray.mvp.IBaseView;
 import com.lxh.baselibray.net.ServiceGenerator;
-import com.lxh.baselibray.util.SPUtils;
 
 import lanjing.com.titan.api.ApiService;
-import lanjing.com.titan.constant.Constant;
 import lanjing.com.titan.net.NetCallBack;
 import lanjing.com.titan.response.AgreementResponse;
-import lanjing.com.titan.response.ChargeResponse;
 import retrofit2.Call;
 import retrofit2.Response;
 

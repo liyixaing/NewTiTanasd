@@ -48,7 +48,7 @@ public class EntrustAdapter extends BaseQuickAdapter<EntrustListResponse.DataBea
         }
 
         helper.setText(R.id.tv_entrust_price, MoneyUtil.priceFormatDoubleFour(item.getPrice()) + "USD")
-                .setText(R.id.tv_entrust_num, MoneyUtil.priceFormatDouble(item.getRest()))
+                .setText(R.id.tv_entrust_num, MoneyUtil.priceFormatDoubleZero(item.getRest())+".00")
                 .setText(R.id.tv_time, item.getCreatetime());
         helper.addOnClickListener(R.id.tv_type_recall);//添加点击事件
 

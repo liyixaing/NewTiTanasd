@@ -14,7 +14,6 @@ public class ServiceGenerator {
 
 //     public static final String BASE_URL = "http://192.168.1.130"; //38.21.243.86   http://114.55.165.42:7116
 
-
     /**
      * 正式上线
      */
