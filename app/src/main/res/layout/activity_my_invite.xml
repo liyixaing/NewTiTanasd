@@ -129,6 +129,7 @@
                     android:layout_height="wrap_content" />
             </LinearLayout>
         </LinearLayout>
+
         <!--邀请链接-->
         <LinearLayout
             android:visibility="gone"

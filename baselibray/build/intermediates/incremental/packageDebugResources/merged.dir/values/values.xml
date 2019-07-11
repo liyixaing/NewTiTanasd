@@ -5,9 +5,6 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="friend">#666666</color>
     <color name="statusbar_color">#3B5677</color>
-    <declare-styleable name="AlignTextView"><attr format="boolean" name="alignOnlyOneLine"/></declare-styleable>
-    <declare-styleable name="PswText"><attr format="integer" name="pswLength"/><attr format="color" name="borderColor"/><attr format="color" name="pswColor"/><attr format="color" name="inputBorder_color"/><attr format="color" name="borderShadow_color"/><attr format="dimension" name="psw_textSize"/><attr format="dimension" name="borderRadius"/><attr format="boolean" name="isDrawBorderImg"/><attr format="boolean" name="isShowTextPsw"/><attr format="boolean" name="isShowBorderShadow"/><attr format="reference" name="borderImg"/><attr format="reference" name="inputBorderImg"/><attr format="integer" name="delayTime"/><attr format="boolean" name="clearTextPsw"/><attr format="boolean" name="darkPsw"/><attr format="boolean" name="isChangeBorder"/></declare-styleable>
-    <declare-styleable name="TitleView"><attr format="reference" name="ivLeftPic"/><attr format="boolean" name="ivLeftVisiable"/><attr format="reference|string" name="tvTitleText"/><attr format="color" name="titleTextColor"/><attr format="color" name="rightTextColor"/><attr format="reference|string" name="rightText"/><attr format="dimension" name="rightTextSize"/></declare-styleable>
     <string name="in_the_loading">加载中......</string>
     <string name="language_auto">自动</string>
     <string name="language_cn">中文</string>
@@ -37,4 +34,52 @@
         <item name="android:windowBackground">@null</item>
         <item name="android:backgroundDimEnabled">false</item>
     </style>
+    <declare-styleable name="AlignTextView">
+        <attr format="boolean" name="alignOnlyOneLine"/>
+    </declare-styleable>
+    <declare-styleable name="PswText">
+        <!--密码长度-->
+        <attr format="integer" name="pswLength"/>
+        <!--密码框颜色-->
+        <attr format="color" name="borderColor"/>
+        <!--密码颜色-->
+        <attr format="color" name="pswColor"/>
+        <!--输入时密码框颜色-->
+        <attr format="color" name="inputBorder_color"/>
+        <!--输入时密码框阴影颜色-->
+        <attr format="color" name="borderShadow_color"/>
+        <!--明文密码文字大小-->
+        <attr format="dimension" name="psw_textSize"/>
+        <!--密码框圆角程度-->
+        <attr format="dimension" name="borderRadius"/>
+        <!--是否使用图片绘制密码框-->
+        <attr format="boolean" name="isDrawBorderImg"/>
+        <!--按back键时，是否需要绘制明文密码-->
+        <attr format="boolean" name="isShowTextPsw"/>
+        <!--输入密码时密码框是否有阴影-->
+        <attr format="boolean" name="isShowBorderShadow"/>
+        <!--密码框图片-->
+        <attr format="reference" name="borderImg"/>
+        <!--输入时变化的密码框图片-->
+        <attr format="reference" name="inputBorderImg"/>
+        <!--延迟绘制密码圆点的时间,1000 = 1s-->
+        <attr format="integer" name="delayTime"/>
+        <!--是否只绘制明文密码-->
+        <attr format="boolean" name="clearTextPsw"/>
+        <!--是否只绘制圆点-->
+        <attr format="boolean" name="darkPsw"/>
+        <!--是否在输入密码时不更改密码框颜色-->
+        <attr format="boolean" name="isChangeBorder"/>
+    </declare-styleable>
+    <declare-styleable name="TitleView">
+        <attr format="reference" name="ivLeftPic"/>
+        <attr format="boolean" name="ivLeftVisiable"/>
+        <attr format="reference|string" name="tvTitleText"/>
+        <attr format="color" name="titleTextColor"/>
+        <attr format="color" name="rightTextColor"/>
+       <!-- <attr name="rightTextSize" format="dimension"/>-->
+        <attr format="reference|string" name="rightText"/>
+       <!-- <attr name="rightTextColor" format="color"/>-->
+        <attr format="dimension" name="rightTextSize"/>
+    </declare-styleable>
 </resources>

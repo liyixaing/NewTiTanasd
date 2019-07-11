@@ -106,6 +106,7 @@
     <string name="pls_two">Pls Input Address Label(Please fill in and check the ID carefully)</string>
     <string name="pls_three">Pls Input Withdraw Qty</string>
     <string name="pls_four">Withdraw Service Fee：</string>
+    <string name="sum_100">The amount of money withdrawn should be greater than 100</string>
 
     <string name="confirm_to_mention_money">Confirm to mention money</string>
 

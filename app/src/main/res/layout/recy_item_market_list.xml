@@ -113,7 +113,7 @@
                     android:textColor="@color/gray"
                     android:textSize="11sp" />
             </LinearLayout>
-            
+
             <TextView
                 android:id="@+id/tv_change"
                 android:gravity="center"
@@ -121,7 +121,6 @@
                 android:paddingLeft="@dimen/dp_6"
                 android:paddingRight="@dimen/dp_6"
                 android:layout_gravity="center_vertical"
-
                 android:textColor="@color/white"
                 android:background="@drawable/shape_green_bg"
                 android:layout_width="@dimen/dp_60"

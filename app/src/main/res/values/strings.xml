@@ -108,6 +108,7 @@
     <string name="pls_two">请输入地址标签（请务必填写并仔细核对ID）</string>
     <string name="pls_three">请输入提币数量</string>
     <string name="pls_four">提币手续费：</string>
+    <string name="sum_100">提币数量应大于100</string>
     <string name="confirm_to_mention_money">确认提币</string>
 
     <string name="deal_time">交易时间</string>

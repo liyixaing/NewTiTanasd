@@ -88,7 +88,6 @@ public class MainActivity extends XActivity implements RadioGroup.OnCheckedChang
 
             }
         });
-
         rg.setOnCheckedChangeListener(this);
         rg.getChildAt(0).performClick();
         int id = getIntent().getIntExtra("flag", 0);
@@ -123,9 +122,6 @@ public class MainActivity extends XActivity implements RadioGroup.OnCheckedChang
 
         }
     }
-
-
-
 
 
     @Override

@@ -103,6 +103,7 @@
                 android:background="@drawable/shape_gray_bg"
                 android:digits="0123456789"
                 android:gravity="center_vertical"
+                android:hint="@string/sum_100"
                 android:inputType="numberDecimal"
                 android:maxLines="1"
                 android:paddingLeft="@dimen/dp_10"

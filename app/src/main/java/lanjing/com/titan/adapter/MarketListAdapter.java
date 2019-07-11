@@ -27,7 +27,7 @@ public class MarketListAdapter extends BaseQuickAdapter<MarketListResponse.DataB
     protected void convert(BaseViewHolder helper, MarketListResponse.DataBean item) {
         String up = "+";
         String down = "-";
-        String upAndDown = String.valueOf(MoneyUtil.priceFormatBaiToString(item.getChange()));
+        String upAndDown = MoneyUtil.priceFormatString(item.getChange()) +"%";
         boolean over = upAndDown.contains(up);
         if(over == true){
             helper.setText(R.id.tv_change,"+"+upAndDown);
