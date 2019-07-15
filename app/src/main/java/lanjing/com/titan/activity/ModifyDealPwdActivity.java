@@ -137,9 +137,11 @@ public class ModifyDealPwdActivity extends MvpActivity<ModifyPwdContact.ModifyPw
         if (response.body().getCode() == Constant.SUCCESS_CODE) {
             ToastUtils.showShortToast(context, getResources().getString(R.string.the_transaction_password_was_changed_successfully));
             finish();
-        } else {
-            ToastUtils.showShortToast(context, response.body().getMsg());
+        } else if (response.body().getMsg().equals("-10")){
+            ToastUtils.showShortToast(context, getResources().getString(R.string.not_login));
             dismissLoadingDialog();
+        }else {
+            ToastUtils.showShortToast(context, response.body().getMsg());
         }
     }
 
@@ -150,7 +152,9 @@ public class ModifyDealPwdActivity extends MvpActivity<ModifyPwdContact.ModifyPw
             //验证码倒计时
             CountDownTimerUtils countDownTimerUtils = new CountDownTimerUtils(aginVerificationCode, 60000, 1000);
             countDownTimerUtils.start();
-        } else {
+        } else if (response.body().getCode() == -10){
+            ToastUtils.showShortToast(context, getResources().getString(R.string.not_login));
+        }else {
             ToastUtils.showShortToast(context, response.body().getMsg());
         }
     }

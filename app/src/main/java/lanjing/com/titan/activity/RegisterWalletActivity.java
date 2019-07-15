@@ -839,8 +839,11 @@ public class RegisterWalletActivity extends MvpActivity<SetHelpContact.SetHelpPr
             intent.putExtra("wordthree",wordThree.getText().toString());
             intent.putExtra("key",response.body().getKeys());
             startActivity(intent);
+        } else if (response.body().getCode() ==-10){
+            ToastUtils.showShortToast(context, getResources().getString(R.string.not_login));
+
         }else {
-            ToastUtils.showShortToast(context,response.body().getMsg());
+            ToastUtils.showShortToast(context, response.body().getMsg());
         }
     }
 

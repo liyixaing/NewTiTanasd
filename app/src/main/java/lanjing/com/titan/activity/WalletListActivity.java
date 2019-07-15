@@ -256,7 +256,9 @@ public class WalletListActivity extends MvpActivity<WalletContact.WalletPresent>
                 runLayoutAnimation(rv);
             }
 
-        } else {
+        } else if (response.body().getCode() ==-10){
+            ToastUtils.showShortToast(context, getResources().getString(R.string.not_login));
+        }else {
             ToastUtils.showShortToast(context, response.body().getMsg());
         }
     }

@@ -280,6 +280,8 @@ public class WalletFragment extends MvpFragment<WalletDataContact.WalletDataPres
             usd2Id = response.body().getData().getUSD2coinId();
 
 
+        } else if (response.body().getCode() == -10) {
+            ToastUtils.showShortToast(context, getResources().getString(R.string.not_login));
         } else {
             ToastUtils.showShortToast(context, response.body().getMsg());
         }
@@ -309,6 +311,8 @@ public class WalletFragment extends MvpFragment<WalletDataContact.WalletDataPres
                 listNoticeContent.setList(title);
                 listNoticeContent.startScroll();
             }
+        } else if (response.body().getCode() == -10) {
+            ToastUtils.showShortToast(context, getResources().getString(R.string.not_login));
         } else {
             ToastUtils.showShortToast(context, response.body().getMsg());
         }
@@ -334,6 +338,8 @@ public class WalletFragment extends MvpFragment<WalletDataContact.WalletDataPres
                 tvWalletName.setText(response.body().getData().getUsername());
             }
 
+        } else if (response.body().getCode() == -10) {
+            ToastUtils.showShortToast(context, getResources().getString(R.string.not_login));
         } else {
             ToastUtils.showShortToast(context, response.body().getMsg());
         }
@@ -354,6 +360,8 @@ public class WalletFragment extends MvpFragment<WalletDataContact.WalletDataPres
             if (systemCode > versionCode) {
                 showUpdateDialog(response.body().getData().getVersionname(), response.body().getData().getRemarks(), response.body().getData().getUrl());
             }
+        } else if (response.body().getCode() == -10) {
+            ToastUtils.showShortToast(context, getResources().getString(R.string.not_login));
         } else {
             ToastUtils.showShortToast(context, response.body().getMsg());
         }

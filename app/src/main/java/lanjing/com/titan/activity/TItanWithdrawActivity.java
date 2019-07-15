@@ -143,7 +143,9 @@ public class TItanWithdrawActivity extends MvpActivity<WalletWithdrawContact.Wal
         if (response.body().getCode() == Constant.SUCCESS_CODE) {
             ToastUtils.showShortToast(context, response.body().getMsg());
             finish();
-        } else {
+        } else if (response.body().getCode()==-10){
+            ToastUtils.showShortToast(context, getResources().getString(R.string.not_login));
+        }else {
             ToastUtils.showShortToast(context, response.body().getMsg());
         }
     }
@@ -156,9 +158,11 @@ public class TItanWithdrawActivity extends MvpActivity<WalletWithdrawContact.Wal
             String num = edNum.getText().toString().trim();
             showLoadingDialog();
             mPresent.walletWithdraw(context, address, walletId, num);
-        } else {
-            ToastUtils.showShortToast(context, response.body().getMsg());
+        } else if (response.body().getCode()==-10){
+            ToastUtils.showShortToast(context, getResources().getString(R.string.not_login));
 
+        }else {
+            ToastUtils.showShortToast(context, response.body().getMsg());
         }
     }
 

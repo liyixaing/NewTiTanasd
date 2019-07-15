@@ -107,6 +107,8 @@ public class CashValueFragment extends MvpFragment<WithDrawalContact.WithDrawalP
                 rvNormalShow.setVisibility(View.VISIBLE);
                 rv.setVisibility(View.GONE);
             }
+        } else if (response.body().getCode() == -10) {
+            ToastUtils.showShortToast(context, getResources().getString(R.string.not_login));
         } else {
             ToastUtils.showShortToast(context, response.body().getMsg());
         }

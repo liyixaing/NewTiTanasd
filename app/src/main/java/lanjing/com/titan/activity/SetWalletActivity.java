@@ -61,6 +61,10 @@ public class SetWalletActivity extends MvpActivity<WalletNameContact.WalletNameP
             ToastUtils.showShortToast(context, getResources().getString(R.string.modify_wallet_success));
             BusFactory.getBus().post(new EventImpl.UpdateWalletNameEvent());
             finish();
+        } else if (response.body().getCode() == -10) {
+            ToastUtils.showShortToast(context, getResources().getString(R.string.not_login));
+            dismissLoadingDialog();
+
         } else {
             ToastUtils.showShortToast(context, response.body().getMsg());
             dismissLoadingDialog();
@@ -74,7 +78,6 @@ public class SetWalletActivity extends MvpActivity<WalletNameContact.WalletNameP
     }
 
 
-
     @OnClick({R.id.ed_wallet_name, R.id.submit_btn})
     public void onViewClicked(View view) {
         switch (view.getId()) {
@@ -83,11 +86,11 @@ public class SetWalletActivity extends MvpActivity<WalletNameContact.WalletNameP
                 break;
             case R.id.submit_btn:
                 String changeName = edWalletName.getText().toString().trim();
-                if(ObjectUtils.isEmpty(changeName)){
-                    ToastUtils.showShortToast(context,getResources().getString(R.string.please_ed_wallet_name));
+                if (ObjectUtils.isEmpty(changeName)) {
+                    ToastUtils.showShortToast(context, getResources().getString(R.string.please_ed_wallet_name));
                     return;
                 }
-                mPresent.walletName(context,changeName);
+                mPresent.walletName(context, changeName);
                 break;
         }
     }

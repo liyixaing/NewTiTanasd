@@ -156,9 +156,11 @@ public class RegisterBindingPhoneActivity extends MvpActivity<SetPhoneContact.Se
 //            intent.putExtra("userId", response.body().getUserId());
 //            startActivity(intent);
 
-        } else {
+        } else if (response.body().getCode() ==-10){
+            ToastUtils.showShortToast(context, "账号已在另一设备登陆");
+
+        }else {
             ToastUtils.showShortToast(context, response.body().getMsg());
-            Log.e("登陆输出", response.body().getMsg());
             dismissLoadingDialog();
         }
     }
@@ -174,8 +176,10 @@ public class RegisterBindingPhoneActivity extends MvpActivity<SetPhoneContact.Se
             ToastUtils.showShortToast(context, getResources().getString(R.string.verification_code_sent));
             CountDownTimerUtils countDownTimerUtils = new CountDownTimerUtils(aginVerificationCode, 60000, 1000);
             countDownTimerUtils.start();
-        } else {
-            Log.e("调试输出", response.body().getMsg());
+        } else if (response.body().getCode() ==-10){
+            ToastUtils.showShortToast(context, getResources().getString(R.string.not_login));
+
+        }else {
             ToastUtils.showShortToast(context, response.body().getMsg());
             dismissLoadingDialog();
         }

@@ -85,8 +85,10 @@ public class DisclaimerActivity extends MvpActivity<ExemptionContact.ExemptionPr
             } else if (locale.equals(Locale.ENGLISH)) {
                 webView.loadUrl(response.body().getExemptionEN());
             }
+        }else if (response.body().getCode() == -10){
+            ToastUtils.showShortToast(context, getResources().getString(R.string.not_login));
         }else {
-            ToastUtils.showShortToast(context,response.body().getMsg());
+            ToastUtils.showShortToast(context, response.body().getMsg());
         }
     }
 

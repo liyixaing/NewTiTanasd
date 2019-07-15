@@ -78,8 +78,10 @@ public class ImportWalletBindActivity extends MvpActivity<BindContact.BindPresen
             Intent intent = new Intent(context,MainActivity.class);
             startActivity(intent);
             finish();
+        }else if (response.body().getCode() == -10){
+            ToastUtils.showShortToast(context, getResources().getString(R.string.not_login));
         }else {
-            ToastUtils.showShortToast(context,response.body().getMsg());
+            ToastUtils.showShortToast(context, response.body().getMsg());
         }
     }
 

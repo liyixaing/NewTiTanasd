@@ -20,6 +20,7 @@ import lanjing.com.titan.constant.Constant;
 import lanjing.com.titan.contact.AgreementContact;
 import lanjing.com.titan.response.AgreementResponse;
 import retrofit2.Response;
+
 /**
  * 服务协议
  */
@@ -46,13 +47,12 @@ public class AgreementActivity extends MvpActivity<AgreementContact.AgreementPre
             }
         });
 
-        webView.setWebChromeClient(new WebChromeClient(){
+        webView.setWebChromeClient(new WebChromeClient() {
             @Override
             public void onProgressChanged(WebView view, int newProgress) {
-                if(newProgress==100){
+                if (newProgress == 100) {
                     progressBar1.setVisibility(View.GONE);//加载完网页进度条消失
-                }
-                else{
+                } else {
                     progressBar1.setVisibility(View.VISIBLE);//开始加载网页时显示进度条
                     progressBar1.setProgress(newProgress);//设置进度值
                 }
@@ -73,15 +73,17 @@ public class AgreementActivity extends MvpActivity<AgreementContact.AgreementPre
     @Override
     public void getAgreementResult(Response<AgreementResponse> response) {
         dismissLoadingDialog();
-        if(response.body().getCode() == Constant.SUCCESS_CODE){
+        if (response.body().getCode() == Constant.SUCCESS_CODE) {
             Locale locale = getResources().getConfiguration().locale;//判断当前的语言
             if (locale.equals(Locale.SIMPLIFIED_CHINESE)) {
                 webView.loadUrl(response.body().getAgreementCH());
             } else if (locale.equals(Locale.ENGLISH)) {
                 webView.loadUrl(response.body().getAgreementEN());
             }
-        }else {
-            ToastUtils.showShortToast(context,response.body().getMsg());
+        } else if (response.body().getCode() == -10) {
+            ToastUtils.showShortToast(context, getResources().getString(R.string.not_login));
+        } else {
+            ToastUtils.showShortToast(context, response.body().getMsg());
         }
     }
 

@@ -55,8 +55,10 @@ public class TItanTopUpActivity extends MvpActivity<WalletChargeContact.WalletCh
         if(response.body().getCode() == Constant.SUCCESS_CODE){
             tvTopUpAddress.setText(response.body().getAddress());
             tvAddressLabel.setText(response.body().getKeys());
+        }else if (response.body().getCode() ==-10){
+            ToastUtils.showShortToast(context, getResources().getString(R.string.not_login));
         }else {
-            ToastUtils.showShortToast(context,response.body().getMsg());
+            ToastUtils.showShortToast(context, response.body().getMsg());
         }
     }
 

@@ -869,6 +869,8 @@ public class DealFragment extends MvpFragment<DealContact.DealPresent> implement
     public void getInterDealResult(Response<InterDealResponse> response) {
         if (response.body().getCode() == Constant.SUCCESS_CODE) {
             SPUtils.putInt(Constant.ISAUTO, response.body().getIsauto(), context);
+        } else if (response.body().getCode() == -10) {
+            ToastUtils.showShortToast(context, getResources().getString(R.string.not_login));
         } else {
             ToastUtils.showShortToast(context, response.body().getMsg());
         }
@@ -896,6 +898,8 @@ public class DealFragment extends MvpFragment<DealContact.DealPresent> implement
             String bala2 = usd.substring(0, j);
             usdMax = Integer.parseInt(bala2);
 
+        } else if (response.body().getCode() == -10) {
+            ToastUtils.showShortToast(context, getResources().getString(R.string.not_login));
         } else {
             ToastUtils.showShortToast(context, response.body().getMsg());
         }
@@ -909,6 +913,8 @@ public class DealFragment extends MvpFragment<DealContact.DealPresent> implement
 
             usd = MoneyUtil.formatFour(response.body().getData().getUSD1num());
             titan = MoneyUtil.formatFour(response.body().getData().getTitannum());
+        } else if (response.body().getCode() == -10) {
+            ToastUtils.showShortToast(context, getResources().getString(R.string.not_login));
         } else {
             ToastUtils.showShortToast(context, response.body().getMsg());
         }
@@ -936,6 +942,8 @@ public class DealFragment extends MvpFragment<DealContact.DealPresent> implement
                 mAdapterBuy.notifyDataSetChanged();
             }
 
+        } else if (response.body().getCode() == -10) {
+            ToastUtils.showShortToast(context, getResources().getString(R.string.not_login));
         } else {
             ToastUtils.showShortToast(context, response.body().getMsg());
         }
@@ -962,6 +970,8 @@ public class DealFragment extends MvpFragment<DealContact.DealPresent> implement
 
             }
 
+        } else if (response.body().getCode() == -10) {
+            ToastUtils.showShortToast(context, getResources().getString(R.string.not_login));
         } else {
             ToastUtils.showShortToast(context, response.body().getMsg());
         }
@@ -987,6 +997,8 @@ public class DealFragment extends MvpFragment<DealContact.DealPresent> implement
                 mAdapterBuyZero.notifyDataSetChanged();
             }
 
+        } else if (response.body().getCode() == -10) {
+            ToastUtils.showShortToast(context, getResources().getString(R.string.not_login));
         } else {
             ToastUtils.showShortToast(context, response.body().getMsg());
         }
@@ -1020,6 +1032,8 @@ public class DealFragment extends MvpFragment<DealContact.DealPresent> implement
                 rvNormalShow.setVisibility(View.VISIBLE);
                 rv.setVisibility(View.GONE);
             }
+        } else if (response.body().getCode() == -10) {
+            ToastUtils.showShortToast(context, getResources().getString(R.string.not_login));
         } else {
             ToastUtils.showShortToast(context, response.body().getMsg());
         }
@@ -1031,6 +1045,8 @@ public class DealFragment extends MvpFragment<DealContact.DealPresent> implement
         if (response.body().getCode() == Constant.SUCCESS_CODE) {
             ToastUtils.showShortToast(context, getResources().getString(R.string.recall_success));
             recallList();
+        } else if (response.body().getCode() == -10) {
+            ToastUtils.showShortToast(context, getResources().getString(R.string.not_login));
         } else {
             ToastUtils.showShortToast(context, response.body().getMsg());
         }
@@ -1045,6 +1061,8 @@ public class DealFragment extends MvpFragment<DealContact.DealPresent> implement
 //            ToastUtils.showShortToast(context, getResources().getString(R.string.submit_successfully));
             recallList();
 //            mPresent.walletDataTitan(context);//获取数据
+        } else if (response.body().getCode() == -10) {
+            ToastUtils.showShortToast(context, getResources().getString(R.string.not_login));
         } else {
             ToastUtils.showShortToast(context, response.body().getMsg());
         }
@@ -1059,6 +1077,8 @@ public class DealFragment extends MvpFragment<DealContact.DealPresent> implement
 //            ToastUtils.showShortToast(context, getResources().getString(R.string.submit_successfully));
             recallList();
 //            mPresent.walletDataUsd(context);//获取数据
+        } else if (response.body().getCode() == -10) {
+            ToastUtils.showShortToast(context, getResources().getString(R.string.not_login));
         } else {
             ToastUtils.showShortToast(context, response.body().getMsg());
         }
@@ -1085,6 +1105,8 @@ public class DealFragment extends MvpFragment<DealContact.DealPresent> implement
             }, time);
 //            indicatorSeekBar.setProgress(0);
             recallList();
+        } else if (response.body().getCode() == -10) {
+            ToastUtils.showShortToast(context, getResources().getString(R.string.not_login));
         } else {
             ToastUtils.showShortToast(context, response.body().getMsg());
         }

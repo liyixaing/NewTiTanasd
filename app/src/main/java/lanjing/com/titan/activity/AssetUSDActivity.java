@@ -81,7 +81,7 @@ public class AssetUSDActivity extends MvpActivity<WalletDetailContact.WalletDeta
 
             @Override
             public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
-                
+
 //                Intent intent = new Intent(context, AssetUsdDetailActivity.class);
 //                intent.putExtra("id", mList.get(position).getId());
 //                intent.putExtra("type", mList.get(position).getType());
@@ -144,6 +144,8 @@ public class AssetUSDActivity extends MvpActivity<WalletDetailContact.WalletDeta
                 rv.setVisibility(View.GONE);
             }
 
+        } else if (response.body().getCode() == -10) {
+            ToastUtils.showShortToast(context, getResources().getString(R.string.not_login));
         } else {
             ToastUtils.showShortToast(context, response.body().getMsg());
         }

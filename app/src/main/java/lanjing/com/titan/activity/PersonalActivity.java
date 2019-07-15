@@ -257,7 +257,9 @@ public class PersonalActivity extends MvpActivity<PersonDataChangeContact.Person
             SPUtils.putString(Constant.PORTRAIT, response.body().getPicture(), context);
             BusFactory.getBus().post(new EventImpl.UpdatePortraitEvent());
             finish();
-        } else {
+        } else if (response.body().getCode() ==-10){
+            ToastUtils.showShortToast(context, getResources().getString(R.string.not_login));
+        }else {
             ToastUtils.showShortToast(context, response.body().getMsg());
         }
 

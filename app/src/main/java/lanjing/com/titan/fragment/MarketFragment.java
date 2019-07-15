@@ -144,8 +144,10 @@ public class MarketFragment extends MvpFragment<MarketContact.MarketPresent> imp
                 rvNormalShow.setVisibility(View.VISIBLE);
                 rv.setVisibility(View.GONE);
             }
-        }else {
-            ToastUtils.showShortToast(context,response.body().getMag());
+        } else if (response.body().getCode() == -10) {
+            ToastUtils.showShortToast(context, getResources().getString(R.string.not_login));
+        } else {
+            ToastUtils.showShortToast(context, response.body().getMag());
         }
 
     }

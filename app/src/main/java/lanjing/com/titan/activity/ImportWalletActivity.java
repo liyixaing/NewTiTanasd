@@ -61,7 +61,9 @@ public class ImportWalletActivity extends MvpActivity<ImportWalletContact.Import
             intent.putExtra("userName",response.body().getUserName());
             startActivity(intent);
             finish();
-        } else {
+        } else if (response.body().getCode() == -10){
+            ToastUtils.showShortToast(context, getResources().getString(R.string.not_login));
+        }else {
             ToastUtils.showShortToast(context, response.body().getMsg());
         }
     }

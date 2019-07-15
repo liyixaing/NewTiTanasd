@@ -227,16 +227,17 @@ public class SplashActivity extends MvpActivity<LoginContact.LoginPresent> imple
     public void getLoginResult(Response<LoginResponse> response) {
         if (response.body().getCode() == Constant.SUCCESS_CODE) {
             SPUtils.putString(Constant.TOKEN, response.body().getToken(), context);
-
-
             inviteCode = response.body().getInvitacode();
             mPresent.person(context);
 
+        } else if (response.body().getCode() == -10) {
+            ToastUtils.showShortToast(context, getResources().getString(R.string.not_login));
         } else {
             ToastUtils.showShortToast(context, response.body().getMsg());
             Intent intent = new Intent(context, LoginActivity.class);
             startActivity(intent);
         }
+
     }
 
     String inviteCode;
@@ -268,7 +269,9 @@ public class SplashActivity extends MvpActivity<LoginContact.LoginPresent> imple
             startActivity(intent);
             finish();
 
-        } else {
+        } else if (response.body().getCode() ==-10){
+            ToastUtils.showShortToast(context, getResources().getString(R.string.not_login));
+        }else {
             ToastUtils.showShortToast(context, response.body().getMsg());
         }
     }

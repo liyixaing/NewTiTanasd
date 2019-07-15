@@ -93,13 +93,15 @@ public class TItancWaitGetActivity extends MvpActivity<WalletDetailContact.Walle
     protected WalletDetailContact.WalletDetailPresent createPresent() {
         return new WalletDetailContact.WalletDetailPresent();
     }
+
     List<WalletDetailResponse.History2Bean> data;
+
     @Override
     public void getWalletDeatilResult(Response<WalletDetailResponse> response) {
         refresh.finishRefresh();
         refresh.finishLoadMore();
         if (response.body().getCode() == Constant.SUCCESS_CODE) {
-            tvTitancWaitGet.setText(MoneyUtil.priceFormatDoubleFour(response.body().getData().getSum())+"TITANC");//可用余额
+            tvTitancWaitGet.setText(MoneyUtil.priceFormatDoubleFour(response.body().getData().getSum()) + "TITANC");//可用余额
             if (page == 1) {
                 mList.clear();
             }
@@ -123,6 +125,8 @@ public class TItancWaitGetActivity extends MvpActivity<WalletDetailContact.Walle
                 rv.setVisibility(View.GONE);
             }
 
+        } else if (response.body().getCode() == -10) {
+            ToastUtils.showShortToast(context, getResources().getString(R.string.not_login));
         } else {
             ToastUtils.showShortToast(context, response.body().getMsg());
         }

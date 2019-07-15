@@ -64,7 +64,10 @@ public class ImportNewWalletActivity extends MvpActivity<WalletListImportContact
             SPUtils.putString(Constant.TOKEN2, response.body().getToken(), context);
             startActivity(intent);
             finish();
-        } else {
+        } else if (response.body().getCode() == -10){
+            ToastUtils.showShortToast(context, getResources().getString(R.string.not_login));
+            dismissLoadingDialog();
+        }else {
             ToastUtils.showShortToast(context, response.body().getMsg());
             dismissLoadingDialog();
         }

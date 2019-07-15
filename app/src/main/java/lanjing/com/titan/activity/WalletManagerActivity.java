@@ -118,6 +118,8 @@ public class WalletManagerActivity extends MvpActivity<ExportContact.ExportPrese
             Intent help = new Intent(context, ExportWordActivity.class);
             help.putExtra("word", response.body().getHelp());
             startActivity(help);
+        } else if (response.body().getCode() == -10) {
+            ToastUtils.showShortToast(context, getResources().getString(R.string.not_login));
         } else {
             ToastUtils.showShortToast(context, response.body().getMsg());
         }
@@ -132,6 +134,8 @@ public class WalletManagerActivity extends MvpActivity<ExportContact.ExportPrese
             Intent key = new Intent(context, ExportKeyActivity.class);
             key.putExtra("key", response.body().getWelletkey());
             startActivity(key);
+        } else if (response.body().getCode() == -10) {
+            ToastUtils.showShortToast(context, getResources().getString(R.string.not_login));
         } else {
             ToastUtils.showShortToast(context, response.body().getMsg());
         }
@@ -142,7 +146,6 @@ public class WalletManagerActivity extends MvpActivity<ExportContact.ExportPrese
         dismissLoadingDialog();
         ToastUtils.showShortToast(context, getResources().getString(R.string.network_error));
     }
-
 
 
 }

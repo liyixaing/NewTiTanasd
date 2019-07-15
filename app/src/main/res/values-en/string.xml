@@ -50,6 +50,7 @@
     <string name="references_id">Recommender ID</string>
     <!--底部导航-->
     <string name="network_error">Request timeout, try later!</string>
+    <string name="not_login">not Login</string>
     <string name="in_the_loading">In the loading...</string>
     <string name="setting_title">Setting</string>
     <string name="rb_wallet">Wallet</string>

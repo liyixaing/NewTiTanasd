@@ -228,6 +228,8 @@ public class InformationFragment extends MvpFragment<InfoNoticeContact.InfoNotic
 
 
 
+        } else if (response.body().getCode() == -10) {
+            ToastUtils.showShortToast(context, getResources().getString(R.string.not_login));
         } else {
             ToastUtils.showShortToast(context, response.body().getMsg());
         }
@@ -259,8 +261,10 @@ public class InformationFragment extends MvpFragment<InfoNoticeContact.InfoNotic
                 listNoticeContent.setList(title);
                 listNoticeContent.startScroll();
             }
-        }else {
-            ToastUtils.showShortToast(context,response.body().getMsg());
+        } else if (response.body().getCode() == -10) {
+            ToastUtils.showShortToast(context, getResources().getString(R.string.not_login));
+        } else {
+            ToastUtils.showShortToast(context, response.body().getMsg());
         }
     }
 

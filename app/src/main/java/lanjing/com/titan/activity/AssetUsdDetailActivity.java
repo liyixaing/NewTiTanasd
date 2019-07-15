@@ -36,16 +36,16 @@ public class AssetUsdDetailActivity extends MvpActivity<BillDetailContact.BillDe
     public void initData(Bundle savedInstanceState) {
         String id = getIntent().getStringExtra("id");
         String type = getIntent().getStringExtra("type");
-        if (type.equals("30")){
+        if (type.equals("30")) {
             tvUsdType.setText(R.string.service_fee);
             TvTitleType.setTitleText("手续费");
-        }else if (type.equals("34")){
+        } else if (type.equals("34")) {
             tvUsdType.setText(R.string.buy);
             TvTitleType.setTitleText("USD 买入");
-        }else if (type.equals("35")){
+        } else if (type.equals("35")) {
             tvUsdType.setText(R.string.sell);
             TvTitleType.setTitleText("USD 卖出");
-        }else {
+        } else {
             tvUsdType.setText("其他");
         }
         mPresent.billDetail(context, id);
@@ -63,26 +63,26 @@ public class AssetUsdDetailActivity extends MvpActivity<BillDetailContact.BillDe
 
     @Override
     public void getBillDeatilResult(Response<BillDetailResponse> response) {
-        if(response.body().getCode() == Constant.SUCCESS_CODE){
+        if (response.body().getCode() == Constant.SUCCESS_CODE) {
             String up = "+";
             String down = "-";
             String upAndDown = MoneyUtil.formatFour(response.body().getHistory().getNum());
             boolean over = upAndDown.contains(up);
-            if(over == true){
-                tvUsdNum.setText("+"+upAndDown+"USD");
-            }else {
-                tvUsdNum.setText(upAndDown+"USD");
+            if (over == true) {
+                tvUsdNum.setText("+" + upAndDown + "USD");
+            } else {
+                tvUsdNum.setText(upAndDown + "USD");
             }
             boolean over2 = upAndDown.contains(down);
-            if(over2 == true){
-                tvUsdNum.setText(upAndDown+"USD");
-            }else {
-                tvUsdNum.setText("+"+upAndDown+"USD");
+            if (over2 == true) {
+                tvUsdNum.setText(upAndDown + "USD");
+            } else {
+                tvUsdNum.setText("+" + upAndDown + "USD");
             }
 
 
             int type = Integer.parseInt(response.body().getHistory().getType());
-            switch (type){
+            switch (type) {
                 case 0:
                     tvUsdType.setText(R.string.service_fee);
                     break;
@@ -110,7 +110,7 @@ public class AssetUsdDetailActivity extends MvpActivity<BillDetailContact.BillDe
             }
             //状态
             int state = Integer.parseInt(response.body().getHistory().getState());
-            switch (state){
+            switch (state) {
                 case 0:
                     tvUsdState.setText(R.string.underway);
                     break;
@@ -120,8 +120,10 @@ public class AssetUsdDetailActivity extends MvpActivity<BillDetailContact.BillDe
             }
 
             tvUsdTime.setText(response.body().getHistory().getTime());
-        }else {
-            ToastUtils.showShortToast(context,getResources().getString(R.string.network_error));
+        } else if (response.body().getCode() == -10) {
+            ToastUtils.showShortToast(context, getResources().getString(R.string.not_login));
+        } else {
+            ToastUtils.showShortToast(context, response.body().getMsg());
         }
     }
 

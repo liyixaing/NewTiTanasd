@@ -205,15 +205,15 @@ public class AssetTitanDetailActivity extends MvpActivity<BillDetailContact.Bill
                     break;
             }
 
-
-//            tvTitanState.setText(response.body().getHistory().getState());
             tvTitanTime.setText(response.body().getHistory().getTime());
             tvTitanBlockchainId.setText(response.body().getHistory().getKeys());
             TvTitanLabel.setText(response.body().getHistory().getToTag());
             TvTitanAddress.setText(response.body().getHistory().getToAddress());
             TvOurceAddress.setText(response.body().getHistory().getFromAddress());
-        } else {
-            ToastUtils.showShortToast(context, getResources().getString(R.string.network_error));
+        } else if (response.body().getCode() == -10) {
+            ToastUtils.showShortToast(context, getResources().getString(R.string.not_login));
+        }else {
+            ToastUtils.showShortToast(context, response.body().getMsg());
         }
     }
 

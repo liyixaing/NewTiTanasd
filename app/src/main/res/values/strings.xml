@@ -52,6 +52,7 @@
 
     <!--底部导航-->
     <string name="network_error">请求超时，稍后尝试！</string>
+    <string name="not_login">账号已在另一设备登陆</string>
     <string name="in_the_loading">加载中......</string>
     <string name="setting_title">设置</string>
     <string name="rb_wallet">钱包</string>

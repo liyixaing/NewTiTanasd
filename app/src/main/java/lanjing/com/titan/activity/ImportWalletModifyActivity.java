@@ -39,6 +39,7 @@ public class ImportWalletModifyActivity extends MvpActivity<ImportWalletSetPwdCo
     TextView submitBtn;
 
     String userId;
+
     @Override
     public void initData(Bundle savedInstanceState) {
         userId = getIntent().getStringExtra("userId");
@@ -58,13 +59,15 @@ public class ImportWalletModifyActivity extends MvpActivity<ImportWalletSetPwdCo
     @Override
     public void getImportWalletSetPwdResult(Response<ResultDTO> response) {
         dismissLoadingDialog();
-        if(response.body().getCode() == Constant.SUCCESS_CODE){
-            ToastUtils.showShortToast(context,getResources().getString(R.string.successfully_set));
-            Intent intent = new Intent(context,LoginActivity.class);
+        if (response.body().getCode() == Constant.SUCCESS_CODE) {
+            ToastUtils.showShortToast(context, getResources().getString(R.string.successfully_set));
+            Intent intent = new Intent(context, LoginActivity.class);
             startActivity(intent);
             finish();
-        }else {
-            ToastUtils.showShortToast(context,response.body().getMsg());
+        } else if (response.body().getCode() == -10) {
+            ToastUtils.showShortToast(context, getResources().getString(R.string.not_login));
+        } else {
+            ToastUtils.showShortToast(context, response.body().getMsg());
         }
     }
 
@@ -86,15 +89,15 @@ public class ImportWalletModifyActivity extends MvpActivity<ImportWalletSetPwdCo
                 String comfirmLogPwd = edConfirmLoginPwd.getText().toString().trim();
                 String dealPwd = edDealPwd.getText().toString().trim();
                 String comfirmDealPwd = edConfirmDealPwd.getText().toString().trim();
-                if (validate(logPwd,comfirmLogPwd,dealPwd,comfirmDealPwd))
+                if (validate(logPwd, comfirmLogPwd, dealPwd, comfirmDealPwd))
                     return;
                 showLoadingDialog();
-                mPresent.importWalletSetPwd(context,Integer.parseInt(userId),logPwd,dealPwd);
+                mPresent.importWalletSetPwd(context, Integer.parseInt(userId), logPwd, dealPwd);
                 break;
         }
     }
 
-    private boolean validate(String logPwd,String confirmLogPwd, String dealPwd, String confirmDealPwd) {
+    private boolean validate(String logPwd, String confirmLogPwd, String dealPwd, String confirmDealPwd) {
         if (ObjectUtils.isEmpty(logPwd)) {
             ToastUtils.showLongToast(context, getResources().getString(R.string.the_login_password_cannot_be_empty));
             return true;
@@ -103,12 +106,12 @@ public class ImportWalletModifyActivity extends MvpActivity<ImportWalletSetPwdCo
             ToastUtils.showLongToast(context, getResources().getString(R.string.Passwords_must_contain_both_Numbers_and_letters_8_18_bits_long));
             return true;
         }
-        if(ObjectUtils.isEmpty(confirmLogPwd)){
-            ToastUtils.showLongToast(context,getResources().getString(R.string.confirm_the_login_password_cannot_be_empty));
+        if (ObjectUtils.isEmpty(confirmLogPwd)) {
+            ToastUtils.showLongToast(context, getResources().getString(R.string.confirm_the_login_password_cannot_be_empty));
             return true;
         }
 
-        if(!logPwd.equals(confirmLogPwd)){
+        if (!logPwd.equals(confirmLogPwd)) {
             ToastUtils.showLongToast(context, getResources().getString(R.string.the_two_passwords_do_not_match));
             return true;
         }
@@ -117,16 +120,16 @@ public class ImportWalletModifyActivity extends MvpActivity<ImportWalletSetPwdCo
             ToastUtils.showLongToast(context, getResources().getString(R.string.the_transaction_password_cannot_be_empty));
             return true;
         }
-        if(dealPwd.length()<6){
-            ToastUtils.showShortToast(context,getResources().getString(R.string.please_enter_six_digit_trading_password));
+        if (dealPwd.length() < 6) {
+            ToastUtils.showShortToast(context, getResources().getString(R.string.please_enter_six_digit_trading_password));
             return true;
         }
-        if(ObjectUtils.isEmpty(confirmDealPwd)){
-            ToastUtils.showLongToast(context,getResources().getString(R.string.confirm_the_transaction_password_cannot_be_empty));
+        if (ObjectUtils.isEmpty(confirmDealPwd)) {
+            ToastUtils.showLongToast(context, getResources().getString(R.string.confirm_the_transaction_password_cannot_be_empty));
             return true;
         }
-        if(!dealPwd.equals(confirmDealPwd)){
-            ToastUtils.showShortToast(context,getResources().getString(R.string.the_two_deal_passwords_do_not_match));
+        if (!dealPwd.equals(confirmDealPwd)) {
+            ToastUtils.showShortToast(context, getResources().getString(R.string.the_two_deal_passwords_do_not_match));
             return true;
         }
 

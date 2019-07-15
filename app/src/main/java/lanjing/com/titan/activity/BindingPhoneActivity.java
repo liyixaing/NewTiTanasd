@@ -154,6 +154,9 @@ public class BindingPhoneActivity extends MvpActivity<SetPhoneContact.SetPhonePr
 //            intent.putExtra("userId", response.body().getUserId());
 //            startActivity(intent);
             finish();
+        } else if (response.body().getCode() == -10) {
+            ToastUtils.showShortToast(context, getResources().getString(R.string.not_login));
+            dismissLoadingDialog();
         } else {
             ToastUtils.showShortToast(context, response.body().getMsg());
             dismissLoadingDialog();
@@ -175,7 +178,10 @@ public class BindingPhoneActivity extends MvpActivity<SetPhoneContact.SetPhonePr
 //            intent.putExtra("userId", response.body().getUserId());
 //            startActivity(intent);
 
-        } else {
+        } else if (response.body().getCode() == -10) {
+            ToastUtils.showShortToast(context, getResources().getString(R.string.not_login));
+            dismissLoadingDialog();
+        }else {
             ToastUtils.showShortToast(context, response.body().getMsg());
             dismissLoadingDialog();
         }

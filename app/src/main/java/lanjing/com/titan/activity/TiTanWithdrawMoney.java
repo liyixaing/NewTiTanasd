@@ -73,8 +73,10 @@ public class TiTanWithdrawMoney extends MvpActivity<getTransferContact.getTransf
             TvLabel.setText(response.body().getData().getToTag());
             TvRemarks.setText(response.body().getData().getToMemo());
 
+        } else if (response.body().getCode() == -10) {
+            ToastUtils.showShortToast(context, "账号已在另一设备登陆");
         } else {
-
+            ToastUtils.showShortToast(context, response.body().getMsg());
         }
 
     }
@@ -85,6 +87,8 @@ public class TiTanWithdrawMoney extends MvpActivity<getTransferContact.getTransf
         if (response.body().getCode() == Constant.SUCCESS_CODE) {
             ToastUtils.showShortToast(context, response.body().getMsg());
             finish();
+        } else if (response.body().getCode() == -10) {
+            ToastUtils.showShortToast(context, getResources().getString(R.string.not_login));
         } else {
             ToastUtils.showShortToast(context, response.body().getMsg());
         }
@@ -96,9 +100,10 @@ public class TiTanWithdrawMoney extends MvpActivity<getTransferContact.getTransf
         if (response.body().getCode() == Constant.SUCCESS_CODE) {
             showLoadingDialog();
             mPresent.walletWithdraw(context, TvAddress.getText().toString(), TvLabel.getText().toString(), TvRemarks.getText().toString());
+        } else if (response.body().getCode() == -10) {
+            ToastUtils.showShortToast(context, getResources().getString(R.string.not_login));
         } else {
             ToastUtils.showShortToast(context, response.body().getMsg());
-
         }
 
     }

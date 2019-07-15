@@ -192,6 +192,8 @@ public class ActivitySelectAddress extends MvpActivity<SelectAddressContact.Sele
                 LvNormalShow.setVisibility(View.VISIBLE);
                 RvSelectList.setVisibility(View.GONE);
             }
+        } else if (response.body().getCode() == -10) {
+            ToastUtils.showShortToast(context, getResources().getString(R.string.not_login));
         } else {
             ToastUtils.showShortToast(context, response.body().getMsg());
         }

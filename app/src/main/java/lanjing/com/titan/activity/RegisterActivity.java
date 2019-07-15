@@ -114,8 +114,10 @@ public class RegisterActivity extends MvpActivity<RegisterContact.RegisterPresen
                     startActivity(intent);
                 }
             }, 1000);
+        }else if (response.body().getCode() ==-10){
+            ToastUtils.showShortToast(context, getResources().getString(R.string.not_login));
         }else {
-            ToastUtils.showShortToast(context,response.body().getMsg());
+            ToastUtils.showShortToast(context, response.body().getMsg());
         }
     }
 

@@ -48,46 +48,47 @@ public class NoticeActivity extends MvpActivity<InfoNoticeContact.InfoNoticePres
     List<InfoNoticeResponse.DataCHBean> mList;
     NoticeAdapterEN mAdapterEn;
     List<InfoNoticeResponse.DataEHBean> mListEn;
+
     @Override
     public void initData(Bundle savedInstanceState) {
         Locale locale = getResources().getConfiguration().locale;
-        if(locale.equals(Locale.SIMPLIFIED_CHINESE)){
+        if (locale.equals(Locale.SIMPLIFIED_CHINESE)) {
             mList = new ArrayList<>();
-            mAdapter = new NoticeAdapterCH(R.layout.recy_item_notice_list,mList);
+            mAdapter = new NoticeAdapterCH(R.layout.recy_item_notice_list, mList);
             LinearLayoutManager manager = new LinearLayoutManager(context);
             rv.setLayoutManager(manager);
             rv.setAdapter(mAdapter);
-            mPresent.notice(context,String.valueOf(page),String.valueOf(pageSize));
+            mPresent.notice(context, String.valueOf(page), String.valueOf(pageSize));
 
-            mAdapter.setOnItemChildClickListener(new NoticeAdapterCH.OnItemChildClickListener(){
+            mAdapter.setOnItemChildClickListener(new NoticeAdapterCH.OnItemChildClickListener() {
 
                 @Override
                 public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
-                    Intent intent = new Intent(context,NoticeDetailActivity.class);
-                    intent.putExtra("title",mList.get(position).getTitle());
-                    intent.putExtra("content",mList.get(position).getComtent());
-                    intent.putExtra("time",mList.get(position).getCreatetime());
-                    intent.putExtra("team",mList.get(position).getUname());
+                    Intent intent = new Intent(context, NoticeDetailActivity.class);
+                    intent.putExtra("title", mList.get(position).getTitle());
+                    intent.putExtra("content", mList.get(position).getComtent());
+                    intent.putExtra("time", mList.get(position).getCreatetime());
+                    intent.putExtra("team", mList.get(position).getUname());
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS);
                     startActivity(intent);
                 }
             });
-        }else if(locale.equals(Locale.ENGLISH)){
+        } else if (locale.equals(Locale.ENGLISH)) {
             mListEn = new ArrayList<>();
-            mAdapterEn = new NoticeAdapterEN(R.layout.recy_item_notice_list,mListEn);
+            mAdapterEn = new NoticeAdapterEN(R.layout.recy_item_notice_list, mListEn);
             LinearLayoutManager manager = new LinearLayoutManager(context);
             rv.setLayoutManager(manager);
             rv.setAdapter(mAdapterEn);
-            mPresent.notice(context,String.valueOf(page),String.valueOf(pageSize));
-            mAdapterEn.setOnItemChildClickListener(new NoticeAdapterCH.OnItemChildClickListener(){
+            mPresent.notice(context, String.valueOf(page), String.valueOf(pageSize));
+            mAdapterEn.setOnItemChildClickListener(new NoticeAdapterCH.OnItemChildClickListener() {
 
                 @Override
                 public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
-                    Intent intent = new Intent(context,NoticeDetailActivity.class);
-                    intent.putExtra("title",mListEn.get(position).getTitle());
-                    intent.putExtra("content",mListEn.get(position).getComtent());
-                    intent.putExtra("time",mListEn.get(position).getCreatetime());
-                    intent.putExtra("team",mListEn.get(position).getUname());
+                    Intent intent = new Intent(context, NoticeDetailActivity.class);
+                    intent.putExtra("title", mListEn.get(position).getTitle());
+                    intent.putExtra("content", mListEn.get(position).getComtent());
+                    intent.putExtra("time", mListEn.get(position).getCreatetime());
+                    intent.putExtra("team", mListEn.get(position).getUname());
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS);
                     startActivity(intent);
                 }
@@ -97,12 +98,12 @@ public class NoticeActivity extends MvpActivity<InfoNoticeContact.InfoNoticePres
 
         refresh.setOnRefreshListener(refreshLayout -> {
             page = 1;
-            mPresent.notice(context,String.valueOf(page),String.valueOf(pageSize));
+            mPresent.notice(context, String.valueOf(page), String.valueOf(pageSize));
 
         });
         refresh.setOnLoadMoreListener(refreshLayout -> {
             page++;
-            mPresent.notice(context,String.valueOf(page),String.valueOf(pageSize));
+            mPresent.notice(context, String.valueOf(page), String.valueOf(pageSize));
         });
     }
 
@@ -121,15 +122,17 @@ public class NoticeActivity extends MvpActivity<InfoNoticeContact.InfoNoticePres
     public void getInformationResult(Response<InfoNoticeResponse> response) {
 
     }
+
     List<InfoNoticeResponse.DataCHBean> data;
     List<InfoNoticeResponse.DataEHBean> dataEn;
+
     @Override
     public void getNoticeResult(Response<InfoNoticeResponse> response) {
         refresh.finishRefresh();
         refresh.finishLoadMore();
-        if(response.body().getCode() == Constant.SUCCESS_CODE){
+        if (response.body().getCode() == Constant.SUCCESS_CODE) {
             Locale locale = getResources().getConfiguration().locale;
-            if(locale.equals(Locale.SIMPLIFIED_CHINESE)){
+            if (locale.equals(Locale.SIMPLIFIED_CHINESE)) {
                 if (page == 1) {
                     mList.clear();
                     mAdapter.notifyDataSetChanged();
@@ -146,11 +149,11 @@ public class NoticeActivity extends MvpActivity<InfoNoticeContact.InfoNoticePres
                         refresh.setEnableLoadMore(false);
                     }
                     rv.setVisibility(View.VISIBLE);
-                }else {
+                } else {
                     rvNormalShow.setVisibility(View.VISIBLE);
                     rv.setVisibility(View.GONE);
                 }
-            }else if(locale.equals(Locale.ENGLISH)) {
+            } else if (locale.equals(Locale.ENGLISH)) {
                 if (page == 1) {
                     mListEn.clear();
                     mAdapterEn.notifyDataSetChanged();
@@ -167,20 +170,23 @@ public class NoticeActivity extends MvpActivity<InfoNoticeContact.InfoNoticePres
                         refresh.setEnableLoadMore(false);
                     }
                     rv.setVisibility(View.VISIBLE);
-                }else {
+                } else {
                     rvNormalShow.setVisibility(View.VISIBLE);
                     rv.setVisibility(View.GONE);
                 }
             }
 
 
-        }else {
-            ToastUtils.showShortToast(context,getResources().getString(R.string.network_error));
+        } else if (response.body().getCode() == -10) {
+            ToastUtils.showShortToast(context, getResources().getString(R.string.not_login));
+
+        } else {
+            ToastUtils.showShortToast(context, response.body().getMsg());
         }
     }
 
     @Override
     public void getDataFailed() {
-        ToastUtils.showShortToast(context,getResources().getString(R.string.network_error));
+        ToastUtils.showShortToast(context, getResources().getString(R.string.network_error));
     }
 }

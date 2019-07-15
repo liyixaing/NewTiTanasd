@@ -201,6 +201,8 @@ public class MyInviteActivity extends MvpActivity<FriendListContact.FriendListPr
                 rvNormalShow.setVisibility(View.VISIBLE);
                 rv.setVisibility(View.GONE);
             }
+        } else if (response.body().getCode() == -10) {
+            ToastUtils.showShortToast(context, getResources().getString(R.string.not_login));
         } else {
             ToastUtils.showShortToast(context, response.body().getMsg());
         }
