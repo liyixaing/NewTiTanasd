@@ -41,6 +41,24 @@ public class FriendListResponse {
     private int num;
     private int current_predice_mining_number_of_people;
     private Double current_predice_mining_number_of_usd;
+    private String lt_region_earnings;
+    private String lg_region_earnings;
+
+    public String getLt_region_earnings() {
+        return lt_region_earnings;
+    }
+
+    public void setLt_region_earnings(String lt_region_earnings) {
+        this.lt_region_earnings = lt_region_earnings;
+    }
+
+    public String getLg_region_earnings() {
+        return lg_region_earnings;
+    }
+
+    public void setLg_region_earnings(String lg_region_earnings) {
+        this.lg_region_earnings = lg_region_earnings;
+    }
 
     public int getCurrent_predice_mining_number_of_people() {
         return current_predice_mining_number_of_people;

@@ -31,6 +31,7 @@
         <activity android:name=".activity.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.VIEW" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
@@ -79,7 +80,12 @@
         <activity android:name=".activity.AgreementActivity" />
         <activity android:name=".activity.FeedbackListActivity" />
         <activity android:name=".activity.FeedbackDetailActivity" />
-        <activity android:name=".activity.RegisterBindingPhoneActivity"/>
+        <activity android:name=".activity.RegisterBindingPhoneActivity" />
+        <activity android:name=".activity.TiTanWithdrawMoney" />
+        <!--选择提币地址-->
+        <activity android:name=".activity.ActivitySelectAddress" />
+        <!--添加提币地址-->
+        <activity android:name=".activity.ActivityAddedAddress"/>
     </application>
 
 </manifest>

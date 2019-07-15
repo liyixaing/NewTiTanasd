@@ -1,5 +1,6 @@
 package lanjing.com.titan.api;
 
+import lanjing.com.titan.request.AddressRequest;
 import lanjing.com.titan.request.AwardRequest;
 import lanjing.com.titan.request.BillDetailRequest;
 import lanjing.com.titan.request.BindContactsRequest;
@@ -31,6 +32,10 @@ import lanjing.com.titan.request.VersionRequest;
 import lanjing.com.titan.request.WalletDetailRequest;
 import lanjing.com.titan.request.WithdrawRequest;
 import lanjing.com.titan.request.WithdrawalRequest;
+import lanjing.com.titan.request.SaveOrUpdateRequest;
+import lanjing.com.titan.request.deleterRequest;
+import lanjing.com.titan.request.getTransferRequest;
+import lanjing.com.titan.response.AddressListResponse;
 import lanjing.com.titan.response.AgreementResponse;
 import lanjing.com.titan.response.AwardResponse;
 import lanjing.com.titan.response.BillDetailResponse;
@@ -61,6 +66,7 @@ import lanjing.com.titan.response.WalletDataResponse;
 import lanjing.com.titan.response.WalletDetailResponse;
 import lanjing.com.titan.response.WalletListResponse;
 import lanjing.com.titan.response.WithdrawalResponse;
+import lanjing.com.titan.response.getTransferResponse;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.Header;
@@ -331,287 +337,35 @@ public interface ApiService {
     Call<FeedbackListResponse> feedbackList(@Header("token") String token, @Body FeedBackListRequest data);
 
     /**
+     * 拉去提币地址列表  @Body AddressRequest data
+     */
+    @POST("/app/getTransferAddressList")
+    Call<AddressListResponse> addressList(@Header("token") String token, @Body AddressRequest data);
+
+    /**
+     * 添加或修改提币地址
+     */
+    @POST("/app/saveOrUpdateTransferAddress")
+    Call<ResultDTO> saveOrUpdateTransferAddress(@Header("token") String token, @Body SaveOrUpdateRequest data);
+
+    /**
+     * 拉取提币地址详情
+     */
+    @POST("/app/getTransferAddressDetail")
+    Call<getTransferResponse> getTransferAddressDetail(@Header("token") String token, @Body getTransferRequest data);
+
+
+    /**
+     * 删除提币地址
+     */
+    @POST("/app/deleteTransferAddress")
+    Call<ResultDTO> deleteTransferAddress(@Header("token") String token, @Body deleterRequest data);
+
+    /**
      * 版本更新
      */
     @POST("/version/findVersion")
     Call<VersionResponse> updateApp(@Body VersionRequest data);
 
-
-//    /**
-//     * 获取验证码
-//     */
-//    @POST("/user/sendSMS")
-//    Call<ResultDTO> sendCode(@Body SendCodeRequest data);
-//
-
-//
-//    /**
-//     * 自动登录
-//     */
-//    @POST("/user/login")
-//    Call<ResultDTO> antuLogin(@Body LoginRequest data);
-//
-
-//
-//    /**
-//     * 注册协议
-//     */
-//    @POST("/user/protocol")
-//    Call<RegisterAgreementResponse> registerAgreement(@Header("token") String token);
-//
-//    /**
-//     * 忘记登录密码
-//     */
-//    @POST("/user/forgetLoginPwd")
-//    Call<ResultDTO> forgetLoginPwd(@Body ForgetLoginPwdRequest request);
-//
-//    /**
-//     * 行情
-//     */
-//    @POST("/notice/list")
-//    Call<MarketResponse> market(@Header("token") String token, @Body MarketRequest data);
-//
-//    /**
-//     * 资讯和公告
-//     */
-//    @POST("/notice/list")
-//    Call<InformationAndNoticeResponse> informationAndNotice(@Header("token") String token, @Body MarketRequest data);
-//
-//
-//    /**
-//     * 修改个人资料  头像  昵称
-//     */
-//    @POST("/user/updateUserInfo")
-//    Call<ModifyPersonDetailResponse> updateUserInfo(@Header("token") String token, @Body UpdateUserInfoRequest data);
-//
-//    /**
-//     * 我的信鸽  首页
-//     */
-//    @POST("/homingPigeon/home")
-//    Call<MyPigeonResponse> myPigeon(@Header("token") String token, @Body RequestDTO data);
-//
-//    /**
-//     * 我的信鸽  交易记录
-//     */
-//    @POST("/homingPigeon/transferList")
-//    Call<MyPigeonTransferListResponse> myPigeonTransferList(@Header("token") String token, @Body MyPigeonTransferListRequest data);
-//
-//    /**
-//     * 我的信鸽  详情
-//     */
-//    @POST("/homingPigeon/homingPigeonlist")
-//    Call<MyPigeonDetailResponse> myPigeonDetail(@Header("token") String token, @Body MyPigeonDetailRequest data);
-//
-//    /**
-//     * 我的信鸽  信鸽收益记录
-//     */
-//    @POST("/homingPigeon/incomeList")
-//    Call<MyPigeonIncomeListResponse> myPigeonIncomeList(@Header("token") String token, @Body MyPigeonIncomeListRequest data);
-//
-//
-//    /**
-//     * 我的信鸽  信鸽收益记录  转出
-//     */
-//    @POST("/homingPigeon/transferOutHome")
-//    Call<MyPigeonGetServiceChargeResponse> myPigeonGetServiceCharge(@Header("token") String token, @Body MyPigeonGetServiceChargeRequest data);
-//
-//    /**
-//     * 我的信鸽  信鸽收益记录  转出
-//     */
-//    @POST("/homingPigeon/transferOut")
-//    Call<ResultDTO> myPigeonIncomeOut(@Header("token") String token, @Body MyPigeonIncomeOutRequest data);
-//
-//    /**
-//     * 我的信鸽  信鸽收益记录  转换
-//     */
-//    @POST("/homingPigeon/transferChange")
-//    Call<ResultDTO> myPigeonIncomeChange(@Header("token") String token, @Body MyPigeonIncomeChangeRequest data);
-//
-//    /**
-//     * 我的社区  主页
-//     */
-//    @POST("/community/home")
-//    Call<MyCommunityResponse> myCommunity(@Header("token") String token, @Body RequestDTO data);
-//
-//    /**
-//     * 我的社区  我的推广
-//     */
-//    @POST("/community/myInvite")
-//    Call<MyCommunityInviteResponse> myCommunityInvite(@Header("token") String token, @Body MyCommunityInviteRequest data);
-//
-//    /**
-//     * 我的社区  团队业绩
-//     */
-//    @POST("/community/myGroup")  //请求实体和推广是一样的，所以公用
-//    Call<MyCommunityGroupResponse> myCommunityGroup(@Header("token") String token, @Body MyCommunityInviteRequest data);
-//
-//    /**
-//     * 我的社区  收益明细
-//     */
-//    @POST("/community/inComeList")
-//    Call<MyCommunityIncomeDeatilResponse> myCommunityinComeDetail(@Header("token") String token, @Body MyCommunityIncomeDetailRequest data);
-//
-//
-//    /**
-//     * 我的社区  收益提取  页面数据获取
-//     */
-//    @POST("/community/incomePickUpHome")
-//    Call<MyCommunityIncomeToExtractDataResponse> myCommunityInComeToExtractData(@Header("token") String token, @Body RequestDTO data);
-//
-//
-//    /**
-//     * 我的社区  收益提取  方法
-//     */
-//    @POST("/community/incomePickUp")
-//    Call<ResultDTO> myCommunityInComeToExtract(@Header("token") String token, @Body MyCommunityIncomeToExtractRequest data);
-//
-//
-//    /**
-//     * 我的社区  收益理财  页面数据获取
-//     */
-//    @POST("/community/inComeFinancingHome")
-//    Call<MyCommunityInComeFinancingHomeResponse> myCommunityInComeFinancingPageData(@Header("token") String token, @Body RequestDTO data);
-//
-//    /**
-//     * 我的社区  收益理财  方法
-//     */
-//    @POST("/community/inComeFinancing")
-//    Call<ResultDTO> myCommunityInComeFinancing(@Header("token") String token, @Body MyCommunityInComeFinancingRequest data);
-//
-//
-//    /**
-//     * 我的社区  游戏币兑换
-//     */
-//    @POST("/community/exchangeGameCurrency")
-//    Call<ResultDTO> myCommunityExchangeGameCurrency(@Header("token") String token, @Body MyCommunityExchangeGameCurrencyRequest data);
-//
-//    /**
-//     * 修改手机号
-//     */
-//    @POST("/user/updatePhone")
-//    Call<ResultDTO> modifyPhone(@Header("token") String token, @Body ModifyPhoneRequest data);
-//
-//    /**
-//     * 实名认证
-//     */
-//    @POST("/user/verifyIdCard")
-//    Call<RealNameResponse> realName(@Header("token") String token, @Body RealNameRequest data);
-//
-//    /**
-//     * 保存支付方式   银行卡   微信    支付宝
-//     */
-//    @POST("/user/savePayInfo")
-//    Call<ResultDTO> addPay(@Header("token") String token, @Body AddPayRequest data);
-//
-//    /**
-//     * 查看支付方式   银行卡   微信    支付宝
-//     */
-//    @POST("/user/queryPayInfo")
-//    Call<QueryPayResponse> queryPay(@Header("token") String token, @Body QueryPayRequest data);
-//
-//    /**
-//     * 保存反馈问题
-//     */
-//    @POST("/user/saveFeedback")
-//    Call<ResultDTO> saveQuestion(@Header("token") String token, @Body SaveQuestionBackRequest data);
-//
-//    /**
-//     * 关于我们
-//     */
-//    @POST("/user/url")
-//    Call<AboutUsResponse> aboutUs(@Header("token") String token);
-//
-//
-//    /**
-//     * 创建钱包
-//     */
-//    @POST("/user/createWallet")
-//    Call<CreateWalletResponse> createWallet(@Header("token") String token, @Body CreateWalletRequest data);
-//
-//    /**
-//     * 创建钱包校验助记词
-//     */
-//    @POST("/user/regEthMnemonic")
-//    Call<ResultDTO> regEthMnemonic(@Header("token") String token, @Body RegEthMnemonicRequest data);
-//
-//
-//    /**
-//     * 恢复钱包    返回值与导出是一样的，所以用一个返回值
-//     */
-//    @POST("/user/importWallet")
-//    Call<ExportWalletResponse> recoverWallet(@Header("token") String token, @Body RecoverWalletRequest data);
-//
-//    /**
-//     * 修改登录密码
-//     */
-//    @POST("/user/updateLoginPwd")
-//    Call<ResultDTO> modifyLoginPwd(@Header("token") String token, @Body ModifyLoginPwdRequest data);
-//
-//    /**
-//     * 修改交易密码
-//     */
-//    @POST("/user/updatePayPwd")
-//    Call<ResultDTO> modifyDealPwd(@Header("token") String token, @Body ModifyDealPwdRequest data);
-//
-//    /**
-//     * 隐私模式开关
-//     */
-//    @POST("/user/updateDisplay")
-//    Call<UpdateDisplayResponse> updateDisplay(@Header("token") String token, @Body UpdateDisplayRequest data);
-//
-//    /**
-//     * 资产
-//     */
-//    @POST("/user/purse")
-//    Call<AssetResponse> queryAsset(@Header("token") String token, @Body RequestDTO data);
-//
-//
-//    /**
-//     * 资产  转账
-//     */
-//    @POST("/transfer/toTransfer")
-//    Call<ResultDTO> assetTransfer(@Header("token") String token, @Body AssetTransferRequest data);
-//
-//    /**
-//     * 资产  转账记录
-//     */
-//    @POST("/transfer/list")
-//    Call<AssetListResponse> assetList(@Header("token") String token, @Body AssetListRequest data);
-//
-//    /**
-//     * 资产  转账记录   转账详情
-//     */
-//    @POST("/transfer/detail")
-//    Call<AssetListDetailResponse> assetListDetail(@Header("token") String token, @Body AssetListDetailRequest data);
-//
-//
-//    //修改钱包地址
-//    @POST("/user/exportWallet")
-//    Call<ExportWalletResponse> exportWallet(@Header("token") String token, @Body ExportWalletRequest data);
-//
-//    /**
-//     * 信鸽   轮播图
-//     */
-//    @POST("/notice/list")
-//    Call<PigeonBannerResponse> pigeonBanner(@Header("token") String token, @Body MarketRequest data);
-//
-//    /**
-//     * 开启前查询信鸽信息
-//     */
-//    @POST("/homingPigeon/queryHomingPigeon")
-//    Call<QueryHomingPigeonResponse> queryHomingPigeon(@Header("token") String token, @Body RequestDTO data);
-//
-//
-//    /**
-//     * 开启信鸽
-//     */
-//    @POST("/homingPigeon/save")
-//    Call<ResultDTO> savePigeon(@Header("token") String token, @Body SavePigeonRequest data);
-//
-//    /**
-//     * 获取旷工费
-//     */
-//    @POST("/json/ethgasAPI.json")
-//    Call<EthResponse> getEth();
 
 }

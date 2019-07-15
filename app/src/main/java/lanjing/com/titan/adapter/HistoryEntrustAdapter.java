@@ -65,7 +65,7 @@ public class HistoryEntrustAdapter extends BaseQuickAdapter<EntrustListResponse.
 
         helper.setText(R.id.tv_entrust_price, MoneyUtil.priceFormatDoubleFour(item.getPrice()) + "USD")
                 .setText(R.id.tv_entrust_num, MoneyUtil.priceFormatDouble(item.getTradenum()))
-                .setText(R.id.tv_time, item.getUpdatetime());
+                .setText(R.id.tv_time, item.getCreatetime());
 
 
     }

@@ -168,7 +168,7 @@ public class TItanWithdrawActivity extends MvpActivity<WalletWithdrawContact.Wal
     }
 
     @OnClick({R.id.ed_tibi_address, R.id.confirm_btn})
-    public void onViewClicked(View view) {
+        public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.ed_tibi_address://光标显示
                 edTibiAddress.setCursorVisible(true);

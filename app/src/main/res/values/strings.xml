@@ -234,7 +234,9 @@
     <string name="friend_list">好友列表</string>
     <string name="register_time">注册时间</string>
     <string name="total_number">团队预挖人数</string>
+    <string name="total_xq_number">大区预挖（USD）</string>
     <string name="total_number_sun">团队预挖总额(USD)</string>
+    <string name="total_xq_number_sun">小区预挖总额(USD)</string>
     <!--在线客服-->
     <string name="send">发送</string>
 

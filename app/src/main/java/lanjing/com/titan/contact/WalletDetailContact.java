@@ -4,7 +4,9 @@ import android.content.Context;
 
 import com.lxh.baselibray.mvp.BasePresent;
 import com.lxh.baselibray.mvp.IBaseView;
+
 import lanjing.com.titan.net.NetCallBack;
+
 import com.lxh.baselibray.net.ServiceGenerator;
 import com.lxh.baselibray.util.SPUtils;
 
@@ -22,11 +24,11 @@ import retrofit2.Response;
 
 public class WalletDetailContact {
     public static class WalletDetailPresent extends BasePresent<IWalletDetailView> {
-        public void walletDetail(final Context context,String walletId,String type,String page,String size) {
+        public void walletDetail(final Context context, String walletId, String type, String page, String size) {
             ApiService service = ServiceGenerator.createService(ApiService.class);
-            WalletDetailRequest request = new WalletDetailRequest(walletId,type,page,size);
-            String token = SPUtils.getString(Constant.TOKEN,"",context);
-            service.welletDetail(token,request).enqueue(new NetCallBack<WalletDetailResponse>() {
+            WalletDetailRequest request = new WalletDetailRequest(walletId, type, page, size);
+            String token = SPUtils.getString(Constant.TOKEN, "", context);
+            service.welletDetail(token, request).enqueue(new NetCallBack<WalletDetailResponse>() {
                 @Override
                 public void onSuccess(Call<WalletDetailResponse> call, Response<WalletDetailResponse> response) {
                     if (getView() != null) {
@@ -48,6 +50,7 @@ public class WalletDetailContact {
 
     public interface IWalletDetailView extends IBaseView {
         void getWalletDeatilResult(Response<WalletDetailResponse> response);
+
         void getDataFailed();
 
     }

@@ -59,6 +59,11 @@ public class MyInviteActivity extends MvpActivity<FriendListContact.FriendListPr
     @BindView(R.id.refresh)
     SmartRefreshLayout refresh;
 
+    @BindView(R.id.tv_xq_sun)
+    TextView TvXqSun;
+    @BindView(R.id.tv_xq_sum)
+    TextView TvXqSum;
+
     FriendListAdapter mAdapter;
     List<FriendListResponse.DataBean> mList;
 
@@ -170,6 +175,8 @@ public class MyInviteActivity extends MvpActivity<FriendListContact.FriendListPr
             tvRewardNum.setText(String.valueOf(response.body().getReward()));
             TvTeamSun.setText(String.valueOf(response.body().getCurrent_predice_mining_number_of_people()));
             Tv_TeamSum.setText(String.valueOf(response.body().getCurrent_predice_mining_number_of_usd()));
+            TvXqSum.setText(response.body().getLg_region_earnings());
+            TvXqSun.setText(response.body().getLt_region_earnings());
             tvInviteUrl.setText(response.body().getRecommendurl());
             tvRegisterUrl.setText(response.body().getRegisterurl());
             inviteUrl = response.body().getRecommendurl();

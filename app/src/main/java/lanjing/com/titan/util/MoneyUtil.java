@@ -27,7 +27,7 @@ public class MoneyUtil {
             return numbers;
         } else {
             DecimalFormat myformat = new DecimalFormat();
-            myformat.applyPattern("###,###,###,###.00");
+            myformat.applyPattern("############");
             String numbers = myformat.format(Double.parseDouble(number));
             return numbers;
         }

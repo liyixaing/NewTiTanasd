@@ -231,7 +231,9 @@
     <string name="friend_list">Friend List</string>
     <string name="register_time">Registration Time</string>
     <string name="total_number">Number of team pre-excavators</string>
+    <string name="total_xq_number">Pre-excavation of large area（USD）</string>
     <string name="total_number_sun">Total team pre-excavation(USD)</string>
+    <string name="total_xq_number_sun">Total Pre-excavation Amount of Residential Areas(USD)</string>
     <!--在线客服-->
     <string name="send">Send</string>
     <!--弹窗文本-->

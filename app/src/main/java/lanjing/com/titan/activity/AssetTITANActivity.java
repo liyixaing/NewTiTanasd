@@ -74,6 +74,7 @@ public class AssetTITANActivity extends MvpActivity<WalletDetailContact.WalletDe
     int pageSize = 20;
     String type;//0，手续费 1，交易释放 2，充币 3，提币 4，买入 5，卖出 6，系统 7，其他 （不填写为全部）
 
+    String suntaitan;
     @Override
     public void initData(Bundle savedInstanceState) {
         walletId = getIntent().getStringExtra("walletId");
@@ -82,7 +83,7 @@ public class AssetTITANActivity extends MvpActivity<WalletDetailContact.WalletDe
         LinearLayoutManager manager = new LinearLayoutManager(context);
         rv.setLayoutManager(manager);
         rv.setAdapter(mAdapter);
-        mPresent.walletDetail(context, walletId, "", String.valueOf(page), String.valueOf(pageSize));
+        mPresent.walletDetail(context, walletId, type, String.valueOf(page), String.valueOf(pageSize));
         mAdapter.setOnItemChildClickListener(new CoinTitanAdapter.OnItemChildClickListener() {
 
             @Override
@@ -131,10 +132,15 @@ public class AssetTITANActivity extends MvpActivity<WalletDetailContact.WalletDe
                 startActivity(topUp);
                 break;
             case R.id.withdraw_c_btn://提币
-                Intent withdrwa = new Intent(context, TItanWithdrawActivity.class);
-            withdrwa.putExtra("taitanSum", tvAssetBalance.getText().toString());
-                withdrwa.putExtra("balance", tvTixianBalance.getText().toString());
-                startActivity(withdrwa);
+                Intent TTmoney = new Intent(context, TiTanWithdrawMoney.class);
+                TTmoney.putExtra("id", "0");
+                TTmoney.putExtra("taitanSum", suntaitan);
+                startActivity(TTmoney);
+
+//                Intent withdrwa = new Intent(context, TItanWithdrawActivity.class);
+//            withdrwa.putExtra("taitanSum", tvAssetBalance.getText().toString());
+//                withdrwa.putExtra("balance", tvTixianBalance.getText().toString());
+//                startActivity(withdrwa);
                 break;
             case R.id.exchange_btn://交易页面
                 Intent intent = new Intent(context, MainActivity.class);
@@ -225,6 +231,7 @@ public class AssetTITANActivity extends MvpActivity<WalletDetailContact.WalletDe
         refresh.finishLoadMore();
 
         if (response.body().getCode() == Constant.SUCCESS_CODE) {
+            suntaitan = MoneyUtil.priceFormatDoubleFour(response.body().getData().getSum());
             tvAssetBalance.setText(MoneyUtil.priceFormatDoubleFour(response.body().getData().getSum()) + " TITAN");//可用余额
             tvTixianBalance.setText(MoneyUtil.priceFormatDoubleFour(response.body().getData().getCoinnum()));//提现余额
             tvTitanNotTrading.setText(MoneyUtil.priceFormatDoubleFour(response.body().getData().getShiftnum()));//转入

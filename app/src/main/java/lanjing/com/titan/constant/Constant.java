@@ -3,7 +3,6 @@ package lanjing.com.titan.constant;
 import android.os.Environment;
 
 public class Constant {
-    public final static String MAIN = "http://120.79.169.58:8888";
 
     public final static String FIRST_OPEN = "isFirst";
 
