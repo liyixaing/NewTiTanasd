@@ -20,7 +20,7 @@ import retrofit2.Response;
 
 public class SaveOrUpdateContact {
     public static class saveOrUpdatePresent extends BasePresent<saveOrUpdateView> {
-        public void saveorupdeatDetail(final Context context, String phone, String vcode, String address, String tag, String remark) {
+        public void SaveorupdeatDetail(final Context context, String phone, String vcode, String address, String tag, String remark) {
             ApiService service = ServiceGenerator.createService(ApiService.class);
             SaveOrUpdateRequest request = new SaveOrUpdateRequest(phone, vcode, address, tag, remark);
             String token = SPUtils.getString(Constant.TOKEN, "", context);

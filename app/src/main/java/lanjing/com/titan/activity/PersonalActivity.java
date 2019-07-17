@@ -10,6 +10,7 @@ import android.os.Environment;
 import android.text.InputFilter;
 import android.text.Spanned;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
@@ -46,6 +47,7 @@ import lanjing.com.titan.constant.Constant;
 import lanjing.com.titan.contact.PersonDataChangeContact;
 import lanjing.com.titan.eventbus.EventImpl;
 import lanjing.com.titan.response.ModifyHeadResponse;
+import lanjing.com.titan.response.Responseuplode;
 import lanjing.com.titan.response.ResultDTO;
 import retrofit2.Response;
 
@@ -99,21 +101,21 @@ public class PersonalActivity extends MvpActivity<PersonDataChangeContact.Person
                 showTakePhotoDialog();
                 break;
             case R.id.change_nick_lay:
-                    showUpdateNicknameDialog();
+                showUpdateNicknameDialog();
                 break;
         }
     }
 
     //限制输入文本内容
-    public static void setEditTextInhibitInputSpeChat(EditText editText){
+    public static void setEditTextInhibitInputSpeChat(EditText editText) {
 
-        InputFilter filter=new InputFilter() {
+        InputFilter filter = new InputFilter() {
             @Override
             public CharSequence filter(CharSequence source, int start, int end, Spanned dest, int dstart, int dend) {
-                String speChat="[`~!@#$%^&*()+=|{}':;',\\[\\].<>/?~！@#￥%……&*（）——+|{}【】‘；：”“’。，、？]";
+                String speChat = "[`~!@#$%^&*()+=|{}':;',\\[\\].<>/?~！@#￥%……&*（）——+|{}【】‘；：”“’。，、？]";
                 Pattern pattern = Pattern.compile(speChat);
                 Matcher matcher = pattern.matcher(source.toString());
-                if(matcher.find())return "";
+                if (matcher.find()) return "";
                 else return null;
             }
         };
@@ -198,7 +200,7 @@ public class PersonalActivity extends MvpActivity<PersonDataChangeContact.Person
 
             CameraUtils.ImgUpdateDirection(imagePath, orc_bitmap, iv);//显示图片,并且判断图片显示的方向,如果不正就放正
 
-            mPresent.modifyHead(context, base64Pic);
+            mPresent.modifyHead(context, base64Pic, "1");
 
         } else {
             ToastUtils.showLongToast(this, getResources().getString(R.string.image_acquisition_failed));
@@ -251,18 +253,30 @@ public class PersonalActivity extends MvpActivity<PersonDataChangeContact.Person
 
     //修改头像返回
     @Override
-    public void getmodifyHeadResult(Response<ModifyHeadResponse> response) {
+    public void getmodifyHeadResult(Response<Responseuplode> response) {
         if (response.body().getCode() == Constant.SUCCESS_CODE) {
             ToastUtils.showShortToast(context, getResources().getString(R.string.modify_avatar_successfully));
-            SPUtils.putString(Constant.PORTRAIT, response.body().getPicture(), context);
+            SPUtils.putString(Constant.PORTRAIT, response.body().getUrl(), context);
             BusFactory.getBus().post(new EventImpl.UpdatePortraitEvent());
+            Log.e("xiaoqiang", response.body().url);
+            mPresent.UserAvatarupdate(context, response.body().getUrl());
             finish();
-        } else if (response.body().getCode() ==-10){
+        } else if (response.body().getCode() == -10) {
             ToastUtils.showShortToast(context, getResources().getString(R.string.not_login));
-        }else {
+        } else {
             ToastUtils.showShortToast(context, response.body().getMsg());
         }
+    }
 
+    @Override
+    public void getUserAvatar(Response<ResultDTO> response) {
+        if (response.body().getCode() == Constant.SUCCESS_CODE) {
+            ToastUtils.showShortToast(context, response.body().getMsg());
+        } else if (response.body().getCode() == -10) {
+//            ToastUtils.showShortToast(context, );
+        } else {
+            ToastUtils.showShortToast(context, response.body().getMsg());
+        }
     }
 
     //修改昵称返回

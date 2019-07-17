@@ -12,7 +12,9 @@ import lanjing.com.titan.api.ApiService;
 import lanjing.com.titan.constant.Constant;
 import lanjing.com.titan.request.ModifyHeadRequest;
 import lanjing.com.titan.request.ModifyNicknameRequest;
+import lanjing.com.titan.request.UplodelRequest;
 import lanjing.com.titan.response.ModifyHeadResponse;
+import lanjing.com.titan.response.Responseuplode;
 import lanjing.com.titan.response.ResultDTO;
 import retrofit2.Call;
 import retrofit2.Response;
@@ -24,13 +26,13 @@ import retrofit2.Response;
 public class PersonDataChangeContact {
     public static class PersonDataChangePresent extends BasePresent<IPersonDataChangeView> {
         //修改头像
-        public void modifyHead(final Context context,String picture) {
+        public void modifyHead(final Context context,String picture, String ytpe) {
             ApiService service = ServiceGenerator.createService(ApiService.class);
-            ModifyHeadRequest request = new ModifyHeadRequest(picture);
+            ModifyHeadRequest request = new ModifyHeadRequest(picture, ytpe);
             String token = SPUtils.getString(Constant.TOKEN,"",context);
-            service.modifyHead(token,request).enqueue(new NetCallBack<ModifyHeadResponse>() {
+            service.modifyHead(token,request).enqueue(new NetCallBack<Responseuplode>() {
                 @Override
-                public void onSuccess(Call<ModifyHeadResponse> call, Response<ModifyHeadResponse> response) {
+                public void onSuccess(Call<Responseuplode> call, Response<Responseuplode> response) {
                     if (getView() != null) {
                         getView().getmodifyHeadResult(response);
                     }
@@ -44,6 +46,29 @@ public class PersonDataChangeContact {
                 }
             });
         }
+        //上传头像
+        public void UserAvatarupdate(final Context context, String url){
+            ApiService service = ServiceGenerator.createService(ApiService.class);
+            UplodelRequest request = new UplodelRequest(url);
+            String  token = SPUtils.getString(Constant.TOKEN,"",context);
+            service.updateUserAvatar(token, request).enqueue(new NetCallBack<ResultDTO>() {
+                @Override
+                public void onSuccess(Call<ResultDTO> call, Response<ResultDTO> response) {
+                    if (getView() != null) {
+                        getView().getUserAvatar(response);
+                    }
+                }
+
+                @Override
+                public void onFailed() {
+                    if (getView() != null) {
+                        getView().getDataFailed();
+                    }
+                }
+            });
+
+        }
+
         //修改昵称
         public void modifyNickname(final Context context,String nickName) {
             ApiService service = ServiceGenerator.createService(ApiService.class);
@@ -69,7 +94,8 @@ public class PersonDataChangeContact {
     }
 
     public interface IPersonDataChangeView extends IBaseView {
-        void getmodifyHeadResult(Response<ModifyHeadResponse> response);
+        void getmodifyHeadResult(Response<Responseuplode> response);
+        void getUserAvatar(Response<ResultDTO> response);
         void getmodifyNicknameResult(Response<ResultDTO> response);
         void getDataFailed();
 

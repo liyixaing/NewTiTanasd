@@ -440,6 +440,7 @@
     <string name="digit0">0-digit</string>
     <string name="advice_title">Title</string>
     <string name="advice_content">Content</string>
+    <string name="advice_imageview">Upload pictures</string>
     <string name="answer">The response of the service</string>
     <string name="please_ed_title">Please enter the title</string>
     <string name="please_ed_content">Please enter content</string>

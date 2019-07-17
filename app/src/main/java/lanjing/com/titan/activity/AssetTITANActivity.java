@@ -278,7 +278,7 @@ public class AssetTITANActivity extends MvpActivity<WalletDetailContact.WalletDe
 
     @Override
     public void getDataFailed() {
-        ToastUtils.showShortToast(context, getResources().getString(R.string.network_error));
+                ToastUtils.showShortToast(context, getResources().getString(R.string.network_error));
     }
 
 

@@ -445,11 +445,12 @@
     <string name="digit0">0位</string>
     <string name="advice_title">标题</string>
     <string name="advice_content">内容</string>
+    <string name="advice_imageview">上传图片</string>
     <string name="answer">客服回复</string>
     <string name="please_ed_title">请输入标题</string>
     <string name="please_ed_content">请输入内容</string>
     <string name="node">节点</string>
-    <string name="committee">委员会</string>
+    <string name="committee">治理委员</string>
     <string name="management_committee">管理委员会</string>
     <string name="Management_board_notice">管理委员会公告</string>
     <string name="inter_title">智能交易</string>

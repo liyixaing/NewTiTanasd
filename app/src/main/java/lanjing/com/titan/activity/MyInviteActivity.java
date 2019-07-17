@@ -31,6 +31,7 @@ import lanjing.com.titan.adapter.FriendListAdapter;
 import lanjing.com.titan.constant.Constant;
 import lanjing.com.titan.contact.FriendListContact;
 import lanjing.com.titan.response.FriendListResponse;
+import lanjing.com.titan.util.MoneyUtil;
 import retrofit2.Response;
 
 /**
@@ -58,7 +59,6 @@ public class MyInviteActivity extends MvpActivity<FriendListContact.FriendListPr
     RecyclerView rv;
     @BindView(R.id.refresh)
     SmartRefreshLayout refresh;
-
     @BindView(R.id.tv_xq_sun)
     TextView TvXqSun;
     @BindView(R.id.tv_xq_sum)
@@ -165,16 +165,18 @@ public class MyInviteActivity extends MvpActivity<FriendListContact.FriendListPr
 
     List<FriendListResponse.DataBean> data;
 
+
     @Override
     public void getFriendListResult(Response<FriendListResponse> response) {
         refresh.finishRefresh();
+        refresh.setEnableLoadMore(true);//禁止加载
         refresh.finishLoadMore();
         if (response.body().getCode() == Constant.SUCCESS_CODE) {
             Log.e("TAG", String.valueOf(response));
             tvFriendNum.setText(String.valueOf(response.body().getNum()));
-            tvRewardNum.setText(String.valueOf(response.body().getReward()));
+            tvRewardNum.setText(MoneyUtil.priceFormat(String.valueOf(response.body().getReward())));
             TvTeamSun.setText(String.valueOf(response.body().getCurrent_predice_mining_number_of_people()));
-            Tv_TeamSum.setText(String.valueOf(response.body().getCurrent_predice_mining_number_of_usd()));
+            Tv_TeamSum.setText(MoneyUtil.priceFormat(String.valueOf(response.body().getCurrent_predice_mining_number_of_usd())));
             TvXqSum.setText(response.body().getLg_region_earnings());
             TvXqSun.setText(response.body().getLt_region_earnings());
             tvInviteUrl.setText(response.body().getRecommendurl());

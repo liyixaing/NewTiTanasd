@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.ImageView;
@@ -33,6 +34,7 @@ import lanjing.com.titan.activity.CommitteeActivity;
 import lanjing.com.titan.activity.DisclaimerActivity;
 import lanjing.com.titan.activity.MyInviteActivity;
 import lanjing.com.titan.activity.NodeActivity;
+import lanjing.com.titan.activity.NoticeActivity;
 import lanjing.com.titan.activity.OnlineServiceActivity;
 import lanjing.com.titan.activity.PersonalActivity;
 import lanjing.com.titan.activity.SecurityCenterActivity;
@@ -90,11 +92,12 @@ public class MyFragment extends MvpFragment<PersonContact.PersonPresent> impleme
     Unbinder unbinder1;
     @BindView(R.id.tv_level)
     TextView tvLevel;
+
     @Override
     public void initData(Bundle savedInstanceState) {
         //用户等级
-        int level = SPUtils.getInt(Constant.LEVEL,0,context);
-        switch (level){
+        int level = SPUtils.getInt(Constant.LEVEL, 0, context);
+        switch (level) {
             case 0:
                 tvLevel.setText("T");
                 break;
@@ -127,8 +130,11 @@ public class MyFragment extends MvpFragment<PersonContact.PersonPresent> impleme
         if (node == 1) {
             nodeLay.setVisibility(View.VISIBLE);
         }
+
+
         //判断是否有制度委员会
         int isVip = Integer.parseInt(SPUtils.getString(Constant.ISVIP, "", context));
+        Log.e("xiaoqiang", isVip + "");
         if (isVip == 1) {
             committeeLay.setVisibility(View.VISIBLE);
         }
@@ -291,7 +297,8 @@ public class MyFragment extends MvpFragment<PersonContact.PersonPresent> impleme
                 startActivity(node);
                 break;
             case R.id.tv_committee://委员会  前期不显示  根据用户登录返回的值来进行判断
-                Intent committee = new Intent(context, CommitteeActivity.class);
+                Intent committee = new Intent(context, NoticeActivity.class);
+                committee.putExtra("type", "3");
                 committee.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS);
                 startActivity(committee);
                 break;

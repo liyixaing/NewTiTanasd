@@ -137,6 +137,15 @@ public class FriendListResponse {
         private String nickName;
         private String phonenum;
         private String time;
+        private String predice_mining_number_of_usd;
+
+        public String getPredice_mining_number_of_usd() {
+            return predice_mining_number_of_usd;
+        }
+
+        public void setPredice_mining_number_of_usd(String predice_mining_number_of_usd) {
+            this.predice_mining_number_of_usd = predice_mining_number_of_usd;
+        }
 
         public String getNickName() {
             return nickName;

@@ -97,7 +97,16 @@ public class PersonResponse {
         private String device;
         private int fid;
         private long isNodetime;
-        private int isVip;
+        private int isvip;
+
+        public int getIsvip() {
+            return isvip;
+        }
+
+        public void setIsvip(int isvip) {
+            this.isvip = isvip;
+        }
+
         private int isauto;
         private int isnode;
         private String keyes;
@@ -144,13 +153,8 @@ public class PersonResponse {
             this.isNodetime = isNodetime;
         }
 
-        public int getIsVip() {
-            return isVip;
-        }
 
-        public void setIsVip(int isVip) {
-            this.isVip = isVip;
-        }
+
 
         public int getIsauto() {
             return isauto;

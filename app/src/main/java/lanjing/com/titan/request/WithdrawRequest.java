@@ -12,9 +12,9 @@ public class WithdrawRequest {
      * num : 1.23
      */
 
-    private String welletId;
-    private String address;
-    private String num;
+    private String welletId;//标签
+    private String address;//地址
+    private String num;//数量
 
 
     public WithdrawRequest(String address,String welletId, String num) {

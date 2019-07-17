@@ -72,7 +72,7 @@ public class InformationFragment extends MvpFragment<InfoNoticeContact.InfoNotic
             rv.setAdapter(mAdapter);
 
             mPresent.information(context,String.valueOf(page),String.valueOf(pageSize));
-            mPresent.notice(context,String.valueOf(page),String.valueOf(pageSize));
+            mPresent.notice(context,String.valueOf(page),String.valueOf(pageSize), "1");
 
 
 
@@ -93,7 +93,7 @@ public class InformationFragment extends MvpFragment<InfoNoticeContact.InfoNotic
             rv.setLayoutManager(manager);
             rv.setAdapter(mAdapterEn);
             mPresent.information(context,String.valueOf(page),String.valueOf(pageSize));
-            mPresent.notice(context,String.valueOf(page),String.valueOf(pageSize));
+            mPresent.notice(context,String.valueOf(page),String.valueOf(pageSize), "1");
 
             mAdapterEn.setOnItemChildClickListener(new InformationAdapterCH.OnItemChildClickListener(){
 
@@ -111,13 +111,13 @@ public class InformationFragment extends MvpFragment<InfoNoticeContact.InfoNotic
         refresh.setOnRefreshListener(refreshLayout -> {
             page = 1;
             mPresent.information(context,String.valueOf(page),String.valueOf(pageSize));
-            mPresent.notice(context,String.valueOf(page),String.valueOf(pageSize));
+            mPresent.notice(context,String.valueOf(page),String.valueOf(pageSize),"1");
 
         });
         refresh.setOnLoadMoreListener(refreshLayout -> {
             page++;
             mPresent.information(context,String.valueOf(page),String.valueOf(pageSize));
-            mPresent.notice(context,String.valueOf(page),String.valueOf(pageSize));
+            mPresent.notice(context,String.valueOf(page),String.valueOf(pageSize),"1");
         });
 
 
@@ -125,6 +125,7 @@ public class InformationFragment extends MvpFragment<InfoNoticeContact.InfoNotic
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context,NoticeActivity.class);
+                intent.putExtra("type", "1");
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS);
                 startActivity(intent);
             }

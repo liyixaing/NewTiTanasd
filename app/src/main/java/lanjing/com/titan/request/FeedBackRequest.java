@@ -12,12 +12,14 @@ public class FeedBackRequest {
      * title : 123
      */
 
-    private String content;
-    private String title;
+    public String content;
+    public String title;
+    public String pictures;
 
 
-    public FeedBackRequest(String content, String title) {
+    public FeedBackRequest(String content, String title, String pictures) {
         this.content = content;
         this.title = title;
+        this.pictures = pictures;
     }
 }

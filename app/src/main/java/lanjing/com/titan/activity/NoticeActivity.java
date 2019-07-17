@@ -11,6 +11,7 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.lxh.baselibray.mvp.MvpActivity;
 import com.lxh.baselibray.util.ObjectUtils;
 import com.lxh.baselibray.util.ToastUtils;
+import com.lxh.baselibray.view.TitleView;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 
 import java.util.ArrayList;
@@ -41,7 +42,11 @@ public class NoticeActivity extends MvpActivity<InfoNoticeContact.InfoNoticePres
     RecyclerView rv;
     @BindView(R.id.refresh)
     SmartRefreshLayout refresh;
+    @BindView(R.id.tv_titleView)
+    TitleView TvTitleView;
 
+    int type;
+    String stringExtra;
     int page = 1;
     int pageSize = 10;
     NoticeAdapterCH mAdapter;
@@ -51,6 +56,14 @@ public class NoticeActivity extends MvpActivity<InfoNoticeContact.InfoNoticePres
 
     @Override
     public void initData(Bundle savedInstanceState) {
+        stringExtra = getIntent().getStringExtra("type");
+        if (stringExtra.equals("1")) {
+            type = 1;
+            TvTitleView.setTitleText("公告");
+        } else {
+            type = 2;
+            TvTitleView.setTitleText("治理委员");
+        }
         Locale locale = getResources().getConfiguration().locale;
         if (locale.equals(Locale.SIMPLIFIED_CHINESE)) {
             mList = new ArrayList<>();
@@ -58,7 +71,7 @@ public class NoticeActivity extends MvpActivity<InfoNoticeContact.InfoNoticePres
             LinearLayoutManager manager = new LinearLayoutManager(context);
             rv.setLayoutManager(manager);
             rv.setAdapter(mAdapter);
-            mPresent.notice(context, String.valueOf(page), String.valueOf(pageSize));
+            mPresent.notice(context, String.valueOf(page), String.valueOf(pageSize), stringExtra);
 
             mAdapter.setOnItemChildClickListener(new NoticeAdapterCH.OnItemChildClickListener() {
 
@@ -79,7 +92,7 @@ public class NoticeActivity extends MvpActivity<InfoNoticeContact.InfoNoticePres
             LinearLayoutManager manager = new LinearLayoutManager(context);
             rv.setLayoutManager(manager);
             rv.setAdapter(mAdapterEn);
-            mPresent.notice(context, String.valueOf(page), String.valueOf(pageSize));
+            mPresent.notice(context, String.valueOf(page), String.valueOf(pageSize), stringExtra);
             mAdapterEn.setOnItemChildClickListener(new NoticeAdapterCH.OnItemChildClickListener() {
 
                 @Override
@@ -98,12 +111,12 @@ public class NoticeActivity extends MvpActivity<InfoNoticeContact.InfoNoticePres
 
         refresh.setOnRefreshListener(refreshLayout -> {
             page = 1;
-            mPresent.notice(context, String.valueOf(page), String.valueOf(pageSize));
+            mPresent.notice(context, String.valueOf(page), String.valueOf(pageSize), stringExtra);
 
         });
         refresh.setOnLoadMoreListener(refreshLayout -> {
             page++;
-            mPresent.notice(context, String.valueOf(page), String.valueOf(pageSize));
+            mPresent.notice(context, String.valueOf(page), String.valueOf(pageSize), stringExtra);
         });
     }
 

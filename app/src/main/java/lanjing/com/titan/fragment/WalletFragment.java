@@ -111,6 +111,7 @@ public class WalletFragment extends MvpFragment<WalletDataContact.WalletDataPres
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, NoticeActivity.class);
+                intent.putExtra("type", "1");
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS);
                 startActivity(intent);
             }
@@ -326,7 +327,7 @@ public class WalletFragment extends MvpFragment<WalletDataContact.WalletDataPres
             SPUtils.putString(Constant.PORTRAIT, response.body().getData().getPicture(), context);
             String walletName = response.body().getData().getWelletname();
             SPUtils.putString(Constant.NODE, String.valueOf(response.body().getData().getIsnode()), context);
-            SPUtils.putString(Constant.ISVIP, String.valueOf(response.body().getData().getIsVip()), context);
+            SPUtils.putString(Constant.ISVIP, String.valueOf(response.body().getData().getIsvip()), context);
             SPUtils.putString(Constant.NODE_NUM, String.valueOf(response.body().getData().getNodenum()), context);
             SPUtils.putInt(Constant.LEVEL, response.body().getGrede(), context);
 

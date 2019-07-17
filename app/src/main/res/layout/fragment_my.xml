@@ -29,21 +29,23 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
+
                 <TextView
                     android:id="@+id/tv_nick_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
 
                     android:textColor="@color/common_black" />
+
                 <TextView
-                    android:layout_marginLeft="@dimen/dp_10"
                     android:id="@+id/tv_level"
-                    android:textStyle="bold"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp_10"
                     android:text="T"
+                    android:textColor="@color/blue"
                     android:textSize="@dimen/sp_16"
-                    android:textColor="@color/blue" />
+                    android:textStyle="bold" />
             </LinearLayout>
 
             <LinearLayout
@@ -169,11 +171,11 @@
         app:cardElevation="3dp">
 
         <LinearLayout
-            android:layout_marginTop="@dimen/dp_20"
-            android:layout_marginBottom="@dimen/dp_20"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
+            android:layout_marginTop="@dimen/dp_20"
+            android:layout_marginBottom="@dimen/dp_20"
             android:orientation="horizontal">
             <!--安全中心-->
             <LinearLayout
@@ -249,19 +251,19 @@
     </android.support.v7.widget.CardView>
 
     <TextView
-        android:visibility="gone"
         android:id="@+id/tv_online_customer_service"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp_40"
-        android:drawablePadding="@dimen/dp_10"
         android:drawableRight="@mipmap/icon_open"
+        android:drawablePadding="@dimen/dp_10"
         android:foreground="@drawable/bg_white"
         android:gravity="center_vertical"
         android:paddingLeft="@dimen/dp_20"
         android:paddingRight="@dimen/dp_20"
         android:text="@string/online_customer_service"
         android:textColor="@color/common_black"
-        android:textSize="@dimen/sp_13" />
+        android:textSize="@dimen/sp_13"
+        android:visibility="gone" />
 
     <View
         android:layout_width="match_parent"
@@ -272,8 +274,8 @@
         android:id="@+id/tv_advice_feedback"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp_40"
-        android:drawablePadding="@dimen/dp_10"
         android:drawableRight="@mipmap/icon_open"
+        android:drawablePadding="@dimen/dp_10"
         android:foreground="@drawable/bg_white"
         android:gravity="center_vertical"
         android:paddingLeft="@dimen/dp_20"
@@ -283,32 +285,32 @@
         android:textSize="@dimen/sp_13" />
 
     <View
-        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@color/bg_gray" />
+        android:background="@color/bg_gray"
+        android:visibility="gone" />
 
     <TextView
-        android:visibility="gone"
         android:id="@+id/tv_disclaimer"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp_40"
-        android:drawablePadding="@dimen/dp_10"
         android:drawableRight="@mipmap/icon_open"
+        android:drawablePadding="@dimen/dp_10"
         android:foreground="@drawable/bg_white"
         android:gravity="center_vertical"
         android:paddingLeft="@dimen/dp_20"
         android:paddingRight="@dimen/dp_20"
         android:text="@string/disclaimer"
         android:textColor="@color/common_black"
-        android:textSize="@dimen/sp_13" />
+        android:textSize="@dimen/sp_13"
+        android:visibility="gone" />
 
     <LinearLayout
         android:id="@+id/node_lay"
-        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:visibility="gone">
 
         <View
             android:layout_width="match_parent"
@@ -319,8 +321,8 @@
             android:id="@+id/tv_node"
             android:layout_width="match_parent"
             android:layout_height="@dimen/dp_40"
-            android:drawablePadding="@dimen/dp_10"
             android:drawableRight="@mipmap/icon_open"
+            android:drawablePadding="@dimen/dp_10"
             android:foreground="@drawable/bg_white"
             android:gravity="center_vertical"
             android:paddingLeft="@dimen/dp_20"
@@ -332,10 +334,10 @@
 
     <LinearLayout
         android:id="@+id/committee_lay"
-        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:visibility="gone">
 
         <View
             android:layout_width="match_parent"
@@ -346,8 +348,8 @@
             android:id="@+id/tv_committee"
             android:layout_width="match_parent"
             android:layout_height="@dimen/dp_40"
-            android:drawablePadding="@dimen/dp_10"
             android:drawableRight="@mipmap/icon_open"
+            android:drawablePadding="@dimen/dp_10"
             android:foreground="@drawable/bg_white"
             android:gravity="center_vertical"
             android:paddingLeft="@dimen/dp_20"

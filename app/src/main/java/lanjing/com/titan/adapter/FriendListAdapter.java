@@ -23,8 +23,9 @@ public class FriendListAdapter extends BaseQuickAdapter<FriendListResponse.DataB
 
     @Override
     protected void convert(BaseViewHolder helper, FriendListResponse.DataBean item) {
-        helper.setText(R.id.tv_phone,item.getfId())
+        helper.setText(R.id.tv_fomID,item.getfId())
                 .setText(R.id.tv_nick_name,item.getNickName())
-                .setText(R.id.tv_time,item.getTime());
+                .setText(R.id.tv_time,item.getTime())
+                .setText(R.id.tv_predice_number, item.getPredice_mining_number_of_usd());
     }
 }

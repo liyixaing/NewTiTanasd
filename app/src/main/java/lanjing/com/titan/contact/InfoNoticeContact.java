@@ -44,9 +44,9 @@ public class InfoNoticeContact {
             });
         }
 
-        public void notice(final Context context,String page,String size) {
+        public void notice(final Context context,String page,String size, String type) {
             ApiService service = ServiceGenerator.createService(ApiService.class);
-            String type="1";
+
             InfoNoticeRequest request = new InfoNoticeRequest(type,page,size);
             String token = SPUtils.getString(Constant.TOKEN,"",context);
             service.InfoNoticeList(token,request).enqueue(new NetCallBack<InfoNoticeResponse>() {

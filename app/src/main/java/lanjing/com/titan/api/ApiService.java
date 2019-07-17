@@ -1,16 +1,19 @@
 package lanjing.com.titan.api;
 
+import lanjing.com.titan.request.AddFeedbackRequest;
 import lanjing.com.titan.request.AddressRequest;
 import lanjing.com.titan.request.AwardRequest;
 import lanjing.com.titan.request.BillDetailRequest;
 import lanjing.com.titan.request.BindContactsRequest;
 import lanjing.com.titan.request.BuyOrSellRequest;
+import lanjing.com.titan.request.CancelRequest;
 import lanjing.com.titan.request.CoinDealRequest;
 import lanjing.com.titan.request.DealPwdRequest;
 import lanjing.com.titan.request.DeleteWalletRequest;
 import lanjing.com.titan.request.EntrustListRequest;
 import lanjing.com.titan.request.FeedBackListRequest;
 import lanjing.com.titan.request.FeedBackRequest;
+import lanjing.com.titan.request.FormatRequest;
 import lanjing.com.titan.request.FriendListRequest;
 import lanjing.com.titan.request.ImportWalletRequest;
 import lanjing.com.titan.request.ImportWalletSetPwdRequest;
@@ -28,6 +31,7 @@ import lanjing.com.titan.request.SetHelpRequest;
 import lanjing.com.titan.request.SetNewPhoneRequest;
 import lanjing.com.titan.request.SetPhoneRequest;
 import lanjing.com.titan.request.UpdatePwdRequest;
+import lanjing.com.titan.request.UplodelRequest;
 import lanjing.com.titan.request.VersionRequest;
 import lanjing.com.titan.request.WalletDetailRequest;
 import lanjing.com.titan.request.WithdrawRequest;
@@ -49,6 +53,7 @@ import lanjing.com.titan.response.FeedbackListResponse;
 import lanjing.com.titan.response.FriendListResponse;
 import lanjing.com.titan.response.ImportWalletResponse;
 import lanjing.com.titan.response.InfoNoticeResponse;
+import lanjing.com.titan.response.InformationResponse;
 import lanjing.com.titan.response.InterDealResponse;
 import lanjing.com.titan.response.ListWalletImportResponse;
 import lanjing.com.titan.response.LoginResponse;
@@ -56,6 +61,7 @@ import lanjing.com.titan.response.MarketListResponse;
 import lanjing.com.titan.response.ModifyHeadResponse;
 import lanjing.com.titan.response.PersonResponse;
 import lanjing.com.titan.response.RegisterResponse;
+import lanjing.com.titan.response.Responseuplode;
 import lanjing.com.titan.response.ResultDTO;
 import lanjing.com.titan.response.SetHelpResponse;
 import lanjing.com.titan.response.SetNewPhoneResponse;
@@ -133,8 +139,26 @@ public interface ApiService {
     /**
      * 修改头像
      */
-    @POST("/app/uploaduserpicture")
-    Call<ModifyHeadResponse> modifyHead(@Header("token") String token, @Body ModifyHeadRequest data);
+    @POST("/app/uploadImg")
+    Call<Responseuplode> modifyHead(@Header("token") String token, @Body ModifyHeadRequest data);
+
+    /**
+     * 删除图片
+     */
+    @POST("/app/cancelFeedback")
+    Call<ResultDTO> cancelFeedback(@Header("token") String token, @Body CancelRequest data);
+
+    /**
+     * 建议反馈2
+     */
+    @POST("/app/addFeedback")
+    Call<ResultDTO> addFeedback(@Header("token") String token, @Body AddFeedbackRequest data);
+
+    /**
+     * 上传头像
+     */
+    @POST("/app/updateUserAvatar")
+    Call<ResultDTO> updateUserAvatar(@Header("token") String token, @Body UplodelRequest data);
 
     /**
      * 修改昵称
@@ -322,6 +346,12 @@ public interface ApiService {
      */
     @POST("/app/reward")
     Call<AwardResponse> award(@Header("token") String token, @Body AwardRequest data);
+
+    /**
+     * 治理委员
+     */
+    @POST("/app/getinformation")
+    Call<InformationResponse> Information(@Header("token") String token, @Body FormatRequest data);
 
     /**
      * 建议反馈

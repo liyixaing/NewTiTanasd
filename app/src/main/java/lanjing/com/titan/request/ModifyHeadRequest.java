@@ -12,9 +12,11 @@ public class ModifyHeadRequest {
      */
 
     private String picture;
+    private String type;
 
 
-    public ModifyHeadRequest(String picture) {
+    public ModifyHeadRequest(String picture, String type) {
         this.picture = picture;
+        this.type = type;
     }
 }

@@ -1,6 +1,8 @@
 package lanjing.com.titan.activity;
 
 import android.os.Bundle;
+import android.text.InputFilter;
+import android.text.Spanned;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
@@ -11,6 +13,9 @@ import com.lxh.baselibray.net.ServiceGenerator;
 import com.lxh.baselibray.util.CountDownTimerUtils;
 import com.lxh.baselibray.util.SPUtils;
 import com.lxh.baselibray.util.ToastUtils;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -40,11 +45,11 @@ public class ActivityAddedAddress extends MvpActivity<SaveOrUpdateContact.saveOr
     EditText EdCodePwd;//验证码输入框
     @BindView(R.id.tv_getcode)
     TextView TvGetcode;//获取验证码按钮
-
     String Phone;
 
     @Override
     public void initData(Bundle savedInstanceState) {
+        setEditTextInhibitInputSpeChat(EtCurrency);
         Phone = SPUtils.getString(Constant.PHONE, null, context);
         TvHome.setText("手机号\u3000" + Phone);
     }
@@ -67,7 +72,9 @@ public class ActivityAddedAddress extends MvpActivity<SaveOrUpdateContact.saveOr
                 } else if (EdCodePwd.getText().toString().equals("")) {
                     ToastUtils.showShortToast(context, "请输入验证码");
                 } else {
-                    mPresent.walletWithdraw(context, EtCurrency.getText().toString(), EtLabel.getText().toString(), EdCodePwd.getText().toString());
+                    Log.e("xaiqoaing", Phone);
+                    mPresent.SaveorupdeatDetail(context, Phone, EdCodePwd.getText().toString(), EtCurrency.getText().toString(),
+                            EtLabel.getText().toString(), EtRemarks.getText().toString());
                 }
                 return;
             case R.id.tv_getcode://获取验证码按钮
@@ -78,16 +85,31 @@ public class ActivityAddedAddress extends MvpActivity<SaveOrUpdateContact.saveOr
         }
     }
 
+    //限制输入文本内容
+    public static void setEditTextInhibitInputSpeChat(EditText editText) {
+        InputFilter filter = new InputFilter() {
+            @Override
+            public CharSequence filter(CharSequence source, int start, int end, Spanned dest, int dstart, int dend) {
+                String speChat = "[`~@ #_$%^&*()+=|{}':;'\\[\\].<>/~@#￥%……&*（）\"——+|{}【】‘；：”“’、]";
+                Pattern pattern = Pattern.compile(speChat);
+                Matcher matcher = pattern.matcher(source.toString());
+                if (matcher.find()) return "";
+                else return null;
+            }
+        };
+        editText.setFilters(new InputFilter[]{filter});
+
+    }
+
     //获取验证码
     public void InitGetCode() {
+        Log.e("xaiqoaing", Phone);
         String token = SPUtils.getString(Constant.TOKEN, "", context);
         ApiService service = ServiceGenerator.createService(ApiService.class);
         SendCodeRequest sendCodeRequest = new SendCodeRequest(Phone);
         service.sendCode(token, sendCodeRequest).enqueue(new NetCallBack<ResultDTO>() {
             @Override
             public void onSuccess(retrofit2.Call<ResultDTO> call, retrofit2.Response<ResultDTO> response) {
-                Log.e("xiaoqaing", String.valueOf(response.body().getCode()));
-                Log.e("xiaoqaing", response.body().getMsg());
                 if (response.body().getCode() == 200) {
                 } else {
                     ToastUtils.showShortToast(context, response.body().getMsg());

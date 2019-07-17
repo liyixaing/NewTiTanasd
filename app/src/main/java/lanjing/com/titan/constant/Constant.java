@@ -13,7 +13,7 @@ public class Constant {
     public final static int SUCCESS_CODE = 200;
     public final static int LOG_BACK_IN = 500;
     public final static String NODE = "node";
-    public final static String ISVIP = "isVip";
+    public final static String ISVIP = "isvip";
     public final static String NODE_NUM = "nodeNum";
     public final static String LEVEL = "level";
 

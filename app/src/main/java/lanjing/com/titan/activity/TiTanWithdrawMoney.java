@@ -3,6 +3,9 @@ package lanjing.com.titan.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.Selection;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
@@ -45,11 +48,13 @@ public class TiTanWithdrawMoney extends MvpActivity<getTransferContact.getTransf
 
     private String id;
     String taitanSum;
+    Double asd;
 
     @Override
     public void initData(Bundle savedInstanceState) {
         id = getIntent().getStringExtra("id");
         taitanSum = getIntent().getStringExtra("taitanSum");
+        asd = Double.valueOf(taitanSum);
         TvBalance.setText(taitanSum);
         if (id.equals("0")) {
             //参数为0 不做处理
@@ -57,7 +62,9 @@ public class TiTanWithdrawMoney extends MvpActivity<getTransferContact.getTransf
             Log.e("xiaqoiang", id);
             mPresent.Transfer(context, id);
         }
+        initInput();
     }
+
 
     @Override
     public int getLayoutId() {
@@ -99,7 +106,7 @@ public class TiTanWithdrawMoney extends MvpActivity<getTransferContact.getTransf
     public void getDealPwdResult(Response<ResultDTO> response) {
         if (response.body().getCode() == Constant.SUCCESS_CODE) {
             showLoadingDialog();
-            mPresent.walletWithdraw(context, TvAddress.getText().toString(), TvLabel.getText().toString(), TvRemarks.getText().toString());
+            mPresent.walletWithdraw(context, TvAddress.getText().toString(), TvLabel.getText().toString(), EtTibusun.getText().toString());
         } else if (response.body().getCode() == -10) {
             ToastUtils.showShortToast(context, getResources().getString(R.string.not_login));
         } else {
@@ -110,6 +117,7 @@ public class TiTanWithdrawMoney extends MvpActivity<getTransferContact.getTransf
 
     @Override
     public void getDataFailed() {
+        ToastUtils.showShortToast(context, getResources().getString(R.string.network_error));
 
     }
 
@@ -163,15 +171,52 @@ public class TiTanWithdrawMoney extends MvpActivity<getTransferContact.getTransf
 
     }
 
+
+    //判断输入框中的数量是否与已有的数量比较
+    public void initInput() {
+        EtTibusun.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                String string = s + "";
+
+                    if (EtTibusun.getText().toString().equals("")) {
+                        //还没有输入数据不做处理
+                    } else {
+                        Double asdasd = Double.valueOf(string);
+                        if (asdasd > asd) {
+//                            Selection.setSelection(
+                            EtTibusun.setText(MoneyUtil.priceFormat(taitanSum));
+                            Selection.setSelection(EtTibusun.getText(), EtTibusun.length());
+                        } else {
+                            //不做处理Selection.setSelection(
+                        }
+                    }
+
+
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+    }
+
     //提取全部判断
     public void initjudge() {
-        Double asd = Double.valueOf(taitanSum);
-        Log.e("xiaoqiang", String.valueOf(asd));
-        Log.e("xiaoqiang", taitanSum);
+        double qweas = asd -3;
+        String ing = qweas+"";
         if (asd - 3 > 100) {
-            EtTibusun.setText(MoneyUtil.priceFormat(taitanSum));
+            EtTibusun.setText(MoneyUtil.priceFormat(ing));
+            Selection.setSelection(EtTibusun.getText(), EtTibusun.length());
         } else {
-            ToastUtils.showShortToast(context, "余额不足");
+            ToastUtils.showShortToast(context, "可提币数量小于100");
 
         }
     }
