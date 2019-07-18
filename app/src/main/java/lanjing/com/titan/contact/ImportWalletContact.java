@@ -10,6 +10,7 @@ import com.lxh.baselibray.net.ServiceGenerator;
 import lanjing.com.titan.api.ApiService;
 import lanjing.com.titan.request.ImportWalletRequest;
 import lanjing.com.titan.response.ImportWalletResponse;
+import lanjing.com.titan.response.IsfindResponse;
 import retrofit2.Call;
 import retrofit2.Response;
 
@@ -22,9 +23,9 @@ public class ImportWalletContact {
         public void importWallet(final Context context, String help, String keys) {
             ApiService service = ServiceGenerator.createService(ApiService.class);
             ImportWalletRequest request = new ImportWalletRequest(help, keys);
-            service.importWallet(request).enqueue(new NetCallBack<ImportWalletResponse>() {
+            service.importWallet(request).enqueue(new NetCallBack<IsfindResponse>() {
                 @Override
-                public void onSuccess(Call<ImportWalletResponse> call, Response<ImportWalletResponse> response) {
+                public void onSuccess(Call<IsfindResponse> call, Response<IsfindResponse> response) {
                     if (getView() != null) {
                         getView().getImportWalletResult(response);
                     }
@@ -43,7 +44,7 @@ public class ImportWalletContact {
     }
 
     public interface IImportWalletView extends IBaseView {
-        void getImportWalletResult(Response<ImportWalletResponse> response);
+        void getImportWalletResult(Response<IsfindResponse> response);
         void getDataFailed();
 
     }

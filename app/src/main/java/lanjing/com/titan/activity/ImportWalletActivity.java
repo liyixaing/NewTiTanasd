@@ -17,6 +17,7 @@ import lanjing.com.titan.R;
 import lanjing.com.titan.constant.Constant;
 import lanjing.com.titan.contact.ImportWalletContact;
 import lanjing.com.titan.response.ImportWalletResponse;
+import lanjing.com.titan.response.IsfindResponse;
 import retrofit2.Response;
 
 /**
@@ -52,13 +53,14 @@ public class ImportWalletActivity extends MvpActivity<ImportWalletContact.Import
     }
 
     @Override
-    public void getImportWalletResult(Response<ImportWalletResponse> response) {
+    public void getImportWalletResult(Response<IsfindResponse> response) {
         dismissLoadingDialog();
         if (response.body().getCode() == Constant.SUCCESS_CODE) {
             ToastUtils.showShortToast(context,getResources().getString(R.string.import_success));
             Intent intent = new Intent(context,ImportWalletModifyActivity.class);
-            intent.putExtra("userId",response.body().getUserId());
-            intent.putExtra("userName",response.body().getUserName());
+            intent.putExtra("userId",response.body().getData().getUid());
+            intent.putExtra("userName",response.body().getData().getUserName());
+            intent.putExtra("verificationCode", response.body().getData().getVerificationCode());
             startActivity(intent);
             finish();
         } else if (response.body().getCode() == -10){

@@ -39,11 +39,13 @@ public class ImportWalletModifyActivity extends MvpActivity<ImportWalletSetPwdCo
     TextView submitBtn;
 
     String userId;
+    String verificationCode;
 
     @Override
     public void initData(Bundle savedInstanceState) {
         userId = getIntent().getStringExtra("userId");
         tvUserName.setText(getIntent().getStringExtra("userName"));
+        verificationCode = getIntent().getStringExtra("verificationCode");
     }
 
     @Override
@@ -92,7 +94,7 @@ public class ImportWalletModifyActivity extends MvpActivity<ImportWalletSetPwdCo
                 if (validate(logPwd, comfirmLogPwd, dealPwd, comfirmDealPwd))
                     return;
                 showLoadingDialog();
-                mPresent.importWalletSetPwd(context, Integer.parseInt(userId), logPwd, dealPwd);
+                mPresent.importWalletSetPwd(context, Integer.parseInt(userId), logPwd, dealPwd, verificationCode);
                 break;
         }
     }

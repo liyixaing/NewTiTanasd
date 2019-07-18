@@ -24,17 +24,19 @@ public class FeedbackListAdapter extends BaseQuickAdapter<FeedbackListResponse.D
     protected void convert(BaseViewHolder helper, FeedbackListResponse.DataBean item) {
 
 
-        helper.setText(R.id.tv_title,item.getTitle())
-                .setText(R.id.tv_create_time,item.getCreatetime());
+        helper.setText(R.id.tv_title,item.getTitle());
+//                .setText(R.id.tv_create_time,item.getCreatetime());
         int state = item.getState();
-        switch (state){
-            case 0://未回复
-                helper.setVisible(R.id.red_lay, false);
-                break;
-            case 1://已回复
-                helper.setVisible(R.id.red_lay, true);
-                break;
+        if (state ==0){
+            helper.setVisible(R.id.red_lay, false);
+        }else if (state ==1){
+            helper.setVisible(R.id.red_lay, false);
+        }else if (state ==2){
+            helper.setVisible(R.id.red_lay, true);
+        }else {
+            helper.setVisible(R.id.red_lay, false);
         }
+
         helper.addOnClickListener(R.id.feedback_item);
 
 

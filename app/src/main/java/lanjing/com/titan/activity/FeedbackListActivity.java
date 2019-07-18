@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
 
@@ -47,7 +48,6 @@ public class FeedbackListActivity extends MvpActivity<FeedbackListContact.Feedba
     int size = 20;
 
 
-
     @Override
     public void initData(Bundle savedInstanceState) {
         //查询列表数据
@@ -75,22 +75,27 @@ public class FeedbackListActivity extends MvpActivity<FeedbackListContact.Feedba
         mAdapter.setOnItemChildClickListener(new FeedbackListAdapter.OnItemChildClickListener() {
             @Override
             public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
-                Intent intent = new Intent(context,FeedbackDetailActivity.class);
-                intent.putExtra("title",mList.get(position).getTitle());
-                intent.putExtra("content",mList.get(position).getContent());
-                intent.putExtra("reply",mList.get(position).getReply());
+                Intent intent = new Intent(context, FeedbackDetailActivity.class);
+                intent.putExtra("fid", mList.get(position).getFid() + "");
+                Log.e("xiaoqiang", mList.get(position).getFid() + "");
                 startActivity(intent);
             }
         });
     }
 
-
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        refresh.autoRefresh();//自动刷新界面
+    }
 
     @Override
     public int getLayoutId() {
         return R.layout.activity_feedback_list;
     }
+
     List<FeedbackListResponse.DataBean> data;
+
     @Override
     protected FeedbackListContact.FeedbackListPresent createPresent() {
         return new FeedbackListContact.FeedbackListPresent();
@@ -122,15 +127,15 @@ public class FeedbackListActivity extends MvpActivity<FeedbackListContact.Feedba
                 rvNormalShow.setVisibility(View.VISIBLE);
                 rv.setVisibility(View.GONE);
             }
-        } else if (response.body().getCode() == -10){
+        } else if (response.body().getCode() == -10) {
             ToastUtils.showShortToast(context, getResources().getString(R.string.not_login));
-        }else {
+        } else {
             ToastUtils.showShortToast(context, response.body().getMsg());
         }
     }
 
     @Override
     public void getDataFailed() {
-        ToastUtils.showShortToast(context,getResources().getString(R.string.network_error));
+        ToastUtils.showShortToast(context, getResources().getString(R.string.network_error));
     }
 }

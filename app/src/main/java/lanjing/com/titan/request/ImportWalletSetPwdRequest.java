@@ -12,14 +12,16 @@ public class ImportWalletSetPwdRequest {
      * tradepassword : 2AC0F70BE07E11867CD796293E6A1211
      */
 
-    private int userId;
+    private int uid;
     private String loginpassword;
     private String tradepassword;
+    private String verificationCode;
 
 
-    public ImportWalletSetPwdRequest(int userId, String loginpassword, String tradepassword) {
-        this.userId = userId;
+    public ImportWalletSetPwdRequest(int uid, String loginpassword, String tradepassword, String verificationCode) {
+        this.uid = uid;
         this.loginpassword = loginpassword;
         this.tradepassword = tradepassword;
+        this.verificationCode = verificationCode;
     }
 }

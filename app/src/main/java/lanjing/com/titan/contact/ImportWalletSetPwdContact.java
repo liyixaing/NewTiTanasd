@@ -20,9 +20,9 @@ import retrofit2.Response;
 
 public class ImportWalletSetPwdContact {
     public static class ImportWalletSetPwdPresent extends BasePresent<IImportWalletSetPwdView> {
-        public void importWalletSetPwd(final Context context, Integer userId,String loginpassword, String tradepassword) {
+        public void importWalletSetPwd(final Context context, Integer userId,String loginpassword, String tradepassword, String verificationCode) {
             ApiService service = ServiceGenerator.createService(ApiService.class);
-            ImportWalletSetPwdRequest request = new ImportWalletSetPwdRequest(userId, Md5Utils.MD5(loginpassword),Md5Utils.MD5(tradepassword));
+            ImportWalletSetPwdRequest request = new ImportWalletSetPwdRequest(userId, Md5Utils.MD5(loginpassword),Md5Utils.MD5(tradepassword), verificationCode);
             service.importWalletSetPwd(request).enqueue(new NetCallBack<ResultDTO>() {
                 @Override
                 public void onSuccess(Call<ResultDTO> call, Response<ResultDTO> response) {

@@ -33,6 +33,7 @@ import lanjing.com.titan.request.SetPhoneRequest;
 import lanjing.com.titan.request.UpdatePwdRequest;
 import lanjing.com.titan.request.UplodelRequest;
 import lanjing.com.titan.request.VersionRequest;
+import lanjing.com.titan.request.ViewFeedbackRequest;
 import lanjing.com.titan.request.WalletDetailRequest;
 import lanjing.com.titan.request.WithdrawRequest;
 import lanjing.com.titan.request.WithdrawalRequest;
@@ -55,6 +56,7 @@ import lanjing.com.titan.response.ImportWalletResponse;
 import lanjing.com.titan.response.InfoNoticeResponse;
 import lanjing.com.titan.response.InformationResponse;
 import lanjing.com.titan.response.InterDealResponse;
+import lanjing.com.titan.response.IsfindResponse;
 import lanjing.com.titan.response.ListWalletImportResponse;
 import lanjing.com.titan.response.LoginResponse;
 import lanjing.com.titan.response.MarketListResponse;
@@ -73,6 +75,7 @@ import lanjing.com.titan.response.WalletDetailResponse;
 import lanjing.com.titan.response.WalletListResponse;
 import lanjing.com.titan.response.WithdrawalResponse;
 import lanjing.com.titan.response.getTransferResponse;
+import lanjing.com.titan.response.viewFeedbackResponse;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.Header;
@@ -121,7 +124,7 @@ public interface ApiService {
      * 导入钱包
      */
     @POST("/app/isfindpassword")
-    Call<ImportWalletResponse> importWallet(@Body ImportWalletRequest data);
+    Call<IsfindResponse> importWallet(@Body ImportWalletRequest data);
 
     /**
      * 导入钱包  修改登录密码和交易密码
@@ -365,6 +368,12 @@ public interface ApiService {
      */
     @POST("/app/feedbacklist")
     Call<FeedbackListResponse> feedbackList(@Header("token") String token, @Body FeedBackListRequest data);
+
+    /**
+     * 反馈详情
+     */
+    @POST("/app/viewFeedback")
+    Call<viewFeedbackResponse> viewFeedback(@Header("token") String token, @Body ViewFeedbackRequest data);
 
     /**
      * 拉去提币地址列表  @Body AddressRequest data
