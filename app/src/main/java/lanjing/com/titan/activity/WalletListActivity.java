@@ -87,11 +87,11 @@ public class WalletListActivity extends MvpActivity<WalletContact.WalletPresent>
 
                 } else if (view.getId() == R.id.wallet_change) {//切换钱包
                     if (mList.get(position).getToken().equals("")) {
-                        ToastUtils.showShortToast(context, "登陆信息已过期请重新登陆");
+                        ToastUtils.showShortToast(context, getResources().getString(R.string.overdue_landing));
                     } else if (mList.get(position).getPhone().equals("")) {
-                        ToastUtils.showShortToast(context, "该账号未绑定手机号");
+                        ToastUtils.showShortToast(context, getResources().getString(R.string.not_bound_to_mobile));
                     } else if (mList.get(position).getInviter().equals("")) {
-                        ToastUtils.showShortToast(context, "该账号未绑定推荐人id");
+                        ToastUtils.showShortToast(context, getResources().getString(R.string.not_bind_the_recommender_ID));
                     } else {
                         Intent intent = new Intent(context, MainActivity.class);
                         intent.putExtra("flag", 0);
@@ -161,6 +161,7 @@ public class WalletListActivity extends MvpActivity<WalletContact.WalletPresent>
             return true;
         }
     }
+
 
     // 2. 设置item侧滑菜单
     private void setSideslipMenu() {
@@ -256,9 +257,9 @@ public class WalletListActivity extends MvpActivity<WalletContact.WalletPresent>
                 runLayoutAnimation(rv);
             }
 
-        } else if (response.body().getCode() ==-10){
+        } else if (response.body().getCode() == -10) {
             ToastUtils.showShortToast(context, getResources().getString(R.string.not_login));
-        }else {
+        } else {
             ToastUtils.showShortToast(context, response.body().getMsg());
         }
     }

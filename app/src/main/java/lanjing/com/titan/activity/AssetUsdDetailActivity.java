@@ -38,13 +38,13 @@ public class AssetUsdDetailActivity extends MvpActivity<BillDetailContact.BillDe
         String type = getIntent().getStringExtra("type");
         if (type.equals("30")) {
             tvUsdType.setText(R.string.service_fee);
-            TvTitleType.setTitleText("手续费");
+            TvTitleType.setTitleText(getResources().getString(R.string.service_fee));
         } else if (type.equals("34")) {
             tvUsdType.setText(R.string.buy);
-            TvTitleType.setTitleText("USD 买入");
+            TvTitleType.setTitleText("USD "+getResources().getString(R.string.buy));
         } else if (type.equals("35")) {
             tvUsdType.setText(R.string.sell);
-            TvTitleType.setTitleText("USD 卖出");
+            TvTitleType.setTitleText("USD "+getResources().getString(R.string.sell));
         } else {
             tvUsdType.setText("其他");
         }

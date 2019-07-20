@@ -34,7 +34,7 @@
                     android:layout_marginRight="50dp"
                     android:textColor="@color/common_black"
                     android:textSize="20sp"
-                    android:text="TITAN 提币"/>
+                    android:text="@string/titan_withdraw"/>
 
             </LinearLayout>
 
@@ -57,7 +57,7 @@
                     android:gravity="center_vertical"
                     android:paddingLeft="@dimen/dp_20"
                     android:paddingRight="@dimen/dp_20"
-                    android:text="xiaoqaing"
+                    android:text="@string/the_address"
                     android:textColor="@color/common_black"
                     android:textSize="@dimen/sp_13" />
 
@@ -87,7 +87,7 @@
                     android:drawablePadding="@dimen/dp_10"
                     android:gravity="center_vertical"
                     android:paddingLeft="@dimen/dp_20"
-                    android:text="提币地址"
+                    android:text="@string/address"
                     android:textColor="@color/common_black"
                     android:textSize="@dimen/sp_13" />
 
@@ -107,6 +107,7 @@
                     android:layout_height="@dimen/dp_30"
                     android:drawablePadding="@dimen/dp_10"
                     android:gravity="center_vertical"
+                    android:hint="@string/please_address"
                     android:paddingLeft="@dimen/dp_20"
                     android:textColor="#A0A0A0"
                     android:textSize="@dimen/sp_13" />
@@ -146,7 +147,7 @@
                     android:drawablePadding="@dimen/dp_10"
                     android:gravity="center_vertical"
                     android:paddingLeft="@dimen/dp_20"
-                    android:text="地址标签"
+                    android:text="@string/address_label"
                     android:textColor="@color/common_black"
                     android:textSize="@dimen/sp_13" />
 
@@ -166,6 +167,7 @@
                     android:layout_height="@dimen/dp_30"
                     android:drawablePadding="@dimen/dp_10"
                     android:gravity="center_vertical"
+                    android:hint="@string/please_Label"
                     android:paddingLeft="@dimen/dp_20"
                     android:textColor="#A0A0A0"
                     android:textSize="@dimen/sp_13" />
@@ -205,7 +207,7 @@
                     android:drawablePadding="@dimen/dp_10"
                     android:gravity="center_vertical"
                     android:paddingLeft="@dimen/dp_20"
-                    android:text="备注信息"
+                    android:text="@string/remarks_information"
                     android:textColor="@color/common_black"
                     android:textSize="@dimen/sp_13" />
 
@@ -254,7 +256,7 @@
                     android:layout_height="@dimen/dp_40"
                     android:gravity="center_vertical"
                     android:paddingLeft="@dimen/dp_20"
-                    android:text="提币数量"
+                    android:text="@string/number_ofw_ithdrawals"
                     android:textColor="@color/common_black"
                     android:textSize="@dimen/sp_13" />
 
@@ -288,7 +290,7 @@
                     android:layout_weight="1"
                     android:background="@null"
                     android:digits="0123456789"
-                    android:hint="交易数量大于100"
+                    android:hint="@string/sum_100"
                     android:padding="10dp"
                     android:textSize="@dimen/sp_13" />
 
@@ -297,6 +299,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_weight="5"
+                    android:visibility="gone"
                     android:text="TITAN"
                     android:textColor="@color/common_black"
                     android:textSize="@dimen/font_17sp"
@@ -331,7 +334,7 @@
                     android:drawablePadding="@dimen/dp_10"
                     android:gravity="center_vertical"
                     android:paddingLeft="@dimen/dp_20"
-                    android:text="提币手续费："
+                    android:text="@string/pls_four"
                     android:textColor="#A0A0A0"
                     android:textSize="@dimen/sp_13" />
 
@@ -363,7 +366,7 @@
                     android:drawablePadding="@dimen/dp_10"
                     android:gravity="center_vertical"
                     android:paddingLeft="@dimen/dp_20"
-                    android:text="可用余额："
+                    android:text="@string/available_balance"
                     android:textColor="#A0A0A0"
                     android:textSize="@dimen/sp_13" />
 
@@ -389,7 +392,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginRight="15dp"
                         android:gravity="right"
-                        android:text="提取全部"
+                        android:text="@string/extract_all"
                         android:textColor="#349AFB" />
 
                     <View

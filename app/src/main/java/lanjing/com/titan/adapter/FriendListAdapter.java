@@ -9,6 +9,7 @@ import java.util.List;
 
 import lanjing.com.titan.R;
 import lanjing.com.titan.response.FriendListResponse;
+import lanjing.com.titan.util.MoneyUtil;
 
 /**
  * Created by chenxi on 2019/5/10.
@@ -26,6 +27,6 @@ public class FriendListAdapter extends BaseQuickAdapter<FriendListResponse.DataB
         helper.setText(R.id.tv_fomID,item.getfId())
                 .setText(R.id.tv_nick_name,item.getNickName())
                 .setText(R.id.tv_time,item.getTime())
-                .setText(R.id.tv_predice_number, item.getPredice_mining_number_of_usd());
+                .setText(R.id.tv_predice_number, MoneyUtil.priceFormat(item.getPredice_mining_number_of_usd()));
     }
 }

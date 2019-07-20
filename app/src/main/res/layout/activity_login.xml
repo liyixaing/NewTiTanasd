@@ -182,7 +182,7 @@
                 android:layout_height="@dimen/dp_35"
                 android:background="@drawable/btn_radius_white_line"
                 android:gravity="center"
-                android:text="@string/import_wallet"
+                android:text="@string/input_wallet"
                 android:textColor="@drawable/selector_text_two" />
         </LinearLayout>
 

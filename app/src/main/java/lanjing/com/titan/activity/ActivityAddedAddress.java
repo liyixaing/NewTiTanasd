@@ -51,7 +51,7 @@ public class ActivityAddedAddress extends MvpActivity<SaveOrUpdateContact.saveOr
     public void initData(Bundle savedInstanceState) {
         setEditTextInhibitInputSpeChat(EtCurrency);
         Phone = SPUtils.getString(Constant.PHONE, null, context);
-        TvHome.setText("手机号\u3000" + Phone);
+        TvHome.setText(getResources().getString(R.string.phone)+"\u3000" + Phone);
     }
 
     @Override
@@ -64,13 +64,13 @@ public class ActivityAddedAddress extends MvpActivity<SaveOrUpdateContact.saveOr
         switch (view.getId()) {
             case R.id.tv_confirm:
                 if (EtCurrency.getText().toString().equals("")) {
-                    ToastUtils.showShortToast(context, "请输入提币地址");
+                    ToastUtils.showShortToast(context, getResources().getString(R.string.please_ed_wallet_address));
                 } else if (EtLabel.getText().toString().equals("")) {
-                    ToastUtils.showShortToast(context, "请输入地址标签");
+                    ToastUtils.showShortToast(context, getResources().getString(R.string.please_ed_wallet_id));
                 } else if (EtRemarks.getText().toString().equals("")) {
-                    ToastUtils.showShortToast(context, "请输入备注消息");
+                    ToastUtils.showShortToast(context, getResources().getString(R.string.please_enter_notes));
                 } else if (EdCodePwd.getText().toString().equals("")) {
-                    ToastUtils.showShortToast(context, "请输入验证码");
+                    ToastUtils.showShortToast(context, getResources().getString(R.string.please_verification_code));
                 } else {
                     Log.e("xaiqoaing", Phone);
                     mPresent.SaveorupdeatDetail(context, Phone, EdCodePwd.getText().toString(), EtCurrency.getText().toString(),
@@ -103,7 +103,6 @@ public class ActivityAddedAddress extends MvpActivity<SaveOrUpdateContact.saveOr
 
     //获取验证码
     public void InitGetCode() {
-        Log.e("xaiqoaing", Phone);
         String token = SPUtils.getString(Constant.TOKEN, "", context);
         ApiService service = ServiceGenerator.createService(ApiService.class);
         SendCodeRequest sendCodeRequest = new SendCodeRequest(Phone);

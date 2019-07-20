@@ -75,18 +75,18 @@ public class AssetTitanDetailActivity extends MvpActivity<BillDetailContact.Bill
     public void initTypeData() {
         if (type.equals("1")) {
 
-            TvTitleNameId.setTitleText("交易释放");
-            tvTitanType.setText("交易释放");
+            TvTitleNameId.setTitleText(getResources().getString(R.string.transon_release));
+            tvTitanType.setText(getResources().getString(R.string.transon_release));
         } else if (type.equals("32")) {
-            TvTitleNameId.setTitleText("TITAN 充币");
-            tvTitanType.setText("充币");
+            TvTitleNameId.setTitleText("TITAN"+getResources().getString(R.string.titan_top_up));
+            tvTitanType.setText(getResources().getString(R.string.top_up_c));
             ll_transactionID.setVisibility(View.VISIBLE);
             v_xian_three.setVisibility(View.VISIBLE);
             VXianFour.setVisibility(View.VISIBLE);
             llOurceaddress.setVisibility(View.VISIBLE);
         } else if (type.equals("33")) {
-            TvTitleNameId.setTitleText("TITAN 提币");
-            tvTitanType.setText("提币");
+            TvTitleNameId.setTitleText("TITAN "+getResources().getString(R.string.titan_withdraw));
+            tvTitanType.setText(getResources().getString(R.string.withdraw_c));
             ll_transactionID.setVisibility(View.VISIBLE);
             v_xian_three.setVisibility(View.VISIBLE);
             v_division_one.setVisibility(View.VISIBLE);
@@ -94,26 +94,26 @@ public class AssetTitanDetailActivity extends MvpActivity<BillDetailContact.Bill
             ll_address.setVisibility(View.VISIBLE);
             Ticket_label.setVisibility(View.VISIBLE);
         } else if (type.equals("5")) {
-            TvTitleNameId.setTitleText("TITAN 直推交易获得");
-            tvTitanType.setText("直推交易获得");
+            TvTitleNameId.setTitleText("TITAN "+getResources().getString(R.string.direct_push_trade_gains));
+            tvTitanType.setText(getResources().getString(R.string.direct_push_trade_gains));
         } else if (type.equals("6")) {
-            TvTitleNameId.setTitleText("TITAN 等级交易加权");
-            tvTitanType.setText("等级交易加权");
+            TvTitleNameId.setTitleText("TITAN "+getResources().getString(R.string.rank_trading_weig));
+            tvTitanType.setText(getResources().getString(R.string.rank_trading_weig));
         } else if (type.equals("7")) {
-            TvTitleNameId.setTitleText("TITAN 同等交易获得");
-            tvTitanType.setText("同等交易获得");
+            TvTitleNameId.setTitleText("TITAN "+getResources().getString(R.string.peer_acquisition));
+            tvTitanType.setText(getResources().getString(R.string.peer_acquisition));
         } else if (type.equals("5")) {
-            TvTitleNameId.setTitleText("TITAN 直推交易获得");
-            tvTitanType.setText("直推交易获得");
+            TvTitleNameId.setTitleText("TITAN " +getResources().getString(R.string.direct_push_trade_gains));
+            tvTitanType.setText(getResources().getString(R.string.direct_push_trade_gains));
         } else if (type.equals("34")) {
-            TvTitleNameId.setTitleText("TITAN 买入");
-            tvTitanType.setText("买入");
+            TvTitleNameId.setTitleText("TITAN "+getResources().getString(R.string.buy));
+            tvTitanType.setText(getResources().getString(R.string.buy));
         } else if (type.equals("35")) {
-            TvTitleNameId.setTitleText("TITAN 卖出");
-            tvTitanType.setText("卖出");
+            TvTitleNameId.setTitleText("TITAN "+getResources().getString(R.string.sell));
+            tvTitanType.setText(getResources().getString(R.string.sell));
         } else if (type.equals("30")) {
-            TvTitleNameId.setTitleText("TITAN 手续费");
-            tvTitanType.setText("手续费");
+            TvTitleNameId.setTitleText("TITAN "+getResources().getString(R.string.service_fee));
+            tvTitanType.setText(getResources().getString(R.string.service_fee));
         }
 
     }

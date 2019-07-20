@@ -38,7 +38,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="5dp"
-                android:text="验证原手机号"
+                android:text="@string/original_cell_phone_number"
                 android:textColor="#000000" />
 
             <TextView
@@ -99,7 +99,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="新手机号码"
+            android:text="@string/newphone"
             android:textColor="#000000" />
         <!--手机号-->
         <LinearLayout

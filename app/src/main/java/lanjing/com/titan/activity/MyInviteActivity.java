@@ -177,8 +177,8 @@ public class MyInviteActivity extends MvpActivity<FriendListContact.FriendListPr
             tvRewardNum.setText(MoneyUtil.priceFormat(String.valueOf(response.body().getReward())));
             TvTeamSun.setText(String.valueOf(response.body().getCurrent_predice_mining_number_of_people()));
             Tv_TeamSum.setText(MoneyUtil.priceFormat(String.valueOf(response.body().getCurrent_predice_mining_number_of_usd())));
-            TvXqSum.setText(response.body().getLg_region_earnings());
-            TvXqSun.setText(response.body().getLt_region_earnings());
+            TvXqSum.setText(MoneyUtil.priceFormat(String.valueOf(response.body().getLt_region_earnings())));
+            TvXqSun.setText(MoneyUtil.priceFormat(response.body().getLg_region_earnings()));
             tvInviteUrl.setText(response.body().getRecommendurl());
             tvRegisterUrl.setText(response.body().getRegisterurl());
             inviteUrl = response.body().getRecommendurl();
@@ -200,8 +200,11 @@ public class MyInviteActivity extends MvpActivity<FriendListContact.FriendListPr
                 }
                 rv.setVisibility(View.VISIBLE);
             } else {
-                rvNormalShow.setVisibility(View.VISIBLE);
-                rv.setVisibility(View.GONE);
+                if (ObjectUtils.isEmpty(mList)) {
+                    rvNormalShow.setVisibility(View.VISIBLE);
+                    rv.setVisibility(View.GONE);
+                }
+
             }
         } else if (response.body().getCode() == -10) {
             ToastUtils.showShortToast(context, getResources().getString(R.string.not_login));

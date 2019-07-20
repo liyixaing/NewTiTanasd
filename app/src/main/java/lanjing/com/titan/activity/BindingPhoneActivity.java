@@ -181,7 +181,7 @@ public class BindingPhoneActivity extends MvpActivity<SetPhoneContact.SetPhonePr
         } else if (response.body().getCode() == -10) {
             ToastUtils.showShortToast(context, getResources().getString(R.string.not_login));
             dismissLoadingDialog();
-        }else {
+        } else {
             ToastUtils.showShortToast(context, response.body().getMsg());
             dismissLoadingDialog();
         }
@@ -238,6 +238,7 @@ public class BindingPhoneActivity extends MvpActivity<SetPhoneContact.SetPhonePr
                 String code = edVerificationCode.getText().toString().trim();
                 String oldcode = EtUsedCode.getText().toString().trim();
                 String phonesun = areaCode + edPhone.getText().toString().trim();
+                Log.e("xaioqiang", edPhone.getText().toString());
                 if (ObjectUtils.isEmpty(code) || ObjectUtils.isEmpty(oldcode) || ObjectUtils.isEmpty(phonesun)) {
                     ToastUtils.showLongToast(context, "验证码或手机号码错误");
                     return;

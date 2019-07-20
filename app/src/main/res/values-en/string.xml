@@ -20,6 +20,7 @@
     <string name="finish_validation">To complete the verification</string>
     <string name="create_wallet">Create Wallet</string>
     <string name="import_wallet">Import Wallet?</string>
+    <string name="input_wallet">Forget the password？</string>
     <!--注册-->
     <string name="creation">Create Wallet</string>
     <string name="nick_name">Nickname</string>
@@ -38,6 +39,7 @@
     <string name="my_wallet">My Wallet</string>
     <string name="wallet_secret_key">Wallet Secret Key</string>
     <string name="onclick_copy">Click to Copy</string>
+    <string name="nick_name_one">nick name:</string>
     <string name="complete">Complete</string>
 
     <!--  导入钱包-->
@@ -88,7 +90,7 @@
     <string name="top_up_address">Top Up Address</string>
     <string name="copy">Copy</string>
     <string name="over_copy">Replicated</string>
-    <string name="werm_tip">Tips: Please fill in and check the address label carefully, which is the only identification of your account, otherwise the assets will not be recovered.</string>
+    <string name="werm_tip">Warm Tip: Please check the address label carefully. This is the only identification of your account. Otherwise, the assets will not be recovered.</string>
     <string name="wallet_management">Wallet Management</string>
 
     <string name="all">All</string>
@@ -146,7 +148,7 @@
     <!--币币交易-->
     <string name="intelligent_transaction">Intelligent Transaction</string>
     <string name="Qty">Qty</string>
-    <string name="exchange_volume">Exchange Volume</string>
+    <string name="exchange_volume">Exchange</string>
     <string name="current_entrustment">Current Entrustment</string>
     <string name="historical_entrustment">Historical Entrustment</string>
     <string name="direction">Direction</string>
@@ -231,10 +233,13 @@
     <string name="register_url">Registration Link</string>
     <string name="friend_list">Friend List</string>
     <string name="register_time">Registration Time</string>
+    <string name="register_time_one">Registration Time:</string>
     <string name="total_number">Number of team pre-excavators</string>
-    <string name="total_xq_number">Pre-excavation of large area（USD）</string>
-    <string name="total_number_sun">Total team pre-excavation(USD)</string>
-    <string name="total_xq_number_sun">Total Pre-excavation Amount of Residential Areas(USD)</string>
+    <string name="total_xq_number">Large area pre-excavation（USD）</string>
+    <string name="total_number_sun">Team pre-excavation(USD)</string>
+    <string name="transon_release">Transaction release</string>
+    <string name="total_num_sun">Team pre-excavation(USD)</string>
+    <string name="total_xq_number_sun">Small area pre-excavation(USD)</string>
     <!--在线客服-->
     <string name="send">Send</string>
     <!--弹窗文本-->
@@ -436,6 +441,7 @@
     <string name="underway">under way</string>
     <string name="confirm_close">Are you sure you want to turn off smart mode?</string>
     <string name="digit2">4-digit</string>
+    <string name="rank_trading_weig">Hierarchical transaction weighting</string>
     <string name="digit1">1-digit</string>
     <string name="digit0">0-digit</string>
     <string name="advice_title">Title</string>
@@ -514,4 +520,25 @@
     <string name="update_yes">Whether to upgrade to</string>
     <string name="update_version">versions</string>
     <string name="upgrade">Upgrade</string>
+
+    <string name="the_address">Choose the address of withdrawal</string>
+    <string name="please_address">Choose the address of withdrawal</string>
+    <string name="please_Label">Please select the address label</string>
+    <string name="remarks_information">Remarks Information</string>
+    <string name="number_ofw_ithdrawals">Number of withdrawals</string>
+    <string name="extract_all">Extract all</string>
+    <string name="of_money_withdrawn">The amount of money withdrawn is less than 100</string>
+    <string name="please_enter_notes">Please enter notes</string>
+    <string name="please_enter">Please enter notes</string>
+    <string name="please_verification_code">Please enter the verification code.</string>
+    <string name="added_withdrawal_address">Added withdrawal address</string>
+    <string name="remarks">remarks</string>
+    <string name="newphone">New cell phone number</string>
+    <string name="original_cell_phone_number">Verify the original cell phone number</string>
+    <string name="overdue_landing">Overdue landing</string>
+    <string name="not_bound_to_mobile">The account is not bound to a mobile phone number</string>
+    <string name="not_bind_the_recommender_ID">The account does not bind the recommender ID</string>
+    <string name="Label_allin">Address Label:</string>
+    <string name="dizhi_allin">Withdrawal Address:</string>
+    <string name="beizhu_allin">Remarks Information:</string>
 </resources>

@@ -13,7 +13,7 @@
         android:background="@color/default_white_bg"
         app:ivLeftPic="@mipmap/icon_page_return"
         app:titleTextColor="@color/common_black"
-        app:tvTitleText="@string/import_the_wallet" />
+        app:tvTitleText="@string/reset_information" />
 
     <LinearLayout
         android:layout_margin="@dimen/dp_20"

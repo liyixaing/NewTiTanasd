@@ -17,6 +17,8 @@ import com.lxh.baselibray.mvp.MvpActivity;
 import com.lxh.baselibray.util.SizeUtils;
 import com.lxh.baselibray.util.ToastUtils;
 
+import java.util.StringTokenizer;
+
 import butterknife.BindView;
 import butterknife.OnClick;
 import lanjing.com.titan.R;
@@ -81,7 +83,7 @@ public class TiTanWithdrawMoney extends MvpActivity<getTransferContact.getTransf
             TvRemarks.setText(response.body().getData().getToMemo());
 
         } else if (response.body().getCode() == -10) {
-            ToastUtils.showShortToast(context, "账号已在另一设备登陆");
+            ToastUtils.showShortToast(context, getResources().getString(R.string.not_login));
         } else {
             ToastUtils.showShortToast(context, response.body().getMsg());
         }
@@ -137,9 +139,9 @@ public class TiTanWithdrawMoney extends MvpActivity<getTransferContact.getTransf
             case R.id.confirm_btn:
 
                 if (TvAddress.getText().toString().equals("")) {
-                    ToastUtils.showShortToast(context, "请选择提币地址");
+                    ToastUtils.showShortToast(context, getResources().getString(R.string.please_address));
                 } else if (EtTibusun.getText().toString().equals("")) {
-                    ToastUtils.showShortToast(context, "请输入提币数量");
+                    ToastUtils.showShortToast(context, getResources().getString(R.string.pls_three));
                 } else {
                     showPwdBuyDialog();
                 }
@@ -184,19 +186,18 @@ public class TiTanWithdrawMoney extends MvpActivity<getTransferContact.getTransf
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 String string = s + "";
 
-                    if (EtTibusun.getText().toString().equals("")) {
-                        //还没有输入数据不做处理
-                    } else {
-                        Double asdasd = Double.valueOf(string);
-                        if (asdasd > asd) {
+                if (EtTibusun.getText().toString().equals("")) {
+                    //还没有输入数据不做处理
+                } else {
+                    Double asdasd = Double.valueOf(string);
+                    if (asdasd > asd) {
 //                            Selection.setSelection(
-                            EtTibusun.setText(MoneyUtil.priceFormat(taitanSum));
-                            Selection.setSelection(EtTibusun.getText(), EtTibusun.length());
-                        } else {
-                            //不做处理Selection.setSelection(
-                        }
+                        EtTibusun.setText(MoneyUtil.priceFormat(taitanSum));
+                        Selection.setSelection(EtTibusun.getText(), EtTibusun.length());
+                    } else {
+                        //不做处理Selection.setSelection(
                     }
-
+                }
 
 
             }
@@ -210,13 +211,19 @@ public class TiTanWithdrawMoney extends MvpActivity<getTransferContact.getTransf
 
     //提取全部判断
     public void initjudge() {
-        double qweas = asd -3;
-        String ing = qweas+"";
-        if (asd - 3 > 100) {
-            EtTibusun.setText(MoneyUtil.priceFormat(ing));
+        double qweas = asd - 3;
+        String str= asd+"";
+        String split =".";
+        StringTokenizer token = new StringTokenizer(str, split);
+        str=token.nextToken();
+        Double fdgsdf = Double.valueOf(str);
+        double dsajfghadsk = fdgsdf -3;
+        String ing = qweas + "";
+        if (fdgsdf - 3 > 100) {
+            EtTibusun.setText(MoneyUtil.priceFormat(dsajfghadsk+""));
             Selection.setSelection(EtTibusun.getText(), EtTibusun.length());
         } else {
-            ToastUtils.showShortToast(context, "可提币数量小于100");
+            ToastUtils.showShortToast(context, getResources().getString(R.string.of_money_withdrawn));
 
         }
     }

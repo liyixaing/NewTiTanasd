@@ -21,9 +21,11 @@
     <string name="finish_validation">完成验证</string>
     <string name="create_wallet">创建钱包</string>
     <string name="import_wallet">导入钱包？</string>
+    <string name="input_wallet">忘记密码？</string>
     <!--注册-->
     <string name="creation">创建钱包</string>
     <string name="nick_name">昵称</string>
+    <string name="nick_name_one">昵称:</string>
     <string name="confirm_login_pwd">确认登录密码</string>
     <string name="deal_pwd">交易密码</string>
     <string name="confirm_deal_pwd">确认交易密码</string>
@@ -91,7 +93,7 @@
     <string name="top_up_address">充币地址</string>
     <string name="copy">复制</string>
     <string name="over_copy">已复制</string>
-    <string name="werm_tip">温馨提示：请务必填写并仔细核对地址标签，这是您账户的唯一标识否则资产将不可找回。</string>
+    <string name="werm_tip">温馨提示：请务必仔细核对地址标签，这是您账户的唯一标识否则资产将不可找回。</string>
     <string name="wallet_management">钱包管理</string>
 
     <string name="all">全部</string>
@@ -221,8 +223,10 @@
     <string name="trade_get">交易获得</string>
     <string name="direct_push_trade_gains">直推交易获得</string>
     <string name="rank_trading_weight">等级交易获得</string>
+    <string name="rank_trading_weig">等级交易加权</string>
     <string name="rank_trading_weight2">等级交易获得</string>
     <string name="peer_acquisition">同级交易获得</string>
+    <string name="transon_release">交易释放</string>
     <string name="delete">删除</string>
 
     <!--我的邀请-->
@@ -234,9 +238,11 @@
     <string name="register_url">注册链接</string>
     <string name="friend_list">好友列表</string>
     <string name="register_time">注册时间</string>
+    <string name="register_time_one">注册时间:</string>
     <string name="total_number">团队预挖人数</string>
-    <string name="total_xq_number">大区预挖（USD）</string>
+    <string name="total_xq_number">大区预挖总额（USD）</string>
     <string name="total_number_sun">团队预挖总额(USD)</string>
+    <string name="total_num_sun">团队预挖总额(USD)</string>
     <string name="total_xq_number_sun">小区预挖总额(USD)</string>
     <!--在线客服-->
     <string name="send">发送</string>
@@ -519,5 +525,28 @@
     <string name="update_yes">是否升级到</string>
     <string name="update_version">版本</string>
     <string name="upgrade">升级</string>
+
+    <string name="the_address">选择提币地址</string>
+    <string name="please_address">请选择提币地址</string>
+    <string name="please_Label">请选择地址标签</string>
+    <string name="remarks_information">备注信息</string>
+    <string name="number_ofw_ithdrawals">提币数量</string>
+    <string name="extract_all">提币数量</string>
+    <string name="of_money_withdrawn">可提币数量小于100</string>
+    <string name="please_enter_notes">请输入备注消息</string>
+    <string name="please_enter">请输入备注</string>
+    <string name="please_verification_code">请输入验证码</string>
+    <string name="added_withdrawal_address">添加提币地址</string>
+    <string name="remarks">备注</string>
+    <string name="newphone">新手机号码</string>
+    <string name="original_cell_phone_number">验证原手机号码</string>
+    <string name="overdue_landing">登陆信息已过期请重新登陆</string>
+    <string name="not_bound_to_mobile">登陆信息已过期请重新登陆</string>
+    <string name="not_bind_the_recommender_ID">该账号未绑定推荐人id</string>
+    <string name="dizhi_allin">提币地址:</string>
+    <string name="Label_allin">地址标签:</string>
+    <string name="beizhu_allin">备注信息:</string>
+
+
 </resources>
 

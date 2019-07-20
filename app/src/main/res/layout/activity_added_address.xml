@@ -13,7 +13,7 @@
         android:background="@color/default_white_bg"
         app:ivLeftPic="@mipmap/icon_page_return"
         app:titleTextColor="@color/common_black"
-        app:tvTitleText="添加提币地址" />
+        app:tvTitleText="@string/added_withdrawal_address" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -28,7 +28,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="提币地址"
+            android:text="@string/address"
             android:textColor="@color/common_black" />
 
         <EditText
@@ -60,7 +60,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="地址标签"
+            android:text="@string/address_label"
             android:textColor="@color/common_black" />
 
         <EditText
@@ -70,7 +70,7 @@
             android:layout_marginTop="@dimen/dp_5"
             android:background="@drawable/shape_gray_bg"
             android:gravity="center_vertical"
-            android:hint="请输入地址标签"
+            android:hint="@string/please_ed_wallet_id"
             android:inputType="phone"
             android:digits="0123456789"
             android:maxLines="1"
@@ -93,7 +93,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="备注"
+            android:text="@string/remarks"
             android:textColor="@color/common_black" />
 
         <EditText
@@ -103,7 +103,7 @@
             android:layout_marginTop="@dimen/dp_5"
             android:background="@drawable/shape_gray_bg"
             android:gravity="center_vertical"
-            android:hint="请输入备注"
+            android:hint="@string/please_enter"
             android:maxLines="1"
             android:inputType="text"
             android:textColor="@color/common_black"
@@ -126,7 +126,7 @@
             android:id="@+id/tv_home"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="手机号\u3000 13110295113"
+            android:text="@string/phone"
             android:textColor="@color/common_black" />
 
         <LinearLayout
@@ -140,7 +140,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginTop="@dimen/dp_5"
                 android:gravity="center"
-                android:text="验证码"
+                android:text="@string/verification_code"
                 android:textColor="@color/common_black" />
 
             <LinearLayout
@@ -157,7 +157,7 @@
                     android:layout_weight="1"
                     android:background="@drawable/shape_gray_bg"
                     android:gravity="center_vertical"
-                    android:hint="请输入验证码"
+                    android:hint="@string/please_verification_code"
                     android:inputType="phone"
                     android:maxLines="1"
                     android:textColor="@color/common_black"
@@ -172,7 +172,7 @@
                     android:background="@drawable/btn_radius_blue"
                     android:foreground="@drawable/bg_white"
                     android:gravity="center"
-                    android:text="获取验证码"
+                    android:text="@string/get_code"
                     android:textColor="@color/white"
                     android:textSize="@dimen/sp_11" />
             </LinearLayout>
@@ -189,7 +189,7 @@
         android:background="@drawable/btn_radius_blue"
         android:foreground="@drawable/bg_white"
         android:gravity="center"
-        android:text="确定"
+        android:text="@string/confirm_dialog"
         android:textColor="@color/white"
         android:textSize="@dimen/sp_20" />
 </LinearLayout>

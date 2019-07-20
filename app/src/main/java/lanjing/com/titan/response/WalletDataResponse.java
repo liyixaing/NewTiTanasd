@@ -22,6 +22,15 @@ public class WalletDataResponse {
     private int code;
     private DataBean data;
     private String sum;
+    private int wait_view_feedback_count;
+
+    public int getWait_view_feedback_count() {
+        return wait_view_feedback_count;
+    }
+
+    public void setWait_view_feedback_count(int wait_view_feedback_count) {
+        this.wait_view_feedback_count = wait_view_feedback_count;
+    }
 
     public String getMsg() {
         return msg;

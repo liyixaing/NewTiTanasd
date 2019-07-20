@@ -100,7 +100,7 @@ public class ActivitySelectAddress extends MvpActivity<SelectAddressContact.Sele
 
                                     @Override
                                     public void onFailed() {
-                                        ToastUtils.showShortToast(context, "请求超时请稍后再试");
+                                        ToastUtils.showShortToast(context, getResources().getString(R.string.network_error));
                                     }
                                 });
                                 pwdDialog.dismiss();

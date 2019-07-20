@@ -1,13 +1,18 @@
 package lanjing.com.titan.util;
 
+import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
+
+import butterknife.BindView;
 
 /**
  * Created by chenxi on 2019/4/17.
  */
 
 public class MoneyUtil {
+
     //截取小数点后四位小数
     public static String formatFour(String number){
         if (number.equals("0.0000") || number.equals("0") || number.equals("0.0") || number.equals("0.00") || number.equals("0.000")) {
@@ -50,12 +55,12 @@ public class MoneyUtil {
     //String  转 double 保留两位小数  显示%号   再转String
     public static String priceFormatBaiToString(String number) {
         if (number.equals("0.0000") || number.equals("0") || number.equals("0.0") || number.equals("0.00") || number.equals("0.000")) {
-            String numbers = "0.00";
+            String numbers = "0000000000.00";
             return numbers;
         } else {
             double b =Double.valueOf(number);
             NumberFormat nt = NumberFormat.getPercentInstance();//获取格式化对象
-            nt.setMinimumFractionDigits(0);//设置百分数精确度2即保留两位小数
+            nt.setMinimumFractionDigits(2);//设置百分数精确度2即保留两位小数
             String numbers = nt.format(b);
             return numbers;
         }

@@ -75,6 +75,7 @@ public class AssetTITANActivity extends MvpActivity<WalletDetailContact.WalletDe
     String type;//0，手续费 1，交易释放 2，充币 3，提币 4，买入 5，卖出 6，系统 7，其他 （不填写为全部）
 
     String suntaitan;
+
     @Override
     public void initData(Bundle savedInstanceState) {
         walletId = getIntent().getStringExtra("walletId");
@@ -92,6 +93,7 @@ public class AssetTITANActivity extends MvpActivity<WalletDetailContact.WalletDe
                 if (mList.get(position).getType().equals("32") || mList.get(position).getType().equals("33")) {
                     Intent intent = new Intent(context, AssetTitanDetailActivity.class);
                     intent.putExtra("id", mList.get(position).getId());
+                    Log.e("xiaoqiang", mList.get(position).getId());
                     intent.putExtra("name", mList.get(position).getType());
                     startActivity(intent);
                 }
@@ -163,52 +165,52 @@ public class AssetTITANActivity extends MvpActivity<WalletDetailContact.WalletDe
                 .setWidthAndHeight(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT)//设置弹窗宽高
                 .setOnClickListener(R.id.nine, v -> {//同级交易获得
                     type = "7";
-                    tvTitanScreen.setText("同级交易获得");
+                    tvTitanScreen.setText(getResources().getString(R.string.peer_acquisition));
                     mPresent.walletDetail(context, walletId, type, String.valueOf(page), String.valueOf(pageSize));
                     screenDialog.dismiss();
                 }).setOnClickListener(R.id.all, v -> {//查询所有
                     type = "";
-                    tvTitanScreen.setText("全部");
+                    tvTitanScreen.setText(getResources().getString(R.string.all));
                     mPresent.walletDetail(context, walletId, type, String.valueOf(page), String.valueOf(pageSize));
                     screenDialog.dismiss();
                 }).setOnClickListener(R.id.tv_buy, v -> {//买入查询
                     type = "34";
-                    tvTitanScreen.setText("买入");
+                    tvTitanScreen.setText(getResources().getString(R.string.buy));
                     mPresent.walletDetail(context, walletId, type, String.valueOf(page), String.valueOf(pageSize));
                     screenDialog.dismiss();
                 }).setOnClickListener(R.id.tv_sell, v -> {//卖出查询
                     type = "35";
-                    tvTitanScreen.setText("卖出");
+                    tvTitanScreen.setText(getResources().getString(R.string.sell));
                     mPresent.walletDetail(context, walletId, type, String.valueOf(page), String.valueOf(pageSize));
                     screenDialog.dismiss();
                 }).setOnClickListener(R.id.tv_service_fee, v -> {//手续费查询
                     type = "30";
-                    tvTitanScreen.setText("手续费");
+                    tvTitanScreen.setText(getResources().getString(R.string.service_fee));
                     mPresent.walletDetail(context, walletId, type, String.valueOf(page), String.valueOf(pageSize));
                     screenDialog.dismiss();
                 }).setOnClickListener(R.id.tv_unfrozen, v -> {//交易释放查询
                     type = "1";
-                    tvTitanScreen.setText("交易获得");
+                    tvTitanScreen.setText(getResources().getString(R.string.trade_get));
                     mPresent.walletDetail(context, walletId, type, String.valueOf(page), String.valueOf(pageSize));
                     screenDialog.dismiss();
                 }).setOnClickListener(R.id.tv_top_up, v -> {//充币查询
                     type = "2";
-                    tvTitanScreen.setText("充币");
+                    tvTitanScreen.setText(getResources().getString(R.string.top_up_c));
                     mPresent.walletDetail(context, walletId, type, String.valueOf(page), String.valueOf(pageSize));
                     screenDialog.dismiss();
                 }).setOnClickListener(R.id.tv_withdraw, v -> {//提币查询
                     type = "3";
-                    tvTitanScreen.setText("提币");
+                    tvTitanScreen.setText(getResources().getString(R.string.withdraw_c));
                     mPresent.walletDetail(context, walletId, type, String.valueOf(page), String.valueOf(pageSize));
                     screenDialog.dismiss();
                 }).setOnClickListener(R.id.tv_seven, v -> {//直推交易获得
                     type = "5";
-                    tvTitanScreen.setText("直推交易获得");
+                    tvTitanScreen.setText(getResources().getString(R.string.direct_push_trade_gains));
                     mPresent.walletDetail(context, walletId, type, String.valueOf(page), String.valueOf(pageSize));
                     screenDialog.dismiss();
                 }).setOnClickListener(R.id.tv_eight, v -> {//等级交易加权
                     type = "6";
-                    tvTitanScreen.setText("等级交易获得");
+                    tvTitanScreen.setText(getResources().getString(R.string.rank_trading_weight));
                     mPresent.walletDetail(context, walletId, type, String.valueOf(page), String.valueOf(pageSize));
                     screenDialog.dismiss();
                 });
@@ -267,9 +269,9 @@ public class AssetTITANActivity extends MvpActivity<WalletDetailContact.WalletDe
                 rv.setVisibility(View.GONE);
             }
 
-        } else if (response.body().getCode() == -10){
+        } else if (response.body().getCode() == -10) {
             ToastUtils.showShortToast(context, getResources().getString(R.string.not_login));
-        }else {
+        } else {
             ToastUtils.showShortToast(context, response.body().getMsg());
 
         }
@@ -278,7 +280,7 @@ public class AssetTITANActivity extends MvpActivity<WalletDetailContact.WalletDe
 
     @Override
     public void getDataFailed() {
-                ToastUtils.showShortToast(context, getResources().getString(R.string.network_error));
+        ToastUtils.showShortToast(context, getResources().getString(R.string.network_error));
     }
 
 

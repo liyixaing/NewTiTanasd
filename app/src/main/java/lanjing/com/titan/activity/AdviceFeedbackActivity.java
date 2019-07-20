@@ -1,10 +1,12 @@
 package lanjing.com.titan.activity;
 
+import android.Manifest;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
 import android.text.InputFilter;
 import android.text.Spanned;
 import android.text.TextUtils;
@@ -15,12 +17,18 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.lxh.baselibray.dialog.AlertDialog;
 import com.lxh.baselibray.mvp.MvpActivity;
 import com.lxh.baselibray.util.BitmapUtils;
 import com.lxh.baselibray.util.CameraUtils;
 import com.lxh.baselibray.util.ObjectUtils;
+import com.lxh.baselibray.util.SizeUtils;
 import com.lxh.baselibray.util.ToastUtils;
+import com.tbruyelle.rxpermissions2.RxPermissions;
 
+import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -87,8 +95,11 @@ public class AdviceFeedbackActivity extends MvpActivity<FeedbackContact.Feedback
 
     String image1, image2, image3;
 
+    RxPermissions rxPermissions;
+
     @Override
     public void initData(Bundle savedInstanceState) {
+        rxPermissions = new RxPermissions(context);
         setEditTextInhibitInputSpeChat(editProblemTitle);
         setEditTextInhibitInputSpeChat(editProblem);
     }
@@ -101,6 +112,7 @@ public class AdviceFeedbackActivity extends MvpActivity<FeedbackContact.Feedback
 
     String douhao1 = "";
     String douhao2 = "";
+
     @OnClick({R.id.edit_problem_title, R.id.submit_advice_btn, R.id.img_feedback_list, R.id.iv_image_one,
             R.id.iv_image_tow, R.id.iv_image_three, R.id.iv_delt_one, R.id.iv_delt_tow, R.id.iv_delt_three})
     public void onViewClicked(View view) {
@@ -128,42 +140,75 @@ public class AdviceFeedbackActivity extends MvpActivity<FeedbackContact.Feedback
                 mPresent.addFeedback(context, content, title, image1 + douhao1 + image2 + douhao2 + image3);
                 break;
             case R.id.iv_image_one://选择第一张图片
-                type = 1;
-                Intent PhotoIntentone = CameraUtils.getSelectPhotoIntent();
-                startActivityForResult(PhotoIntentone, SELECT_PHOTO);
+
+
+                rxPermissions.request(Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                        .subscribe(granted -> {
+                            if (granted) {
+                                type = 1;
+                                Intent PhotoIntentone = CameraUtils.getSelectPhotoIntent();
+                                startActivityForResult(PhotoIntentone, SELECT_PHOTO);
+                            } else {
+                                ToastUtils.showLongToast(this, getResources().getString(R.string.permission_not_opened));
+                            }
+                        });
+
                 break;
             case R.id.iv_image_tow://选择的第二张图片
-                type = 2;
-                Intent PhotoIntentTow = CameraUtils.getSelectPhotoIntent();
-                startActivityForResult(PhotoIntentTow, SELECT_PHOTO);
+
+                rxPermissions.request(Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                        .subscribe(granted -> {
+                            if (granted) {
+                                type = 2;
+                                Intent PhotoIntentTow = CameraUtils.getSelectPhotoIntent();
+                                startActivityForResult(PhotoIntentTow, SELECT_PHOTO);
+                            } else {
+                                ToastUtils.showLongToast(this, getResources().getString(R.string.permission_not_opened));
+                            }
+                        });
+
                 break;
             case R.id.iv_image_three://选择第三张图片
-                type = 3;
-                Intent PhotoIntentThree = CameraUtils.getSelectPhotoIntent();
-                startActivityForResult(PhotoIntentThree, SELECT_PHOTO);
+
+                rxPermissions.request(Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                        .subscribe(granted -> {
+                            if (granted) {
+                                type = 3;
+                                Intent PhotoIntentThree = CameraUtils.getSelectPhotoIntent();
+                                startActivityForResult(PhotoIntentThree, SELECT_PHOTO);
+                            } else {
+                                ToastUtils.showLongToast(this, getResources().getString(R.string.permission_not_opened));
+                            }
+                        });
+
+
+
                 break;
             case R.id.iv_delt_one:
                 Imagetype = 1;
+                image1 = "";
 //                mPresent.cancelImage(context, image1);
-                IvFeedbackOne.setVisibility(View.GONE);//显示选择图片
-                RlDeltOne.setVisibility(View.GONE);//显示删除图片
-                IvImageOne.setVisibility(View.VISIBLE);//隐藏加号图标
+                IvFeedbackOne.setVisibility(View.GONE);
+                RlDeltOne.setVisibility(View.GONE);
+                IvImageOne.setVisibility(View.VISIBLE);
                 break;
             case R.id.iv_delt_tow:
                 Imagetype = 2;
                 douhao1 = "";
+                image2 = "";
 //                mPresent.cancelImage(context, image2);
-                IvFeedbackTow.setVisibility(View.GONE);//显示选择图片
-                RlDeltTow.setVisibility(View.GONE);//显示删除图片
-                IvImageTow.setVisibility(View.VISIBLE);//隐藏加号图标
+                IvFeedbackTow.setVisibility(View.GONE);
+                RlDeltTow.setVisibility(View.GONE);
+                IvImageTow.setVisibility(View.VISIBLE);
                 break;
             case R.id.iv_delt_three:
                 Imagetype = 3;
                 douhao2 = "";
+                image3 = "";
 //                mPresent.cancelImage(context, image3);
-                IvFeedbackThree.setVisibility(View.GONE);//显示选择图片
-                RlDeltThree.setVisibility(View.GONE);//显示删除图片
-                IvImageThree.setVisibility(View.VISIBLE);//隐藏加号图标
+                IvFeedbackThree.setVisibility(View.GONE);
+                RlDeltThree.setVisibility(View.GONE);
+                IvImageThree.setVisibility(View.VISIBLE);
                 break;
         }
     }

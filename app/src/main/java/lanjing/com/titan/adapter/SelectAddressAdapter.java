@@ -16,12 +16,11 @@ public class SelectAddressAdapter extends BaseQuickAdapter<AddressListResponse.D
     }
 
 
-
     @Override
     protected void convert(BaseViewHolder helper, AddressListResponse.Data item) {
-        String Tag = "标签：" + item.getToTag();//标签
-        String Account = "地址：" + item.getToAccount();//地址
-        String Memo = "备注：" + item.getToMemo();//备注
+        String Tag = item.getToTag();//标签  R.string.Label_allin
+        String Account = item.getToAccount();//地址  R.string.dizhi_allin
+        String Memo = item.getToMemo();//备注 R.string.beizhu_allin
         helper.setText(R.id.tv_address, Account)
                 .setText(R.id.tv_tag, Tag)
                 .setText(R.id.tv_memo, Memo);

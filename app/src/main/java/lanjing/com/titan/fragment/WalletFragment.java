@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.lxh.baselibray.dialog.AlertDialog;
@@ -27,6 +28,7 @@ import butterknife.OnClick;
 import lanjing.com.titan.R;
 import lanjing.com.titan.activity.AssetTITANActivity;
 import lanjing.com.titan.activity.AssetUSDActivity;
+import lanjing.com.titan.activity.FeedbackListActivity;
 import lanjing.com.titan.activity.NoticeActivity;
 import lanjing.com.titan.activity.TItancWaitGetActivity;
 import lanjing.com.titan.activity.UsdAirdroppedActivity;
@@ -81,6 +83,10 @@ public class WalletFragment extends MvpFragment<WalletDataContact.WalletDataPres
     LinearLayout usd2Lay;
     @BindView(R.id.manage_wallet)
     LinearLayout manageWallet;
+    @BindView(R.id.rl_home_notice)
+    RelativeLayout RlHomeNotice;//铃铛点击
+    @BindView(R.id.ll_red_dot)
+    LinearLayout LlRedDot;//小红点
 
     int page = 1;
     int pageSize = 10;
@@ -89,7 +95,6 @@ public class WalletFragment extends MvpFragment<WalletDataContact.WalletDataPres
     String usdId;//USD页面钱包id查询数据
     String titancId;//TITANC页面钱包id查询数据
     String usd2Id;//USD2页面钱包id查询数据
-
     String walletAddress;//钱包地址
     String labelAddress;//标签地址
     int versionCode;
@@ -157,7 +162,6 @@ public class WalletFragment extends MvpFragment<WalletDataContact.WalletDataPres
         versionCode = APKVersionCodeUtils.getVersionCode(context);
         checkboxPrivateMode.setChecked(false);
         mPresent.updateApp(context, 1, versionCode);
-
         mPresent.walletData(context);
         super.onResume();
     }
@@ -183,7 +187,8 @@ public class WalletFragment extends MvpFragment<WalletDataContact.WalletDataPres
     }
 
 
-    @OnClick({R.id.checkbox_private_mode, R.id.tv_wallet_name, R.id.manage_wallet, R.id.titan_lay, R.id.usd_lay, R.id.titanc_lay, R.id.usd2_lay})
+    @OnClick({R.id.checkbox_private_mode, R.id.tv_wallet_name, R.id.manage_wallet, R.id.titan_lay,
+            R.id.usd_lay, R.id.titanc_lay, R.id.usd2_lay, R.id.rl_home_notice})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.checkbox_private_mode:
@@ -231,6 +236,11 @@ public class WalletFragment extends MvpFragment<WalletDataContact.WalletDataPres
                 usd2.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS);
                 startActivity(usd2);
                 break;
+            case R.id.rl_home_notice:
+//                ToastUtils.showShortToast(context, "点击了铃铛");
+                Intent lingdang = new Intent(context, FeedbackListActivity.class);
+                startActivity(lingdang);
+                break;
         }
     }
 
@@ -266,7 +276,6 @@ public class WalletFragment extends MvpFragment<WalletDataContact.WalletDataPres
         if (response.body().getCode() == Constant.SUCCESS_CODE) {
             walletAddress = response.body().getAddress();
             labelAddress = response.body().getWelletId();
-
             tvAmount.setText("$" + MoneyUtil.formatFour(response.body().getSum()));
             tvWalletId.setText("ID：" + response.body().getWelletId());
             titanNum.setText(MoneyUtil.formatFour(response.body().getData().getTitannum()));//TITAN数量
@@ -279,13 +288,18 @@ public class WalletFragment extends MvpFragment<WalletDataContact.WalletDataPres
             usdId = response.body().getData().getUSD1coinId();
             titancId = response.body().getData().getTitanccoinId();
             usd2Id = response.body().getData().getUSD2coinId();
-
+            if (response.body().getWait_view_feedback_count() >= 1) {
+                LlRedDot.setVisibility(View.VISIBLE);
+            } else {
+                LlRedDot.setVisibility(View.GONE);
+            }
 
         } else if (response.body().getCode() == -10) {
             ToastUtils.showShortToast(context, getResources().getString(R.string.not_login));
         } else {
             ToastUtils.showShortToast(context, response.body().getMsg());
         }
+
     }
     //公告列表
 
