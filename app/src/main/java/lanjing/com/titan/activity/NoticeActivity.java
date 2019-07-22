@@ -59,10 +59,10 @@ public class NoticeActivity extends MvpActivity<InfoNoticeContact.InfoNoticePres
         stringExtra = getIntent().getStringExtra("type");
         if (stringExtra.equals("1")) {
             type = 1;
-            TvTitleView.setTitleText("公告");
+            TvTitleView.setTitleText(getResources().getString(R.string.notice));
         } else {
             type = 2;
-            TvTitleView.setTitleText("治理委员");
+            TvTitleView.setTitleText(getResources().getString(R.string.committee));
         }
         Locale locale = getResources().getConfiguration().locale;
         if (locale.equals(Locale.SIMPLIFIED_CHINESE)) {

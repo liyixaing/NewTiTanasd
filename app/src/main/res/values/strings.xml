@@ -531,7 +531,7 @@
     <string name="please_Label">请选择地址标签</string>
     <string name="remarks_information">备注信息</string>
     <string name="number_ofw_ithdrawals">提币数量</string>
-    <string name="extract_all">提币数量</string>
+    <string name="extract_all">提取全部</string>
     <string name="of_money_withdrawn">可提币数量小于100</string>
     <string name="please_enter_notes">请输入备注消息</string>
     <string name="please_enter">请输入备注</string>

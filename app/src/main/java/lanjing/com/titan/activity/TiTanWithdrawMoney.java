@@ -212,15 +212,15 @@ public class TiTanWithdrawMoney extends MvpActivity<getTransferContact.getTransf
     //提取全部判断
     public void initjudge() {
         double qweas = asd - 3;
-        String str= asd+"";
-        String split =".";
+        String str = asd + "";
+        String split = ".";
         StringTokenizer token = new StringTokenizer(str, split);
-        str=token.nextToken();
+        str = token.nextToken();
         Double fdgsdf = Double.valueOf(str);
-        double dsajfghadsk = fdgsdf -3;
+        double dsajfghadsk = fdgsdf - 3;
         String ing = qweas + "";
         if (fdgsdf - 3 > 100) {
-            EtTibusun.setText(MoneyUtil.priceFormat(dsajfghadsk+""));
+            EtTibusun.setText(MoneyUtil.priceFormat(dsajfghadsk + ""));
             Selection.setSelection(EtTibusun.getText(), EtTibusun.length());
         } else {
             ToastUtils.showShortToast(context, getResources().getString(R.string.of_money_withdrawn));
