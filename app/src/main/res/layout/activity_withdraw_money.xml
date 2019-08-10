@@ -289,6 +289,7 @@
                     android:layout_marginLeft="15dp"
                     android:layout_weight="1"
                     android:background="@null"
+                    android:inputType="phone"
                     android:digits="0123456789"
                     android:hint="@string/sum_100"
                     android:padding="10dp"

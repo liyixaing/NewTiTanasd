@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 import com.lxh.baselibray.mvp.MvpActivity;
 import com.lxh.baselibray.util.ToastUtils;
+import com.lxh.baselibray.view.TitleView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -31,12 +32,21 @@ public class TItanTopUpActivity extends MvpActivity<WalletChargeContact.WalletCh
     TextView tvCopyAddressLabel;
     @BindView(R.id.tv_address_label)
     TextView tvAddressLabel;
+    @BindView(R.id.title_lay)
+    TitleView title_lay;
 
     private ClipboardManager myClipboard;
     private ClipData myClip;
+    String coin;
 
     @Override
     public void initData(Bundle savedInstanceState) {
+        coin = getIntent().getStringExtra("coin");
+        if (coin.equals("1")) {
+            title_lay.setTitleText("TITAN 充币");
+        }else {
+            title_lay.setTitleText("BAR 充币");
+        }
         mPresent.walletCharge(context);
     }
 
@@ -52,12 +62,12 @@ public class TItanTopUpActivity extends MvpActivity<WalletChargeContact.WalletCh
 
     @Override
     public void getWalletChargeResult(Response<ChargeResponse> response) {
-        if(response.body().getCode() == Constant.SUCCESS_CODE){
+        if (response.body().getCode() == Constant.SUCCESS_CODE) {
             tvTopUpAddress.setText(response.body().getAddress());
             tvAddressLabel.setText(response.body().getKeys());
-        }else if (response.body().getCode() ==-10){
+        } else if (response.body().getCode() == -10) {
             ToastUtils.showShortToast(context, getResources().getString(R.string.not_login));
-        }else {
+        } else {
             ToastUtils.showShortToast(context, response.body().getMsg());
         }
     }

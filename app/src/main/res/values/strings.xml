@@ -99,7 +99,9 @@
     <string name="all">全部</string>
     <string name="unfrozen">交易激活</string>
     <string name="top_up_c">充币</string>
+    <string name="top_exchange">兑换</string>
     <string name="withdraw_c">提币</string>
+    <string name="exchange_bar">兑换BAR</string>
 
     <string name="cash_withdraw_balance">可提现余额</string>
     <string name="exchange_transfer">交易所转入(未交易)</string>
@@ -111,6 +113,7 @@
     <string name="pls_two">请输入地址标签（请务必填写并仔细核对ID）</string>
     <string name="pls_three">请输入提币数量</string>
     <string name="pls_four">提币手续费：</string>
+    <string name="pls_four1">提币手续费</string>
     <string name="sum_100">提币数量应大于100</string>
     <string name="confirm_to_mention_money">确认提币</string>
 
@@ -168,6 +171,7 @@
     <!--我的-->
     <string name="inviting_code">邀请码：</string>
     <string name="asset_balance">资产余额</string>
+    <string name="asset_balance1">可用余额</string>
     <string name="security_center">安全中心</string>
     <string name="billing_details">账单明细</string>
     <string name="my_invitation">我的邀请</string>
@@ -221,8 +225,8 @@
     <string name="service_fee">手续费</string>
     <string name="sell_release">卖出释放</string>
     <string name="trade_get">交易获得</string>
-    <string name="direct_push_trade_gains">直推交易获得</string>
-    <string name="rank_trading_weight">等级交易获得</string>
+    <string name="direct_push_trade_gains">矿层交易获得</string>
+    <string name="rank_trading_weight">矿池交易获得</string>
     <string name="rank_trading_weig">等级交易加权</string>
     <string name="rank_trading_weight2">等级交易获得</string>
     <string name="peer_acquisition">同级交易获得</string>
@@ -239,11 +243,11 @@
     <string name="friend_list">好友列表</string>
     <string name="register_time">注册时间</string>
     <string name="register_time_one">注册时间:</string>
-    <string name="total_number">团队预挖人数</string>
-    <string name="total_xq_number">大区预挖总额（USD）</string>
-    <string name="total_number_sun">团队预挖总额(USD)</string>
-    <string name="total_num_sun">团队预挖总额(USD)</string>
-    <string name="total_xq_number_sun">小区预挖总额(USD)</string>
+    <string name="total_number">团队有效人数</string>
+    <string name="total_xq_number">大矿区产量总额（USD）</string>
+    <string name="total_number_sun">矿池产量总额:</string>
+    <string name="total_num_sun">矿池产量总额(USD)</string>
+    <string name="total_xq_number_sun">小矿区产量总额(USD)</string>
     <!--在线客服-->
     <string name="send">发送</string>
 
@@ -435,7 +439,9 @@
     <string name="repeal">撤销</string>
 
     <string name="buy_usd_num">获得TITAN数量</string>
+    <string name="buy_usd_num_a">TITAN单价</string>
     <string name="sell_titan_num">获得USD数量</string>
+    <string name="sell_titan_num_a">BAR单价</string>
     <string name="buy_usd_num2">消耗TITAN数量</string>
     <string name="sell_titan_num2">消耗USD数量</string>
 
@@ -546,6 +552,24 @@
     <string name="dizhi_allin">提币地址:</string>
     <string name="Label_allin">地址标签:</string>
     <string name="beizhu_allin">备注信息:</string>
+    <string name="titan_num">TITAN余额:</string>
+    <string name="balance_num">兑换数量</string>
+    <string name="balance_all">全部兑换</string>
+    <string name="exchange_rate">汇率</string>
+    <string name="details">详情</string>
+    <string name="balance_log">说明:使用TITAN直接兑换BAR，不消耗手续费，确认后以EZB当下交易对价格计算</string>
+    <string name="Transaction_Price_titan">成交时TITAN单价</string>
+    <string name="getbar">获得BAR数量</string>
+    <string name="Transaction_Price_bar">成交时BAR单价</string>
+    <string name="get_titan_num">获得TITAN数量</string>
+    <string name="selling_charges">卖出手续费</string>
+    <string name="exchange_consumption">兑换消耗</string>
+    <string name="exchange_get">兑换获得</string>
+    <string name="of_mineral">矿层交易激活</string>
+    <string name="ore_pool">矿池交易激活</string>
+    <string name="ore_root">空投加权</string>
+    <string name="ore_lv">空投等级收益</string>
+    <string name="exchange_ratesad">参考汇率:</string>
 
 
 </resources>

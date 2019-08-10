@@ -78,16 +78,16 @@
                         android:maxEms="16"
                         android:maxLength="24"
                         android:maxLines="1"
-                        android:text="TITAN"
+                        android:text="@string/qty_cost"
                         android:textColor="@color/gray"
-                        android:textSize="9sp" />
+                        android:textSize="13sp" />
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:maxEms="16"
                         android:maxLength="24"
                         android:maxLines="1"
-                        android:text="@string/prices"
+                        android:text=""
                         android:textColor="@color/gray"
                         android:textSize="9sp" />
                 </LinearLayout>
@@ -103,7 +103,7 @@
                     android:maxLines="1"
                     android:text="@string/Qty"
                     android:textColor="@color/gray"
-                    android:textSize="9sp" />
+                    android:textSize="13sp" />
 
                 <TextView
 
@@ -116,7 +116,7 @@
                     android:maxLines="1"
                     android:text="@string/time"
                     android:textColor="@color/gray"
-                    android:textSize="9sp" />
+                    android:textSize="13sp" />
             </LinearLayout>
 
             <LinearLayout

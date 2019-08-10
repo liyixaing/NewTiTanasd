@@ -8,6 +8,7 @@ import lanjing.com.titan.request.BindContactsRequest;
 import lanjing.com.titan.request.BuyOrSellRequest;
 import lanjing.com.titan.request.CancelRequest;
 import lanjing.com.titan.request.CoinDealRequest;
+import lanjing.com.titan.request.ConvertRequest;
 import lanjing.com.titan.request.DealPwdRequest;
 import lanjing.com.titan.request.DeleteWalletRequest;
 import lanjing.com.titan.request.EntrustListRequest;
@@ -15,6 +16,7 @@ import lanjing.com.titan.request.FeedBackListRequest;
 import lanjing.com.titan.request.FeedBackRequest;
 import lanjing.com.titan.request.FormatRequest;
 import lanjing.com.titan.request.FriendListRequest;
+import lanjing.com.titan.request.HistoryListRequest;
 import lanjing.com.titan.request.ImportWalletRequest;
 import lanjing.com.titan.request.ImportWalletSetPwdRequest;
 import lanjing.com.titan.request.InfoNoticeRequest;
@@ -25,7 +27,9 @@ import lanjing.com.titan.request.ModifyHeadRequest;
 import lanjing.com.titan.request.ModifyNicknameRequest;
 import lanjing.com.titan.request.RecallRequest;
 import lanjing.com.titan.request.RegisterRequest;
+import lanjing.com.titan.request.RequestConvertConfig;
 import lanjing.com.titan.request.SaveWalletRequest;
+import lanjing.com.titan.request.SellOrderRequest;
 import lanjing.com.titan.request.SendCodeRequest;
 import lanjing.com.titan.request.SetHelpRequest;
 import lanjing.com.titan.request.SetNewPhoneRequest;
@@ -46,12 +50,15 @@ import lanjing.com.titan.response.AwardResponse;
 import lanjing.com.titan.response.BillDetailResponse;
 import lanjing.com.titan.response.ChargeResponse;
 import lanjing.com.titan.response.CoinDealResponse;
+import lanjing.com.titan.response.CoinLogListResponse;
+import lanjing.com.titan.response.ConvertConfigResponse;
 import lanjing.com.titan.response.DealPwdHelpResponse;
 import lanjing.com.titan.response.DealPwdKeyResponse;
 import lanjing.com.titan.response.EntrustListResponse;
 import lanjing.com.titan.response.ExemptionResponse;
 import lanjing.com.titan.response.FeedbackListResponse;
 import lanjing.com.titan.response.FriendListResponse;
+import lanjing.com.titan.response.HistoryListResponse;
 import lanjing.com.titan.response.ImportWalletResponse;
 import lanjing.com.titan.response.InfoNoticeResponse;
 import lanjing.com.titan.response.InformationResponse;
@@ -65,6 +72,7 @@ import lanjing.com.titan.response.PersonResponse;
 import lanjing.com.titan.response.RegisterResponse;
 import lanjing.com.titan.response.Responseuplode;
 import lanjing.com.titan.response.ResultDTO;
+import lanjing.com.titan.response.SellOrderDetailResponse;
 import lanjing.com.titan.response.SetHelpResponse;
 import lanjing.com.titan.response.SetNewPhoneResponse;
 import lanjing.com.titan.response.SetPhoneResponse;
@@ -238,10 +246,22 @@ public interface ApiService {
     Call<WalletDetailResponse> welletDetail(@Header("token") String token, @Body WalletDetailRequest data);
 
     /**
+     * 币种账单列表
+     */
+    @POST("/app/gethistorylist")
+    Call<HistoryListResponse> gethistorylist(@Header("token") String token, @Body HistoryListRequest data);
+
+    /**
      * 获取账单详情
      */
     @POST("/app/gethistorydetail")
     Call<BillDetailResponse> billDetail(@Header("token") String token, @Body BillDetailRequest data);
+
+    /**
+     * 查看卖出详情  币币交易
+     */
+    @POST("/app/getSellOrderDetail")
+    Call<SellOrderDetailResponse> getSellOrderDetail(@Header("token") String token, @Body SellOrderRequest data);
 
     /**
      * 获取充币
@@ -339,6 +359,12 @@ public interface ApiService {
     Call<WithdrawalResponse> withdrawal(@Header("token") String token, @Body WithdrawalRequest data);
 
     /**
+     * 账单明细
+     */
+    @POST("/app/getCoinLogList")
+    Call<CoinLogListResponse> CoinLogList(@Header("token") String token, @Body WithdrawalRequest data);
+
+    /**
      * 账单明细  币币交易
      */
     @POST("/app/bbjy")
@@ -399,6 +425,18 @@ public interface ApiService {
      */
     @POST("/app/deleteTransferAddress")
     Call<ResultDTO> deleteTransferAddress(@Header("token") String token, @Body deleterRequest data);
+
+    /**
+     * 拉取兑换配置
+     */
+    @POST("/app/getConvertConfig")
+    Call<ConvertConfigResponse> ConvertConfig(@Header("token") String token, @Body RequestConvertConfig data);
+
+    /**
+     * 兑换
+     */
+    @POST("/app/convert")
+    Call<ResultDTO> convertCoin(@Header("token") String token, @Body ConvertRequest data);
 
     /**
      * 版本更新

@@ -11,13 +11,14 @@ public class WithdrawRequest {
      * address : fafagagsgfnfklvdsfsmg
      * num : 1.23
      */
-
+    private String coin;
     private String welletId;//标签
     private String address;//地址
     private String num;//数量
 
 
-    public WithdrawRequest(String address,String welletId, String num) {
+    public WithdrawRequest(String coin, String address, String welletId, String num) {
+        this.coin = coin;
         this.address = address;
         this.welletId = welletId;
         this.num = num;

@@ -26,6 +26,18 @@ public class MoneyUtil {
         }
     }
 
+    public static String formatFouras(String number){
+        if (number.equals("0.0000") || number.equals("0") || number.equals("0.0") || number.equals("0.00") || number.equals("0.000")) {
+            String numbers = "0";
+            return numbers;
+        } else {
+            double b =Double.valueOf(number);
+            DecimalFormat df = new DecimalFormat("0");//保留两位小数
+            String numbers = df.format(b);
+            return numbers;
+        }
+    }
+
     public static String priceFormat(String number) {
         if (number.equals("0.0000") || number.equals("0") || number.equals("0.0") || number.equals("0.00") || number.equals("0.000")) {
             String numbers = "0.00";

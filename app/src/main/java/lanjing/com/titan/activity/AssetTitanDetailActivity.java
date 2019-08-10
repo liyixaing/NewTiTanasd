@@ -5,6 +5,7 @@ import android.content.ClipboardManager;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -19,6 +20,7 @@ import lanjing.com.titan.R;
 import lanjing.com.titan.constant.Constant;
 import lanjing.com.titan.contact.BillDetailContact;
 import lanjing.com.titan.response.BillDetailResponse;
+import lanjing.com.titan.response.SellOrderDetailResponse;
 import lanjing.com.titan.util.MoneyUtil;
 import retrofit2.Response;
 
@@ -67,55 +69,10 @@ public class AssetTitanDetailActivity extends MvpActivity<BillDetailContact.Bill
     public void initData(Bundle savedInstanceState) {
         String id = getIntent().getStringExtra("id");
         type = getIntent().getStringExtra("name");
+        tvTitanType.setText(type);
         mPresent.billDetail(context, id);
-        initTypeData();
+
         //TextViewCopy();
-    }
-
-    public void initTypeData() {
-        if (type.equals("1")) {
-
-            TvTitleNameId.setTitleText(getResources().getString(R.string.transon_release));
-            tvTitanType.setText(getResources().getString(R.string.transon_release));
-        } else if (type.equals("32")) {
-            TvTitleNameId.setTitleText("TITAN"+getResources().getString(R.string.titan_top_up));
-            tvTitanType.setText(getResources().getString(R.string.top_up_c));
-            ll_transactionID.setVisibility(View.VISIBLE);
-            v_xian_three.setVisibility(View.VISIBLE);
-            VXianFour.setVisibility(View.VISIBLE);
-            llOurceaddress.setVisibility(View.VISIBLE);
-        } else if (type.equals("33")) {
-            TvTitleNameId.setTitleText("TITAN "+getResources().getString(R.string.titan_withdraw));
-            tvTitanType.setText(getResources().getString(R.string.withdraw_c));
-            ll_transactionID.setVisibility(View.VISIBLE);
-            v_xian_three.setVisibility(View.VISIBLE);
-            v_division_one.setVisibility(View.VISIBLE);
-            v_division_tow.setVisibility(View.VISIBLE);
-            ll_address.setVisibility(View.VISIBLE);
-            Ticket_label.setVisibility(View.VISIBLE);
-        } else if (type.equals("5")) {
-            TvTitleNameId.setTitleText("TITAN "+getResources().getString(R.string.direct_push_trade_gains));
-            tvTitanType.setText(getResources().getString(R.string.direct_push_trade_gains));
-        } else if (type.equals("6")) {
-            TvTitleNameId.setTitleText("TITAN "+getResources().getString(R.string.rank_trading_weig));
-            tvTitanType.setText(getResources().getString(R.string.rank_trading_weig));
-        } else if (type.equals("7")) {
-            TvTitleNameId.setTitleText("TITAN "+getResources().getString(R.string.peer_acquisition));
-            tvTitanType.setText(getResources().getString(R.string.peer_acquisition));
-        } else if (type.equals("5")) {
-            TvTitleNameId.setTitleText("TITAN " +getResources().getString(R.string.direct_push_trade_gains));
-            tvTitanType.setText(getResources().getString(R.string.direct_push_trade_gains));
-        } else if (type.equals("34")) {
-            TvTitleNameId.setTitleText("TITAN "+getResources().getString(R.string.buy));
-            tvTitanType.setText(getResources().getString(R.string.buy));
-        } else if (type.equals("35")) {
-            TvTitleNameId.setTitleText("TITAN "+getResources().getString(R.string.sell));
-            tvTitanType.setText(getResources().getString(R.string.sell));
-        } else if (type.equals("30")) {
-            TvTitleNameId.setTitleText("TITAN "+getResources().getString(R.string.service_fee));
-            tvTitanType.setText(getResources().getString(R.string.service_fee));
-        }
-
     }
 
 
@@ -146,56 +103,33 @@ public class AssetTitanDetailActivity extends MvpActivity<BillDetailContact.Bill
     @Override
     public void getBillDeatilResult(Response<BillDetailResponse> response) {
         if (response.body().getCode() == Constant.SUCCESS_CODE) {
-            String up = "+";
-            String down = "-";
-            String upAndDown = MoneyUtil.formatFour(response.body().getHistory().getNum());
-            boolean over = upAndDown.contains(up);
-            if (over == true) {
-                tvTitanNum.setText("+" + upAndDown + "TITAN");
-            } else {
-                tvTitanNum.setText(upAndDown + "TITAN");
+
+            String upAndDown = MoneyUtil.formatFour(response.body().getData().getNum());
+            if (response.body().getData().getType().equals("1")) {
+                TvTitleNameId.setTitleText(response.body().getData().getCoinDesc() + response.body().getData().getChangeDesc());
+                tvTitanType.setText(getResources().getString(R.string.top_up_c));
+                ll_transactionID.setVisibility(View.VISIBLE);
+                v_xian_three.setVisibility(View.VISIBLE);
+                tvTitanNum.setText("+" + upAndDown + response.body().getData().getCoinDesc());
+                VXianFour.setVisibility(View.VISIBLE);
+                llOurceaddress.setVisibility(View.VISIBLE);
+            } else if (response.body().getData().getType().equals("2")) {
+                TvTitleNameId.setTitleText(response.body().getData().getCoinDesc() + response.body().getData().getChangeDesc());
+                ll_transactionID.setVisibility(View.VISIBLE);
+                v_xian_three.setVisibility(View.VISIBLE);
+                v_division_one.setVisibility(View.VISIBLE);
+                v_division_tow.setVisibility(View.VISIBLE);
+                tvTitanNum.setText("-" + upAndDown + response.body().getData().getCoinDesc());
+                ll_address.setVisibility(View.VISIBLE);
+                Ticket_label.setVisibility(View.VISIBLE);
             }
-            boolean over2 = upAndDown.contains(down);
-            if (over2 == true) {
-                tvTitanNum.setText(upAndDown + "TITAN");
-            } else {
-                tvTitanNum.setText("+" + upAndDown + "TITAN");
+
+            if (response.body().getData().getCoin().equals("1")){
+
             }
 
-//            tvTitanNum.setText(response.body().getHistory().getNum()+"TITAN");
-//            String types =  response.body().getHistory().getType();
-
-            int type = Integer.parseInt(response.body().getHistory().getType());
-//            switch (type) {
-//                case 0:
-//                    tvTitanType.setText(R.string.service_fee);
-//                    break;
-//                case 1:
-//                    tvTitanType.setText(R.string.unfrozen);
-//                    break;
-//                case 2:
-//                    tvTitanType.setText(R.string.top_up_c);
-//                    break;
-//                case 3:
-//                    tvTitanType.setText(R.string.withdraw_c);//提币
-//                    break;
-//                case 4:
-//                    tvTitanType.setText(R.string.buy);
-//                    break;
-//                case 5:
-//                    tvTitanType.setText(R.string.sell);
-//                    break;
-//                case 6:
-//                    tvTitanType.setText(R.string.system);
-//                    break;
-//                case 7:
-//                    tvTitanType.setText(R.string.others);
-//                    break;
-//            }
-
-//            tvTitanType.setText(response.body().getHistory().getType());
             //订单详情状态
-            int state = Integer.parseInt(response.body().getHistory().getState());
+            int state = Integer.parseInt(response.body().getData().getState());
             switch (state) {
                 case 0:
                     tvTitanState.setText(R.string.underway);
@@ -205,16 +139,21 @@ public class AssetTitanDetailActivity extends MvpActivity<BillDetailContact.Bill
                     break;
             }
 
-            tvTitanTime.setText(response.body().getHistory().getTime());
-            tvTitanBlockchainId.setText(response.body().getHistory().getKeys());
-            TvTitanLabel.setText(response.body().getHistory().getToTag());
-            TvTitanAddress.setText(response.body().getHistory().getToAddress());
-            TvOurceAddress.setText(response.body().getHistory().getFromAddress());
+            tvTitanTime.setText(response.body().getData().getTime());
+            tvTitanBlockchainId.setText(response.body().getData().getKeys());
+            TvTitanLabel.setText(response.body().getData().getToTag());
+            TvTitanAddress.setText(response.body().getData().getToAddress());
+            TvOurceAddress.setText(response.body().getData().getFromAddress());
         } else if (response.body().getCode() == -10) {
             ToastUtils.showShortToast(context, getResources().getString(R.string.not_login));
-        }else {
+        } else {
             ToastUtils.showShortToast(context, response.body().getMsg());
         }
+    }
+
+    @Override
+    public void getSellOrderDetail(Response<SellOrderDetailResponse> response) {
+
     }
 
     @Override

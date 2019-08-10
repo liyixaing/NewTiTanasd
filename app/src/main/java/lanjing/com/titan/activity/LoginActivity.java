@@ -193,7 +193,7 @@ public class LoginActivity extends MvpActivity<LoginContact.LoginPresent> implem
     @Override
     public void getPersonResult(Response<PersonResponse> response) {
         if (response.body().getCode() == Constant.SUCCESS_CODE) {
-            if (ObjectUtils.isEmpty(response.body().getData().getPhonenum())) {
+            if (ObjectUtils.isEmpty(response.body().getData().getPhone())) {
                 Intent intent = new Intent(context, RegisterBindingPhoneActivity.class);
                 intent.putExtra("code", inviteCode);
                 startActivity(intent);

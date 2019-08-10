@@ -22,6 +22,7 @@ import lanjing.com.titan.adapter.CoinTitanAdapter;
 import lanjing.com.titan.adapter.CoinUsd2Adapter;
 import lanjing.com.titan.constant.Constant;
 import lanjing.com.titan.contact.WalletDetailContact;
+import lanjing.com.titan.response.HistoryListResponse;
 import lanjing.com.titan.response.WalletDetailResponse;
 import lanjing.com.titan.util.MoneyUtil;
 import lanjing.com.titan.util.RecyclerViewAnimation;
@@ -43,29 +44,32 @@ public class UsdAirdroppedActivity extends MvpActivity<WalletDetailContact.Walle
     String walletId;//钱包ID
 
     CoinUsd2Adapter mAdapter;
-    List<WalletDetailResponse.History2Bean> mList;
+    List<HistoryListResponse.mData> mList;
+    String coin;
 
     int page = 1;
     int pageSize = 20;
     String type;//0，手续费 1，交易释放 2，充币 3，提币 4，买入 5，卖出 6，系统 7，其他 （不填写为全部）
+
     @Override
     public void initData(Bundle savedInstanceState) {
         walletId = getIntent().getStringExtra("walletId");
-
+        coin = getIntent().getStringExtra("coin");
+        mPresent.historylist(context, coin, type, String.valueOf(page), String.valueOf(pageSize));
         mList = new ArrayList<>();
         mAdapter = new CoinUsd2Adapter(R.layout.recy_item_usd_wait_raward_list, mList);
         LinearLayoutManager manager = new LinearLayoutManager(context);
         rv.setLayoutManager(manager);
         rv.setAdapter(mAdapter);
-        mPresent.walletDetail(context, walletId, "", String.valueOf(page), String.valueOf(pageSize));
+        mPresent.walletDetail(context, coin);
         refresh.setOnRefreshListener(refreshLayout -> {
             page = 1;
-            mPresent.walletDetail(context, walletId, "", String.valueOf(page), String.valueOf(pageSize));
+            mPresent.historylist(context, coin, type, String.valueOf(page), String.valueOf(pageSize));
 
         });
         refresh.setOnLoadMoreListener(refreshLayout -> {
             page++;
-            mPresent.walletDetail(context, walletId, "", String.valueOf(page), String.valueOf(pageSize));
+            mPresent.historylist(context, coin, type, String.valueOf(page), String.valueOf(pageSize));
         });
     }
 
@@ -79,39 +83,47 @@ public class UsdAirdroppedActivity extends MvpActivity<WalletDetailContact.Walle
         return new WalletDetailContact.WalletDetailPresent();
     }
 
-    List<WalletDetailResponse.History2Bean> data;
     @Override
     public void getWalletDeatilResult(Response<WalletDetailResponse> response) {
         refresh.finishRefresh();
         refresh.finishLoadMore();
         if (response.body().getCode() == Constant.SUCCESS_CODE) {
-            tvAirdropped.setText(MoneyUtil.priceFormatDoubleFour(response.body().getData().getSum())+"USD");//USD资产余额
+            tvAirdropped.setText(MoneyUtil.priceFormatDoubleFour(response.body().getData().getWellet().getCoinnum()) + "USD");//USD资产余额
+        } else if (response.body().getCode() == -10) {
+            ToastUtils.showShortToast(context, getResources().getString(R.string.not_login));
+        } else {
+            ToastUtils.showShortToast(context, response.body().getMsg());
+        }
+    }
+
+    List<HistoryListResponse.mData> data;
+
+    @Override
+    public void gethistorylist(Response<HistoryListResponse> response) {
+        if (response.body().getCode() == Constant.SUCCESS_CODE) {
             if (page == 1) {
                 mList.clear();
             }
-            data = response.body().getHistory2();
-            if (!ObjectUtils.isEmpty(data)) {
-                rvNormalShow.setVisibility(View.GONE);
-                mList.clear();
-                mList.addAll(data);
-                mAdapter.notifyDataSetChanged();
-                RecyclerViewAnimation.runLayoutAnimation(rv);//动画显示
-                if (data != null && data.size() >= pageSize) {
-                    refresh.setEnableLoadMore(true);
-                } else {
-                    refresh.setEnableLoadMore(false);
-                }
-                rv.setVisibility(View.VISIBLE);
-            } else if (page != 1) {
-                refresh.setEnableLoadMore(false);
+
+        }
+        data = response.body().getData();
+        if (!ObjectUtils.isEmpty(data)) {
+            rvNormalShow.setVisibility(View.GONE);
+            mList.clear();
+            mList.addAll(data);
+//                mAdapter.notifyDataSetChanged();
+            RecyclerViewAnimation.runLayoutAnimation(rv);//动画显示
+            if (data != null && data.size() >= pageSize) {
+                refresh.setEnableLoadMore(true);
             } else {
-                rvNormalShow.setVisibility(View.VISIBLE);
-                rv.setVisibility(View.GONE);
+                refresh.setEnableLoadMore(false);
             }
-        } else if (response.body().getCode() ==-10){
-            ToastUtils.showShortToast(context, getResources().getString(R.string.not_login));
-        }else {
-            ToastUtils.showShortToast(context, response.body().getMsg());
+            rv.setVisibility(View.VISIBLE);
+        } else if (page != 1) {
+            refresh.setEnableLoadMore(false);
+        } else {
+            rvNormalShow.setVisibility(View.VISIBLE);
+            rv.setVisibility(View.GONE);
         }
     }
 

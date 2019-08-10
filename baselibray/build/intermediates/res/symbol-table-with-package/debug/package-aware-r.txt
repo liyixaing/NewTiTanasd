@@ -19,6 +19,8 @@ anim dialog_from_bottom_anim_in
 anim dialog_from_bottom_anim_out
 anim dialog_from_right_anim_in
 anim dialog_from_right_anim_out
+anim dialog_from_top_anim_in
+anim dialog_from_top_anim_out
 anim dialog_scale_anim_in
 anim dialog_scale_anim_out
 anim no_anim
@@ -1306,6 +1308,8 @@ string app_name
 string appbar_scrolling_view_behavior
 string bottom_sheet_behavior
 string character_counter_pattern
+string get_s
+string getcode
 string in_the_loading
 string language_auto
 string language_cn
@@ -1736,6 +1740,7 @@ style _mtransition_activityOpenNoAnimation
 style _mtransition_activityOpenNoAnimation_androido
 style dialog
 style dialog_from_bottom_anim
+style dialog_from_top_anim
 style dialog_scale_anim
 style loading_dialog
 style zxing_CaptureTheme

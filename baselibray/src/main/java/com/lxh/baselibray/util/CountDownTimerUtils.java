@@ -7,6 +7,8 @@ import android.text.SpannableString;
 import android.text.style.ForegroundColorSpan;
 import android.widget.TextView;
 
+import com.lxh.baselibray.R;
+
 public class CountDownTimerUtils extends CountDownTimer {
     private TextView mTextView;
 
@@ -28,7 +30,7 @@ public class CountDownTimerUtils extends CountDownTimer {
     @Override
     public void onTick(long millisUntilFinished) {
         mTextView.setClickable(false); //设置不可点击
-        mTextView.setText(millisUntilFinished / 1000 + "秒");  //设置倒计时时间
+        mTextView.setText(millisUntilFinished / 1000 + "S");  //设置倒计时时间
     //    mTextView.setBackgroundResource(R.drawable.bg_identify_code_press); //设置按钮为灰色，这时是不能点击的
 
         /**
@@ -55,7 +57,7 @@ public class CountDownTimerUtils extends CountDownTimer {
 
     @Override
     public void onFinish() {
-        mTextView.setText("获取验证码");
+        mTextView.setText(R.string.getcode);
         mTextView.setClickable(true);//重新获得点击
  //       mTextView.setBackgroundResource(R.drawable.bg_identify_code_normal);  //还原背景色
     }

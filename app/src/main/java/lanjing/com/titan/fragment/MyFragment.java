@@ -148,7 +148,6 @@ public class MyFragment extends MvpFragment<PersonContact.PersonPresent> impleme
         Glide.with(context).load(portrait).apply(mRequestOptions).into(ivUserHeadPic);
 
         mPresent.person(context);
-
 //        new Thread() {
 //            public void run() {
 //                Message msg = hand.obtainMessage();
@@ -326,8 +325,8 @@ public class MyFragment extends MvpFragment<PersonContact.PersonPresent> impleme
 
             SPUtils.putString(Constant.NICK_NAME, response.body().getData().getNickname(), context);
 
-            titanAmount.setText(MoneyUtil.priceFormatDoubleFour(response.body().getTitan()));
-            titanAmountToUsd.setText(MoneyUtil.priceFormatDoubleFour(response.body().getUsd()));
+            titanAmount.setText(MoneyUtil.priceFormatDoubleFour(response.body().getData().getTitanNum()));
+            titanAmountToUsd.setText(MoneyUtil.priceFormatDoubleFour(response.body().getData().getWorthUsd()));
 
         } else {
             ToastUtils.showShortToast(context, response.body().getMsg());

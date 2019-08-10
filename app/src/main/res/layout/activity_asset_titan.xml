@@ -58,6 +58,7 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/tv_cash"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="left|center"
@@ -76,40 +77,32 @@
                         android:layout_marginTop="@dimen/dp_10"
                         android:maxLength="24"
                         android:maxLines="1"
-
                         android:textColor="@color/white"
                         android:textSize="13sp" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:padding="5dp">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:maxEms="16"
-                        android:maxLength="24"
-                        android:maxLines="1"
-                        android:text="@string/exchange_transfer"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/sp_11" />
+                    <LinearLayout
+                        android:id="@+id/ll_exchange"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@color/white">
 
+                        <TextView
+                            android:id="@+id/tv_exchange"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:text="@string/exchange_bar"
+                            android:textColor="#467FF9" />
+                    </LinearLayout>
 
-                    <TextView
-                        android:id="@+id/tv_titan_not_trading"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="@dimen/dp_10"
-                        android:maxLength="24"
-                        android:maxLines="1"
-
-                        android:textColor="@color/white"
-                        android:textSize="13sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -120,7 +113,7 @@
                     android:orientation="vertical">
 
                     <TextView
-
+                        android:id="@+id/tv_zhican"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="right"
@@ -153,8 +146,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/dp_15"
-            android:layout_marginRight="@dimen/dp_15"
             android:layout_marginTop="@dimen/dp_10"
+            android:layout_marginRight="@dimen/dp_15"
             android:orientation="horizontal">
 
             <TextView

@@ -20,6 +20,7 @@ import lanjing.com.titan.adapter.AwardAdapter;
 import lanjing.com.titan.constant.Constant;
 import lanjing.com.titan.contact.AwardContact;
 import lanjing.com.titan.response.AwardResponse;
+import lanjing.com.titan.response.CoinLogListResponse;
 import retrofit2.Response;
 
 import static lanjing.com.titan.util.RecyclerViewAnimation.runLayoutAnimation;
@@ -40,7 +41,8 @@ public class RewardDropFragment extends MvpFragment<AwardContact.AwardPresent> i
     int page = 1;
     int size = 10;
     AwardAdapter mAdapter;
-    List<AwardResponse.DataBean> mList;
+    List<CoinLogListResponse.Data> mList;
+    String cion;
 
 
     @Override
@@ -55,16 +57,16 @@ public class RewardDropFragment extends MvpFragment<AwardContact.AwardPresent> i
         LinearLayoutManager manager = new LinearLayoutManager(context);
         rv.setLayoutManager(manager);
         rv.setAdapter(mAdapter);
-        mPresent.award(context, String.valueOf(page), String.valueOf(size));
+        mPresent.CoinLogList(context, cion, "3", String.valueOf(page), String.valueOf(size));
 
         refresh.setOnRefreshListener(refreshLayout -> {
             page = 1;
-            mPresent.award(context, String.valueOf(page), String.valueOf(size));
+            mPresent.CoinLogList(context, cion, "3", String.valueOf(page), String.valueOf(size));
 
         });
         refresh.setOnLoadMoreListener(refreshLayout -> {
             page++;
-            mPresent.award(context, String.valueOf(page), String.valueOf(size));
+            mPresent.CoinLogList(context, cion, "3", String.valueOf(page), String.valueOf(size));
         });
     }
 
@@ -77,9 +79,21 @@ public class RewardDropFragment extends MvpFragment<AwardContact.AwardPresent> i
     protected AwardContact.AwardPresent createPresent() {
         return new AwardContact.AwardPresent();
     }
-    List<AwardResponse.DataBean> data;
+
+    List<CoinLogListResponse.Data> data;
+
     @Override
     public void getAwardResult(Response<AwardResponse> response) {
+
+        if (response.body().getCode() == Constant.SUCCESS_CODE) {
+
+        } else {
+            ToastUtils.showShortToast(context, response.body().getMsg());
+        }
+    }
+
+    @Override
+    public void getCoinLogList(Response<CoinLogListResponse> response) {
         refresh.finishRefresh();
         refresh.finishLoadMore();
         if (response.body().getCode() == Constant.SUCCESS_CODE) {
@@ -104,8 +118,6 @@ public class RewardDropFragment extends MvpFragment<AwardContact.AwardPresent> i
                 rvNormalShow.setVisibility(View.VISIBLE);
                 rv.setVisibility(View.GONE);
             }
-        } else if (response.body().getCode() == -10) {
-            ToastUtils.showShortToast(context, getResources().getString(R.string.not_login));
         } else {
             ToastUtils.showShortToast(context, response.body().getMsg());
         }

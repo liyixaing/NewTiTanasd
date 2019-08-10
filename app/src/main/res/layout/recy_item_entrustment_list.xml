@@ -88,7 +88,7 @@
                         android:maxEms="16"
                         android:maxLength="24"
                         android:maxLines="1"
-                        android:text="TITAN"
+                        android:text=""
                         android:textColor="@color/gray"
                         android:textSize="9sp" />
                     <TextView
@@ -97,9 +97,9 @@
                         android:maxEms="16"
                         android:maxLength="24"
                         android:maxLines="1"
-                        android:text="@string/prices"
+                        android:text="@string/qty_cost"
                         android:textColor="@color/gray"
-                        android:textSize="9sp" />
+                        android:textSize="13sp" />
                 </LinearLayout>
 
                 <TextView
@@ -109,11 +109,12 @@
                     android:layout_gravity="left|center"
                     android:layout_weight="1"
                     android:maxEms="16"
+                    android:gravity="center"
                     android:maxLength="24"
                     android:maxLines="1"
                     android:text="@string/Qty"
                     android:textColor="@color/gray"
-                    android:textSize="9sp" />
+                    android:textSize="13sp" />
 
                 <TextView
                     android:layout_width="0dp"
@@ -125,7 +126,7 @@
                     android:maxLines="1"
                     android:text="@string/time"
                     android:textColor="@color/gray"
-                    android:textSize="9sp" />
+                    android:textSize="13sp" />
             </LinearLayout>
 
             <LinearLayout
@@ -152,7 +153,7 @@
                     android:layout_weight="1"
                     android:maxLength="24"
                     android:maxLines="1"
-
+                    android:gravity="center"
                     android:textColor="#182146"
                     android:textSize="15sp" />
 

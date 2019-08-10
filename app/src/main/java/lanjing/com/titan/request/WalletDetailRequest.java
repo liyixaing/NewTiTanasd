@@ -7,23 +7,9 @@ package lanjing.com.titan.request;
 public class WalletDetailRequest {
 
 
-    /**
-     * welletfid : 90
-     * type : 0
-     * page : 1
-     * size : 5
-     */
 
-    private String welletfid;
-    private String type;
-    private String page;
-    private String size;
-
-
-    public WalletDetailRequest(String welletfid, String type, String page, String size) {
-        this.welletfid = welletfid;
-        this.type = type;
-        this.page = page;
-        this.size = size;
+    private String coin;
+    public WalletDetailRequest(String coin) {
+        this.coin = coin;
     }
 }

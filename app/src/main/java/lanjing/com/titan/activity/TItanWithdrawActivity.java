@@ -60,7 +60,7 @@ public class TItanWithdrawActivity extends MvpActivity<WalletWithdrawContact.Wal
     public void initData(Bundle savedInstanceState) {
         balance = getIntent().getStringExtra("balance");
         dasd = getIntent().getStringExtra("taitanSum");
-        TvBalance.setText("可用余额: "+dasd);
+        TvBalance.setText("可用余额: " + dasd);
         initEdit();
     }
 
@@ -143,9 +143,9 @@ public class TItanWithdrawActivity extends MvpActivity<WalletWithdrawContact.Wal
         if (response.body().getCode() == Constant.SUCCESS_CODE) {
             ToastUtils.showShortToast(context, response.body().getMsg());
             finish();
-        } else if (response.body().getCode()==-10){
+        } else if (response.body().getCode() == -10) {
             ToastUtils.showShortToast(context, getResources().getString(R.string.not_login));
-        }else {
+        } else {
             ToastUtils.showShortToast(context, response.body().getMsg());
         }
     }
@@ -157,11 +157,11 @@ public class TItanWithdrawActivity extends MvpActivity<WalletWithdrawContact.Wal
             String walletId = edAddressId.getText().toString().trim();
             String num = edNum.getText().toString().trim();
             showLoadingDialog();
-            mPresent.walletWithdraw(context, address, walletId, num);
-        } else if (response.body().getCode()==-10){
+            mPresent.walletWithdraw(context, "1", address, walletId, num);
+        } else if (response.body().getCode() == -10) {
             ToastUtils.showShortToast(context, getResources().getString(R.string.not_login));
 
-        }else {
+        } else {
             ToastUtils.showShortToast(context, response.body().getMsg());
         }
     }
@@ -172,7 +172,7 @@ public class TItanWithdrawActivity extends MvpActivity<WalletWithdrawContact.Wal
     }
 
     @OnClick({R.id.ed_tibi_address, R.id.confirm_btn})
-        public void onViewClicked(View view) {
+    public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.ed_tibi_address://光标显示
                 edTibiAddress.setCursorVisible(true);

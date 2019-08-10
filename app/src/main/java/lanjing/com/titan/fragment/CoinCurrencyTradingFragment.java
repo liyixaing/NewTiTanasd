@@ -1,11 +1,14 @@
 package lanjing.com.titan.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
 
+import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.lxh.baselibray.mvp.MvpFragment;
 import com.lxh.baselibray.util.ObjectUtils;
 import com.lxh.baselibray.util.ToastUtils;
@@ -17,6 +20,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.Unbinder;
 import lanjing.com.titan.R;
+import lanjing.com.titan.activity.DetailsOfBillsActivity;
 import lanjing.com.titan.adapter.CoinDealAdapter;
 import lanjing.com.titan.constant.Constant;
 import lanjing.com.titan.contact.CoinDealContact;
@@ -55,6 +59,20 @@ public class CoinCurrencyTradingFragment extends MvpFragment<CoinDealContact.Coi
         LinearLayoutManager manager = new LinearLayoutManager(context);
         rv.setLayoutManager(manager);
         rv.setAdapter(mAdapter);
+        mAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+                //type 1买入 2卖出
+                if (mList.get(position).getType().equals("2")) {
+                    Intent intent = new Intent(context, DetailsOfBillsActivity.class);
+                    intent.putExtra("id", mList.get(position).getId());
+                    startActivity(intent);
+                } else {
+                    //type类型为1不做处理
+                }
+
+            }
+        });
         mPresent.coinDeal(context, String.valueOf(page), String.valueOf(size));
 
         refresh.setOnRefreshListener(refreshLayout -> {
@@ -77,7 +95,9 @@ public class CoinCurrencyTradingFragment extends MvpFragment<CoinDealContact.Coi
     protected CoinDealContact.CoinDealPresent createPresent() {
         return new CoinDealContact.CoinDealPresent();
     }
+
     List<CoinDealResponse.DataBean> data;
+
     @Override
     public void getCoinDealResult(Response<CoinDealResponse> response) {
         refresh.finishRefresh();
@@ -104,9 +124,9 @@ public class CoinCurrencyTradingFragment extends MvpFragment<CoinDealContact.Coi
                 rvNormalShow.setVisibility(View.VISIBLE);
                 rv.setVisibility(View.GONE);
             }
-        } else if (response.body().getCode() ==-10){
+        } else if (response.body().getCode() == -10) {
             ToastUtils.showShortToast(context, getResources().getString(R.string.not_login));
-        }else {
+        } else {
             ToastUtils.showShortToast(context, response.body().getMsg());
         }
     }

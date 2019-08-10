@@ -13,6 +13,7 @@ import lanjing.com.titan.R;
 import lanjing.com.titan.constant.Constant;
 import lanjing.com.titan.contact.BillDetailContact;
 import lanjing.com.titan.response.BillDetailResponse;
+import lanjing.com.titan.response.SellOrderDetailResponse;
 import lanjing.com.titan.util.MoneyUtil;
 import retrofit2.Response;
 
@@ -66,7 +67,7 @@ public class AssetUsdDetailActivity extends MvpActivity<BillDetailContact.BillDe
         if (response.body().getCode() == Constant.SUCCESS_CODE) {
             String up = "+";
             String down = "-";
-            String upAndDown = MoneyUtil.formatFour(response.body().getHistory().getNum());
+            String upAndDown = MoneyUtil.formatFour(response.body().getData().getNum());
             boolean over = upAndDown.contains(up);
             if (over == true) {
                 tvUsdNum.setText("+" + upAndDown + "USD");
@@ -81,7 +82,7 @@ public class AssetUsdDetailActivity extends MvpActivity<BillDetailContact.BillDe
             }
 
 
-            int type = Integer.parseInt(response.body().getHistory().getType());
+            int type = Integer.parseInt(response.body().getData().getType());
             switch (type) {
                 case 0:
                     tvUsdType.setText(R.string.service_fee);
@@ -109,7 +110,7 @@ public class AssetUsdDetailActivity extends MvpActivity<BillDetailContact.BillDe
                     break;
             }
             //状态
-            int state = Integer.parseInt(response.body().getHistory().getState());
+            int state = Integer.parseInt(response.body().getData().getState());
             switch (state) {
                 case 0:
                     tvUsdState.setText(R.string.underway);
@@ -119,12 +120,18 @@ public class AssetUsdDetailActivity extends MvpActivity<BillDetailContact.BillDe
                     break;
             }
 
-            tvUsdTime.setText(response.body().getHistory().getTime());
+            tvUsdTime.setText(response.body().getData().getTime());
         } else if (response.body().getCode() == -10) {
             ToastUtils.showShortToast(context, getResources().getString(R.string.not_login));
         } else {
             ToastUtils.showShortToast(context, response.body().getMsg());
         }
+    }
+
+    //币币交易卖出详情数据
+    @Override
+    public void getSellOrderDetail(Response<SellOrderDetailResponse> response) {
+
     }
 
     @Override

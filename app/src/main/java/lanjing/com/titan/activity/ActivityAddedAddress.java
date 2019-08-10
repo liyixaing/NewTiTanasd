@@ -79,7 +79,7 @@ public class ActivityAddedAddress extends MvpActivity<SaveOrUpdateContact.saveOr
                 return;
             case R.id.tv_getcode://获取验证码按钮
                 InitGetCode();
-                CountDownTimerUtils countDownTimerUtils = new CountDownTimerUtils(TvGetcode, 60000, 1000);
+                CountDownTimerUtils  countDownTimerUtils = new CountDownTimerUtils(TvGetcode, 60000, 1000);
                 countDownTimerUtils.start();
                 return;
         }

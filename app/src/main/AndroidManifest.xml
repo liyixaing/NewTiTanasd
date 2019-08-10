@@ -85,7 +85,13 @@
         <!--选择提币地址-->
         <activity android:name=".activity.ActivitySelectAddress" />
         <!--添加提币地址-->
-        <activity android:name=".activity.ActivityAddedAddress"/>
+        <activity android:name=".activity.ActivityAddedAddress" />
+        <!--兑换界面-->
+        <activity android:name=".activity.ExchangeActivity" />
+        <!--账单记录 兑换详情界面-->
+        <activity android:name=".activity.ExchangeDetailsActivity" />
+        <!--账单明细详情页-->
+        <activity android:name=".activity.DetailsOfBillsActivity"/>
     </application>
 
 </manifest>

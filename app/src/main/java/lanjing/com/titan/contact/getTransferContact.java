@@ -45,9 +45,9 @@ public class getTransferContact {
 
 
         //提币
-        public void walletWithdraw(final Context context, String address, String walletId, String num) {
+        public void walletWithdraw(final Context context, String coin, String address, String walletId, String num) {
             ApiService service = ServiceGenerator.createService(ApiService.class);
-            WithdrawRequest request = new WithdrawRequest(address, walletId, num);
+            WithdrawRequest request = new WithdrawRequest(coin, address, walletId, num);
             String token = SPUtils.getString(Constant.TOKEN, "", context);
             service.withdraw(token, request).enqueue(new NetCallBack<ResultDTO>() {
                 @Override

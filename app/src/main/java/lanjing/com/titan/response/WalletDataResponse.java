@@ -1,5 +1,7 @@
 package lanjing.com.titan.response;
 
+import java.util.List;
+
 /**
  * Created by chenxi on 2019/5/12.
  */
@@ -7,30 +9,9 @@ package lanjing.com.titan.response;
 public class WalletDataResponse {
 
 
-    /**
-     * msg : ok
-     * address : fafagagsgfnfklvdsfsmg
-     * WelletId : 99999928
-     * code : 200
-     * data : {"USD1coinId":"25","USD1num":"7.0","USD1price":"49.0","USD2coinId":"90","USD2num":"0.0","USD2price":"0.0","TitancoinId":"23","Titannum":"75.23","Titanprice":"135.41400000000002","TitanccoinId":"24","Titancnum":"1.23","Titancprice":"9.347999999999999"}
-     * sum : 193.762
-     */
-
     private String msg;
-    private String address;
-    private String WelletId;
     private int code;
     private DataBean data;
-    private String sum;
-    private int wait_view_feedback_count;
-
-    public int getWait_view_feedback_count() {
-        return wait_view_feedback_count;
-    }
-
-    public void setWait_view_feedback_count(int wait_view_feedback_count) {
-        this.wait_view_feedback_count = wait_view_feedback_count;
-    }
 
     public String getMsg() {
         return msg;
@@ -38,22 +19,6 @@ public class WalletDataResponse {
 
     public void setMsg(String msg) {
         this.msg = msg;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public String getWelletId() {
-        return WelletId;
-    }
-
-    public void setWelletId(String WelletId) {
-        this.WelletId = WelletId;
     }
 
     public int getCode() {
@@ -72,147 +37,103 @@ public class WalletDataResponse {
         this.data = data;
     }
 
-    public String getSum() {
-        return sum;
-    }
-
-    public void setSum(String sum) {
-        this.sum = sum;
-    }
-
     public static class DataBean {
-        /**
-         * USD1coinId : 25
-         * USD1num : 7.0
-         * USD1price : 49.0
-         * USD2coinId : 90
-         * USD2num : 0.0
-         * USD2price : 0.0
-         * TitancoinId : 23
-         * Titannum : 75.23
-         * Titanprice : 135.41400000000002
-         * TitanccoinId : 24
-         * Titancnum : 1.23
-         * Titancprice : 9.347999999999999
-         */
-
-        private String USD1coinId;
-        private String USD1num;
-        private String USD1price;
-        private String USD2coinId;
-        private String USD2num;
-        private String USD2price;
-        private String TitancoinId;
-        private String Titannum;
-        private String Titanprice;
-        private String TitanccoinId;
-        private String Titancnum;
-        private String Titancprice;
-        private String TitanShiftnum;
 
 
-        public String getTitanShiftnum() {
-            return TitanShiftnum;
+        private String total_asset_usd;
+        private String user_tag;
+        public List<Wellets> wellets;
+        private String wait_view_feedback_count;
+        private String user_address;
+        private String total_asset_cny;
+
+        public String getTotal_asset_usd() {
+            return total_asset_usd;
         }
 
-        public void setTitanShiftnum(String titanShiftnum) {
-            TitanShiftnum = titanShiftnum;
+        public void setTotal_asset_usd(String total_asset_usd) {
+            this.total_asset_usd = total_asset_usd;
         }
 
-        public String getUSD1coinId() {
-            return USD1coinId;
+        public String getUser_tag() {
+            return user_tag;
         }
 
-        public void setUSD1coinId(String USD1coinId) {
-            this.USD1coinId = USD1coinId;
+        public void setUser_tag(String user_tag) {
+            this.user_tag = user_tag;
         }
 
-        public String getUSD1num() {
-            return USD1num;
+        public List<Wellets> getWellets() {
+            return wellets;
         }
 
-        public void setUSD1num(String USD1num) {
-            this.USD1num = USD1num;
+        public void setWellets(List<Wellets> wellets) {
+            this.wellets = wellets;
         }
 
-        public String getUSD1price() {
-            return USD1price;
+        public String getWait_view_feedback_count() {
+            return wait_view_feedback_count;
         }
 
-        public void setUSD1price(String USD1price) {
-            this.USD1price = USD1price;
+        public void setWait_view_feedback_count(String wait_view_feedback_count) {
+            this.wait_view_feedback_count = wait_view_feedback_count;
         }
 
-        public String getUSD2coinId() {
-            return USD2coinId;
+        public String getUser_address() {
+            return user_address;
         }
 
-        public void setUSD2coinId(String USD2coinId) {
-            this.USD2coinId = USD2coinId;
+        public void setUser_address(String user_address) {
+            this.user_address = user_address;
         }
 
-        public String getUSD2num() {
-            return USD2num;
+        public String getTotal_asset_cny() {
+            return total_asset_cny;
         }
 
-        public void setUSD2num(String USD2num) {
-            this.USD2num = USD2num;
+        public void setTotal_asset_cny(String total_asset_cny) {
+            this.total_asset_cny = total_asset_cny;
         }
 
-        public String getUSD2price() {
-            return USD2price;
+        public static class Wellets {
+            private String coin_cny_worth;
+            private String coin_usd_worth;
+            private String coin_num;
+            private String coin;
+
+            public String getCoin_cny_worth() {
+                return coin_cny_worth;
+            }
+
+            public void setCoin_cny_worth(String coin_cny_worth) {
+                this.coin_cny_worth = coin_cny_worth;
+            }
+
+            public String getCoin_usd_worth() {
+                return coin_usd_worth;
+            }
+
+            public void setCoin_usd_worth(String coin_usd_worth) {
+                this.coin_usd_worth = coin_usd_worth;
+            }
+
+            public String getCoin_num() {
+                return coin_num;
+            }
+
+            public void setCoin_num(String coin_num) {
+                this.coin_num = coin_num;
+            }
+
+            public String getCoin() {
+                return coin;
+            }
+
+            public void setCoin(String coin) {
+                this.coin = coin;
+            }
         }
 
-        public void setUSD2price(String USD2price) {
-            this.USD2price = USD2price;
-        }
 
-        public String getTitancoinId() {
-            return TitancoinId;
-        }
-
-        public void setTitancoinId(String TitancoinId) {
-            this.TitancoinId = TitancoinId;
-        }
-
-        public String getTitannum() {
-            return Titannum;
-        }
-
-        public void setTitannum(String Titannum) {
-            this.Titannum = Titannum;
-        }
-
-        public String getTitanprice() {
-            return Titanprice;
-        }
-
-        public void setTitanprice(String Titanprice) {
-            this.Titanprice = Titanprice;
-        }
-
-        public String getTitanccoinId() {
-            return TitanccoinId;
-        }
-
-        public void setTitanccoinId(String TitanccoinId) {
-            this.TitanccoinId = TitanccoinId;
-        }
-
-        public String getTitancnum() {
-            return Titancnum;
-        }
-
-        public void setTitancnum(String Titancnum) {
-            this.Titancnum = Titancnum;
-        }
-
-        public String getTitancprice() {
-            return Titancprice;
-        }
-
-        public void setTitancprice(String Titancprice) {
-            this.Titancprice = Titancprice;
-        }
     }
 }

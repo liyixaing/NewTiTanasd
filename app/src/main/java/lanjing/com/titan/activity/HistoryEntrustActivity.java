@@ -37,7 +37,6 @@ public class HistoryEntrustActivity extends MvpActivity<HistoryContact.HistoryPr
     RecyclerView rv;
     @BindView(R.id.refresh)
     SmartRefreshLayout refresh;
-
     HistoryEntrustAdapter mAdapter;
     List<EntrustListResponse.DataBean> mList;
     int page = 1;
@@ -46,11 +45,11 @@ public class HistoryEntrustActivity extends MvpActivity<HistoryContact.HistoryPr
     @Override
     public void initData(Bundle savedInstanceState) {
         mList = new ArrayList<>();
-        mAdapter = new HistoryEntrustAdapter(R.layout.recy_item_history_entrustment_list,mList);
+        mAdapter = new HistoryEntrustAdapter(R.layout.recy_item_history_entrustment_list, mList);
         LinearLayoutManager manager = new LinearLayoutManager(context);
         rv.setLayoutManager(manager);
         rv.setAdapter(mAdapter);
-        mPresent.historyList(context,String.valueOf(page),String.valueOf(size),"2");
+        mPresent.historyList(context, String.valueOf(page), String.valueOf(size), "2");
 
         refresh.setOnRefreshListener(refreshLayout -> {
             page = 1;
@@ -72,7 +71,9 @@ public class HistoryEntrustActivity extends MvpActivity<HistoryContact.HistoryPr
     protected HistoryContact.HistoryPresent createPresent() {
         return new HistoryContact.HistoryPresent();
     }
+
     List<EntrustListResponse.DataBean> data;
+
     @Override
     public void getEntrustListResult(Response<EntrustListResponse> response) {
         refresh.finishRefresh();
@@ -95,13 +96,13 @@ public class HistoryEntrustActivity extends MvpActivity<HistoryContact.HistoryPr
                 rv.setVisibility(View.VISIBLE);
             } else if (page != 1) {
                 refresh.setEnableLoadMore(false);
-            }else {
+            } else {
                 rvNormalShow.setVisibility(View.VISIBLE);
                 rv.setVisibility(View.GONE);
             }
-        } else if (response.body().getCode() == -10){
+        } else if (response.body().getCode() == -10) {
             ToastUtils.showShortToast(context, getResources().getString(R.string.not_login));
-        }else {
+        } else {
             ToastUtils.showShortToast(context, response.body().getMsg());
         }
     }

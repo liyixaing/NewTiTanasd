@@ -11,12 +11,14 @@ import android.text.Selection;
 import android.text.Spannable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.TextView;
@@ -60,6 +62,7 @@ import lanjing.com.titan.response.SixTradeResponse;
 import lanjing.com.titan.response.WalletDataResponse;
 import lanjing.com.titan.util.MoneyUtil;
 import lanjing.com.titan.util.SoftKeyBoardListener;
+import lanjing.com.titan.util.ToastUitls2;
 import retrofit2.Response;
 
 import static lanjing.com.titan.util.RecyclerViewAnimation.runLayoutAnimation;
@@ -70,7 +73,6 @@ public class DealFragment extends MvpFragment<DealContact.DealPresent> implement
     @BindView(R.id.tv_service_charge)
     TextView tvServiceCharge;
     @BindView(R.id.buy_btn)
-
     RadioButton buyBtn;
     @BindView(R.id.sell_btn)
     RadioButton sellBtn;
@@ -78,10 +80,6 @@ public class DealFragment extends MvpFragment<DealContact.DealPresent> implement
     TextView tvPrice;
     @BindView(R.id.ed_number)
     EditText edNumber;
-    //    @BindView(R.id.indicator_seek_bar)
-//    SeekBarView indicatorSeekBar;
-//    @BindView(R.id.tv_indicator)
-//    TextView tvIndicator;
     @BindView(R.id.tv_coin_type)
     TextView tvCoinType;
     @BindView(R.id.tv_coin_type2)
@@ -129,6 +127,13 @@ public class DealFragment extends MvpFragment<DealContact.DealPresent> implement
     @BindView(R.id.refresh_two)
     SmartRefreshLayout refreshTwo;
     Unbinder unbinder;
+    @BindView(R.id.tv_jiaoyi)
+    TextView TvJiaoyi;
+    @BindView(R.id.ll_jiaoyuie)
+    LinearLayout LlJiaoyuie;
+
+    @BindView(R.id.ll_switch)
+    LinearLayout LlSwitch;//点击顶部切换币种
 
     private Boolean isInput = false;
     SellSixAdapter mAdapterSell;
@@ -159,14 +164,13 @@ public class DealFragment extends MvpFragment<DealContact.DealPresent> implement
     //    private Timer timer;
     String keyong;
     int typeDatae = 1;
+    String coin = "1";
 
 
     @Override
     public void initData(Bundle savedInstanceState) {
         SoftKeyBoardListener.setListener(context, onSoftKeyBoardChangeListener);
-
         getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
-
         edNumber.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(final TextView v, final int actionId, final KeyEvent event) {
@@ -180,8 +184,6 @@ public class DealFragment extends MvpFragment<DealContact.DealPresent> implement
 
 
         type = 0;
-
-//        tvIndicator.setText(0 + "%");
 
         //判断是否开启智能交易
         int isAuto = SPUtils.getInt(Constant.ISAUTO, 0, context);
@@ -282,12 +284,17 @@ public class DealFragment extends MvpFragment<DealContact.DealPresent> implement
         buyBtn.setChecked(true);
         btnSell.setVisibility(View.GONE);
         btnBuy.setVisibility(View.VISIBLE);
-        tvCoinType.setText("TITAN");
+        if (coin.equals("1")) {
+            tvCoinType.setText("TITAN");
+        } else if (coin.equals("5")) {
+            tvCoinType.setText("BAR");
+        }
+        LlJiaoyuie.setVisibility(View.VISIBLE);
+        tvCoinType2.setText("USD");
         //查询数据
         checkTwo();
         tvDealNum.setText("0");
         phone = SPUtils.getString(Constant.PHONE, "", context);
-
         if (ObjectUtils.isEmpty(phone)) {
             checkboxInter.setChecked(false);
         }
@@ -318,7 +325,9 @@ public class DealFragment extends MvpFragment<DealContact.DealPresent> implement
         return R.layout.fragment_deal;
     }
 
-    @OnClick({R.id.img_refresh, R.id.checkbox_inter, R.id.buy_btn, R.id.sell_btn, R.id.ed_number, R.id.rb_two, R.id.rb_one, R.id.rb_zero, R.id.btn_buy, R.id.btn_sell, R.id.tv_history_entrust})
+    @OnClick({R.id.img_refresh, R.id.checkbox_inter, R.id.buy_btn, R.id.sell_btn, R.id.ed_number,
+            R.id.rb_two, R.id.rb_one, R.id.rb_zero, R.id.btn_buy, R.id.btn_sell, R.id.tv_history_entrust,
+            R.id.ll_switch})
     public void onViewClicked(View view) {
         String number = edNumber.getText().toString().trim();
         switch (view.getId()) {
@@ -328,7 +337,7 @@ public class DealFragment extends MvpFragment<DealContact.DealPresent> implement
             case R.id.checkbox_inter://智能交易
                 if (checkboxInter.isChecked() == true) {
                     if (ObjectUtils.isEmpty(phone)) {
-                        showBindingPhoneDialog();
+//                        showBindingPhoneDialog();
                         return;
                     }
                     showInterTipDialog();
@@ -340,19 +349,17 @@ public class DealFragment extends MvpFragment<DealContact.DealPresent> implement
                 type = 0;
                 edNumber.setText("");
                 tvDealNum.setText("0");
-//                tvIndicator.setText(0 + "%");
-//                if (titanMax != 0) {
-//                    indicatorSeekBar.setEnabled(true);
-//                    indicatorSeekBar.setMax(titanMax);
-//                }else {
-//                    indicatorSeekBar.setEnabled(false);
-//                }
-//                indicatorSeekBar.setProgress(0);
                 mPresent.walletDataTitan(context);
+                LlJiaoyuie.setVisibility(View.VISIBLE);
                 tvNum.setText(titan);
                 btnBuy.setVisibility(View.VISIBLE);
                 btnSell.setVisibility(View.GONE);
-                tvCoinType.setText("TITAN");
+//                tvCoinType.setText("TITAN");
+                if (coin.equals("1")) {
+                    tvCoinType.setText("TITAN");
+                } else {
+                    tvCoinType.setText("BAR");
+                }
                 tvCoinType2.setText("USD");
 
                 break;
@@ -360,17 +367,10 @@ public class DealFragment extends MvpFragment<DealContact.DealPresent> implement
                 type = 1;
                 edNumber.setText("");
                 tvDealNum.setText("0");
-//                tvIndicator.setText(0 + "%");
-//                if (usdMax != 0) {
-//                    indicatorSeekBar.setEnabled(true);
-//                    indicatorSeekBar.setMax(usdMax);
-//                }else {
-//                    indicatorSeekBar.setEnabled(false);
-//                }
-//                indicatorSeekBar.setProgress(0);
                 tvNum.setText(usd);
                 mPresent.walletDataUsd(context);
                 btnBuy.setVisibility(View.GONE);
+                LlJiaoyuie.setVisibility(View.GONE);
                 btnSell.setVisibility(View.VISIBLE);
                 tvCoinType.setText("USD");
                 tvCoinType2.setText("TITAN");
@@ -392,7 +392,7 @@ public class DealFragment extends MvpFragment<DealContact.DealPresent> implement
 //                checkTwo();//点击买入时执行
                 typeDatae = 1;
                 if (ObjectUtils.isEmpty(phone)) {
-                    showBindingPhoneDialog();
+//                    showBindingPhoneDialog();
                     return;
                 }
 
@@ -416,7 +416,7 @@ public class DealFragment extends MvpFragment<DealContact.DealPresent> implement
 //                checkTwo();//点击卖出时执行
                 typeDatae = 2;
                 if (ObjectUtils.isEmpty(phone)) {
-                    showBindingPhoneDialog();
+//                    showBindingPhoneDialog();
                     return;
                 }
                 if (ObjectUtils.isEmpty(number)) {
@@ -441,9 +441,71 @@ public class DealFragment extends MvpFragment<DealContact.DealPresent> implement
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS);
                 startActivity(intent);
                 break;
+            case R.id.ll_switch:
+                showChoiceDialog();//选择币种
+                break;
 
         }
     }
+
+    //弹出选择币种列表
+    AlertDialog Choicecurrency = null;
+
+    private void showChoiceDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity())
+                .addDefaultAnimation()//默认弹窗动画
+                .setCancelable(true)
+                .fromTop(true)
+                .setContentView(R.layout.dialog_choice)//载入布局文件
+                .setWidthAndHeight(SizeUtils.dp2px(context, 400), ViewGroup.LayoutParams.WRAP_CONTENT)//设置弹窗宽高
+                .setOnClickListener(R.id.ll_titan, v -> {//  titan
+                    coin = "1";
+                    mPresent.walletDataTitan(context);
+                    mPresent.entrustList(context, String.valueOf(page), String.valueOf(size), "1");
+                    refreshTwo.autoRefresh();//自动刷新
+                    TvJiaoyi.setText("TITAN/USD");
+                    if (type == 0) {
+                        tvCoinType.setText("TITAN");
+                    } else if (type == 1) {
+                        tvCoinType.setText("USD");
+                    }
+                    ImageView iv_bar = Choicecurrency.getView(R.id.iv_bar);
+                    ImageView iv_titan = Choicecurrency.getView(R.id.iv_titan);
+                    TextView tv_titan = Choicecurrency.getView(R.id.tv_titan);
+                    TextView tv_bar = Choicecurrency.getView(R.id.tv_bar);
+                    tv_titan.setTextColor(0xff000000);//设置字体颜色
+                    tv_bar.setTextColor(0xff878787);
+                    iv_bar.setVisibility(View.GONE);
+                    iv_titan.setVisibility(View.VISIBLE);
+                    Choicecurrency.dismiss();//关闭弹窗
+
+                }).setOnClickListener(R.id.ll_bar, v -> {//  bar
+                    coin = "5";
+                    mPresent.walletDataTitan(context);
+                    mPresent.entrustList(context, String.valueOf(page), String.valueOf(size), "1");
+                    refreshTwo.autoRefresh();//自动刷新
+                    TvJiaoyi.setText("BAR/USD");
+                    if (type == 0) {
+                        tvCoinType.setText("BAR");
+                    } else if (type == 1) {
+                        tvCoinType.setText("USD");
+                    }
+
+                    ImageView iv_bar = Choicecurrency.getView(R.id.iv_bar);
+                    ImageView iv_titan = Choicecurrency.getView(R.id.iv_titan);
+                    TextView tv_titan = Choicecurrency.getView(R.id.tv_titan);
+                    TextView tv_bar = Choicecurrency.getView(R.id.tv_bar);
+                    tv_titan.setTextColor(0xff878787);
+                    tv_bar.setTextColor(0xff000000);
+                    iv_bar.setVisibility(View.VISIBLE);
+                    iv_titan.setVisibility(View.GONE);
+                    Choicecurrency.dismiss();//关闭弹窗
+
+                });
+        Choicecurrency = builder.create();
+        Choicecurrency.show();
+    }
+
 
     //弹出 买入 密码框
     AlertDialog pwdBuyDialog = null;
@@ -673,7 +735,6 @@ public class DealFragment extends MvpFragment<DealContact.DealPresent> implement
             }
 
             @Override
-
             public void afterTextChanged(Editable s) {
                 // TODO自动生成的方法存根
                 if (Double.parseDouble(titan) == 0) {
@@ -707,6 +768,7 @@ public class DealFragment extends MvpFragment<DealContact.DealPresent> implement
                 BigDecimal result = new BigDecimal(s.toString());
                 keyongDouble = MoneyUtil.stringToDouble(balance);
                 totalAmount = BigDecimal.valueOf(keyongDouble);//获取币的数量
+                Log.e("taitan", totalAmount + "");
                 //不允许超出最大值
                 if (result.compareTo(totalAmount) == 1) {
                     ToastUtils.showShortToast(context, getResources().getString(R.string.current_maximum_input) + totalAmount);
@@ -791,6 +853,15 @@ public class DealFragment extends MvpFragment<DealContact.DealPresent> implement
                         keyong = String.valueOf(titanMax);
                         String ed = edNumber.getText().toString().trim();
                         String price = tvUsdPrice.getText().toString();
+                        keyongDouble = MoneyUtil.stringToDouble(keyong);
+                        totalAmount = BigDecimal.valueOf(keyongDouble);//获取币的数量
+                        Log.e("TITAN", totalAmount + "");
+                        //不允许超出最大值
+                        if (result.compareTo(totalAmount) == 1) {
+                            ToastUitls2.showShortToast(context, getResources().getString(R.string.current_maximum_input) + totalAmount);
+                            edNumber.setText("");
+                            tvDealNum.setText("0");
+                        }
                         try {
                             String UsdNum = (new BigDecimal(ed).multiply(new BigDecimal(price)) + "");
                             String UsdResult = (new BigDecimal(0.998).multiply(new BigDecimal(UsdNum)) + "");
@@ -802,6 +873,16 @@ public class DealFragment extends MvpFragment<DealContact.DealPresent> implement
                         keyong = String.valueOf(usdMax);
                         String ed = edNumber.getText().toString().trim();
                         String price = tvUsdPrice.getText().toString();
+
+                        keyongDouble = MoneyUtil.stringToDouble(keyong);
+                        totalAmount = BigDecimal.valueOf(keyongDouble);//获取币的数量
+                        Log.e("USD", totalAmount + "");
+                        //不允许超出最大值
+                        if (result.compareTo(totalAmount) == 1) {
+                            ToastUitls2.showShortToast(context, getResources().getString(R.string.current_maximum_input) + totalAmount);
+                            edNumber.setText("");
+                            tvDealNum.setText("0");
+                        }
                         try {
                             double zhi = Double.parseDouble(ed) / Double.parseDouble(price);
                             String zhi2 = MoneyUtil.priceFormatDoubleFour(zhi);
@@ -813,15 +894,6 @@ public class DealFragment extends MvpFragment<DealContact.DealPresent> implement
                         }
                     }
 
-
-                    keyongDouble = MoneyUtil.stringToDouble(keyong);
-                    totalAmount = BigDecimal.valueOf(keyongDouble);//获取币的数量
-                    //不允许超出最大值
-                    if (result.compareTo(totalAmount) == 1) {
-                        ToastUtils.showShortToast(context, getResources().getString(R.string.current_maximum_input) + totalAmount);
-                        edNumber.setText("");
-                        tvDealNum.setText("0");
-                    }
 
                     //保留两位小数
                     flag = false;
@@ -877,26 +949,34 @@ public class DealFragment extends MvpFragment<DealContact.DealPresent> implement
     }
 
     //获取TITAn的可用余额
+    List<WalletDataResponse.DataBean.Wellets> mLists;
+
     @Override
     public void getWalletDataTitanResult(Response<WalletDataResponse> response) {
         if (response.body().getCode() == Constant.SUCCESS_CODE) {
-            tvNum.setText(MoneyUtil.formatFour(response.body().getData().getTitannum()));
-
-            usd = MoneyUtil.formatFour(response.body().getData().getUSD1num());
-            titan = MoneyUtil.formatFour(response.body().getData().getTitannum());
+            mLists = response.body().getData().wellets;
+            if (coin.equals("1")) {
+                for (int ii = 0; ii < mLists.size(); ii++) {
+                    if (mLists.get(ii).getCoin().equals("1")) {
+                        tvNum.setText(MoneyUtil.formatFour(mLists.get(ii).getCoin_num()));
+                        usd = MoneyUtil.formatFour(mLists.get(ii).getCoin_num());
+                        titan = MoneyUtil.formatFour(mLists.get(ii).getCoin_num());
+                    }
+                }
+            } else {
+                for (int ii = 0; ii < mLists.size(); ii++) {
+                    if (mLists.get(ii).getCoin().equals("5")) {
+                        tvNum.setText(MoneyUtil.formatFour(mLists.get(ii).getCoin_num()));
+                        usd = MoneyUtil.formatFour(mLists.get(ii).getCoin_num());
+                        titan = MoneyUtil.formatFour(mLists.get(ii).getCoin_num());
+                    }
+                }
+            }
 
             int i = titan.indexOf(".");
             String bala1 = titan.substring(0, i);
             titanMax = Integer.parseInt(bala1);
-//            if (titanMax != 0) {
-//                indicatorSeekBar.setEnabled(true);
-//                indicatorSeekBar.setMax(titanMax);
-//            }else {
-//                indicatorSeekBar.setEnabled(false);
-//            }
-            int j = usd.indexOf(".");
-            String bala2 = usd.substring(0, j);
-            usdMax = Integer.parseInt(bala2);
+
 
         } else if (response.body().getCode() == -10) {
             ToastUtils.showShortToast(context, getResources().getString(R.string.not_login));
@@ -909,10 +989,21 @@ public class DealFragment extends MvpFragment<DealContact.DealPresent> implement
     @Override
     public void getWalletDataUsdResult(Response<WalletDataResponse> response) {
         if (response.body().getCode() == Constant.SUCCESS_CODE) {
-            tvNum.setText(MoneyUtil.formatFour(response.body().getData().getUSD1num()));
 
-            usd = MoneyUtil.formatFour(response.body().getData().getUSD1num());
-            titan = MoneyUtil.formatFour(response.body().getData().getTitannum());
+            mLists = response.body().getData().wellets;
+            for (int ii = 0; ii < mLists.size(); ii++) {
+                if (mLists.get(ii).getCoin().equals("3")) {
+                    tvNum.setText(MoneyUtil.formatFour(mLists.get(ii).getCoin_num()));
+                    usd = MoneyUtil.formatFour(mLists.get(ii).getCoin_num());
+                    titan = MoneyUtil.formatFour(mLists.get(ii).getCoin_num());//判断输入框内容
+                }
+            }
+            int j = usd.indexOf(".");
+            String bala2 = usd.substring(0, j);
+            usdMax = Integer.parseInt(bala2);
+//            tvNum.setText(MoneyUtil.formatFour(response.body().getData().getUSD1num()));
+//            usd = MoneyUtil.formatFour(response.body().getData().getUSD1num());
+//            titan = MoneyUtil.formatFour(response.body().getData().getTitannum());
         } else if (response.body().getCode() == -10) {
             ToastUtils.showShortToast(context, getResources().getString(R.string.not_login));
         } else {
@@ -925,8 +1016,13 @@ public class DealFragment extends MvpFragment<DealContact.DealPresent> implement
     public void getDealSixResult(Response<SixTradeResponse> response) {
         refreshTwo.finishRefresh();
         if (response.body().getCode() == Constant.SUCCESS_CODE) {
-            tvUsdPrice.setText(MoneyUtil.priceFormatDoubleFour(response.body().getPrice()));
-            tvPrice.setText(MoneyUtil.priceFormatDoubleFour(response.body().getPrice()));
+            if (coin.equals("1")) {
+                tvUsdPrice.setText(MoneyUtil.priceFormatDoubleFour(response.body().getTt_price_usd()));
+                tvPrice.setText(MoneyUtil.priceFormatDoubleFour(response.body().getTt_price_usd()));
+            } else {
+                tvUsdPrice.setText(MoneyUtil.priceFormatDoubleFour(response.body().getBar_price_usd()));
+                tvPrice.setText(MoneyUtil.priceFormatDoubleFour(response.body().getBar_price_usd()));
+            }
 //            tvUsdToYuan.setText("≈￥" + MoneyUtil.priceFormatDoubleFour(response.body().getCNYprice()));
 
             sellData = response.body().getSelldata();
@@ -953,8 +1049,14 @@ public class DealFragment extends MvpFragment<DealContact.DealPresent> implement
     @Override
     public void getDealSixOneResult(Response<SixTradeResponse> response) {
         if (response.body().getCode() == Constant.SUCCESS_CODE) {
-            tvUsdPrice.setText(MoneyUtil.priceFormatDoubleFour(response.body().getPrice()));
-            tvPrice.setText(MoneyUtil.priceFormatDoubleFour(response.body().getPrice()));
+            if (coin.equals("1")) {
+                tvUsdPrice.setText(MoneyUtil.priceFormatDoubleFour(response.body().getTt_price_usd()));
+                tvPrice.setText(MoneyUtil.priceFormatDoubleFour(response.body().getTt_price_usd()));
+            } else {
+                tvUsdPrice.setText(MoneyUtil.priceFormatDoubleFour(response.body().getBar_price_usd()));
+                tvPrice.setText(MoneyUtil.priceFormatDoubleFour(response.body().getBar_price_usd()));
+            }
+
 //            tvUsdToYuan.setText("≈￥" + MoneyUtil.priceFormatDoubleFour(response.body().getCNYprice()));
             sellData = response.body().getSelldata();
             if (!ObjectUtils.isEmpty(sellData)) {
@@ -981,9 +1083,13 @@ public class DealFragment extends MvpFragment<DealContact.DealPresent> implement
     @Override
     public void getDealSixZeroResult(Response<SixTradeResponse> response) {
         if (response.body().getCode() == Constant.SUCCESS_CODE) {
-            tvUsdPrice.setText(MoneyUtil.priceFormatDoubleFour(response.body().getPrice()));
-            tvPrice.setText(MoneyUtil.priceFormatDoubleFour(response.body().getPrice()));
-//            tvUsdToYuan.setText("≈￥" + MoneyUtil.priceFormatDoubleFour(response.body().getCNYprice()));
+            if (coin.equals("1")) {
+                tvUsdPrice.setText(MoneyUtil.priceFormatDoubleFour(response.body().getTt_price_usd()));
+                tvPrice.setText(MoneyUtil.priceFormatDoubleFour(response.body().getTt_price_usd()));
+            } else {
+                tvUsdPrice.setText(MoneyUtil.priceFormatDoubleFour(response.body().getBar_price_usd()));
+                tvPrice.setText(MoneyUtil.priceFormatDoubleFour(response.body().getBar_price_usd()));
+            }
             sellData = response.body().getSelldata();
             if (!ObjectUtils.isEmpty(sellData)) {
                 mListSell.clear();
@@ -1057,7 +1163,7 @@ public class DealFragment extends MvpFragment<DealContact.DealPresent> implement
     public void getDealPwdBuyResult(Response<ResultDTO> response) {
         if (response.body().getCode() == Constant.SUCCESS_CODE) {
             String count = edNumber.getText().toString();
-            mPresent.buyOrSell(context, count, "1");
+            mPresent.buyOrSell(context, coin, count, "1");
 //            ToastUtils.showShortToast(context, getResources().getString(R.string.submit_successfully));
             recallList();
 //            mPresent.walletDataTitan(context);//获取数据
@@ -1073,7 +1179,7 @@ public class DealFragment extends MvpFragment<DealContact.DealPresent> implement
     public void getDealPwdSellResult(Response<ResultDTO> response) {
         if (response.body().getCode() == Constant.SUCCESS_CODE) {
             String count = edNumber.getText().toString();
-            mPresent.buyOrSell(context, count, "2");
+            mPresent.buyOrSell(context, "3", count, "2");
 //            ToastUtils.showShortToast(context, getResources().getString(R.string.submit_successfully));
             recallList();
 //            mPresent.walletDataUsd(context);//获取数据

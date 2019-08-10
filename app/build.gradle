@@ -33,8 +33,8 @@ android {
                 output ->
                     def outputFile = output.outputFile
                     if (outputFile != null && outputFile.name.contains('release')) {
-                        def fileName = "TITAN_1.1.1_Build190720.apk"
-//                        def fileName = "TITAN_1.0.9_Test.apk"
+//                        def fileName = "TITAN_1.1.1_Build190720.apk"
+                        def fileName = "TITAN_1.1.1_Test.apk"
 
                         outputFileName = fileName;
                     } else if (outputFile != null && outputFile.name.contains('debug')) {

@@ -13,11 +13,13 @@ public class BuyOrSellRequest {
      * price : 2.63
      */
 
+    private String coin;
     private String coinNum;
     private String type;
 
 
-    public BuyOrSellRequest(String coinNum, String type) {
+    public BuyOrSellRequest(String coin, String coinNum, String type) {
+        this.coin = coin;
         this.coinNum = coinNum;
         this.type = type;
 

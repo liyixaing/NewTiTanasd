@@ -11,10 +11,10 @@ public class BillDetailRequest {
      * historyId : 2
      */
 
-    private String historyId;
+    private String logId;
 
 
-    public BillDetailRequest(String historyId) {
-        this.historyId = historyId;
+    public BillDetailRequest(String logId) {
+        this.logId = logId;
     }
 }

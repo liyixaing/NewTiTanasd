@@ -203,10 +203,10 @@ public class DealContact {
         }
 
         //币币交易  买卖单
-        public void buyOrSell(final Context context,String coinNum,String type){
+        public void buyOrSell(final Context context,String coin, String coinNum,String type){
             ApiService service = ServiceGenerator.createService(ApiService.class);
             String token = SPUtils.getString(Constant.TOKEN,"",context);
-            BuyOrSellRequest request = new BuyOrSellRequest(coinNum,type);
+            BuyOrSellRequest request = new BuyOrSellRequest(coin, coinNum,type);
             service.buyOrSell(token,request).enqueue(new NetCallBack<ResultDTO>() {
                 @Override
                 public void onSuccess(Call<ResultDTO> call, Response<ResultDTO> response) {

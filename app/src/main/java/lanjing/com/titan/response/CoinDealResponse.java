@@ -8,11 +8,6 @@ import java.util.List;
 
 public class CoinDealResponse {
 
-    /**
-     * msg : ok
-     * code : 200
-     * data : [{"fee":"0.0","coinnum1":"0.998","coinmun2":"0.14071799999999998","type":"1","updatetime":"2019-05-23 22:50:49"},{"fee":"0.0","coinnum1":"0.998","coinmun2":"0.1370254","type":"1","updatetime":"2019-05-23 22:50:45"}]
-     */
 
     private String msg;
     private int code;
@@ -43,19 +38,22 @@ public class CoinDealResponse {
     }
 
     public static class DataBean {
-        /**
-         * fee : 0.0
-         * coinnum1 : 0.998
-         * coinmun2 : 0.14071799999999998
-         * type : 1
-         * updatetime : 2019-05-23 22:50:49
-         */
 
+        private String coin1;
         private String fee;
         private String coinnum1;
         private String coinmun2;
         private String type;
         private String updatetime;
+        private String id;
+
+        public String getCoin1() {
+            return coin1;
+        }
+
+        public void setCoin1(String coin1) {
+            this.coin1 = coin1;
+        }
 
         public String getFee() {
             return fee;
@@ -95,6 +93,14 @@ public class CoinDealResponse {
 
         public void setUpdatetime(String updatetime) {
             this.updatetime = updatetime;
+        }
+
+        public String getId() {
+            return id;
+        }
+
+        public void setId(String id) {
+            this.id = id;
         }
     }
 }

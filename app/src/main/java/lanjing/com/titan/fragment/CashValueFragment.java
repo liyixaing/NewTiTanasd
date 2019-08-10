@@ -20,6 +20,7 @@ import lanjing.com.titan.R;
 import lanjing.com.titan.adapter.WithDrawalAdapter;
 import lanjing.com.titan.constant.Constant;
 import lanjing.com.titan.contact.WithDrawalContact;
+import lanjing.com.titan.response.CoinLogListResponse;
 import lanjing.com.titan.response.WithdrawalResponse;
 import retrofit2.Response;
 
@@ -40,9 +41,10 @@ public class CashValueFragment extends MvpFragment<WithDrawalContact.WithDrawalP
     int page = 1;
     int size = 10;
     WithDrawalAdapter mAdapter;
-    List<WithdrawalResponse.DataBean> mList;
+    List<CoinLogListResponse.Data> mList;
     @BindView(R.id.rv_normal_show)
     LinearLayout rvNormalShow;
+    String coin = "";
 
     @Override
     public void initData(Bundle savedInstanceState) {
@@ -56,16 +58,16 @@ public class CashValueFragment extends MvpFragment<WithDrawalContact.WithDrawalP
         LinearLayoutManager manager = new LinearLayoutManager(context);
         rv.setLayoutManager(manager);
         rv.setAdapter(mAdapter);
-        mPresent.withDrawal(context, String.valueOf(page), String.valueOf(size));
+        mPresent.CoinLogList(context, coin, "1", String.valueOf(page), String.valueOf(size));
 
         refresh.setOnRefreshListener(refreshLayout -> {
             page = 1;
-            mPresent.withDrawal(context, String.valueOf(page), String.valueOf(size));
+            mPresent.CoinLogList(context, coin, "1", String.valueOf(page), String.valueOf(size));
 
         });
         refresh.setOnLoadMoreListener(refreshLayout -> {
             page++;
-            mPresent.withDrawal(context, String.valueOf(page), String.valueOf(size));
+            mPresent.CoinLogList(context, coin, "1", String.valueOf(page), String.valueOf(size));
         });
     }
 
@@ -79,10 +81,24 @@ public class CashValueFragment extends MvpFragment<WithDrawalContact.WithDrawalP
         return new WithDrawalContact.WithDrawalPresent();
     }
 
-    List<WithdrawalResponse.DataBean> data;
+    List<CoinLogListResponse.Data> data;
 
     @Override
     public void getWithDrawalResult(Response<WithdrawalResponse> response) {
+        refresh.finishRefresh();
+        refresh.finishLoadMore();
+        if (response.body().getCode() == Constant.SUCCESS_CODE) {
+
+
+        } else if (response.body().getCode() == -10) {
+            ToastUtils.showShortToast(context, getResources().getString(R.string.not_login));
+        } else {
+            ToastUtils.showShortToast(context, response.body().getMsg());
+        }
+    }
+
+    @Override
+    public void getCoinLogList(Response<CoinLogListResponse> response) {
         refresh.finishRefresh();
         refresh.finishLoadMore();
         if (response.body().getCode() == Constant.SUCCESS_CODE) {
@@ -107,8 +123,6 @@ public class CashValueFragment extends MvpFragment<WithDrawalContact.WithDrawalP
                 rvNormalShow.setVisibility(View.VISIBLE);
                 rv.setVisibility(View.GONE);
             }
-        } else if (response.body().getCode() == -10) {
-            ToastUtils.showShortToast(context, getResources().getString(R.string.not_login));
         } else {
             ToastUtils.showShortToast(context, response.body().getMsg());
         }

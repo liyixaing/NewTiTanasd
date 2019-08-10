@@ -246,7 +246,7 @@ public class SplashActivity extends MvpActivity<LoginContact.LoginPresent> imple
     public void getPersonResult(Response<PersonResponse> response) {
         //判断有没有绑定手机号码
         if (response.body().getCode() == Constant.SUCCESS_CODE) {
-            if (ObjectUtils.isEmpty(response.body().getData().getPhonenum())) {
+            if (ObjectUtils.isEmpty(response.body().getData().getPhone())) {
                 Intent intent = new Intent(context, LoginActivity.class);
                 intent.putExtra("code", inviteCode);
                 startActivity(intent);

@@ -5,6 +5,8 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="friend">#666666</color>
     <color name="statusbar_color">#3B5677</color>
+    <string name="get_s">秒</string>
+    <string name="getcode">获取验证码</string>
     <string name="in_the_loading">加载中......</string>
     <string name="language_auto">自动</string>
     <string name="language_cn">中文</string>
@@ -20,6 +22,10 @@
     <style name="dialog_from_bottom_anim">
         <item name="android:windowEnterAnimation">@anim/dialog_from_bottom_anim_in</item>
         <item name="android:windowExitAnimation">@anim/dialog_from_bottom_anim_out</item>
+    </style>
+    <style name="dialog_from_top_anim">
+        <item name="android:windowEnterAnimation">@anim/dialog_from_top_anim_in</item>
+        <item name="android:windowExitAnimation">@anim/dialog_from_top_anim_out</item>
     </style>
     <style name="dialog_scale_anim">
         <item name="android:windowEnterAnimation">@anim/dialog_scale_anim_in</item>

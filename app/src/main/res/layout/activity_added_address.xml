@@ -29,6 +29,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/address"
+            android:textSize="@dimen/font_14sp"
             android:textColor="@color/common_black" />
 
         <EditText
@@ -36,14 +37,14 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/dp_35"
             android:layout_marginTop="@dimen/dp_5"
+            android:textSize="@dimen/font_14sp"
             android:background="@drawable/shape_gray_bg"
             android:gravity="center_vertical"
             android:hint="@string/pls_one"
             android:inputType="textVisiblePassword"
             android:maxLines="1"
             android:textColor="@color/common_black"
-            android:textCursorDrawable="@drawable/cursor_style"
-            android:textSize="@dimen/sp_16" />
+            android:textCursorDrawable="@drawable/cursor_style"/>
 
     </LinearLayout>
 
@@ -70,13 +71,13 @@
             android:layout_marginTop="@dimen/dp_5"
             android:background="@drawable/shape_gray_bg"
             android:gravity="center_vertical"
+            android:textSize="@dimen/font_14sp"
             android:hint="@string/please_ed_wallet_id"
             android:inputType="phone"
             android:digits="0123456789"
             android:maxLines="1"
             android:textColor="@color/common_black"
-            android:textCursorDrawable="@drawable/cursor_style"
-            android:textSize="@dimen/sp_16" />
+            android:textCursorDrawable="@drawable/cursor_style" />
 
     </LinearLayout>
 
@@ -93,6 +94,8 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textSize="@dimen/font_14sp"
+
             android:text="@string/remarks"
             android:textColor="@color/common_black" />
 
@@ -105,10 +108,10 @@
             android:gravity="center_vertical"
             android:hint="@string/please_enter"
             android:maxLines="1"
+            android:textSize="@dimen/font_14sp"
             android:inputType="text"
             android:textColor="@color/common_black"
-            android:textCursorDrawable="@drawable/cursor_style"
-            android:textSize="@dimen/sp_16" />
+            android:textCursorDrawable="@drawable/cursor_style" />
 
     </LinearLayout>
 
@@ -126,6 +129,7 @@
             android:id="@+id/tv_home"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textSize="@dimen/font_14sp"
             android:text="@string/phone"
             android:textColor="@color/common_black" />
 
@@ -138,9 +142,9 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_marginTop="@dimen/dp_5"
                 android:gravity="center"
                 android:text="@string/verification_code"
+                android:textSize="@dimen/font_14sp"
                 android:textColor="@color/common_black" />
 
             <LinearLayout
@@ -158,23 +162,23 @@
                     android:background="@drawable/shape_gray_bg"
                     android:gravity="center_vertical"
                     android:hint="@string/please_verification_code"
+                    android:textSize="@dimen/font_14sp"
                     android:inputType="phone"
                     android:maxLines="1"
                     android:textColor="@color/common_black"
-                    android:textCursorDrawable="@drawable/cursor_style"
-                    android:textSize="@dimen/sp_16" />
+                    android:textCursorDrawable="@drawable/cursor_style" />
 
                 <TextView
                     android:id="@+id/tv_getcode"
                     android:layout_width="match_parent"
-                    android:layout_height="20dp"
+                    android:layout_height="23dp"
                     android:layout_weight="3"
                     android:background="@drawable/btn_radius_blue"
                     android:foreground="@drawable/bg_white"
                     android:gravity="center"
                     android:text="@string/get_code"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/sp_11" />
+                    android:textSize="@dimen/font_12sp"
+                    android:textColor="@color/white"/>
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
@@ -185,11 +189,11 @@
         android:layout_height="@dimen/dp_39"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="@dimen/dp_40"
+        android:textSize="@dimen/font_14sp"
         android:layout_marginRight="20dp"
         android:background="@drawable/btn_radius_blue"
         android:foreground="@drawable/bg_white"
         android:gravity="center"
         android:text="@string/confirm_dialog"
-        android:textColor="@color/white"
-        android:textSize="@dimen/sp_20" />
+        android:textColor="@color/white" />
 </LinearLayout>

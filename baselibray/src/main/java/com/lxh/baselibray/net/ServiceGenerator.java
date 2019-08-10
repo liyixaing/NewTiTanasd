@@ -9,18 +9,15 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ServiceGenerator {
     /**
-     * 本地
-     */
-
-//     public static final String BASE_URL = "http://192.168.1.130"; //38.21.243.86   http://114.55.165.42:7116
-
-    /**
      * 正式上线
      */
-    public static final String BASE_URL = "http://app.titans.world";//正式服
+//    public static final String BASE_URL = "http://app.titans.world";//正式服
+    public static final String BASE_URL = "http://120.79.169.58";//线上测试服  端口  8888
 //    public static final String BASE_URL = "http://192.168.0.112";//本地测试服 端口 9999
-//    public static final String BASE_URL = "http://120.79.169.58";//线上测试服  端口  8888
 
+    /**
+     * 本地
+     */
 
     public static <T> T createService(Class<T> serviceClass) {
         OkHttpClient.Builder okHttpClientBuilder = new OkHttpClient.Builder();
@@ -30,7 +27,7 @@ public class ServiceGenerator {
         httpLoggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
         okHttpClientBuilder.addInterceptor(httpLoggingInterceptor);
 
-        Retrofit retrofit = new Retrofit.Builder().baseUrl(BASE_URL + ":80")
+        Retrofit retrofit = new Retrofit.Builder().baseUrl(BASE_URL + ":8888")
 //                Retrofit retrofit = new Retrofit.Builder().baseUrl(BASE_URL + ":9999")
 //        Retrofit retrofit = new Retrofit.Builder().baseUrl(BASE_URL)//8080
                 .addConverterFactory(GsonConverterFactory.create())

@@ -138,6 +138,15 @@ public class FriendListResponse {
         private String phonenum;
         private String time;
         private String predice_mining_number_of_usd;
+        private int valid;
+
+        public int getValid() {
+            return valid;
+        }
+
+        public void setValid(int valid) {
+            this.valid = valid;
+        }
 
         public String getPredice_mining_number_of_usd() {
             return predice_mining_number_of_usd;

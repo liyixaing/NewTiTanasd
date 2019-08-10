@@ -46,17 +46,17 @@ public class TiTanWithdrawMoney extends MvpActivity<getTransferContact.getTransf
     TextView TvBalance;//余额
     @BindView(R.id.et_tibusun)
     EditText EtTibusun;//数量输入框
-
-
     private String id;
     String taitanSum;
-    Double asd;
+    Double asd = 0.0;
+    int i;
 
     @Override
     public void initData(Bundle savedInstanceState) {
         id = getIntent().getStringExtra("id");
         taitanSum = getIntent().getStringExtra("taitanSum");
-        asd = Double.valueOf(taitanSum);
+        i= taitanSum.indexOf(".");
+//        asd = Double.valueOf(taitanSum);
         TvBalance.setText(taitanSum);
         if (id.equals("0")) {
             //参数为0 不做处理
@@ -108,7 +108,7 @@ public class TiTanWithdrawMoney extends MvpActivity<getTransferContact.getTransf
     public void getDealPwdResult(Response<ResultDTO> response) {
         if (response.body().getCode() == Constant.SUCCESS_CODE) {
             showLoadingDialog();
-            mPresent.walletWithdraw(context, TvAddress.getText().toString(), TvLabel.getText().toString(), EtTibusun.getText().toString());
+            mPresent.walletWithdraw(context, "1", TvAddress.getText().toString(), TvLabel.getText().toString(), EtTibusun.getText().toString());
         } else if (response.body().getCode() == -10) {
             ToastUtils.showShortToast(context, getResources().getString(R.string.not_login));
         } else {
@@ -147,7 +147,10 @@ public class TiTanWithdrawMoney extends MvpActivity<getTransferContact.getTransf
                 }
                 break;
             case R.id.tc_extract_all:
-                initjudge();
+//                initjudge();
+                int anInt = Integer.parseInt(taitanSum.substring(0, i));
+                EtTibusun.setText(String.valueOf(anInt-3));
+                EtTibusun.setSelection(EtTibusun.length());//将光标移至文字末尾
                 break;
         }
 
@@ -184,18 +187,16 @@ public class TiTanWithdrawMoney extends MvpActivity<getTransferContact.getTransf
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                String string = s + "";
-
                 if (EtTibusun.getText().toString().equals("")) {
                     //还没有输入数据不做处理
                 } else {
-                    Double asdasd = Double.valueOf(string);
-                    if (asdasd > asd) {
-//                            Selection.setSelection(
-                        EtTibusun.setText(MoneyUtil.priceFormat(taitanSum));
-                        Selection.setSelection(EtTibusun.getText(), EtTibusun.length());
+                    int zhuanhuan = Integer.parseInt(taitanSum.substring(0, i));
+                    int text = Integer.parseInt(EtTibusun.getText().toString());
+                    if (text > zhuanhuan) {
+                        EtTibusun.setText(taitanSum.substring(0, i));
+                        EtTibusun.setSelection(EtTibusun.length());//将光标移至文字末尾
                     } else {
-                        //不做处理Selection.setSelection(
+                        //不变
                     }
                 }
 

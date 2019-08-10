@@ -48,11 +48,11 @@
                 <LinearLayout
                     android:id="@+id/ll_red_dot"
                     android:layout_width="8dp"
-                    android:orientation="vertical"
                     android:layout_height="8dp"
-                    android:visibility="gone"
+                    android:layout_alignParentRight="true"
                     android:background="@drawable/fillet_circular"
-                    android:layout_alignParentRight="true"/>
+                    android:orientation="vertical"
+                    android:visibility="gone" />
 
                 <ImageView
                     android:layout_width="match_parent"
@@ -140,7 +140,6 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-
                     android:textColor="@color/white"
                     android:textSize="@dimen/sp_30" />
 
@@ -242,6 +241,53 @@
                     </LinearLayout>
 
                     <LinearLayout
+                        android:id="@+id/ll_bar"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:foreground="@drawable/bg_white"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:padding="@dimen/dp_10">
+
+                        <ImageView
+                            android:layout_width="@dimen/dp_30"
+                            android:layout_height="@dimen/dp_30"
+                            android:background="@mipmap/ic_bar" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/dp_20"
+                            android:layout_weight="1"
+                            android:text="BAR"
+                            android:textColor="@color/common_black"
+                            android:textSize="@dimen/sp_17" />
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="right"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/tv_bar"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text=""
+                                android:textColor="@color/common_black"
+                                android:textSize="@dimen/sp_13" />
+
+                            <TextView
+                                android:id="@+id/tv_barnum"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/dp_5"
+                                android:textSize="@dimen/sp_10" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
                         android:id="@+id/usd_lay"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -312,7 +358,7 @@
                             android:background="@mipmap/icon_titan" />
 
                         <TextView
-                            android:layout_width="@dimen/dp_60"
+                            android:layout_width="@dimen/dp_75"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="@dimen/dp_20"
                             android:text="TITANC"
@@ -344,8 +390,6 @@
 
                             android:textColor="@color/common_black"
                             android:textSize="@dimen/sp_13" />
-
-
                     </LinearLayout>
 
                     <LinearLayout
@@ -364,7 +408,7 @@
                             android:background="@mipmap/icon_usd" />
 
                         <TextView
-                            android:layout_width="@dimen/dp_60"
+                            android:layout_width="@dimen/dp_75"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="@dimen/dp_20"
 

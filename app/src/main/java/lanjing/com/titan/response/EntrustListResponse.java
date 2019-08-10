@@ -44,33 +44,25 @@ public class EntrustListResponse {
     }
 
     public static class DataBean {
-        /**
-         * fid : 16
-         * coinid : 1
-         * rest : 1.23
-         * cointype : titanusd
-         * createtime : 2019-05-14 11:08:22
-         * fuser : 99999928
-         * price : 2.63
-         * tradenum : 0
-         * coinnum : 1.23
-         * state : 1
-         * type : 1
-         * updatetime : 2019-05-14 11:08:22
-         */
 
         private int fid;
-        private int coinid;
         private double rest;
-        private String cointype;
         private String createtime;
         private String fuser;
-        private double price;
+        private int hangOrderWay;
+        private double fee;
         private double tradenum;
+        private int type;
+        private double releasenum;
+        private int coinid;
+        private String cointype;
+        private int sourceCoin;
+        private double price;
+        private double sourceAmount;
         private double coinnum;
         private int state;
-        private int type;
         private String updatetime;
+        private int isreal;
 
         public int getFid() {
             return fid;
@@ -80,28 +72,12 @@ public class EntrustListResponse {
             this.fid = fid;
         }
 
-        public int getCoinid() {
-            return coinid;
-        }
-
-        public void setCoinid(int coinid) {
-            this.coinid = coinid;
-        }
-
         public double getRest() {
             return rest;
         }
 
         public void setRest(double rest) {
             this.rest = rest;
-        }
-
-        public String getCointype() {
-            return cointype;
-        }
-
-        public void setCointype(String cointype) {
-            this.cointype = cointype;
         }
 
         public String getCreatetime() {
@@ -120,12 +96,20 @@ public class EntrustListResponse {
             this.fuser = fuser;
         }
 
-        public double getPrice() {
-            return price;
+        public int getHangOrderWay() {
+            return hangOrderWay;
         }
 
-        public void setPrice(double price) {
-            this.price = price;
+        public void setHangOrderWay(int hangOrderWay) {
+            this.hangOrderWay = hangOrderWay;
+        }
+
+        public double getFee() {
+            return fee;
+        }
+
+        public void setFee(double fee) {
+            this.fee = fee;
         }
 
         public double getTradenum() {
@@ -134,6 +118,62 @@ public class EntrustListResponse {
 
         public void setTradenum(double tradenum) {
             this.tradenum = tradenum;
+        }
+
+        public int getType() {
+            return type;
+        }
+
+        public void setType(int type) {
+            this.type = type;
+        }
+
+        public double getReleasenum() {
+            return releasenum;
+        }
+
+        public void setReleasenum(double releasenum) {
+            this.releasenum = releasenum;
+        }
+
+        public int getCoinid() {
+            return coinid;
+        }
+
+        public void setCoinid(int coinid) {
+            this.coinid = coinid;
+        }
+
+        public String getCointype() {
+            return cointype;
+        }
+
+        public void setCointype(String cointype) {
+            this.cointype = cointype;
+        }
+
+        public int getSourceCoin() {
+            return sourceCoin;
+        }
+
+        public void setSourceCoin(int sourceCoin) {
+            this.sourceCoin = sourceCoin;
+        }
+
+        public double getPrice() {
+            return price;
+        }
+
+        public void setPrice(double price) {
+            this.price = price;
+        }
+
+        public double getSourceAmount() {
+            return sourceAmount;
+        }
+
+        public void setSourceAmount(double sourceAmount) {
+            this.sourceAmount = sourceAmount;
         }
 
         public double getCoinnum() {
@@ -152,20 +192,20 @@ public class EntrustListResponse {
             this.state = state;
         }
 
-        public int getType() {
-            return type;
-        }
-
-        public void setType(int type) {
-            this.type = type;
-        }
-
         public String getUpdatetime() {
             return updatetime;
         }
 
         public void setUpdatetime(String updatetime) {
             this.updatetime = updatetime;
+        }
+
+        public int getIsreal() {
+            return isreal;
+        }
+
+        public void setIsreal(int isreal) {
+            this.isreal = isreal;
         }
     }
 }

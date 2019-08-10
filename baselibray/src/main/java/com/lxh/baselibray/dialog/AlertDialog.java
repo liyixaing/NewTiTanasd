@@ -116,6 +116,18 @@ public class AlertDialog extends Dialog {
             P.mGravity= Gravity.BOTTOM;
             return this;
         }
+        /**
+         * 对话框顶部弹出
+         * @param isAnimation
+         * @return
+         */
+        public Builder fromTop(boolean isAnimation){
+            if (isAnimation){
+                P.mAnimation= R.style.dialog_from_bottom_anim;
+            }
+            P.mGravity= Gravity.TOP;
+            return this;
+        }
 
         /**
          * 对话框底部弹出

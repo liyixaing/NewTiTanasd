@@ -79,6 +79,10 @@ public class WalletFragment extends MvpFragment<WalletDataContact.WalletDataPres
     LinearLayout titancLay;
     @BindView(R.id.usd2_num)
     TextView usd2Num;
+    @BindView(R.id.tv_bar)
+    TextView TvBar;
+    @BindView(R.id.tv_barnum)
+    TextView TvBarnum;
     @BindView(R.id.usd2_lay)
     LinearLayout usd2Lay;
     @BindView(R.id.manage_wallet)
@@ -178,6 +182,8 @@ public class WalletFragment extends MvpFragment<WalletDataContact.WalletDataPres
         usdPrice.setText("****");
         titancNum.setText("****");
         usd2Num.setText("****");
+        TvBar.setText("****");
+        TvBarnum.setText("****");
 
     }
 
@@ -188,7 +194,7 @@ public class WalletFragment extends MvpFragment<WalletDataContact.WalletDataPres
 
 
     @OnClick({R.id.checkbox_private_mode, R.id.tv_wallet_name, R.id.manage_wallet, R.id.titan_lay,
-            R.id.usd_lay, R.id.titanc_lay, R.id.usd2_lay, R.id.rl_home_notice})
+            R.id.usd_lay, R.id.titanc_lay, R.id.usd2_lay, R.id.rl_home_notice, R.id.ll_bar})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.checkbox_private_mode:
@@ -202,7 +208,6 @@ public class WalletFragment extends MvpFragment<WalletDataContact.WalletDataPres
                 Intent walletList = new Intent(context, WalletListActivity.class);
                 walletList.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS);
                 startActivity(walletList);
-
                 break;
             case R.id.manage_wallet://进入   钱包管理  可以导出私钥和助记词
                 Intent intent = new Intent(context, WalletManagerActivity.class);
@@ -214,30 +219,41 @@ public class WalletFragment extends MvpFragment<WalletDataContact.WalletDataPres
             case R.id.titan_lay://进入  TITAN 的资产页面
                 Intent titan = new Intent(context, AssetTITANActivity.class);
                 titan.putExtra("walletId", titanId);
+                titan.putExtra("coin", "1");
+                titan.putExtra("type", "TITAN");
                 titan.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS);
                 startActivity(titan);
-                //initOkhttp();
+                break;
+            case R.id.ll_bar://进入  BAR 的资产界面
+                Intent bra = new Intent(context, AssetTITANActivity.class);
+                bra.putExtra("walletId", titanId);
+                bra.putExtra("coin", "5");
+                bra.putExtra("type", "BAR");
+                bra.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS);
+                startActivity(bra);
                 break;
             case R.id.usd_lay://进入   USD 的资产页面
                 Intent usd = new Intent(context, AssetUSDActivity.class);
                 usd.putExtra("walletId", usdId);
+                usd.putExtra("coin", "3");
                 usd.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS);
                 startActivity(usd);
                 break;
             case R.id.titanc_lay://进入    TITANC的待领取
                 Intent titanc = new Intent(context, TItancWaitGetActivity.class);
                 titanc.putExtra("walletId", titancId);
+                titanc.putExtra("coin", "2");
                 titanc.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS);
                 startActivity(titanc);
                 break;
             case R.id.usd2_lay://进入   USD的待空投
                 Intent usd2 = new Intent(context, UsdAirdroppedActivity.class);
                 usd2.putExtra("walletId", usd2Id);
+                usd2.putExtra("coin", "4");
                 usd2.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS);
                 startActivity(usd2);
                 break;
-            case R.id.rl_home_notice:
-//                ToastUtils.showShortToast(context, "点击了铃铛");
+            case R.id.rl_home_notice://反馈的铃铛
                 Intent lingdang = new Intent(context, FeedbackListActivity.class);
                 startActivity(lingdang);
                 break;
@@ -271,28 +287,36 @@ public class WalletFragment extends MvpFragment<WalletDataContact.WalletDataPres
     }
 
 
+    /**
+     * @param response
+     */
+    List<WalletDataResponse.DataBean.Wellets> mList;
+
     @Override
     public void getWalletDataResult(Response<WalletDataResponse> response) {
         if (response.body().getCode() == Constant.SUCCESS_CODE) {
-            walletAddress = response.body().getAddress();
-            labelAddress = response.body().getWelletId();
-            tvAmount.setText("$" + MoneyUtil.formatFour(response.body().getSum()));
-            tvWalletId.setText("ID：" + response.body().getWelletId());
-            titanNum.setText(MoneyUtil.formatFour(response.body().getData().getTitannum()));//TITAN数量
-            titanPrice.setText("$" + MoneyUtil.formatFour(response.body().getData().getTitanprice()));//TITAN单价
-            usdNum.setText(MoneyUtil.formatFour(response.body().getData().getUSD1num()));//USD数量
-            usdPrice.setText(MoneyUtil.formatFour(response.body().getData().getUSD1price()));//USD  价格
-            titancNum.setText(MoneyUtil.formatFour(response.body().getData().getTitancnum()));//TITANC  数量
-            usd2Num.setText(MoneyUtil.formatFour(response.body().getData().getUSD2num()));// USD2 数量
-            titanId = response.body().getData().getTitancoinId();
-            usdId = response.body().getData().getUSD1coinId();
-            titancId = response.body().getData().getTitanccoinId();
-            usd2Id = response.body().getData().getUSD2coinId();
-            if (response.body().getWait_view_feedback_count() >= 1) {
-                LlRedDot.setVisibility(View.VISIBLE);
-            } else {
-                LlRedDot.setVisibility(View.GONE);
+            mList = response.body().getData().wellets;
+            tvAmount.setText("$" + MoneyUtil.formatFour(response.body().getData().getTotal_asset_usd()));
+            tvWalletId.setText("ID：" + response.body().getData().getUser_tag());
+            walletAddress = response.body().getData().getUser_address();
+            labelAddress = response.body().getData().getUser_tag();
+            for (int i = 0; i < mList.size(); i++) {
+                if (mList.get(i).getCoin().equals("1")) {
+                    titanNum.setText(MoneyUtil.formatFour(mList.get(i).getCoin_num()));
+                    titanPrice.setText("$" + MoneyUtil.formatFour(mList.get(i).getCoin_usd_worth()));
+                } else if (mList.get(i).getCoin().equals("2")) {
+                    titancNum.setText(MoneyUtil.formatFour(mList.get(i).getCoin_num()));
+                } else if (mList.get(i).getCoin().equals("3")) {
+                    usdNum.setText(MoneyUtil.formatFour(mList.get(i).getCoin_num()));
+                    usdPrice.setText("¥" + MoneyUtil.formatFour(mList.get(i).getCoin_cny_worth()));
+                } else if (mList.get(i).getCoin().equals("4")) {
+                    usd2Num.setText(MoneyUtil.formatFour(mList.get(i).getCoin_num()));
+                } else if (mList.get(i).getCoin().equals("5")) {
+                    TvBar.setText(MoneyUtil.formatFour(mList.get(i).getCoin_num()));
+                    TvBarnum.setText("$" + MoneyUtil.formatFour(mList.get(i).getCoin_usd_worth()));
+                }
             }
+
 
         } else if (response.body().getCode() == -10) {
             ToastUtils.showShortToast(context, getResources().getString(R.string.not_login));
@@ -336,14 +360,14 @@ public class WalletFragment extends MvpFragment<WalletDataContact.WalletDataPres
     @Override
     public void getPersonResult(Response<PersonResponse> response) {
         if (response.body().getCode() == Constant.SUCCESS_CODE) {
-            SPUtils.putString(Constant.PHONE, response.body().getData().getPhonenum(), context);
+            SPUtils.putString(Constant.PHONE, response.body().getData().getPhone(), context);
             SPUtils.putString(Constant.WALLET_NAME, response.body().getData().getUsername(), context);
             SPUtils.putString(Constant.PORTRAIT, response.body().getData().getPicture(), context);
             String walletName = response.body().getData().getWelletname();
             SPUtils.putString(Constant.NODE, String.valueOf(response.body().getData().getIsnode()), context);
             SPUtils.putString(Constant.ISVIP, String.valueOf(response.body().getData().getIsvip()), context);
             SPUtils.putString(Constant.NODE_NUM, String.valueOf(response.body().getData().getNodenum()), context);
-            SPUtils.putInt(Constant.LEVEL, response.body().getGrede(), context);
+            SPUtils.putInt(Constant.LEVEL, response.body().getData().getGrade(), context);
 
             SPUtils.putInt(Constant.ISAUTO, response.body().getData().getIsauto(), context);
 
@@ -381,7 +405,6 @@ public class WalletFragment extends MvpFragment<WalletDataContact.WalletDataPres
             ToastUtils.showShortToast(context, response.body().getMsg());
         }
     }
-
 
     @Override
     public void getDataFailed() {
