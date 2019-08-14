@@ -11,7 +11,7 @@ public class ServiceGenerator {
     /**
      * 正式上线
      */
-//    public static final String BASE_URL = "http://app.titans.world";//正式服
+//    public static final String BASE_URL = "http://app.titans.world";//正式服  端口  80
     public static final String BASE_URL = "http://120.79.169.58";//线上测试服  端口  8888
 //    public static final String BASE_URL = "http://192.168.0.112";//本地测试服 端口 9999
 

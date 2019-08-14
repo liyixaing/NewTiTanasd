@@ -33,8 +33,8 @@ public class CoinUsd2Adapter extends BaseQuickAdapter<HistoryListResponse.mData,
                 helper.setText(R.id.tv_usd2_type, R.string.airdrop_matching);//空投配比
                 break;
         }
-        helper.setText(R.id.tv_type_two, "Qty")
-                .setText(R.id.tv_usd2_chang_num, MoneyUtil.formatFour(item.getChangeAmount()+""))
+        helper.setText(R.id.tv_type_two, R.string.qty)
+                .setText(R.id.tv_usd2_chang_num, MoneyUtil.formatFour(item.getChangeAmount() + ""))
                 .setText(R.id.tv_usd2_time, time);
     }
 

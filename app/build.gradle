@@ -6,8 +6,8 @@ android {
         applicationId "lanjing.com.titan"
         minSdkVersion 21
         targetSdkVersion 28
-        versionCode 111
-        versionName "1.1.1"
+        versionCode 112
+        versionName "1.1.2"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
     }
@@ -26,15 +26,15 @@ android {
             jniLibs.srcDirs = ['libs']
         }
     }
-    // 自定义打包
+    // 自定义打包   打包签名密码203472
     android.applicationVariants.all {
         variant ->
             variant.outputs.all {
                 output ->
                     def outputFile = output.outputFile
                     if (outputFile != null && outputFile.name.contains('release')) {
-//                        def fileName = "TITAN_1.1.1_Build190720.apk"
-                        def fileName = "TITAN_1.1.1_Test.apk"
+                        def fileName = "TITAN_1.1.2_Build190814.apk"
+//                        def fileName = "TITAN_1.1.1_Test.apk"
 
                         outputFileName = fileName;
                     } else if (outputFile != null && outputFile.name.contains('debug')) {

@@ -61,7 +61,7 @@ public class CoinTitancAdapter extends BaseQuickAdapter<HistoryListResponse.mDat
                 break;
         }
         helper.setText(R.id.tv_titanc_change_num, sum)
-                .setText(R.id.tv_type_two, type)
+                .setText(R.id.tv_type_two, R.string.qty)
                 .setText(R.id.tv_titanc_time, time);
 
     }

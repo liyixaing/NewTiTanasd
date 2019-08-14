@@ -50,6 +50,9 @@ public class AwardAdapter extends BaseQuickAdapter<CoinLogListResponse.Data, Bas
             case 401:
                 helper.setText(R.id.tv_award_type, R.string.airdrop_matching);//空投加权
                 break;
+            case 501:
+                helper.setText(R.id.tv_award_type, R.string.airdrop_gift);//空投赠送
+                break;
         }
         int changeCoin = Integer.parseInt(item.getChangeCoin());
         switch (changeCoin) {
