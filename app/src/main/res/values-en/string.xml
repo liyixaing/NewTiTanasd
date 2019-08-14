@@ -104,6 +104,7 @@
     <string name="exchange_transfer">Exchange Transfer In (Unexchanged)</string>
 
     <string name="titan_top_up">TITAN Top Up</string>
+    <string name="bar_top_up">BAR Top Up</string>
     <string name="titan_withdraw">TITAN Withdraw</string>
     <string name="titan_trading_particulars">TITAN Trading Particulars</string>
 
@@ -565,4 +566,6 @@
     <string name="ore_root">Airdrop Weighting</string>
     <string name="ore_lv">Airdrop Grade Income</string>
     <string name="exchange_ratesad">Exchange Ratio： </string>
+    <string name="loop">Circulate</string>
+    <string name="airdrop_gift">Airdrop Gift</string>
 </resources>

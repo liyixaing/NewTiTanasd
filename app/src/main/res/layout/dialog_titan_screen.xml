@@ -66,6 +66,7 @@
         android:foreground="@drawable/bg_white"
         android:gravity="center"
         android:padding="@dimen/dp_10"
+        android:visibility="gone"
         android:text="@string/top_exchange"
         android:textColor="#FF000000"
         android:textSize="@dimen/sp_15" />

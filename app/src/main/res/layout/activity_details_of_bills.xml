@@ -83,14 +83,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:layout_marginTop="@dimen/dp_15"
-                android:background="@color/line_gray2" />
+                android:background="@color/line_gray2"
+                android:visibility="gone" />
 
 
             <LinearLayout
                 android:id="@+id/ll_ourceaddress"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dp_15">
+                android:layout_marginTop="@dimen/dp_15"
+                android:visibility="gone">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -124,7 +126,7 @@
                     android:id="@+id/tv_getandset"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/getbar" />
+                    android:text="@string/loop" />
 
                 <TextView
                     android:id="@+id/tv_titan_address"

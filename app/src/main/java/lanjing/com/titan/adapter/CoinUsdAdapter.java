@@ -41,6 +41,9 @@ public class CoinUsdAdapter extends BaseQuickAdapter<HistoryListResponse.mData, 
             case 13:
                 helper.setText(R.id.usd_type, R.string.buy);//买入
                 break;
+            case 14:
+                helper.setText(R.id.usd_type, R.string.loop);//循环
+                break;
         }
         helper.setText(R.id.tv_usd_num, upAndDown)
                 .setText(R.id.tv_usd_state, R.string.finish)

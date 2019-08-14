@@ -56,6 +56,9 @@ public class CoinTitancAdapter extends BaseQuickAdapter<HistoryListResponse.mDat
             case 103:
                 helper.setText(R.id.tv_titanc_type, R.string.ore_lv);//空投等级收益
                 break;
+            case 501:
+                helper.setText(R.id.tv_titanc_type, R.string.airdrop_gift);//空投赠送
+                break;
         }
         helper.setText(R.id.tv_titanc_change_num, sum)
                 .setText(R.id.tv_type_two, type)

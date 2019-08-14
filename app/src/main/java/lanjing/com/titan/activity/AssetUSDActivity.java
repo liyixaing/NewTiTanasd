@@ -188,30 +188,36 @@ public class AssetUSDActivity extends MvpActivity<WalletDetailContact.WalletDeta
                 .setOnClickListener(R.id.all, v -> {//查询所有
                     type = "";
                     tvUsdScreen.setText(getResources().getString(R.string.all));
-                    mPresent.walletDetail(context, coin);
+                    mPresent.historylist(context, coin, type, String.valueOf(page), String.valueOf(pageSize));
                     screenDialog.dismiss();
                 }).setOnClickListener(R.id.tv_buy, v -> {//买入查询
-                    type = "34";
+                    type = "13";
                     tvUsdScreen.setText(getResources().getString(R.string.buy));
-                    mPresent.walletDetail(context, coin);
+                    mPresent.historylist(context, coin, type, String.valueOf(page), String.valueOf(pageSize));
                     screenDialog.dismiss();
                 }).setOnClickListener(R.id.tv_sell, v -> {//卖出查询
-                    type = "35";
+                    type = "11";
                     tvUsdScreen.setText(getResources().getString(R.string.sell));
-                    mPresent.walletDetail(context, coin);
+                    mPresent.historylist(context, coin, type, String.valueOf(page), String.valueOf(pageSize));
                     screenDialog.dismiss();
-                }).setOnClickListener(R.id.tv_service_fee, v -> {//手续费查询
-                    type = "30";
+                }).setOnClickListener(R.id.tv_loop, v -> {
+                    type = "14";
+                    tvUsdScreen.setText(getResources().getString(R.string.loop));
+                    mPresent.historylist(context, coin, type, String.valueOf(page), String.valueOf(pageSize));
+                    screenDialog.dismiss();
+                })
+                .setOnClickListener(R.id.tv_service_fee, v -> {//手续费查询
+                    type = "12";
                     tvUsdScreen.setText(getResources().getString(R.string.service_fee));
-                    mPresent.walletDetail(context, coin);
+                    mPresent.historylist(context, coin, type, String.valueOf(page), String.valueOf(pageSize));
                     screenDialog.dismiss();
                 }).setOnClickListener(R.id.tv_system, v -> {//系统查询
                     type = "6";
-                    mPresent.walletDetail(context, coin);
+                    mPresent.historylist(context, coin, type, String.valueOf(page), String.valueOf(pageSize));
                     screenDialog.dismiss();
                 }).setOnClickListener(R.id.tv_others, v -> {//其它查询
                     type = "7";
-                    mPresent.walletDetail(context, coin);
+                    mPresent.historylist(context, coin, type, String.valueOf(page), String.valueOf(pageSize));
                     screenDialog.dismiss();
                 });
         screenDialog = builder.create();

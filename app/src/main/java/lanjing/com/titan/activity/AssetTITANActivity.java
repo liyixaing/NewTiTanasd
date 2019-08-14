@@ -94,7 +94,7 @@ public class AssetTITANActivity extends MvpActivity<WalletDetailContact.WalletDe
         types = getIntent().getStringExtra("type");
         coin = getIntent().getStringExtra("coin");
         if (coin.equals("1")) {
-            LlExchange.setVisibility(View.VISIBLE);
+            LlExchange.setVisibility(View.GONE);
         } else if (coin.equals("5")) {
             LlExchange.setVisibility(View.GONE);
             TvZhican.setVisibility(View.GONE);

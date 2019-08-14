@@ -14,7 +14,7 @@
         android:background="@color/default_white_bg"
         app:ivLeftPic="@mipmap/icon_page_return"
         app:titleTextColor="@color/common_black"
-        app:tvTitleText="@string/titan_trading_particulars" />
+        app:tvTitleText="" />
 
     <LinearLayout
         android:layout_width="match_parent"

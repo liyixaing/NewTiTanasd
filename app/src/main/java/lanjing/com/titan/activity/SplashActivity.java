@@ -269,9 +269,9 @@ public class SplashActivity extends MvpActivity<LoginContact.LoginPresent> imple
             startActivity(intent);
             finish();
 
-        } else if (response.body().getCode() ==-10){
+        } else if (response.body().getCode() == -10) {
             ToastUtils.showShortToast(context, getResources().getString(R.string.not_login));
-        }else {
+        } else {
             ToastUtils.showShortToast(context, response.body().getMsg());
         }
     }

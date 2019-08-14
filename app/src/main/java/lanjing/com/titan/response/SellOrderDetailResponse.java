@@ -31,26 +31,46 @@ public class SellOrderDetailResponse {
     }
 
     public static class Data {
-        private double barPrice;
+        private double usdSellGainCoin1Rate;
+        private int coin2Price;
+        private double gainCoin1Amount;
         private int orderId;
-        private double tradeFee;
+        private int tradeFee;
         private String tradeFeeUnit;
-        private double ttPrice;
-        private double usdSellGainBarRate;
-        private double gainTtAmount;
-        private double usdSellGainTtRate;
-        private double tradeAmount;
-        private double gainBarAmount;
+        private String coin2Name;
+        private int usdSellGainCoin2;
+        private int tradeAmount;
+        private int usdSellGainCoin1;
         private String createTime;
         private String tradeAmountUnit;
+        private double gainCoin2Amount;
         private int id;
+        private double coin1Price;
+        private double usdSellGainCoin2Rate;
+        private String coin1Name;
 
-        public double getBarPrice() {
-            return barPrice;
+        public double getUsdSellGainCoin1Rate() {
+            return usdSellGainCoin1Rate;
         }
 
-        public void setBarPrice(double barPrice) {
-            this.barPrice = barPrice;
+        public void setUsdSellGainCoin1Rate(double usdSellGainCoin1Rate) {
+            this.usdSellGainCoin1Rate = usdSellGainCoin1Rate;
+        }
+
+        public int getCoin2Price() {
+            return coin2Price;
+        }
+
+        public void setCoin2Price(int coin2Price) {
+            this.coin2Price = coin2Price;
+        }
+
+        public double getGainCoin1Amount() {
+            return gainCoin1Amount;
+        }
+
+        public void setGainCoin1Amount(double gainCoin1Amount) {
+            this.gainCoin1Amount = gainCoin1Amount;
         }
 
         public int getOrderId() {
@@ -61,11 +81,11 @@ public class SellOrderDetailResponse {
             this.orderId = orderId;
         }
 
-        public double getTradeFee() {
+        public int getTradeFee() {
             return tradeFee;
         }
 
-        public void setTradeFee(double tradeFee) {
+        public void setTradeFee(int tradeFee) {
             this.tradeFee = tradeFee;
         }
 
@@ -77,52 +97,36 @@ public class SellOrderDetailResponse {
             this.tradeFeeUnit = tradeFeeUnit;
         }
 
-        public double getTtPrice() {
-            return ttPrice;
+        public String getCoin2Name() {
+            return coin2Name;
         }
 
-        public void setTtPrice(double ttPrice) {
-            this.ttPrice = ttPrice;
+        public void setCoin2Name(String coin2Name) {
+            this.coin2Name = coin2Name;
         }
 
-        public double getUsdSellGainBarRate() {
-            return usdSellGainBarRate;
+        public int getUsdSellGainCoin2() {
+            return usdSellGainCoin2;
         }
 
-        public void setUsdSellGainBarRate(double usdSellGainBarRate) {
-            this.usdSellGainBarRate = usdSellGainBarRate;
+        public void setUsdSellGainCoin2(int usdSellGainCoin2) {
+            this.usdSellGainCoin2 = usdSellGainCoin2;
         }
 
-        public double getGainTtAmount() {
-            return gainTtAmount;
-        }
-
-        public void setGainTtAmount(double gainTtAmount) {
-            this.gainTtAmount = gainTtAmount;
-        }
-
-        public double getUsdSellGainTtRate() {
-            return usdSellGainTtRate;
-        }
-
-        public void setUsdSellGainTtRate(double usdSellGainTtRate) {
-            this.usdSellGainTtRate = usdSellGainTtRate;
-        }
-
-        public double getTradeAmount() {
+        public int getTradeAmount() {
             return tradeAmount;
         }
 
-        public void setTradeAmount(double tradeAmount) {
+        public void setTradeAmount(int tradeAmount) {
             this.tradeAmount = tradeAmount;
         }
 
-        public double getGainBarAmount() {
-            return gainBarAmount;
+        public int getUsdSellGainCoin1() {
+            return usdSellGainCoin1;
         }
 
-        public void setGainBarAmount(double gainBarAmount) {
-            this.gainBarAmount = gainBarAmount;
+        public void setUsdSellGainCoin1(int usdSellGainCoin1) {
+            this.usdSellGainCoin1 = usdSellGainCoin1;
         }
 
         public String getCreateTime() {
@@ -141,12 +145,44 @@ public class SellOrderDetailResponse {
             this.tradeAmountUnit = tradeAmountUnit;
         }
 
+        public double getGainCoin2Amount() {
+            return gainCoin2Amount;
+        }
+
+        public void setGainCoin2Amount(double gainCoin2Amount) {
+            this.gainCoin2Amount = gainCoin2Amount;
+        }
+
         public int getId() {
             return id;
         }
 
         public void setId(int id) {
             this.id = id;
+        }
+
+        public double getCoin1Price() {
+            return coin1Price;
+        }
+
+        public void setCoin1Price(double coin1Price) {
+            this.coin1Price = coin1Price;
+        }
+
+        public double getUsdSellGainCoin2Rate() {
+            return usdSellGainCoin2Rate;
+        }
+
+        public void setUsdSellGainCoin2Rate(double usdSellGainCoin2Rate) {
+            this.usdSellGainCoin2Rate = usdSellGainCoin2Rate;
+        }
+
+        public String getCoin1Name() {
+            return coin1Name;
+        }
+
+        public void setCoin1Name(String coin1Name) {
+            this.coin1Name = coin1Name;
         }
     }
 

@@ -106,6 +106,7 @@
     <string name="cash_withdraw_balance">可提现余额</string>
     <string name="exchange_transfer">交易所转入(未交易)</string>
     <string name="titan_top_up">TITAN 充币</string>
+    <string name="bar_top_up">BAR 充币</string>
     <string name="titan_withdraw">TITAN 提币</string>
     <string name="titan_trading_particulars">TITAN 交易详情</string>
 
@@ -570,6 +571,8 @@
     <string name="ore_root">空投加权</string>
     <string name="ore_lv">空投等级收益</string>
     <string name="exchange_ratesad">参考汇率:</string>
+    <string name="loop">循环</string>
+    <string name="airdrop_gift">空投赠送</string>
 
 
 </resources>

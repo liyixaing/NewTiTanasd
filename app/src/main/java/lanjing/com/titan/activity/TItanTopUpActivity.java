@@ -43,9 +43,9 @@ public class TItanTopUpActivity extends MvpActivity<WalletChargeContact.WalletCh
     public void initData(Bundle savedInstanceState) {
         coin = getIntent().getStringExtra("coin");
         if (coin.equals("1")) {
-            title_lay.setTitleText("TITAN 充币");
+            title_lay.setTitleText(getResources().getString(R.string.titan_top_up));
         }else {
-            title_lay.setTitleText("BAR 充币");
+            title_lay.setTitleText(getResources().getString(R.string.bar_top_up));
         }
         mPresent.walletCharge(context);
     }
