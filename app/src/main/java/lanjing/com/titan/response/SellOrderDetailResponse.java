@@ -35,11 +35,11 @@ public class SellOrderDetailResponse {
         private int coin2Price;
         private double gainCoin1Amount;
         private int orderId;
-        private int tradeFee;
+        private double tradeFee;
         private String tradeFeeUnit;
         private String coin2Name;
         private int usdSellGainCoin2;
-        private int tradeAmount;
+        private double tradeAmount;
         private int usdSellGainCoin1;
         private String createTime;
         private String tradeAmountUnit;
@@ -81,11 +81,11 @@ public class SellOrderDetailResponse {
             this.orderId = orderId;
         }
 
-        public int getTradeFee() {
+        public double getTradeFee() {
             return tradeFee;
         }
 
-        public void setTradeFee(int tradeFee) {
+        public void setTradeFee(double tradeFee) {
             this.tradeFee = tradeFee;
         }
 
@@ -113,11 +113,11 @@ public class SellOrderDetailResponse {
             this.usdSellGainCoin2 = usdSellGainCoin2;
         }
 
-        public int getTradeAmount() {
+        public double getTradeAmount() {
             return tradeAmount;
         }
 
-        public void setTradeAmount(int tradeAmount) {
+        public void setTradeAmount(double tradeAmount) {
             this.tradeAmount = tradeAmount;
         }
 

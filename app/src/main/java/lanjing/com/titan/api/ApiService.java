@@ -118,7 +118,7 @@ public interface ApiService {
     /**
      * 登录
      */
-    @POST("/app/login")
+    @POST("/app/newLogin")
     Call<LoginResponse> login(@Body LoginRequest data);
 
 

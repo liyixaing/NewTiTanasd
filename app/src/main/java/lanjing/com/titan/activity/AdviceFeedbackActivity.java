@@ -182,7 +182,6 @@ public class AdviceFeedbackActivity extends MvpActivity<FeedbackContact.Feedback
                         });
 
 
-
                 break;
             case R.id.iv_delt_one:
                 Imagetype = 1;
@@ -231,6 +230,7 @@ public class AdviceFeedbackActivity extends MvpActivity<FeedbackContact.Feedback
                 image3 = base64Pic;
             }
             CameraUtils.ImgUpdateDirection(imagePath, orc_bitmap, iv);//显示图片,并且判断图片显示的方向,如果不正就放正
+            Log.e("图片路径", imagePath);
         } else {
             ToastUtils.showLongToast(this, getResources().getString(R.string.image_acquisition_failed));
         }

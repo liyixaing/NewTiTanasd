@@ -2,6 +2,7 @@ package lanjing.com.titan.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.TextView;
 
 import com.lxh.baselibray.mvp.MvpActivity;
@@ -46,6 +47,7 @@ public class DetailsOfBillsActivity extends MvpActivity<BillDetailContact.BillDe
     public void initData(Bundle savedInstanceState) {
         id = getIntent().getStringExtra("id");
         mPresent.SellOrderDetail(context, id);
+        Log.e("xiaoqiang", id);
     }
 
     @Override
@@ -61,6 +63,7 @@ public class DetailsOfBillsActivity extends MvpActivity<BillDetailContact.BillDe
     //币币交易详情数据  coin1Price
     @Override
     public void getSellOrderDetail(Response<SellOrderDetailResponse> response) {
+        Log.e("xiaoqiang", "调试输出");
         if (response.body().getCode() == Constant.SUCCESS_CODE) {
             tv_titan_type.setText(MoneyUtil.formatFour(String.valueOf(response.body().getData().getTradeAmount() + response.body().getData().getTradeFee())) + "\rUSD");//花费数量
             tv_titan_state.setText(MoneyUtil.formatFour(String.valueOf(response.body().getData().getTradeFee())) + "\rUSD");//手续费
@@ -77,6 +80,7 @@ public class DetailsOfBillsActivity extends MvpActivity<BillDetailContact.BillDe
 
     @Override
     public void getDataFailed() {
+        ToastUtils.showShortToast(context, getResources().getString(R.string.network_error));
 
     }
 }

@@ -177,7 +177,6 @@ public class LoginActivity extends MvpActivity<LoginContact.LoginPresent> implem
     public void getLoginResult(Response<LoginResponse> response) {
         dismissLoadingDialog();
         if (response.body().getCode() == Constant.SUCCESS_CODE) {
-
             SPUtils.putString(Constant.ACCOUNT, edUserName.getText().toString().trim(), context);
             SPUtils.putString(Constant.LOGIN_PWD, edLoginPwd.getText().toString().trim(), context);
             SPUtils.putString(Constant.TOKEN, response.body().getToken(), context);
