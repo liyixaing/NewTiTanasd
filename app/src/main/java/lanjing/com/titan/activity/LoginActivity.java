@@ -24,6 +24,7 @@ import lanjing.com.titan.constant.Constant;
 import lanjing.com.titan.contact.LoginContact;
 import lanjing.com.titan.response.LoginResponse;
 import lanjing.com.titan.response.PersonResponse;
+import lanjing.com.titan.response.VersionResponse;
 import retrofit2.Response;
 
 /**
@@ -217,6 +218,11 @@ public class LoginActivity extends MvpActivity<LoginContact.LoginPresent> implem
             //英文版输出中文的原因是输出的是接口中的massage消息
             ToastUtils.showShortToast(context, response.body().getMsg());
         }
+    }
+
+    @Override
+    public void getupdateAppResult(Response<VersionResponse> response) {
+
     }
 
     @Override

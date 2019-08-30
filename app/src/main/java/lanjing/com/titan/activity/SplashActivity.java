@@ -3,11 +3,14 @@ package lanjing.com.titan.activity;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.provider.Settings;
+import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.RelativeLayout;
@@ -30,14 +33,15 @@ import lanjing.com.titan.constant.Constant;
 import lanjing.com.titan.contact.LoginContact;
 import lanjing.com.titan.response.LoginResponse;
 import lanjing.com.titan.response.PersonResponse;
+import lanjing.com.titan.response.VersionResponse;
+import lanjing.com.titan.util.APKVersionCodeUtils;
 import lanjing.com.titan.view.CustomVideoView;
 import retrofit2.Response;
 
 /**
- * 引导页  可以切换语言  点击开始进入到登录页面
+ * 引导页  可以切换语言  点击开始进入到登录页面  app加载的第一个界面
  */
 public class SplashActivity extends MvpActivity<LoginContact.LoginPresent> implements LoginContact.ILoginView {
-
 
     @BindView(R.id.tv_language)
     TextView tvLanguage;
@@ -55,19 +59,14 @@ public class SplashActivity extends MvpActivity<LoginContact.LoginPresent> imple
     @BindView(R.id.guide_lay)
     RelativeLayout guideLay;
 
+    int versionCode;
+
     @SuppressLint("StringFormatInvalid")
     @Override
     public void initData(Bundle savedInstanceState) {
-
-//        new Thread() {
-//            public void run() {
-//                Message msg = hand.obtainMessage();
-//                hand.sendMessage(msg);
-//            }
-//
-//        }.start();
-
-
+        versionCode = APKVersionCodeUtils.getVersionCode(context);
+        Log.e("版本号：", String.valueOf(versionCode));
+        mPresent.updateApp(context, 1, versionCode);
         adminNo = Settings.System.getString(context.getContentResolver(), Settings.System.ANDROID_ID);
 
         SPUtils.putString(Constant.DEVICE_ID, adminNo, context);
@@ -269,6 +268,51 @@ public class SplashActivity extends MvpActivity<LoginContact.LoginPresent> imple
             startActivity(intent);
             finish();
 
+        } else if (response.body().getCode() == -10) {
+            ToastUtils.showShortToast(context, getResources().getString(R.string.not_login));
+        } else {
+            ToastUtils.showShortToast(context, response.body().getMsg());
+        }
+    }
+
+    AlertDialog UpdateDialog = null;
+
+    private void showUpdateDialog(String VersionName, String VersionInfo, String downloadUrl) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this)
+                .addDefaultAnimation()//默认弹窗动画
+                .setContentView(R.layout.dialog_update_app)//载入布局文件
+                .setWidthAndHeight(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT)//设置弹窗宽高
+                .setText(R.id.tv_title, getResources().getString(R.string.update_yes) + VersionName + getResources().getString(R.string.update_version))
+                .setText(R.id.tv_update_info, VersionInfo)
+                .setOnClickListener(R.id.btn_ok, v -> {//设置点击事件  打开网页
+                    Intent intent = new Intent(Intent.ACTION_VIEW,
+                            (Uri.parse(downloadUrl))
+                    ).addCategory(Intent.CATEGORY_BROWSABLE)
+                            .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    startActivity(intent);
+                    UpdateDialog.dismiss();
+                });
+        UpdateDialog = builder.create();
+        UpdateDialog.show();
+
+    }
+
+    @Override
+    public void getupdateAppResult(Response<VersionResponse> response) {
+        if (response.body().getCode() == Constant.SUCCESS_CODE) {
+            //参数正确不做处理
+            Log.e("返回200", "200");
+        } else if (response.body().getCode() == 201) {
+            int systemCode = Integer.parseInt(response.body().getData().getVersioncode());
+            if (systemCode > versionCode) {
+                showUpdateDialog(response.body().getData().getVersionname(), response.body().getData().getRemarks(), response.body().getData().getUrl());
+            }
+        } else if (response.body().getCode() == 202) {
+            int systemCode = Integer.parseInt(response.body().getData().getVersioncode());
+            Log.e("对比版本", String.valueOf(systemCode));
+            if (systemCode > versionCode) {
+                showUpdateDialog(response.body().getData().getVersionname(), response.body().getData().getRemarks(), response.body().getData().getUrl());
+            }
         } else if (response.body().getCode() == -10) {
             ToastUtils.showShortToast(context, getResources().getString(R.string.not_login));
         } else {
