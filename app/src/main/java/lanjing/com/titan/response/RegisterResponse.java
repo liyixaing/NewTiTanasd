@@ -17,8 +17,6 @@ public class RegisterResponse {
 
     private String msg;
     private int code;
-    private String userkey;
-    private List<String> helps;
 
     public String getMsg() {
         return msg;
@@ -34,21 +32,5 @@ public class RegisterResponse {
 
     public void setCode(int code) {
         this.code = code;
-    }
-
-    public String getUserkey() {
-        return userkey;
-    }
-
-    public void setUserkey(String userkey) {
-        this.userkey = userkey;
-    }
-
-    public List<String> getHelps() {
-        return helps;
-    }
-
-    public void setHelps(List<String> helps) {
-        this.helps = helps;
     }
 }

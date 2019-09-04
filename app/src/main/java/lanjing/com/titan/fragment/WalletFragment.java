@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -16,6 +17,7 @@ import com.lxh.baselibray.dialog.AlertDialog;
 import com.lxh.baselibray.mvp.MvpFragment;
 import com.lxh.baselibray.util.ObjectUtils;
 import com.lxh.baselibray.util.SPUtils;
+import com.lxh.baselibray.util.SizeUtils;
 import com.lxh.baselibray.util.ToastUtils;
 import com.tbruyelle.rxpermissions2.RxPermissions;
 
@@ -37,6 +39,7 @@ import lanjing.com.titan.activity.WalletManagerActivity;
 import lanjing.com.titan.appupdate.UpdateHelper;
 import lanjing.com.titan.constant.Constant;
 import lanjing.com.titan.contact.WalletDataContact;
+import lanjing.com.titan.response.ActiveResponse;
 import lanjing.com.titan.response.InfoNoticeResponse;
 import lanjing.com.titan.response.PersonResponse;
 import lanjing.com.titan.response.VersionResponse;
@@ -91,6 +94,8 @@ public class WalletFragment extends MvpFragment<WalletDataContact.WalletDataPres
     RelativeLayout RlHomeNotice;//铃铛点击
     @BindView(R.id.ll_red_dot)
     LinearLayout LlRedDot;//小红点
+    @BindView(R.id.ll_activation)
+    LinearLayout ll_activation;//激活按钮
 
     int page = 1;
     int pageSize = 10;
@@ -194,7 +199,7 @@ public class WalletFragment extends MvpFragment<WalletDataContact.WalletDataPres
 
 
     @OnClick({R.id.checkbox_private_mode, R.id.tv_wallet_name, R.id.manage_wallet, R.id.titan_lay,
-            R.id.usd_lay, R.id.titanc_lay, R.id.usd2_lay, R.id.rl_home_notice, R.id.ll_bar})
+            R.id.usd_lay, R.id.titanc_lay, R.id.usd2_lay, R.id.rl_home_notice, R.id.ll_bar, R.id.ll_activation})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.checkbox_private_mode:
@@ -256,6 +261,10 @@ public class WalletFragment extends MvpFragment<WalletDataContact.WalletDataPres
             case R.id.rl_home_notice://反馈的铃铛
                 Intent lingdang = new Intent(context, FeedbackListActivity.class);
                 startActivity(lingdang);
+                break;
+            case R.id.ll_activation:
+                ToastUtils.showLongToast(context, "激活");
+                showactionDialog();
                 break;
         }
     }
@@ -368,7 +377,6 @@ public class WalletFragment extends MvpFragment<WalletDataContact.WalletDataPres
             SPUtils.putString(Constant.ISVIP, String.valueOf(response.body().getData().getIsvip()), context);
             SPUtils.putString(Constant.NODE_NUM, String.valueOf(response.body().getData().getNodenum()), context);
             SPUtils.putInt(Constant.LEVEL, response.body().getData().getGrade(), context);
-
             SPUtils.putInt(Constant.ISAUTO, response.body().getData().getIsauto(), context);
 
             if (!ObjectUtils.isEmpty(walletName) && walletName.toString().trim() != "") {
@@ -376,12 +384,40 @@ public class WalletFragment extends MvpFragment<WalletDataContact.WalletDataPres
             } else {
                 tvWalletName.setText(response.body().getData().getUsername());
             }
+            //判断是否显示激活按钮
+            if (response.body().getData().getState() == 10) {
+                ll_activation.setVisibility(View.VISIBLE);
+            } else {
+                ll_activation.setVisibility(View.GONE);
+            }
 
         } else if (response.body().getCode() == -10) {
             ToastUtils.showShortToast(context, getResources().getString(R.string.not_login));
         } else {
             ToastUtils.showShortToast(context, response.body().getMsg());
         }
+    }
+
+
+    //弹出 账号激活码的输入框
+    AlertDialog ActivationDialog = null;
+
+    private void showactionDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity())
+                .addDefaultAnimation()//默认弹窗动画
+                .setCancelable(true)
+                .setContentView(R.layout.dialog_activation)//载入布局文件
+                .setWidthAndHeight(SizeUtils.dp2px(context, 258), ViewGroup.LayoutParams.WRAP_CONTENT)//设置弹窗宽高
+                .setOnClickListener(R.id.tx_sure, v -> {//设置点击事件
+                    EditText dealPwd = ActivationDialog.getView(R.id.ed_deal_pwd);
+                    String pwd = dealPwd.getText().toString();
+//                    pwd = Md5Utils.MD5(pwd).toUpperCase();
+                    mPresent.ActiveCode(context, pwd);
+                    ActivationDialog.dismiss();
+                }).setOnClickListener(R.id.tx_cancel, v -> ActivationDialog.dismiss());
+        ActivationDialog = builder.create();
+        ActivationDialog.show();
+
     }
 
     //版本更新
@@ -406,6 +442,30 @@ public class WalletFragment extends MvpFragment<WalletDataContact.WalletDataPres
         }
     }
 
+    /**
+     * 激活返回执行
+     *
+     * @param response
+     */
+    @Override
+    public void getActiveCode(Response<ActiveResponse> response) {
+        if (response.body().getCode() == Constant.SUCCESS_CODE) {
+            //激活成功，输出内容
+            ToastUtils.showLongToast(context, response.body().getMsg());
+            ll_activation.setVisibility(View.GONE);
+        } else if (response.body().getCode() == -10) {
+            //异地登录提示
+            ToastUtils.showLongToast(context, getResources().getString(R.string.not_login));
+        } else {
+            //其他错误 直接输出提示语
+            ToastUtils.showLongToast(context, response.body().getMsg());
+        }
+
+    }
+
+    /**
+     * 返回错误
+     */
     @Override
     public void getDataFailed() {
         ToastUtils.showShortToast(context, getResources().getString(R.string.network_error));

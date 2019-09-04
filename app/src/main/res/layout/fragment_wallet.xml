@@ -38,6 +38,30 @@
                     android:src="@mipmap/icon_bottom_black" />
             </LinearLayout>
 
+            <LinearLayout
+                android:id="@+id/ll_activation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerInParent="true"
+                android:layout_marginRight="60dp"
+                android:visibility="gone">
+
+                <LinearLayout
+                    android:layout_width="60dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/fillet_activation"
+                    android:gravity="center"
+                    android:padding="3dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/btn_activation"
+                        android:textColor="@color/blue" />
+                </LinearLayout>
+            </LinearLayout>
+
             <RelativeLayout
                 android:id="@+id/rl_home_notice"
                 android:layout_width="25dp"

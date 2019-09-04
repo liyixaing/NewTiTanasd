@@ -1,5 +1,6 @@
 package lanjing.com.titan.api;
 
+import lanjing.com.titan.request.ActiveRequest;
 import lanjing.com.titan.request.AddFeedbackRequest;
 import lanjing.com.titan.request.AddressRequest;
 import lanjing.com.titan.request.AwardRequest;
@@ -44,6 +45,7 @@ import lanjing.com.titan.request.WithdrawalRequest;
 import lanjing.com.titan.request.SaveOrUpdateRequest;
 import lanjing.com.titan.request.deleterRequest;
 import lanjing.com.titan.request.getTransferRequest;
+import lanjing.com.titan.response.ActiveResponse;
 import lanjing.com.titan.response.AddressListResponse;
 import lanjing.com.titan.response.AgreementResponse;
 import lanjing.com.titan.response.AwardResponse;
@@ -95,7 +97,6 @@ public interface ApiService {
 //            "Accept: application/json",
 //    })
 
-
     /**
      * 获取验证码
      */
@@ -146,6 +147,13 @@ public interface ApiService {
      */
     @POST("/app/getperson")
     Call<PersonResponse> getPerson(@Header("token") String token);
+
+    /**
+     * 激活
+     */
+    @POST("/app/active")
+    Call<ActiveResponse> Active(@Header("token") String token, @Body ActiveRequest data);
+
 
     /**
      * 修改头像
@@ -443,6 +451,5 @@ public interface ApiService {
      */
     @POST("/version/findVersion")
     Call<VersionResponse> updateApp(@Body VersionRequest data);
-
 
 }

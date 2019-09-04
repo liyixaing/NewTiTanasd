@@ -217,6 +217,13 @@ public class SplashActivity extends MvpActivity<LoginContact.LoginPresent> imple
         typeDialog.show();
     }
 
+
+    @Override
+    protected void onRestart() {
+        mPresent.updateApp(context, 1, versionCode);
+        super.onRestart();
+    }
+
     @Override
     protected LoginContact.LoginPresent createPresent() {
         return new LoginContact.LoginPresent();

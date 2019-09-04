@@ -41,25 +41,7 @@ public class RegisterContact {
         }
 
 
-//        public void registerAgreement(final Context context) {
-//            ApiService service = ServiceGenerator.createService(ApiService.class);
-//            String token = SPUtils.getString(Constant.TOKEN,"",context);
-//            service.registerAgreement(token).enqueue(new NetCallBack<RegisterAgreementResponse>() {
-//                @Override
-//                public void onSuccess(Call<RegisterAgreementResponse> call, Response<RegisterAgreementResponse> response) {
-//                    if (getView() != null) {
-//                        getView().getRegisterAgreementResult(response);
-//                    }
-//                }
-//
-//                @Override
-//                public void onFailed() {
-//                    if (getView() != null) {
-//                        getView().getDataFailed();
-//                    }
-//                }
-//            });
-//        }
+
     }
 
     public interface IRegisterView extends IBaseView {

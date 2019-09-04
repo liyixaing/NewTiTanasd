@@ -27,7 +27,7 @@
     <string name="confirm_login_pwd">Login Password Confirmation</string>
     <string name="deal_pwd">Transaction Password</string>
     <string name="confirm_deal_pwd">Transaction Password Confirmation</string>
-    <string name="invite_code">Invitation Code (Optional)</string>
+    <string name="invite_code">Invitation Code</string>
     <string name="agreement">I Have Read And Agreed To The Credit Wallet User Service Agreement.</string>
     <string name="create">Create</string>
     <!--注册 第二步-->
@@ -231,7 +231,7 @@
 
     <!--我的邀请-->
     <string name="my_invite">My Invitation</string>
-    <string name="invited_friends">Friends Invited</string>
+    <string name="invited_friends">Miners Invited</string>
     <string name="amount_of_reward">Bonus Amount (TITAN)</string>
     <string name="download_ure">Download Link</string>
     <string name="invite_url">Invite Link</string>
@@ -239,7 +239,7 @@
     <string name="friend_list">Friend List</string>
     <string name="register_time">Registration Time</string>
     <string name="register_time_one">Registration Time:</string>
-    <string name="total_number">Number Of Team Effective</string>
+    <string name="total_number">Mining Pool Valid Miner</string>
     <string name="total_xq_number">Total Output Of Large Mining Areas（USD）</string>
     <string name="total_number_sun">Mining Pool Total(USD):</string>
     <string name="transon_release">Transaction Release</string>
@@ -568,4 +568,8 @@
     <string name="exchange_ratesad">Exchange Ratio： </string>
     <string name="loop">Circulate</string>
     <string name="airdrop_gift">Airdrop Gift</string>
+    <string name="btn_activation">Activation</string>
+    <string name="updent_activion">Please enter an account activation number.</string>
+    <string name="activation_code">Activation Code</string>
+    <string name="not_activation">Account inactivated, unable to mine</string>
 </resources>

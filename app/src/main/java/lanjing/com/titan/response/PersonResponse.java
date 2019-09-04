@@ -40,23 +40,6 @@ public class PersonResponse {
         private double worthUsd;
         private long isnodetime;
         private double titanNum;
-
-        public double getWorthUsd() {
-            return worthUsd;
-        }
-
-        public void setWorthUsd(double worthUsd) {
-            this.worthUsd = worthUsd;
-        }
-
-        public double getTitanNum() {
-            return titanNum;
-        }
-
-        public void setTitanNum(double titanNum) {
-            this.titanNum = titanNum;
-        }
-
         private double nodenum;
         private String shareNum;
         private String picture;
@@ -67,15 +50,6 @@ public class PersonResponse {
         private String nodeadmin;
         private int  isauto;
         private int grade;
-
-        public int getGrade() {
-            return grade;
-        }
-
-        public void setGrade(int grade) {
-            this.grade = grade;
-        }
-
         private String beginnodenum;
         private String nickname;
         private int  isnode;
@@ -95,7 +69,13 @@ public class PersonResponse {
             this.createtime = createtime;
         }
 
+        public double getWorthUsd() {
+            return worthUsd;
+        }
 
+        public void setWorthUsd(double worthUsd) {
+            this.worthUsd = worthUsd;
+        }
 
         public long getIsnodetime() {
             return isnodetime;
@@ -105,6 +85,13 @@ public class PersonResponse {
             this.isnodetime = isnodetime;
         }
 
+        public double getTitanNum() {
+            return titanNum;
+        }
+
+        public void setTitanNum(double titanNum) {
+            this.titanNum = titanNum;
+        }
 
         public double getNodenum() {
             return nodenum;
@@ -178,7 +165,13 @@ public class PersonResponse {
             this.isauto = isauto;
         }
 
+        public int getGrade() {
+            return grade;
+        }
 
+        public void setGrade(int grade) {
+            this.grade = grade;
+        }
 
         public String getBeginnodenum() {
             return beginnodenum;

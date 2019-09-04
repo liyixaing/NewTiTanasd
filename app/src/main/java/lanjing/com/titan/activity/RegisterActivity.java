@@ -85,10 +85,10 @@ public class RegisterActivity extends MvpActivity<RegisterContact.RegisterPresen
                 String dealPwd = edDealPwd.getText().toString().trim();
                 String confirmDealPwd = edConfirmDealPwd.getText().toString().trim();
                 String inviteCode = edInviteCode.getText().toString().trim();
-                if (validateRegister(userName,nickName,loginPwd,confirmLoginPwd,dealPwd,confirmDealPwd))
+                if (validateRegister(userName, nickName, loginPwd, confirmLoginPwd, dealPwd, confirmDealPwd))
                     return;
                 showLoadingDialog();
-                mPresent.register(context, userName,nickName,loginPwd,dealPwd,inviteCode);
+                mPresent.register(context, userName, nickName, loginPwd, dealPwd, inviteCode);
                 break;
         }
     }
@@ -97,37 +97,38 @@ public class RegisterActivity extends MvpActivity<RegisterContact.RegisterPresen
     protected RegisterContact.RegisterPresent createPresent() {
         return new RegisterContact.RegisterPresent();
     }
+
     //注册返回
     @Override
     public void getRegisterResult(Response<RegisterResponse> response) {
         dismissLoadingDialog();
-        if(response.body().getCode() == Constant.SUCCESS_CODE){
-            ToastUtils.showShortToast(context, getResources().getString(R.string.create_success));
+        if (response.body().getCode() == Constant.SUCCESS_CODE) {
+//            ToastUtils.showShortToast(context, getResources().getString(R.string.create_success));//提示语（不需要输出）
             new Handler().postDelayed(new Runnable() {
                 @Override
                 public void run() {
                     finish();
-                    Intent intent = new Intent(context,RegisterWalletActivity.class);
-                    List<String> wordList = response.body().getHelps();
-                    intent.putExtra("wordList",(Serializable) (wordList));
-                    intent.putExtra("key",response.body().getUserkey());
-                    startActivity(intent);
+//                    Intent intent = new Intent(context,RegisterWalletActivity.class);
+//                    List<String> wordList = response.body().getHelps();
+//                    intent.putExtra("wordList",(Serializable) (wordList));
+//                    intent.putExtra("key",response.body().getUserkey());
+//                    startActivity(intent);
                 }
             }, 1000);
-        }else if (response.body().getCode() ==-10){
+        } else if (response.body().getCode() == -10) {
             ToastUtils.showShortToast(context, getResources().getString(R.string.not_login));
-        }else {
+        } else {
             ToastUtils.showShortToast(context, response.body().getMsg());
         }
     }
 
     @Override
     public void getDataFailed() {
-        ToastUtils.showShortToast(context,getResources().getString(R.string.network_error));
+        ToastUtils.showShortToast(context, getResources().getString(R.string.network_error));
         dismissLoadingDialog();
     }
 
-    private boolean validateRegister(String userName, String nickName, String logPwd,String confirmLogPwd, String dealPwd, String confirmDealPwd) {
+    private boolean validateRegister(String userName, String nickName, String logPwd, String confirmLogPwd, String dealPwd, String confirmDealPwd) {
         if (ObjectUtils.isEmpty(userName)) {
             ToastUtils.showShortToast(context, getResources().getString(R.string.user_name_cannot_be_empty));
             return true;
@@ -148,11 +149,11 @@ public class RegisterActivity extends MvpActivity<RegisterContact.RegisterPresen
             ToastUtils.showShortToast(context, getResources().getString(R.string.Passwords_must_contain_both_Numbers_and_letters_8_18_bits_long));
             return true;
         }
-        if(ObjectUtils.isEmpty(confirmLogPwd)){
-            ToastUtils.showShortToast(context,getResources().getString(R.string.confirm_the_login_password_cannot_be_empty));
+        if (ObjectUtils.isEmpty(confirmLogPwd)) {
+            ToastUtils.showShortToast(context, getResources().getString(R.string.confirm_the_login_password_cannot_be_empty));
         }
 
-        if(!logPwd.equals(confirmLogPwd)){
+        if (!logPwd.equals(confirmLogPwd)) {
             ToastUtils.showShortToast(context, getResources().getString(R.string.the_two_passwords_do_not_match));
             return true;
         }
@@ -161,12 +162,15 @@ public class RegisterActivity extends MvpActivity<RegisterContact.RegisterPresen
             ToastUtils.showLongToast(context, getResources().getString(R.string.the_transaction_password_cannot_be_empty));
             return true;
         }
-        if(dealPwd.length()<6){
-            ToastUtils.showShortToast(context,getResources().getString(R.string.please_enter_six_digit_trading_password));
+        if (dealPwd.length() < 6) {
+            ToastUtils.showShortToast(context, getResources().getString(R.string.please_enter_six_digit_trading_password));
             return true;
         }
-        if(ObjectUtils.isEmpty(confirmDealPwd)){
-            ToastUtils.showShortToast(context,getResources().getString(R.string.confirm_the_transaction_password_cannot_be_empty));
+        if (ObjectUtils.isEmpty(confirmDealPwd)) {
+            ToastUtils.showShortToast(context, getResources().getString(R.string.confirm_the_transaction_password_cannot_be_empty));
+        }
+        if (!edDealPwd.getText().toString().equals(edConfirmDealPwd)){
+           ToastUtils.showLongToast(context, getResources().getString(R.string.the_two_passwords_do_not_match));
         }
 
         if (!iAgreeCheckbox.isChecked()) {

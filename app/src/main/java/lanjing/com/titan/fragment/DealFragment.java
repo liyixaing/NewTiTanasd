@@ -55,8 +55,10 @@ import lanjing.com.titan.adapter.SellSixZeroAdapter;
 import lanjing.com.titan.constant.Constant;
 import lanjing.com.titan.contact.DealContact;
 import lanjing.com.titan.eventbus.EventImpl;
+import lanjing.com.titan.response.ActiveResponse;
 import lanjing.com.titan.response.EntrustListResponse;
 import lanjing.com.titan.response.InterDealResponse;
+import lanjing.com.titan.response.PersonResponse;
 import lanjing.com.titan.response.ResultDTO;
 import lanjing.com.titan.response.SixTradeResponse;
 import lanjing.com.titan.response.WalletDataResponse;
@@ -412,6 +414,7 @@ public class DealFragment extends MvpFragment<DealContact.DealPresent> implement
                 showPwdBuyDialog();
 
                 break;
+            //在这里判断账号是否激活
             case R.id.btn_sell://执行卖出
 //                checkTwo();//点击卖出时执行
                 typeDatae = 2;
@@ -433,7 +436,8 @@ public class DealFragment extends MvpFragment<DealContact.DealPresent> implement
                     return;
                 }
 
-                showPwdSellDialog();
+                mPresent.person(context);
+
 
                 break;
             case R.id.tv_history_entrust://历史委托
@@ -1217,6 +1221,21 @@ public class DealFragment extends MvpFragment<DealContact.DealPresent> implement
             ToastUtils.showShortToast(context, response.body().getMsg());
         }
     }
+
+    @Override
+    public void getPersonResult(Response<PersonResponse> response) {
+        if (response.body().getCode() == Constant.SUCCESS_CODE){
+            //判断激活状态是否为激活
+            if (response.body().getData().getState() == 10){
+                ToastUtils.showLongToast(context, getResources().getString(R.string.not_activation));
+            }else {
+                showPwdSellDialog();
+            }
+        }else {
+            ToastUtils.showLongToast(context, response.body().getMsg());
+        }
+    }
+
 
     //定时执行
     public void inittime() {

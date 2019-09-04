@@ -29,7 +29,7 @@
     <string name="confirm_login_pwd">确认登录密码</string>
     <string name="deal_pwd">交易密码</string>
     <string name="confirm_deal_pwd">确认交易密码</string>
-    <string name="invite_code">邀请码(选填)</string>
+    <string name="invite_code">邀请码</string>
     <string name="agreement">我已阅读，并同意《信用钱包用户服务协议》内容</string>
     <string name="create">创建</string>
     <!--注册 第二步-->
@@ -236,7 +236,7 @@
 
     <!--我的邀请-->
     <string name="my_invite">我的邀请</string>
-    <string name="invited_friends">已邀请好友</string>
+    <string name="invited_friends">已邀请旷工</string>
     <string name="amount_of_reward">奖励数额 (TITAN)</string>
     <string name="download_ure">下载链接</string>
     <string name="invite_url">邀请链接</string>
@@ -244,7 +244,7 @@
     <string name="friend_list">好友列表</string>
     <string name="register_time">注册时间</string>
     <string name="register_time_one">注册时间:</string>
-    <string name="total_number">团队有效人数</string>
+    <string name="total_number">矿池有效旷工</string>
     <string name="total_xq_number">大矿区产量总额（USD）</string>
     <string name="total_number_sun">矿池产量总额:</string>
     <string name="total_num_sun">矿池产量总额(USD)</string>
@@ -573,6 +573,10 @@
     <string name="exchange_ratesad">参考汇率:</string>
     <string name="loop">循环</string>
     <string name="airdrop_gift">空投赠送</string>
+    <string name="btn_activation">激活</string>
+    <string name="updent_activion">请输入账号激活码</string>
+    <string name="activation_code">激活码</string>
+    <string name="not_activation">账号未激活，无法进行挖矿</string>
 
 
 </resources>

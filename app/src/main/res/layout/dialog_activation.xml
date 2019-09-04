@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="@dimen/dp_258"
+    android:layout_height="wrap_content"
+    android:background="@drawable/shape_white_bg"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_24"
+        android:layout_marginRight="@dimen/dp_24"
+        android:layout_marginTop="@dimen/dp_20"
+        android:gravity="center"
+        android:text="@string/updent_activion"
+        android:textColor="@color/common_black"
+        android:textSize="@dimen/sp_16" />
+
+    <LinearLayout
+
+        android:id="@+id/tv_input_account"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/ed_deal_pwd"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_28"
+            android:layout_below="@+id/change_name_title"
+            android:layout_marginLeft="@dimen/dp_24"
+            android:layout_marginRight="@dimen/dp_24"
+            android:layout_marginTop="@dimen/dp_15"
+            android:background="@null"
+            android:digits="0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+            android:hint="@string/activation_code"
+            android:inputType="textVisiblePassword"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:textColor="@color/common_black"
+            android:textColorHint="@color/update_nickname_gray"
+            android:textCursorDrawable="@drawable/cursor_style"
+            android:textSize="@dimen/sp_16" />
+
+        <View
+            android:id="@+id/tx_line"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_1"
+            android:layout_below="@+id/ed_new_nickname"
+            android:layout_marginLeft="@dimen/dp_24"
+            android:layout_marginRight="@dimen/dp_24"
+            android:layout_marginTop="3dp"
+            android:background="@color/update_nickname_line" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_1"
+        android:layout_marginTop="@dimen/dp_20"
+        android:background="#EEEEEE" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_40"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tx_cancel"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/btn_cancel_bg"
+            android:foreground="@drawable/bg_white"
+            android:gravity="center"
+            android:text="@string/cancel" />
+
+        <View
+            android:layout_width="@dimen/dp_1"
+            android:layout_height="match_parent"
+            android:background="#EEEEEE" />
+
+        <TextView
+            android:id="@+id/tx_sure"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/btn_sure_bg"
+            android:foreground="@drawable/bg_white"
+            android:gravity="center"
+            android:text="@string/confirm_dialog"
+            android:textColor="@color/white" />
+    </LinearLayout>
+</LinearLayout>
