@@ -276,6 +276,7 @@
     <string name="the_verification_code_cannot_be_empty">The Verification Code Cannot Be Empty</string>
     <string name="the_login_password_cannot_be_empty">The Login Password Cannot Be Empty</string>
     <string name="confirm_the_login_password_cannot_be_empty">Confirm That The Login Password Cannot Be Empty</string>
+    <string name="invitation_code">Invitation code cannot be empty</string>
     <string name="Passwords_must_contain_both_Numbers_and_letters_8_18_bits_long">Passwords Must Contain Both Numbers And Letters, 8-18 Bits Long</string>
     <string name="account_must_contain_both_Numbers_and_letters_8_18_bits_long">Account Must Contain Doth Numbers And Letters, 8-18 Bits Long</string>
 
@@ -291,7 +292,8 @@
     <string name="mobile_phone_or_account_cannot_be_empty">Mobile Phone/Account Cannot Be Empty</string>
     <string name="program_exits">Program Exits</string>
     <string name="the_account_has_been_frozen">The Account Has Been Frozen</string>
-    <string name="the_two_passwords_do_not_match">The Two Passwords Do Not Match</string>
+    <string name="the_two_passwords_do_not_match">The Two Login Passwords Do Not Match</string>
+    <string name="the_two_transaction_passwords_do_not_match">The Two deal Passwords Do Not Match</string>
     <string name="the_two_deal_passwords_do_not_match">Two Trades Password Input Is Inconsistent</string>
     <string name="the_transaction_password_was_changed_successfully">The Transaction Password Was Changed Successfully!</string>
     <string name="the_modification_was_successful_Please_login_again_later">The Modification Was Successful. Please Login Again Later</string>

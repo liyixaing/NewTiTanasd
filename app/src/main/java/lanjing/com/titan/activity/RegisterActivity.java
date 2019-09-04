@@ -1,25 +1,18 @@
 package lanjing.com.titan.activity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.lxh.baselibray.base.XActivity;
 import com.lxh.baselibray.mvp.MvpActivity;
-import com.lxh.baselibray.util.ObjectUtils;
 import com.lxh.baselibray.util.RegexUtils;
 import com.lxh.baselibray.util.ToastUtils;
 
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
-
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 import lanjing.com.titan.R;
 import lanjing.com.titan.constant.Constant;
@@ -77,18 +70,49 @@ public class RegisterActivity extends MvpActivity<RegisterContact.RegisterPresen
 //                Intent intent = new Intent(context,AgreementActivity.class);
 //                startActivity(intent);
                 break;
-            case R.id.create_btn:
-                String userName = edUserName.getText().toString().trim();
-                String nickName = edNickName.getText().toString().trim();
-                String loginPwd = edLoginPwd.getText().toString().trim();
-                String confirmLoginPwd = edConfirmLoginPwd.getText().toString().trim();
-                String dealPwd = edDealPwd.getText().toString().trim();
-                String confirmDealPwd = edConfirmDealPwd.getText().toString().trim();
-                String inviteCode = edInviteCode.getText().toString().trim();
-                if (validateRegister(userName, nickName, loginPwd, confirmLoginPwd, dealPwd, confirmDealPwd))
-                    return;
-                showLoadingDialog();
-                mPresent.register(context, userName, nickName, loginPwd, dealPwd, inviteCode);
+            case R.id.create_btn://注册按钮点击执行
+                if (edUserName.getText().toString().equals("")) {//判断是否输入用户名
+                    ToastUtils.showShortToast(context, getResources().getString(R.string.user_name_cannot_be_empty));
+                } else if (!RegexUtils.isAccount(edUserName.getText().toString())) {
+                    ToastUtils.showShortToast(context, getResources().getString(R.string.account_must_contain_both_Numbers_and_letters_8_18_bits_long));
+                } else if (edNickName.getText().toString().equals("")) {//判断是否输入昵称
+                    ToastUtils.showShortToast(context, getResources().getString(R.string.nick_name_cannot_be_empty));
+                } else if (edLoginPwd.getText().toString().equals("")) {//判断是否输入登陆密码
+                    ToastUtils.showShortToast(context, getResources().getString(R.string.the_login_password_cannot_be_empty));
+                } else if (!RegexUtils.isLoginPwd(edLoginPwd.getText().toString())) {
+                    ToastUtils.showShortToast(context, getResources().getString(R.string.Passwords_must_contain_both_Numbers_and_letters_8_18_bits_long));
+                } else if (edConfirmLoginPwd.getText().toString().equals("")) {//判断是否输入登陆验证密码
+                    ToastUtils.showShortToast(context, getResources().getString(R.string.confirm_the_login_password_cannot_be_empty));
+                } else if (!edLoginPwd.getText().toString().equals(edConfirmLoginPwd.getText().toString())) {
+                    ToastUtils.showLongToast(context, getResources().getString(R.string.the_two_passwords_do_not_match));
+                } else if (edDealPwd.getText().toString().equals("")) {//判断是否输入交易密码
+                    ToastUtils.showLongToast(context, getResources().getString(R.string.the_transaction_password_cannot_be_empty));
+                } else if (edDealPwd.length() < 6) {
+                    ToastUtils.showShortToast(context, getResources().getString(R.string.please_enter_six_digit_trading_password));
+                } else if (edConfirmDealPwd.getText().toString().equals("")) {//判断是否输入确认交易密码
+                    ToastUtils.showShortToast(context, getResources().getString(R.string.confirm_the_transaction_password_cannot_be_empty));
+                } else if (!edDealPwd.getText().toString().equals(edConfirmDealPwd.getText().toString())) {
+                    ToastUtils.showLongToast(context, getResources().getString(R.string.the_two_transaction_passwords_do_not_match));
+                } else if (edInviteCode.getText().toString().equals("")) {//判断是否输入邀请码
+                    ToastUtils.showLongToast(context, getResources().getString(R.string.invitation_code));
+                } else if (!iAgreeCheckbox.isChecked()) {//判断是否勾选协议
+                    ToastUtils.showShortToast(context, getResources().getString(R.string.agree_to_continue_after_the_agreement));
+                } else {
+                    //获取请求
+                    mPresent.register(context, edUserName.getText().toString(), edNickName.getText().toString(),
+                            edLoginPwd.getText().toString(), edDealPwd.getText().toString(), edInviteCode.getText().toString());
+                }
+//                String userName = edUserName.getText().toString().trim();
+//                String nickName = edNickName.getText().toString().trim();
+//                String loginPwd = edLoginPwd.getText().toString().trim();
+//                String confirmLoginPwd = edConfirmLoginPwd.getText().toString().trim();
+//                String dealPwd = edDealPwd.getText().toString().trim();
+//                String confirmDealPwd = edConfirmDealPwd.getText().toString().trim();
+//                String inviteCode = edInviteCode.getText().toString().trim();
+//                if (validateRegister(userName, nickName, loginPwd, confirmLoginPwd, dealPwd, confirmDealPwd))
+//                    return;
+//                showLoadingDialog();//弹出dialog等待框
+//                mPresent.register(context, userName, nickName, loginPwd, dealPwd, inviteCode);
                 break;
         }
     }
@@ -103,7 +127,6 @@ public class RegisterActivity extends MvpActivity<RegisterContact.RegisterPresen
     public void getRegisterResult(Response<RegisterResponse> response) {
         dismissLoadingDialog();
         if (response.body().getCode() == Constant.SUCCESS_CODE) {
-//            ToastUtils.showShortToast(context, getResources().getString(R.string.create_success));//提示语（不需要输出）
             new Handler().postDelayed(new Runnable() {
                 @Override
                 public void run() {
@@ -126,58 +149,5 @@ public class RegisterActivity extends MvpActivity<RegisterContact.RegisterPresen
     public void getDataFailed() {
         ToastUtils.showShortToast(context, getResources().getString(R.string.network_error));
         dismissLoadingDialog();
-    }
-
-    private boolean validateRegister(String userName, String nickName, String logPwd, String confirmLogPwd, String dealPwd, String confirmDealPwd) {
-        if (ObjectUtils.isEmpty(userName)) {
-            ToastUtils.showShortToast(context, getResources().getString(R.string.user_name_cannot_be_empty));
-            return true;
-        }
-        if (!RegexUtils.isAccount(userName)) {
-            ToastUtils.showShortToast(context, getResources().getString(R.string.account_must_contain_both_Numbers_and_letters_8_18_bits_long));
-            return true;
-        }
-        if (ObjectUtils.isEmpty(nickName)) {
-            ToastUtils.showShortToast(context, getResources().getString(R.string.nick_name_cannot_be_empty));
-            return true;
-        }
-        if (ObjectUtils.isEmpty(logPwd)) {
-            ToastUtils.showShortToast(context, getResources().getString(R.string.the_login_password_cannot_be_empty));
-            return true;
-        }
-        if (!RegexUtils.isLoginPwd(logPwd)) {
-            ToastUtils.showShortToast(context, getResources().getString(R.string.Passwords_must_contain_both_Numbers_and_letters_8_18_bits_long));
-            return true;
-        }
-        if (ObjectUtils.isEmpty(confirmLogPwd)) {
-            ToastUtils.showShortToast(context, getResources().getString(R.string.confirm_the_login_password_cannot_be_empty));
-        }
-
-        if (!logPwd.equals(confirmLogPwd)) {
-            ToastUtils.showShortToast(context, getResources().getString(R.string.the_two_passwords_do_not_match));
-            return true;
-        }
-
-        if (ObjectUtils.isEmpty(dealPwd)) {
-            ToastUtils.showLongToast(context, getResources().getString(R.string.the_transaction_password_cannot_be_empty));
-            return true;
-        }
-        if (dealPwd.length() < 6) {
-            ToastUtils.showShortToast(context, getResources().getString(R.string.please_enter_six_digit_trading_password));
-            return true;
-        }
-        if (ObjectUtils.isEmpty(confirmDealPwd)) {
-            ToastUtils.showShortToast(context, getResources().getString(R.string.confirm_the_transaction_password_cannot_be_empty));
-        }
-        if (!edDealPwd.getText().toString().equals(edConfirmDealPwd)){
-           ToastUtils.showLongToast(context, getResources().getString(R.string.the_two_passwords_do_not_match));
-        }
-
-        if (!iAgreeCheckbox.isChecked()) {
-            ToastUtils.showShortToast(context, getResources().getString(R.string.agree_to_continue_after_the_agreement));
-            return true;
-        }
-
-        return false;
     }
 }

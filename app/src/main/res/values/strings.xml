@@ -283,6 +283,7 @@
     <string name="the_verification_code_cannot_be_empty">验证码不能为空</string>
     <string name="the_login_password_cannot_be_empty">登录密码不能为空</string>
     <string name="confirm_the_login_password_cannot_be_empty">确认登录密码不能为空</string>
+    <string name="invitation_code">邀请码不能为空</string>
     <string name="Passwords_must_contain_both_Numbers_and_letters_8_18_bits_long">密码必须同时包含数字和字母,长度8-18位</string>
     <string name="account_must_contain_both_Numbers_and_letters_8_18_bits_long">用户名必须同时包含数字和字母,长度8-18位</string>
     <string name="the_transaction_password_cannot_be_empty">交易密码不能为空</string>
@@ -297,7 +298,8 @@
     <string name="mobile_phone_or_account_cannot_be_empty">手机/账号不能为空</string>
     <string name="program_exits">程序退出</string>
     <string name="the_account_has_been_frozen">账号已被冻结</string>
-    <string name="the_two_passwords_do_not_match">两次密码输入不一致</string>
+    <string name="the_two_passwords_do_not_match">两次登陆密码输入不一致</string>
+    <string name="the_two_transaction_passwords_do_not_match">两次交易密码输入不一致</string>
     <string name="the_two_deal_passwords_do_not_match">两次交易密码输入不一致</string>
     <string name="the_transaction_password_was_changed_successfully">修改交易密码成功!</string>
     <string name="the_modification_was_successful_Please_login_again_later">修改成功，稍后请重新登录！</string>

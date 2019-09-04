@@ -263,8 +263,8 @@ public class WalletFragment extends MvpFragment<WalletDataContact.WalletDataPres
                 startActivity(lingdang);
                 break;
             case R.id.ll_activation:
-                ToastUtils.showLongToast(context, "激活");
                 showactionDialog();
+                Log.e("xiaoqiang", "激活");
                 break;
         }
     }
