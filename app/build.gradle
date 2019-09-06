@@ -6,8 +6,8 @@ android {
         applicationId "lanjing.com.titan"
         minSdkVersion 21
         targetSdkVersion 28
-        versionCode 112
-        versionName "1.1.2"
+        versionCode 122
+        versionName "1.2.2"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
     }
@@ -33,7 +33,7 @@ android {
                 output ->
                     def outputFile = output.outputFile
                     if (outputFile != null && outputFile.name.contains('release')) {
-                        def fileName = "TITAN_1.1.2_Build190815.apk"
+                        def fileName = "TITAN_1.2.2_Build190815.apk"
 //                        def fileName = "TITAN_1.1.2_Test.apk"
 
                         outputFileName = fileName;

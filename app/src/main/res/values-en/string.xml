@@ -12,9 +12,11 @@
     <string name="start">Start</string>
     <!--登陆-->
     <string name="titan_plan">TITAN</string>
-    <string name="user_name">Account(8–18 Digits And L etters)</string>
+    <string name="user_name">Account</string>
+    <string name="user_namea">Account(8-18 Digits And Letters)</string>
     <string name="user_names">Account：</string>
-    <string name="login_pwd">L ogin Password(8–18 Digits And L etters)</string>
+    <string name="login_pwd">Login Password</string>
+    <string name="login_pwda">Login Password(8-18 Digits And Letters)</string>
     <string name="login">LOGIN</string>
     <string name="right_validation">Slide To Verify></string>
     <string name="finish_validation">To Complete The Verification</string>
@@ -25,10 +27,11 @@
     <string name="creation">Create Wallet</string>
     <string name="nick_name">Nickname</string>
     <string name="confirm_login_pwd">Login Password Confirmation</string>
-    <string name="deal_pwd">Transaction Password(6 digits)</string>
+    <string name="deal_pwd">Transaction Password</string>
+    <string name="deal_pwda">Transaction Password(6 digits)</string>
     <string name="confirm_deal_pwd">Transaction Password Confirmation</string>
     <string name="invite_code">Invitation Code</string>
-    <string name="agreement">I Have Read And Agreed To The Credit Wallet User Service Agreement.</string>
+    <string name="agreement">I have read and agreed to the DAPP Service Agreement.</string>
     <string name="create">Create</string>
     <!--注册 第二步-->
     <string name="wallet_mnemonic">Wallet Prompts</string>

@@ -11,10 +11,12 @@
     <string name="start">开始</string>
     <!--登陆-->
     <string name="titan_plan">泰坦计划</string>
-    <string name="user_name">用户名(8—18位数字和字母组成)</string>
+    <string name="user_name">用户名</string>
+    <string name="user_namea">用户名(8-18位数字和字母组成)</string>
     <string name="account">账号</string>
     <string name="user_names">用户名：</string>
-    <string name="login_pwd">登录密码(8—18位数字和字母组成)</string>
+    <string name="login_pwd">登录密码</string>
+    <string name="login_pwda">登录密码(8-18位数字和字母组成)</string>
     <string name="login">登录</string>
     <string name="right_validation">往右滑动验证></string>
 
@@ -24,13 +26,14 @@
     <string name="input_wallet">忘记密码？</string>
     <!--注册-->
     <string name="creation">创建钱包</string>
-    <string name="nick_name">昵称(8到18位)</string>
+    <string name="nick_name">昵称(8-18位)</string>
     <string name="nick_name_one">昵称:</string>
     <string name="confirm_login_pwd">确认登录密码</string>
-    <string name="deal_pwd">交易密码(6位)</string>
+    <string name="deal_pwd">交易密码</string>
+    <string name="deal_pwda">交易密码(6位)</string>
     <string name="confirm_deal_pwd">确认交易密码</string>
     <string name="invite_code">邀请码</string>
-    <string name="agreement">我已阅读，并同意《信用钱包用户服务协议》内容</string>
+    <string name="agreement">我已阅读，并同意《DAPP服务协议》内容</string>
     <string name="create">创建</string>
     <!--注册 第二步-->
     <string name="wallet_mnemonic">钱包助记词</string>
