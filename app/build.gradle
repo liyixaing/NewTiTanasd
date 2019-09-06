@@ -36,6 +36,7 @@ android {
                         def fileName = "TITAN_1.2.2_Build190815.apk"
 //                        def fileName = "TITAN_1.1.2_Test.apk"
 
+
                         outputFileName = fileName;
                     } else if (outputFile != null && outputFile.name.contains('debug')) {
                         def fileName = "TITAN${variant.versionName}.apk"
