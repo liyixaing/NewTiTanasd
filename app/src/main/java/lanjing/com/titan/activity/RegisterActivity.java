@@ -102,17 +102,6 @@ public class RegisterActivity extends MvpActivity<RegisterContact.RegisterPresen
                     mPresent.register(context, edUserName.getText().toString(), edNickName.getText().toString(),
                             edLoginPwd.getText().toString(), edDealPwd.getText().toString(), edInviteCode.getText().toString());
                 }
-//                String userName = edUserName.getText().toString().trim();
-//                String nickName = edNickName.getText().toString().trim();
-//                String loginPwd = edLoginPwd.getText().toString().trim();
-//                String confirmLoginPwd = edConfirmLoginPwd.getText().toString().trim();
-//                String dealPwd = edDealPwd.getText().toString().trim();
-//                String confirmDealPwd = edConfirmDealPwd.getText().toString().trim();
-//                String inviteCode = edInviteCode.getText().toString().trim();
-//                if (validateRegister(userName, nickName, loginPwd, confirmLoginPwd, dealPwd, confirmDealPwd))
-//                    return;
-//                showLoadingDialog();//弹出dialog等待框
-//                mPresent.register(context, userName, nickName, loginPwd, dealPwd, inviteCode);
                 break;
         }
     }
@@ -130,12 +119,8 @@ public class RegisterActivity extends MvpActivity<RegisterContact.RegisterPresen
             new Handler().postDelayed(new Runnable() {
                 @Override
                 public void run() {
+                    ToastUtils.showLongToast(context, getResources().getString(R.string.registration_successful_later_enter_the_login_page_to_log_in));
                     finish();
-//                    Intent intent = new Intent(context,RegisterWalletActivity.class);
-//                    List<String> wordList = response.body().getHelps();
-//                    intent.putExtra("wordList",(Serializable) (wordList));
-//                    intent.putExtra("key",response.body().getUserkey());
-//                    startActivity(intent);
                 }
             }, 1000);
         } else if (response.body().getCode() == -10) {

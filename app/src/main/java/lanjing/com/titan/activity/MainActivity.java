@@ -134,5 +134,20 @@ public class MainActivity extends XActivity implements RadioGroup.OnCheckedChang
         return super.onKeyDown(keyCode, event);
     }
 
-
 }
+
+
+/*
+
+              ／¯)
+　　　　　　　 ／　／
+　　　　　　 ／　／
+　　　_／¯ ／　／'¯ )
+　　／／ ／　／　／ ('＼
+　（（ （　（　（　 ） )
+　　＼　　　　　 ＼／ ／
+　　　＼　　　　　　／
+　　　　＼　　　　／
+　　　　　＼　　　＼
+     小小中指不成敬意
+* */
