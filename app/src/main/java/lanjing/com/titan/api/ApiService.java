@@ -16,6 +16,7 @@ import lanjing.com.titan.request.EntrustListRequest;
 import lanjing.com.titan.request.FeedBackListRequest;
 import lanjing.com.titan.request.FeedBackRequest;
 import lanjing.com.titan.request.FormatRequest;
+import lanjing.com.titan.request.FreeRequest;
 import lanjing.com.titan.request.FriendListRequest;
 import lanjing.com.titan.request.HistoryListRequest;
 import lanjing.com.titan.request.ImportWalletRequest;
@@ -79,6 +80,7 @@ import lanjing.com.titan.response.SetHelpResponse;
 import lanjing.com.titan.response.SetNewPhoneResponse;
 import lanjing.com.titan.response.SetPhoneResponse;
 import lanjing.com.titan.response.SixTradeResponse;
+import lanjing.com.titan.response.TodayFreeResponse;
 import lanjing.com.titan.response.VersionResponse;
 import lanjing.com.titan.response.WalletDataResponse;
 import lanjing.com.titan.response.WalletDetailResponse;
@@ -153,6 +155,12 @@ public interface ApiService {
      */
     @POST("/app/active")
     Call<ActiveResponse> Active(@Header("token") String token, @Body ActiveRequest data);
+
+    /**
+     * 拉取今日剩余免费激活次数
+     */
+    @POST("/app/getTodayFreeActiveTimes")
+    Call<TodayFreeResponse> TodayFreeActiveTimes(@Header("token") String token, @Body FreeRequest data);
 
 
     /**
@@ -445,6 +453,7 @@ public interface ApiService {
      */
     @POST("/app/convert")
     Call<ResultDTO> convertCoin(@Header("token") String token, @Body ConvertRequest data);
+
 
     /**
      * 版本更新

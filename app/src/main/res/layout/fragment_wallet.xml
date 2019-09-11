@@ -44,11 +44,10 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_centerInParent="true"
-                android:layout_marginRight="60dp"
-                android:visibility="gone">
+                android:layout_marginRight="60dp">
 
                 <LinearLayout
-                    android:layout_width="60dp"
+                    android:layout_width="70dp"
                     android:layout_height="wrap_content"
                     android:background="@drawable/fillet_activation"
                     android:gravity="center"

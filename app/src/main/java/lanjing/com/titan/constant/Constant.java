@@ -30,6 +30,7 @@ public class Constant {
     public final static String TOKEN2 = "token";
     public final static String TODAYHASLOGIN = "todayHasLogin";
     public final static String REWARDPCPT = "rewardPCPT";
+    public final static String INVITACODE = "Invitacode";
 
     public final static String PRIVACYMODE = "privacyMode";
 

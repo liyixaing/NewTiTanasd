@@ -325,6 +325,7 @@ public class MyFragment extends MvpFragment<PersonContact.PersonPresent> impleme
 
             SPUtils.putString(Constant.NICK_NAME, response.body().getData().getNickname(), context);
 
+            SPUtils.putString(Constant.INVITACODE, response.body().getData().getKeyes(), context);
             titanAmount.setText(MoneyUtil.priceFormatDoubleFour(response.body().getData().getTitanNum()));
             titanAmountToUsd.setText(MoneyUtil.priceFormatDoubleFour(response.body().getData().getWorthUsd()));
 

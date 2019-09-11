@@ -1,5 +1,7 @@
 package lanjing.com.titan.activity;
 
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
@@ -13,9 +15,11 @@ import android.view.animation.LayoutAnimationController;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.lxh.baselibray.mvp.MvpActivity;
 import com.lxh.baselibray.util.ObjectUtils;
+import com.lxh.baselibray.util.SPUtils;
 import com.lxh.baselibray.util.ToastUtils;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 
@@ -63,6 +67,11 @@ public class MyInviteActivity extends MvpActivity<FriendListContact.FriendListPr
     TextView TvXqSun;
     @BindView(R.id.tv_xq_sum)
     TextView TvXqSum;
+
+    @BindView(R.id.tv_copy_invitation)
+    TextView tv_copy_invitation;
+    @BindView(R.id.tv_copy_register)
+    TextView tv_copy_register;
 
     FriendListAdapter mAdapter;
     List<FriendListResponse.DataBean> mList;
@@ -118,17 +127,39 @@ public class MyInviteActivity extends MvpActivity<FriendListContact.FriendListPr
         return R.layout.activity_my_invite;
     }
 
-    @OnClick({R.id.invite_btn, R.id.register_btn})
+    @OnClick({R.id.invite_btn, R.id.register_btn, R.id.tv_copy_invitation, R.id.tv_copy_register})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.invite_btn://邀请链接
-                openInviteUrl();
+//                openInviteUrl();
                 break;
             case R.id.register_btn://注册链接
-                openRegisterUrl();
+//                openRegisterUrl();
+                break;
+            case R.id.tv_copy_invitation://复制邀请链接按钮
+//                onClickCopy(tv_copy_invitation, tvInviteUrl.getText().toString());
+                //获取剪贴板管理器：
+                ClipboardManager cm = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+                // 创建普通字符型ClipData
+                ClipData mClipData = ClipData.newPlainText("Label", tvInviteUrl.getText().toString());
+                // 将ClipData内容放到系统剪贴板里。
+                cm.setPrimaryClip(mClipData);
+                ToastUtils.showLongToast(context, getResources().getString(R.string.over_copy));
+                break;
+            case R.id.tv_copy_register://复制注册链接
+                //onClickCopy(tv_copy_invitation, tvRegisterUrl.getText().toString());
+                //获取剪贴板管理器：
+                ClipboardManager cmd = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+                // 创建普通字符型ClipData
+                ClipData mClipDatad = ClipData.newPlainText("Label", tvRegisterUrl.getText().toString());
+                // 将ClipData内容放到系统剪贴板里。
+                cmd.setPrimaryClip(mClipDatad);
+                ToastUtils.showLongToast(context, getResources().getString(R.string.over_copy));
                 break;
         }
     }
+
+
 
     //打开邀请链接
     private void openInviteUrl() {
@@ -179,7 +210,10 @@ public class MyInviteActivity extends MvpActivity<FriendListContact.FriendListPr
             Tv_TeamSum.setText(MoneyUtil.priceFormat(String.valueOf(response.body().getCurrent_predice_mining_number_of_usd())));
             TvXqSum.setText(MoneyUtil.priceFormat(String.valueOf(response.body().getLt_region_earnings())));
             TvXqSun.setText(MoneyUtil.priceFormat(response.body().getLg_region_earnings()));
-            tvInviteUrl.setText(response.body().getRecommendurl());
+            String yqm = SPUtils.getString(Constant.INVITACODE, "", context);
+            String token = SPUtils.getString(Constant.TOKEN, "", context);
+            Log.e("toekn", token);
+            tvInviteUrl.setText(response.body().getRecommendurl() + "?inviteCode=" + yqm);
             tvRegisterUrl.setText(response.body().getRegisterurl());
             inviteUrl = response.body().getRecommendurl();
             registerUrl = response.body().getRegisterurl();

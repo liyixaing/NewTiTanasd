@@ -26,7 +26,7 @@
     <string name="input_wallet">忘记密码？</string>
     <!--注册-->
     <string name="creation">创建钱包</string>
-    <string name="nick_name">昵称(8-18位)</string>
+    <string name="nick_name">昵称(2-18位)</string>
     <string name="nick_name_one">昵称:</string>
     <string name="confirm_login_pwd">确认登录密码</string>
     <string name="deal_pwd">交易密码</string>
@@ -242,8 +242,8 @@
     <string name="invited_friends">已邀请旷工</string>
     <string name="amount_of_reward">奖励数额 (TITAN)</string>
     <string name="download_ure">下载链接</string>
-    <string name="invite_url">邀请链接</string>
-    <string name="register_url">注册链接</string>
+    <string name="invite_url">邀请链接:</string>
+    <string name="register_url">注册链接:</string>
     <string name="friend_list">好友列表</string>
     <string name="register_time">注册时间</string>
     <string name="register_time_one">注册时间:</string>
@@ -582,6 +582,9 @@
     <string name="updent_activion">请输入账号激活码</string>
     <string name="activation_code">激活码</string>
     <string name="not_activation">账号未激活，无法进行挖矿</string>
+    <string name="immediate_activation">立即激活</string>
+    <string name="free_daily_allowance">每日限量免费赠送</string>
+    <string name="free_daily_activation_codes">激活码剩余数量：</string>
 
 
 </resources>

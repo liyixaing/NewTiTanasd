@@ -25,7 +25,7 @@
     <string name="input_wallet">Forget The Password？</string>
     <!--注册-->
     <string name="creation">Create Wallet</string>
-    <string name="nick_name">Nickname</string>
+    <string name="nick_name">Nickname(2-18 Digits)</string>
     <string name="confirm_login_pwd">Login Password Confirmation</string>
     <string name="deal_pwd">Transaction Password</string>
     <string name="deal_pwda">Transaction Password(6 digits)</string>
@@ -238,7 +238,7 @@
     <string name="amount_of_reward">Bonus Amount (TITAN)</string>
     <string name="download_ure">Download Link</string>
     <string name="invite_url">Invite Link</string>
-    <string name="register_url">Registration Link</string>
+    <string name="register_url">Register link</string>
     <string name="friend_list">Friend List</string>
     <string name="register_time">Registration Time</string>
     <string name="register_time_one">Registration Time:</string>
@@ -577,4 +577,7 @@
     <string name="updent_activion">Please enter an account activation number.</string>
     <string name="activation_code">Activation Code</string>
     <string name="not_activation">Account inactivated, unable to mine</string>
+    <string name="immediate_activation">Activate Now</string>
+    <string name="free_daily_allowance">Limited Daily Free Gift</string>
+    <string name="free_daily_activation_codes">Number Of Activation \n Codes Remaining：</string>
 </resources>

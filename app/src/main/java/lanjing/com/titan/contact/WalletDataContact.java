@@ -13,11 +13,13 @@ import com.lxh.baselibray.util.SPUtils;
 import lanjing.com.titan.api.ApiService;
 import lanjing.com.titan.constant.Constant;
 import lanjing.com.titan.request.ActiveRequest;
+import lanjing.com.titan.request.FreeRequest;
 import lanjing.com.titan.request.InfoNoticeRequest;
 import lanjing.com.titan.request.VersionRequest;
 import lanjing.com.titan.response.ActiveResponse;
 import lanjing.com.titan.response.InfoNoticeResponse;
 import lanjing.com.titan.response.PersonResponse;
+import lanjing.com.titan.response.TodayFreeResponse;
 import lanjing.com.titan.response.VersionResponse;
 import lanjing.com.titan.response.WalletDataResponse;
 import retrofit2.Call;
@@ -134,6 +136,29 @@ public class WalletDataContact {
             });
         }
 
+        //获取激活数量
+        public void TodayFreeActiveTimes(final Context context) {
+            ApiService service = ServiceGenerator.createService(ApiService.class);
+            FreeRequest request = new FreeRequest();
+            String token = SPUtils.getString(Constant.TOKEN, "", context);
+            service.TodayFreeActiveTimes(token, request).enqueue(new NetCallBack<TodayFreeResponse>() {
+                @Override
+                public void onSuccess(Call<TodayFreeResponse> call, Response<TodayFreeResponse> response) {
+                    if (getView() != null) {
+                        getView().getTodayFreeActiveTimes(response);
+                    }
+                }
+
+                @Override
+                public void onFailed() {
+                    if (getView() != null) {
+                        getView().getDataFailed();
+                    }
+                }
+            });
+
+        }
+
 
     }
 
@@ -147,6 +172,8 @@ public class WalletDataContact {
         void getupdateAppResult(Response<VersionResponse> response);
 
         void getActiveCode(Response<ActiveResponse> response);
+
+        void getTodayFreeActiveTimes(Response<TodayFreeResponse> response);
 
         void getDataFailed();
 

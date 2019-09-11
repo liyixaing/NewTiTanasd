@@ -42,6 +42,7 @@ import lanjing.com.titan.contact.WalletDataContact;
 import lanjing.com.titan.response.ActiveResponse;
 import lanjing.com.titan.response.InfoNoticeResponse;
 import lanjing.com.titan.response.PersonResponse;
+import lanjing.com.titan.response.TodayFreeResponse;
 import lanjing.com.titan.response.VersionResponse;
 import lanjing.com.titan.response.WalletDataResponse;
 import lanjing.com.titan.util.APKVersionCodeUtils;
@@ -263,8 +264,7 @@ public class WalletFragment extends MvpFragment<WalletDataContact.WalletDataPres
                 startActivity(lingdang);
                 break;
             case R.id.ll_activation:
-                showactionDialog();
-                Log.e("xiaoqiang", "激活");
+                mPresent.TodayFreeActiveTimes(context);
                 break;
         }
     }
@@ -420,6 +420,27 @@ public class WalletFragment extends MvpFragment<WalletDataContact.WalletDataPres
 
     }
 
+
+    //每日限量免费赠送激活码界面
+    AlertDialog FreeDialog = null;
+
+    private void FreeDialogDialog(int sun) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity())
+                .addDefaultAnimation()//默认弹窗动画
+                .setCancelable(true)
+                .setContentView(R.layout.dialog_free)//载入布局文件
+                .setWidthAndHeight(SizeUtils.dp2px(context, 258), ViewGroup.LayoutParams.WRAP_CONTENT)//设置弹窗宽高
+                .setText(R.id.tv_number, getResources().getString(R.string.free_daily_activation_codes) + sun)
+                .setOnClickListener(R.id.login_activation_btn, v -> {//设置点击事件
+                    mPresent.ActiveCode(context, null);
+                    FreeDialog.dismiss();
+                }).setOnClickListener(R.id.tx_cancel, v -> FreeDialog.dismiss());
+
+        FreeDialog = builder.create();
+        FreeDialog.show();
+
+    }
+
     //版本更新
     @Override
     public void getupdateAppResult(Response<VersionResponse> response) {
@@ -460,6 +481,29 @@ public class WalletFragment extends MvpFragment<WalletDataContact.WalletDataPres
             //其他错误 直接输出提示语
             ToastUtils.showLongToast(context, response.body().getMsg());
         }
+
+    }
+
+    //获取免费激活数量
+    @Override
+    public void getTodayFreeActiveTimes(Response<TodayFreeResponse> response) {
+        if (response.body().getCode() == Constant.SUCCESS_CODE) {
+            //获取成功
+            Log.e("xiaoqiang", "获取免费激活名额成功");
+            if (response.body().getData() > 0) {
+
+                FreeDialogDialog(response.body().getData());//免费赠送弹出框
+            } else {
+                showactionDialog();//输入激活码弹出框
+            }
+        } else if (response.body().getCode() == -10) {
+            //异地登录提示
+            ToastUtils.showLongToast(context, getResources().getString(R.string.not_login));
+        } else {
+            //其他错误直接给它后台提示
+            ToastUtils.showLongToast(context, response.body().getMsg());
+        }
+
 
     }
 

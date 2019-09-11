@@ -118,8 +118,6 @@ public class SecurityCenterActivity extends XActivity {
         service.sendCode(token, sendCodeRequest).enqueue(new NetCallBack<ResultDTO>() {
             @Override
             public void onSuccess(retrofit2.Call<ResultDTO> call, retrofit2.Response<ResultDTO> response) {
-                Log.e("xiaoqaing", String.valueOf(response.body().getCode()));
-                Log.e("xiaoqaing", response.body().getMsg());
                 if (response.body().getCode() == 200) {
                 } else {
                     ToastUtils.showShortToast(context, response.body().getMsg());
@@ -146,7 +144,7 @@ public class SecurityCenterActivity extends XActivity {
                 if (phone != null) {
 //                    showChangPhoneDialog();//弹出选择框
                     Intent intentPhone = new Intent(context, BindingPhoneActivity.class);
-                    intentPhone.putExtra("phone",phone);
+                    intentPhone.putExtra("phone", phone);
                     startActivity(intentPhone);
                     return;
                 }

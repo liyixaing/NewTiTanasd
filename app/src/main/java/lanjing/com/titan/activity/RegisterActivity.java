@@ -64,7 +64,6 @@ public class RegisterActivity extends MvpActivity<RegisterContact.RegisterPresen
                 edUserName.setCursorVisible(true);//光标显示
                 break;
             case R.id.i_agree_checkbox:
-
                 break;
             case R.id.agreement:
 //                Intent intent = new Intent(context,AgreementActivity.class);
