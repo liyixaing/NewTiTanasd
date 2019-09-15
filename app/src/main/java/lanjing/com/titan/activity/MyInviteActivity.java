@@ -160,7 +160,6 @@ public class MyInviteActivity extends MvpActivity<FriendListContact.FriendListPr
     }
 
 
-
     //打开邀请链接
     private void openInviteUrl() {
         Intent intent = new Intent(Intent.ACTION_VIEW,
