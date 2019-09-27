@@ -3,6 +3,7 @@
     package="lanjing.com.titan">
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" /> <!-- sdcard读权限 -->
+    <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /> <!-- sdcard写权限 -->
     <!-- 写内部存储 -->
     <uses-permission android:name="android.permission.WRITE_INTERNAL_STORAGE" />
@@ -92,6 +93,13 @@
         <activity android:name=".activity.ExchangeDetailsActivity" />
         <!--账单明细详情页-->
         <activity android:name=".activity.DetailsOfBillsActivity" />
+        <!--二维码界面-->
+        <activity android:name=".activity.PaymentCodeActivity" />
+        <!--激活码获取记录-->
+        <activity android:name=".activity.StartCodeActivity" />
+
+        <!--扫描-->
+        <activity android:name=".zxing.android.CaptureActivity" />
     </application>
 
 </manifest>

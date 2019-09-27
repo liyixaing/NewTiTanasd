@@ -585,6 +585,9 @@
     <string name="immediate_activation">立即激活</string>
     <string name="free_daily_allowance">每日限量免费赠送</string>
     <string name="free_daily_activation_codes">激活码剩余数量：</string>
+    <string name="viewfinderview_status_text1">将二维码放入取景框内即可自动扫描</string>
+
+
 
 
 </resources>

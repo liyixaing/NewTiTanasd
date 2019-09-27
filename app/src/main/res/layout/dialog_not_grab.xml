@@ -5,46 +5,48 @@
     android:background="@mipmap/ic_free"
     android:gravity="center_horizontal"
     android:orientation="vertical">
-    <!--复制邀请码-->
+    <!--活动还没开始-->
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:src="@mipmap/ic_titan_icon" />
-
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:src="@mipmap/icon_titan_one" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:visibility="gone"
+        android:text="@string/free_daily_allowance"
+        android:textColor="@color/white"
+        android:textSize="15sp" />
 
     <TextView
         android:id="@+id/tv_number"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="65dp"
+        android:text="活动开始时间 12:00"
         android:textColor="@color/blue" />
 
-    <TextView
-        android:id="@+id/tv_activitycode"
+    <LinearLayout
+        android:id="@+id/ll_qiang"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:textColor="#182146" />
+        android:layout_marginTop="10dp"
+        android:background="@mipmap/ic_hui_go"
+        android:gravity="center">
 
-    <TextView
-        android:id="@+id/login_activation_btn"
-        android:layout_width="match_parent"
-        android:layout_height="35dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="30dp"
-        android:layout_marginBottom="30dp"
-        android:background="@drawable/btn_radius_blue"
-        android:foreground="@drawable/bg_white"
-        android:gravity="center"
-        android:text="复制激活码"
-        android:textColor="@color/white"
-        android:textSize="16sp" />
-
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="抢"
+            android:textColor="@color/white"
+            android:textSize="29sp"
+            android:visibility="gone" />
+    </LinearLayout>
 </LinearLayout>

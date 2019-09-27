@@ -54,6 +54,7 @@
                     android:padding="3dp">
 
                     <TextView
+                        android:id="@+id/tv_activation"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/btn_activation"
@@ -61,12 +62,14 @@
                 </LinearLayout>
             </LinearLayout>
 
+            <!--扫一扫-->
             <RelativeLayout
                 android:id="@+id/rl_home_notice"
                 android:layout_width="25dp"
                 android:layout_height="25dp"
                 android:layout_alignParentRight="true"
-                android:layout_centerInParent="true">
+                android:layout_centerInParent="true"
+                android:visibility="gone">
 
                 <LinearLayout
                     android:id="@+id/ll_red_dot"
@@ -80,7 +83,7 @@
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:src="@mipmap/ic_notice_msg" />
+                    android:src="@mipmap/ic_scanning" />
             </RelativeLayout>
         </RelativeLayout>
 
@@ -148,7 +151,6 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="right"
-
                     android:textColor="@color/white" />
             </LinearLayout>
 
@@ -160,11 +162,21 @@
 
                 <TextView
                     android:id="@+id/tv_amount"
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:text="00.00"
                     android:textColor="@color/white"
                     android:textSize="@dimen/sp_30" />
+
+                <!--二维码-->
+                <ImageView
+                    android:id="@+id/iv_tow_code"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="10dp"
+                    android:src="@mipmap/ic_tow_code"
+                    android:visibility="gone" />
 
 
             </LinearLayout>

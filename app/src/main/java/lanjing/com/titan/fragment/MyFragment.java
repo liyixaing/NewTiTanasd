@@ -32,12 +32,14 @@ import lanjing.com.titan.activity.AdviceFeedbackActivity;
 import lanjing.com.titan.activity.BillingDetailsActivity;
 import lanjing.com.titan.activity.CommitteeActivity;
 import lanjing.com.titan.activity.DisclaimerActivity;
+import lanjing.com.titan.activity.FeedbackListActivity;
 import lanjing.com.titan.activity.MyInviteActivity;
 import lanjing.com.titan.activity.NodeActivity;
 import lanjing.com.titan.activity.NoticeActivity;
 import lanjing.com.titan.activity.OnlineServiceActivity;
 import lanjing.com.titan.activity.PersonalActivity;
 import lanjing.com.titan.activity.SecurityCenterActivity;
+import lanjing.com.titan.activity.StartCodeActivity;
 import lanjing.com.titan.constant.Constant;
 import lanjing.com.titan.contact.PersonContact;
 import lanjing.com.titan.eventbus.EventImpl;
@@ -92,6 +94,10 @@ public class MyFragment extends MvpFragment<PersonContact.PersonPresent> impleme
     Unbinder unbinder1;
     @BindView(R.id.tv_level)
     TextView tvLevel;
+    @BindView(R.id.ll_notice)
+    LinearLayout ll_notice;//首页迁移过来的小铃铛
+    @BindView(R.id.ll_activation_code)
+    LinearLayout ll_activation_code;//激活码获取记录
 
     @Override
     public void initData(Bundle savedInstanceState) {
@@ -245,7 +251,10 @@ public class MyFragment extends MvpFragment<PersonContact.PersonPresent> impleme
     };
 
 
-    @OnClick({R.id.checkbox_privacy_mode, R.id.people_data_lay, R.id.lay_security_center, R.id.lay_billing_details, R.id.lay_my_invite, R.id.tv_online_customer_service, R.id.tv_advice_feedback, R.id.tv_disclaimer, R.id.tv_node, R.id.tv_committee})
+    @OnClick({R.id.checkbox_privacy_mode, R.id.people_data_lay, R.id.lay_security_center,
+            R.id.lay_billing_details, R.id.lay_my_invite, R.id.tv_online_customer_service,
+            R.id.tv_advice_feedback, R.id.tv_disclaimer, R.id.tv_node, R.id.tv_committee, R.id.ll_notice,
+            R.id.ll_activation_code})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.checkbox_privacy_mode:
@@ -300,6 +309,14 @@ public class MyFragment extends MvpFragment<PersonContact.PersonPresent> impleme
                 committee.putExtra("type", "3");
                 committee.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS);
                 startActivity(committee);
+                break;
+            case R.id.ll_notice://迁移过来的铃铛
+                Intent lingdang = new Intent(context, FeedbackListActivity.class);
+                startActivity(lingdang);
+                break;
+            case R.id.ll_activation_code:
+                Intent activationCode = new Intent(context, StartCodeActivity.class);
+                startActivity(activationCode);
                 break;
 
         }

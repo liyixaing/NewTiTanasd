@@ -8,6 +8,8 @@ import lanjing.com.titan.request.BillDetailRequest;
 import lanjing.com.titan.request.BindContactsRequest;
 import lanjing.com.titan.request.BuyOrSellRequest;
 import lanjing.com.titan.request.CancelRequest;
+import lanjing.com.titan.request.CdkeyListRequest;
+import lanjing.com.titan.request.CdkeyRequest;
 import lanjing.com.titan.request.CoinDealRequest;
 import lanjing.com.titan.request.ConvertRequest;
 import lanjing.com.titan.request.DealPwdRequest;
@@ -31,6 +33,7 @@ import lanjing.com.titan.request.RecallRequest;
 import lanjing.com.titan.request.RegisterRequest;
 import lanjing.com.titan.request.RequestConvertConfig;
 import lanjing.com.titan.request.SaveWalletRequest;
+import lanjing.com.titan.request.SeckillCdkeyRequest;
 import lanjing.com.titan.request.SellOrderRequest;
 import lanjing.com.titan.request.SendCodeRequest;
 import lanjing.com.titan.request.SetHelpRequest;
@@ -51,6 +54,8 @@ import lanjing.com.titan.response.AddressListResponse;
 import lanjing.com.titan.response.AgreementResponse;
 import lanjing.com.titan.response.AwardResponse;
 import lanjing.com.titan.response.BillDetailResponse;
+import lanjing.com.titan.response.CdkeyListResponse;
+import lanjing.com.titan.response.CdkeyResponse;
 import lanjing.com.titan.response.ChargeResponse;
 import lanjing.com.titan.response.CoinDealResponse;
 import lanjing.com.titan.response.CoinLogListResponse;
@@ -75,6 +80,7 @@ import lanjing.com.titan.response.PersonResponse;
 import lanjing.com.titan.response.RegisterResponse;
 import lanjing.com.titan.response.Responseuplode;
 import lanjing.com.titan.response.ResultDTO;
+import lanjing.com.titan.response.SeckillCdkeyResponse;
 import lanjing.com.titan.response.SellOrderDetailResponse;
 import lanjing.com.titan.response.SetHelpResponse;
 import lanjing.com.titan.response.SetNewPhoneResponse;
@@ -453,6 +459,24 @@ public interface ApiService {
      */
     @POST("/app/convert")
     Call<ResultDTO> convertCoin(@Header("token") String token, @Body ConvertRequest data);
+
+    /**
+     * 获取秒杀配置（激活码）
+     */
+    @POST("/app/getSeckillCdkeyConfig")
+    Call<SeckillCdkeyResponse> SeckillCdkeyConfig(@Header("token") String token, @Body SeckillCdkeyRequest data);
+
+    /**
+     * 获取免费激活码
+     */
+    @POST("/app/seckillCdkey")
+    Call<CdkeyResponse> seckillCdkey(@Header("token") String token, @Body CdkeyRequest data);
+
+    /**
+     * 获取抢到的激活码清单
+     */
+    @POST("/app/getMySeckillCdkeyList")
+    Call<CdkeyListResponse> historydetail(@Header("token") String token, @Body CdkeyListRequest data);
 
 
     /**

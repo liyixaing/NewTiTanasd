@@ -42,9 +42,11 @@ public class CashValueFragment extends MvpFragment<WithDrawalContact.WithDrawalP
     int size = 10;
     WithDrawalAdapter mAdapter;
     List<CoinLogListResponse.Data> mList;
+    List<CoinLogListResponse.Data> data;
     @BindView(R.id.rv_normal_show)
     LinearLayout rvNormalShow;
     String coin = "";
+
 
     @Override
     public void initData(Bundle savedInstanceState) {
@@ -80,8 +82,6 @@ public class CashValueFragment extends MvpFragment<WithDrawalContact.WithDrawalP
     protected WithDrawalContact.WithDrawalPresent createPresent() {
         return new WithDrawalContact.WithDrawalPresent();
     }
-
-    List<CoinLogListResponse.Data> data;
 
     @Override
     public void getWithDrawalResult(Response<WithdrawalResponse> response) {

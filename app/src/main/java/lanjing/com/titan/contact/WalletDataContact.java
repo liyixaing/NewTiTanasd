@@ -8,17 +8,22 @@ import com.lxh.baselibray.mvp.IBaseView;
 import lanjing.com.titan.net.NetCallBack;
 
 import com.lxh.baselibray.net.ServiceGenerator;
+import com.lxh.baselibray.util.SPUtil;
 import com.lxh.baselibray.util.SPUtils;
 
 import lanjing.com.titan.api.ApiService;
 import lanjing.com.titan.constant.Constant;
 import lanjing.com.titan.request.ActiveRequest;
+import lanjing.com.titan.request.CdkeyRequest;
 import lanjing.com.titan.request.FreeRequest;
 import lanjing.com.titan.request.InfoNoticeRequest;
+import lanjing.com.titan.request.SeckillCdkeyRequest;
 import lanjing.com.titan.request.VersionRequest;
 import lanjing.com.titan.response.ActiveResponse;
+import lanjing.com.titan.response.CdkeyResponse;
 import lanjing.com.titan.response.InfoNoticeResponse;
 import lanjing.com.titan.response.PersonResponse;
+import lanjing.com.titan.response.SeckillCdkeyResponse;
 import lanjing.com.titan.response.TodayFreeResponse;
 import lanjing.com.titan.response.VersionResponse;
 import lanjing.com.titan.response.WalletDataResponse;
@@ -159,6 +164,51 @@ public class WalletDataContact {
 
         }
 
+        //获取秒杀配置
+        public void SeckillCdkeyConfig(final Context context) {
+            ApiService service = ServiceGenerator.createService(ApiService.class);
+            SeckillCdkeyRequest request = new SeckillCdkeyRequest();
+            String token = SPUtils.getString(Constant.TOKEN, "", context);
+            service.SeckillCdkeyConfig(token, request).enqueue(new NetCallBack<SeckillCdkeyResponse>() {
+                @Override
+                public void onSuccess(Call<SeckillCdkeyResponse> call, Response<SeckillCdkeyResponse> response) {
+                    if (getView() != null) {
+                        getView().getSeckillCdkeyConfig(response);
+                    }
+                }
+
+                @Override
+                public void onFailed() {
+                    if (getView() != null) {
+                        getView().getDataFailed();
+                    }
+
+                }
+            });
+        }
+
+        //开始抢名额
+        public void seckillCdkey(final Context context) {
+            ApiService service = ServiceGenerator.createService(ApiService.class);
+            CdkeyRequest request = new CdkeyRequest();
+            String token = SPUtils.getString(Constant.TOKEN, "", context);
+            service.seckillCdkey(token, request).enqueue(new NetCallBack<CdkeyResponse>() {
+                @Override
+                public void onSuccess(Call<CdkeyResponse> call, Response<CdkeyResponse> response) {
+                    if (getView() != null) {
+                        getView().getseckillCdkey(response);
+                    }
+                }
+
+                @Override
+                public void onFailed() {
+                    if (getView() != null) {
+                        getView().getDataFailed();
+                    }
+                }
+            });
+        }
+
 
     }
 
@@ -174,6 +224,10 @@ public class WalletDataContact {
         void getActiveCode(Response<ActiveResponse> response);
 
         void getTodayFreeActiveTimes(Response<TodayFreeResponse> response);
+
+        void getSeckillCdkeyConfig(Response<SeckillCdkeyResponse> response);
+
+        void getseckillCdkey(Response<CdkeyResponse> response);
 
         void getDataFailed();
 

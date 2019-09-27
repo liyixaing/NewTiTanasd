@@ -14,7 +14,7 @@
         android:layout_marginTop="@dimen/dp_20"
         android:gravity="center"
         android:text="@string/updent_activion"
-        android:textColor="@color/common_black"
+        android:textColor="@color/blue"
         android:textSize="@dimen/sp_16" />
 
     <LinearLayout
