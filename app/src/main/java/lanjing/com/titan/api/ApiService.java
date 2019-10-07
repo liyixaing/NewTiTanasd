@@ -48,7 +48,9 @@ import lanjing.com.titan.request.WithdrawRequest;
 import lanjing.com.titan.request.WithdrawalRequest;
 import lanjing.com.titan.request.SaveOrUpdateRequest;
 import lanjing.com.titan.request.deleterRequest;
+import lanjing.com.titan.request.getTransferConfigRequest;
 import lanjing.com.titan.request.getTransferRequest;
+import lanjing.com.titan.request.RransferRequest;
 import lanjing.com.titan.response.ActiveResponse;
 import lanjing.com.titan.response.AddressListResponse;
 import lanjing.com.titan.response.AgreementResponse;
@@ -67,7 +69,6 @@ import lanjing.com.titan.response.ExemptionResponse;
 import lanjing.com.titan.response.FeedbackListResponse;
 import lanjing.com.titan.response.FriendListResponse;
 import lanjing.com.titan.response.HistoryListResponse;
-import lanjing.com.titan.response.ImportWalletResponse;
 import lanjing.com.titan.response.InfoNoticeResponse;
 import lanjing.com.titan.response.InformationResponse;
 import lanjing.com.titan.response.InterDealResponse;
@@ -75,7 +76,6 @@ import lanjing.com.titan.response.IsfindResponse;
 import lanjing.com.titan.response.ListWalletImportResponse;
 import lanjing.com.titan.response.LoginResponse;
 import lanjing.com.titan.response.MarketListResponse;
-import lanjing.com.titan.response.ModifyHeadResponse;
 import lanjing.com.titan.response.PersonResponse;
 import lanjing.com.titan.response.RegisterResponse;
 import lanjing.com.titan.response.Responseuplode;
@@ -92,6 +92,7 @@ import lanjing.com.titan.response.WalletDataResponse;
 import lanjing.com.titan.response.WalletDetailResponse;
 import lanjing.com.titan.response.WalletListResponse;
 import lanjing.com.titan.response.WithdrawalResponse;
+import lanjing.com.titan.response.getTransferConfigResponse;
 import lanjing.com.titan.response.getTransferResponse;
 import lanjing.com.titan.response.viewFeedbackResponse;
 import retrofit2.Call;
@@ -478,6 +479,17 @@ public interface ApiService {
     @POST("/app/getMySeckillCdkeyList")
     Call<CdkeyListResponse> historydetail(@Header("token") String token, @Body CdkeyListRequest data);
 
+    /**
+     * 拉取转账配置
+     */
+    @POST("/app/getTransferConfig")
+    Call<getTransferConfigResponse> CdkeyList(@Header("token") String token, @Body getTransferConfigRequest data);
+
+    /**
+     * 转账
+     */
+    @POST("/app/transfer")
+    Call<ResultDTO> transfer(@Header("token") String token, @Body RransferRequest data);
 
     /**
      * 版本更新

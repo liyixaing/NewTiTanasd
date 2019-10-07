@@ -55,12 +55,12 @@ public class ImportWalletBindActivity extends MvpActivity<BindContact.BindPresen
                 edReferencesId.setCursorVisible(true);//光标显示
                 break;
             case R.id.submit_btn:
-                if(ObjectUtils.isEmpty(people)){
-                    ToastUtils.showShortToast(context,getResources().getString(R.string.please_fill_in_the_referee_id));
+                if (ObjectUtils.isEmpty(people)) {
+                    ToastUtils.showShortToast(context, getResources().getString(R.string.please_fill_in_the_referee_id));
                     return;
                 }
                 showLoadingDialog();
-                mPresent.bind(context,people);
+                mPresent.bind(context, people);
                 break;
         }
     }
@@ -73,21 +73,21 @@ public class ImportWalletBindActivity extends MvpActivity<BindContact.BindPresen
     @Override
     public void getBindResult(Response<ResultDTO> response) {
         dismissLoadingDialog();
-        if(response.body().getCode() == Constant.SUCCESS_CODE){
-            ToastUtils.showShortToast(context,getResources().getString(R.string.submit_successfully));
-            Intent intent = new Intent(context,MainActivity.class);
+        if (response.body().getCode() == Constant.SUCCESS_CODE) {
+            ToastUtils.showShortToast(context, getResources().getString(R.string.submit_successfully));
+            Intent intent = new Intent(context, MainActivity.class);
             startActivity(intent);
             finish();
-        }else if (response.body().getCode() == -10){
+        } else if (response.body().getCode() == -10) {
             ToastUtils.showShortToast(context, getResources().getString(R.string.not_login));
-        }else {
+        } else {
             ToastUtils.showShortToast(context, response.body().getMsg());
         }
     }
 
     @Override
     public void getDataFailed() {
-        ToastUtils.showLongToast(context,getResources().getString(R.string.network_error ));
+        ToastUtils.showLongToast(context, getResources().getString(R.string.network_error));
         dismissLoadingDialog();
     }
 }

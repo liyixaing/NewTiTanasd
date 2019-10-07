@@ -308,6 +308,12 @@ public class AssetTITANActivity extends MvpActivity<WalletDetailContact.WalletDe
                     tvTitanScreen.setText(getResources().getString(R.string.rank_trading_weight));
                     mPresent.historylist(context, coin, type, String.valueOf(page), String.valueOf(pageSize));
                     screenDialog.dismiss();
+                })
+                .setOnClickListener(R.id.tv_sd, v -> {
+                    type = "22";
+                    tvTitanScreen.setText(getResources().getString(R.string.flash_exchange));
+                    mPresent.historylist(context, coin, type, String.valueOf(page), String.valueOf(pageSize));
+                    screenDialog.dismiss();
                 });
         screenDialog = builder.create();
         screenDialog.show();

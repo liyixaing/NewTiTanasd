@@ -47,9 +47,6 @@ public class CoinTitancAdapter extends BaseQuickAdapter<HistoryListResponse.mDat
             case 1002:
                 helper.setText(R.id.tv_titanc_type, R.string.unfrozen);//交易激活
                 break;
-            case 101:
-                helper.setText(R.id.tv_titanc_type, R.string.airdrop_release);//空投释放
-                break;
             case 102:
                 helper.setText(R.id.tv_titanc_type, R.string.ore_root);//空投加权
                 break;
@@ -59,6 +56,13 @@ public class CoinTitancAdapter extends BaseQuickAdapter<HistoryListResponse.mDat
             case 501:
                 helper.setText(R.id.tv_titanc_type, R.string.airdrop_gift);//空投赠送
                 break;
+            case 1:
+                helper.setText(R.id.tv_titanc_type, R.string.top_up_c);//充币
+                break;
+            case 21:
+                helper.setText(R.id.tv_titanc_type, R.string.flash_exchange);
+                break;
+
         }
         helper.setText(R.id.tv_titanc_change_num, sum)
                 .setText(R.id.tv_type_two, R.string.qty)

@@ -63,7 +63,6 @@ public class DetailsOfBillsActivity extends MvpActivity<BillDetailContact.BillDe
     //币币交易详情数据  coin1Price
     @Override
     public void getSellOrderDetail(Response<SellOrderDetailResponse> response) {
-        Log.e("xiaoqiang", "调试输出");
         if (response.body().getCode() == Constant.SUCCESS_CODE) {
             tv_titan_type.setText(MoneyUtil.formatFour(String.valueOf(response.body().getData().getTradeAmount() + response.body().getData().getTradeFee())) + "\rUSD");//花费数量
             tv_titan_state.setText(MoneyUtil.formatFour(String.valueOf(response.body().getData().getTradeFee())) + "\rUSD");//手续费

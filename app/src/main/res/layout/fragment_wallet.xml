@@ -68,8 +68,7 @@
                 android:layout_width="25dp"
                 android:layout_height="25dp"
                 android:layout_alignParentRight="true"
-                android:layout_centerInParent="true"
-                android:visibility="gone">
+                android:layout_centerInParent="true">
 
                 <LinearLayout
                     android:id="@+id/ll_red_dot"
@@ -83,8 +82,15 @@
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:src="@mipmap/ic_scanning" />
+                    android:src="@mipmap/ic_notice_msg" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@mipmap/ic_scanning"
+                    android:visibility="gone" />
             </RelativeLayout>
+
         </RelativeLayout>
 
         <LinearLayout
@@ -435,7 +441,8 @@
                         android:foreground="@drawable/bg_white"
                         android:gravity="center_vertical"
                         android:orientation="horizontal"
-                        android:padding="@dimen/dp_10">
+                        android:padding="@dimen/dp_10"
+                        android:visibility="gone">
 
                         <ImageView
                             android:layout_width="@dimen/dp_30"

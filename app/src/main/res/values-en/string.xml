@@ -101,13 +101,15 @@
     <string name="top_up_c">Top Up</string>
     <string name="withdraw_c">Withdraw</string>
     <string name="top_exchange">Exchange</string>
-    <string name="exchange_bar">Exchange BAR</string>
+    <string name="exchange_bars">Exchange BAR</string>
+    <string name="exchange_titanc">Exchange TITANC</string>
 
     <string name="cash_withdraw_balance">Cash Withdraw Balance</string>
     <string name="exchange_transfer">Exchange Transfer In (Unexchanged)</string>
 
     <string name="titan_top_up">TITAN Top Up</string>
     <string name="bar_top_up">BAR Top Up</string>
+    <string name="titanc_top_up">TITANC Top Up</string>
     <string name="titan_withdraw">TITAN Withdraw</string>
     <string name="titan_trading_particulars">TITAN Trading Particulars</string>
 
@@ -261,7 +263,7 @@
     <string name="you_have_not_set_the_wallet_address_please_set_it_first">You Have Not Set The Wallet Address, Please Set It First！</string>
     <string name="real_name_tip">You Have Not Verified Your Real Name, Please Go To The Authentication!</string>
     <string name="please_enter_transaction_PW">Please Enter Your Transaction Password</string>
-    <string name="PW">PW</string>
+    <string name="PW">Password</string>
     <string name="take_photo">Take Photo</string>
     <string name="photo_album">Photo Album</string>
     <string name="modify_nickname">Reset Nickname</string>
@@ -402,7 +404,7 @@
 
     <string name="income_financial_success">Income Management Success！</string>
     <string name="exchange_game_currency_success">Exchange Game Currency Success！</string>
-    <string name="exchange_tip">Please Enter The Quantity Of Exchange</string>
+    <string name="exchange_tip">Please Enter The Quantity Of</string>
     <string name="exchange_zero_tip">The Amount Of Exchange Must Be Greater Than Zero</string>
     <string name="submit_successfully">Submit Successfully</string>
     <string name="no_data_yet">No Data Yet</string>
@@ -558,7 +560,7 @@
     <string name="balance_all">Exchange All</string>
     <string name="exchange_rate">Exchange Rate</string>
     <string name="details">Details</string>
-    <string name="balance_log">Explanation: Using TITAN To Exchange BAR Directly Without Consuming Handling Fees. After Confirmation, The Price Is Calculated According To EZB</string>
+    <string name="balance_log">Warm reminder: Flash confirmation will be flashed to TITANC at the actual price.</string>
     <string name="Transaction_Price_titan">AT Completion TITAN U/P</string>
     <string name="getbar">Get BAR Qty</string>
     <string name="Transaction_Price_bar">AT Completion BAR U/P </string>
@@ -580,4 +582,14 @@
     <string name="immediate_activation">Activate Now</string>
     <string name="free_daily_allowance">Limited Daily Free Gift</string>
     <string name="free_daily_activation_codes">Number Of Activation \n Codes Remaining：</string>
+    <string name="viewfinderview_status_text1">将二维码放入取景框内即可自动扫描</string>
+    <string name="turn_out">Turn Out</string>
+    <string name="turn_put">Turn In</string>
+    <string name="flash_exchange">exchange</string>
+    <string name="Turn_outtitianc">Turn out TITANC</string>
+    <string name="titanc_zhuanchu">Warm reminder: TITANC can only be transferred to the same mining and mining users.</string>
+    <string name="yijihuo">Activated</string>
+    <string name="record">Activation Code Acquisition Record</string>
+    <string name="not_yer">Not open</string>
+
 </resources>

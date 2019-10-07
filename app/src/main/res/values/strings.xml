@@ -104,12 +104,14 @@
     <string name="top_up_c">充币</string>
     <string name="top_exchange">兑换</string>
     <string name="withdraw_c">提币</string>
-    <string name="exchange_bar">兑换BAR</string>
+    <string name="exchange_bars">兑换BAR</string>
+    <string name="exchange_titanc">闪兑TITANC</string>
 
     <string name="cash_withdraw_balance">可提现余额</string>
     <string name="exchange_transfer">交易所转入(未交易)</string>
     <string name="titan_top_up">TITAN 充币</string>
     <string name="bar_top_up">BAR 充币</string>
+    <string name="titanc_top_up">TITANC 充币</string>
     <string name="titan_withdraw">TITAN 提币</string>
     <string name="titan_trading_particulars">TITAN 交易详情</string>
 
@@ -124,7 +126,7 @@
     <string name="deal_time">交易时间</string>
     <string name="blockchain_trade_id">区块链交易ID</string>
 
-    <string name="titan_unclaimed">TITANC待激活</string>
+    <string name="titan_unclaimed">TITANC</string>
     <string name="usd_to_be_airdropped">USD待空投</string>
     <string name="qty_to_be_airdropped">待空投数量</string>
     <string name="qty_unclaimed">待领取数量</string>
@@ -559,11 +561,11 @@
     <string name="Label_allin">地址标签:</string>
     <string name="beizhu_allin">备注信息:</string>
     <string name="titan_num">TITAN余额:</string>
-    <string name="balance_num">兑换数量</string>
-    <string name="balance_all">全部兑换</string>
+    <string name="balance_num">闪兑数量</string>
+    <string name="balance_all">全部闪兑</string>
     <string name="exchange_rate">汇率</string>
     <string name="details">详情</string>
-    <string name="balance_log">说明:使用TITAN直接兑换BAR，不消耗手续费，确认后以EZB当下交易对价格计算</string>
+    <string name="balance_log">温馨提示：闪兑确认后将以实际价格进行闪兑TITANC数量</string>
     <string name="Transaction_Price_titan">成交时TITAN单价</string>
     <string name="getbar">获得BAR数量</string>
     <string name="Transaction_Price_bar">成交时BAR单价</string>
@@ -586,6 +588,15 @@
     <string name="free_daily_allowance">每日限量免费赠送</string>
     <string name="free_daily_activation_codes">激活码剩余数量：</string>
     <string name="viewfinderview_status_text1">将二维码放入取景框内即可自动扫描</string>
+    <string name="turn_out">转出</string>
+    <string name="turn_put">转入</string>
+    <string name="flash_exchange">闪兑</string>
+    <string name="Turn_outtitianc">转出TITANC</string>
+    <string name="titanc_zhuanchu">温馨提示：TITANC只能转出至同矿层和矿区用户</string>
+    <string name="yijihuo">已激活</string>
+    <string name="record">激活码获取记录</string>
+    <string name="not_yer">功能暂未开放</string>
+
 
 
 

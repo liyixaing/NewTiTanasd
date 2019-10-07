@@ -34,6 +34,10 @@ public class WithDrawalAdapter extends BaseQuickAdapter<CoinLogListResponse.Data
                 helper.setText(R.id.tv_currency, "TITAN");
                 helper.setText(R.id.tv_typemonet, "TITAN");
                 break;
+            case 2:
+                helper.setText(R.id.tv_currency, "TITANC");
+                helper.setText(R.id.tv_typemonet, "TITANC");
+                break;
             case 5:
                 helper.setText(R.id.tv_currency, "BAR");
                 helper.setText(R.id.tv_typemonet, "BAR");

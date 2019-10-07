@@ -58,15 +58,15 @@ public class ExchangeDetailsActivity extends MvpActivity<BillDetailContact.BillD
                 tv_getandset.setText(getResources().getString(R.string.qty_acquire));//设置类型  花费
                 tv_titan_num.setText(MoneyUtil.formatFour(response.body().getData().
                         getSourceAmount()) + "\r" + response.body().getData().getSourceCoinName());
-                tv_ource_address.setText("1 TITAN≈" + MoneyUtil.formatFour(response.body().getData().getConvertRate()) + "\rBAR");//汇率
-                tv_titan_address.setText(response.body().getData().getTargetAmount() + "\rBAR");
+                tv_ource_address.setText("1 TITAN≈" + MoneyUtil.formatFour(response.body().getData().getConvertRate()) + response.body().getData().getTargetCoinName());//汇率
+                tv_titan_address.setText(response.body().getData().getTargetAmount() + response.body().getData().getTargetCoinName());
                 tv_titan_time.setText(DateUtils.timedate(response.body().getData().getCreateTime()));
             } else if (response.body().getData().getChangeType().equals("21")) {//bar兑换
                 tv_getandset.setText(getResources().getString(R.string.qty_cost)); //设置类型 获得
                 tv_titan_address.setText(MoneyUtil.formatFour(response.body().getData().
                         getSourceAmount()) + "\r" + response.body().getData().getSourceCoinName());
-                tv_ource_address.setText("1 TITAN≈" + MoneyUtil.formatFour(response.body().getData().getConvertRate()) + "\rBAR");//汇率
-                tv_titan_num.setText(response.body().getData().getTargetAmount() + "\rBAR");
+                tv_ource_address.setText("1 TITAN≈" + MoneyUtil.formatFour(response.body().getData().getConvertRate()) + response.body().getData().getTargetCoinName());//汇率
+                tv_titan_num.setText(response.body().getData().getTargetAmount() + response.body().getData().getTargetCoinName());
                 tv_titan_time.setText(DateUtils.timedate(response.body().getData().getCreateTime()));
             }
         }

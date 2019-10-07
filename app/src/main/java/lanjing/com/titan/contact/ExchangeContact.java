@@ -23,10 +23,10 @@ public class ExchangeContact {
     public static class ExchangePresent extends BasePresent<IWalletDetailView> {
 
         //获取兑换信息
-        public void Convert(final Context context) {
+        public void Convert(final Context context, int sourceCoin, int targetCoin) {
             ApiService service = ServiceGenerator.createService(ApiService.class);
             String token = SPUtils.getString(Constant.TOKEN, "", context);
-            RequestConvertConfig request = new RequestConvertConfig();
+            RequestConvertConfig request = new RequestConvertConfig(sourceCoin, targetCoin);
             service.ConvertConfig(token, request).enqueue(new NetCallBack<ConvertConfigResponse>() {
                 @Override
                 public void onSuccess(Call<ConvertConfigResponse> call, Response<ConvertConfigResponse> response) {

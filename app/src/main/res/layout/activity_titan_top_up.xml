@@ -50,7 +50,6 @@
             <TextView
                 android:id="@+id/tv_top_up_address"
                 android:layout_marginTop="@dimen/dp_20"
-
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 

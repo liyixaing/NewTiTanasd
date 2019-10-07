@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -72,7 +72,6 @@
                     <TextView
                         android:id="@+id/tv_number"
                         android:layout_width="wrap_content"
-
                         android:layout_height="wrap_content"
                         android:textColor="@color/common_black"
                         android:textSize="@dimen/sp_13" />
@@ -83,6 +82,18 @@
                         android:layout_height="@dimen/dp_21"
                         android:layout_marginRight="@dimen/dp_8"
                         android:background="@drawable/btn_radius_blue"
+                        android:foreground="@drawable/bg_white"
+                        android:gravity="center"
+                        android:text="@string/copy"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/sp_9" />
+                    <TextView
+                        android:id="@+id/tv_copy_fishing"
+                        android:layout_width="@dimen/dp_69"
+                        android:layout_height="@dimen/dp_21"
+                        android:layout_marginRight="@dimen/dp_8"
+                        android:visibility="gone"
+                        android:background="@drawable/btn_radius_hui"
                         android:foreground="@drawable/bg_white"
                         android:gravity="center"
                         android:text="@string/copy"

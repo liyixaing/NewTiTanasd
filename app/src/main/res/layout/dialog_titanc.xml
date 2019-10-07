@@ -5,35 +5,26 @@
     android:background="@drawable/shape_white_bg"
     android:gravity="center_horizontal"
     android:orientation="vertical">
-    <TextView
-    android:id="@+id/all"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:foreground="@drawable/bg_white"
-    android:gravity="center"
-    android:padding="@dimen/dp_10"
-    android:text="@string/all"
-    android:textColor="#FF000000"
-    android:textSize="@dimen/sp_15" />
 
     <TextView
-        android:id="@+id/tv_buy"
+        android:id="@+id/all"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:foreground="@drawable/bg_white"
         android:gravity="center"
         android:padding="@dimen/dp_10"
-        android:text="@string/buy"
+        android:text="@string/all"
         android:textColor="#FF000000"
         android:textSize="@dimen/sp_15" />
 
     <TextView
-        android:id="@+id/tv_sell"
+        android:id="@+id/tv_charging"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:foreground="@drawable/bg_white"
         android:gravity="center"
         android:padding="@dimen/dp_10"
-        android:text="@string/sell"
+        android:text="@string/top_up_c"
         android:textColor="#FF000000"
         android:textSize="@dimen/sp_15" />
 
@@ -44,24 +35,22 @@
         android:foreground="@drawable/bg_white"
         android:gravity="center"
         android:padding="@dimen/dp_10"
-        android:text="@string/top_up_c"
+        android:text="@string/turn_out"
         android:textColor="#FF000000"
         android:textSize="@dimen/sp_15" />
-
-
     <TextView
-        android:id="@+id/tv_withdraw"
+        android:id="@+id/tv_top_set"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:foreground="@drawable/bg_white"
         android:gravity="center"
         android:padding="@dimen/dp_10"
-        android:text="@string/withdraw_c"
+        android:text="@string/turn_put"
         android:textColor="#FF000000"
         android:textSize="@dimen/sp_15" />
 
     <TextView
-        android:id="@+id/tv_sd"
+        android:id="@+id/tv_exchange_get"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:foreground="@drawable/bg_white"
@@ -70,85 +59,50 @@
         android:text="@string/flash_exchange"
         android:textColor="#FF000000"
         android:textSize="@dimen/sp_15" />
-    <TextView
-        android:id="@+id/tv_exchange"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:foreground="@drawable/bg_white"
-        android:gravity="center"
-        android:padding="@dimen/dp_10"
-        android:visibility="gone"
-        android:text="@string/top_exchange"
-        android:textColor="#FF000000"
-        android:textSize="@dimen/sp_15" />
 
     <TextView
-        android:id="@+id/tv_service_fee"
+        android:id="@+id/tv_sell"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:foreground="@drawable/bg_white"
         android:gravity="center"
         android:padding="@dimen/dp_10"
-        android:text="@string/service_fee"
-        android:textColor="#FF000000"
-        android:textSize="@dimen/sp_15" />
-
-
-    <LinearLayout
-        android:id="@+id/tv_unfrozen"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:foreground="@drawable/bg_white"
-        android:paddingLeft="@dimen/dp_20"
-        android:paddingRight="@dimen/dp_20">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:foreground="@drawable/bg_white"
-            android:gravity="center"
-            android:padding="@dimen/dp_10"
-            android:text="@string/trade_get"
-            android:textColor="#FF000000"
-            android:textSize="@dimen/sp_15" />
-    </LinearLayout>
-
-
-
-
-    <TextView
-        android:id="@+id/tv_seven"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:foreground="@drawable/bg_white"
-        android:gravity="center"
-        android:padding="@dimen/dp_10"
-        android:text="@string/direct_push_trade_gains"
+        android:text="@string/unfrozen"
         android:textColor="#FF000000"
         android:textSize="@dimen/sp_15" />
 
 
     <TextView
-        android:id="@+id/tv_eight"
+        android:id="@+id/tv_of_mineral"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:foreground="@drawable/bg_white"
         android:gravity="center"
         android:padding="@dimen/dp_10"
-        android:text="@string/rank_trading_weight"
+        android:text="@string/of_mineral"
         android:textColor="#FF000000"
         android:textSize="@dimen/sp_15" />
 
     <TextView
-        android:id="@+id/nine"
+        android:id="@+id/tv_ore_pool"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:foreground="@drawable/bg_white"
         android:gravity="center"
-        android:visibility="gone"
         android:padding="@dimen/dp_10"
-        android:text="@string/peer_acquisition"
+        android:text="@string/ore_pool"
         android:textColor="#FF000000"
         android:textSize="@dimen/sp_15" />
+
+    <TextView
+        android:id="@+id/tv_purchase"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="@dimen/dp_10"
+        android:text="@string/buy"
+        android:textColor="#FF000000"
+        android:textSize="@dimen/sp_15"
+        android:visibility="gone" />
+
 
 </LinearLayout>

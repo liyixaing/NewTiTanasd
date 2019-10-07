@@ -31,11 +31,39 @@ public class ConvertConfigResponse {
     }
 
     public static class DataBean {
+
+        private String user_titan_amount;
+        private String target_price_usdt;
+        private String source_price_usdt;
         private String bar_price_usdt;
         private String tt_price_usdt;
         private String convert_rate;
         private String convert_fee_rate;
         private String convert_switch;
+
+        public String getUser_titan_amount() {
+            return user_titan_amount;
+        }
+
+        public void setUser_titan_amount(String user_titan_amount) {
+            this.user_titan_amount = user_titan_amount;
+        }
+
+        public String getTarget_price_usdt() {
+            return target_price_usdt;
+        }
+
+        public void setTarget_price_usdt(String target_price_usdt) {
+            this.target_price_usdt = target_price_usdt;
+        }
+
+        public String getSource_price_usdt() {
+            return source_price_usdt;
+        }
+
+        public void setSource_price_usdt(String source_price_usdt) {
+            this.source_price_usdt = source_price_usdt;
+        }
 
         public String getBar_price_usdt() {
             return bar_price_usdt;

@@ -24,6 +24,9 @@ import lanjing.com.titan.response.ResultDTO;
 import lanjing.com.titan.util.MoneyUtil;
 import retrofit2.Response;
 
+/**
+ * 兑换
+ */
 public class ExchangeActivity extends MvpActivity<ExchangeContact.ExchangePresent> implements ExchangeContact.IWalletDetailView {
 
     @BindView(R.id.et_exchange_num)
@@ -34,6 +37,8 @@ public class ExchangeActivity extends MvpActivity<ExchangeContact.ExchangePresen
     TextView TvRate;
     String num;
     int i;
+    int sourceCoin = 1;//原币种
+    int targetCoin = 2;//兑换币种
 
     @Override
     protected ExchangeContact.ExchangePresent createPresent() {
@@ -42,11 +47,7 @@ public class ExchangeActivity extends MvpActivity<ExchangeContact.ExchangePresen
 
     @Override
     public void initData(Bundle savedInstanceState) {
-        num = getIntent().getStringExtra("num");
-         i=num.indexOf(".");
-        TvNum.setText(num);
-        mPresent.Convert(context);
-        inputEdit();
+        mPresent.Convert(context, sourceCoin, targetCoin);
 
     }
 
@@ -67,6 +68,7 @@ public class ExchangeActivity extends MvpActivity<ExchangeContact.ExchangePresen
                 }
                 break;
             case R.id.tv_all:
+                i = num.indexOf(".");
                 EtExchangeNum.setText(num.substring(0, i));
                 EtExchangeNum.setSelection(EtExchangeNum.length());//将光标移至文字末尾
                 break;
@@ -93,27 +95,25 @@ public class ExchangeActivity extends MvpActivity<ExchangeContact.ExchangePresen
 
     }
 
-    private void inputEdit() {
-        //输入框监听事件
+    //判断输入框中的数量是否与已有的数量比较
+    public void initInput() {
         EtExchangeNum.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                //发生改变前
+
             }
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                //正在发生改变
-
                 if (EtExchangeNum.getText().toString().equals("")) {
-                    //输入框为空 不做处理
+                    //还没有输入数据不做处理
                 } else {
                     int zhuanhuan = Integer.parseInt(num.substring(0, i));
                     int text = Integer.parseInt(EtExchangeNum.getText().toString());
                     if (text > zhuanhuan) {
                         EtExchangeNum.setText(num.substring(0, i));
                         EtExchangeNum.setSelection(EtExchangeNum.length());//将光标移至文字末尾
-                    }else {
+                    } else {
                         //不变
                     }
                 }
@@ -121,7 +121,7 @@ public class ExchangeActivity extends MvpActivity<ExchangeContact.ExchangePresen
 
             @Override
             public void afterTextChanged(Editable s) {
-                //发生改变后
+
             }
         });
     }
@@ -130,9 +130,13 @@ public class ExchangeActivity extends MvpActivity<ExchangeContact.ExchangePresen
     @Override
     public void getConvert(Response<ConvertConfigResponse> response) {
         if (response.body().getCode() == Constant.SUCCESS_CODE) {
-            String asd = getResources().getString(R.string.exchange_ratesad);
-            TvRate.setText(asd + response.body().getData().getConvert_switch()
-                    + "TITAN ≈ " + MoneyUtil.formatFour(response.body().getData().getConvert_rate()) + "BAR");
+            String Reference = getResources().getString(R.string.exchange_ratesad);
+            num = response.body().getData().getUser_titan_amount();
+            TvNum.setText(response.body().getData().getUser_titan_amount());
+            initInput();
+            i = num.indexOf(".");
+            TvRate.setText(Reference + "1"
+                    + "TITAN ≈ " + MoneyUtil.formatFour(response.body().getData().getConvert_rate()) + "TITANC");
 
         } else if (response.body().getCode() == -10) {
             ToastUtils.showShortToast(context, getResources().getString(R.string.not_login));
@@ -158,7 +162,7 @@ public class ExchangeActivity extends MvpActivity<ExchangeContact.ExchangePresen
     @Override
     public void getDealPwdResult(Response<ResultDTO> response) {
         if (response.body().getCode() == Constant.SUCCESS_CODE) {
-            mPresent.convertCoin(context, "1", EtExchangeNum.getText().toString(), "5");
+            mPresent.convertCoin(context, "1", EtExchangeNum.getText().toString(), "2");
         } else {
             ToastUtils.showShortToast(context, response.body().getMsg());
         }

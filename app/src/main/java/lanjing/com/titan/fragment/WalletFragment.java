@@ -40,6 +40,7 @@ import butterknife.OnClick;
 import lanjing.com.titan.R;
 import lanjing.com.titan.activity.AssetTITANActivity;
 import lanjing.com.titan.activity.AssetUSDActivity;
+import lanjing.com.titan.activity.FeedbackListActivity;
 import lanjing.com.titan.activity.NoticeActivity;
 import lanjing.com.titan.activity.PaymentCodeActivity;
 import lanjing.com.titan.activity.TItancWaitGetActivity;
@@ -212,11 +213,11 @@ public class WalletFragment extends MvpFragment<WalletDataContact.WalletDataPres
 
     }
 
+
     @Override
     public int getLayoutId() {
         return R.layout.fragment_wallet;
     }
-
 
     @OnClick({R.id.checkbox_private_mode, R.id.tv_wallet_name, R.id.manage_wallet, R.id.titan_lay,
             R.id.usd_lay, R.id.titanc_lay, R.id.usd2_lay, R.id.rl_home_notice, R.id.ll_bar, R.id.ll_activation, R.id.iv_tow_code})
@@ -278,13 +279,15 @@ public class WalletFragment extends MvpFragment<WalletDataContact.WalletDataPres
                 usd2.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS);
                 startActivity(usd2);
                 break;
-            case R.id.rl_home_notice://反馈的铃铛
-                //判断是否有相机权限
-                if (ContextCompat.checkSelfPermission(context, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
-                    ActivityCompat.requestPermissions(context, new String[]{Manifest.permission.CAMERA}, 1);
-                } else {
-                    goScan();
-                }
+            case R.id.rl_home_notice:
+                //判断是否有相机权限 (扫一扫功能)
+//                if (ContextCompat.checkSelfPermission(context, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+//                    ActivityCompat.requestPermissions(context, new String[]{Manifest.permission.CAMERA}, 1);
+//                } else {
+//                    goScan();
+//                }
+                Intent lingdang = new Intent(context, FeedbackListActivity.class);
+                startActivity(lingdang);
                 break;
             case R.id.iv_tow_code://跳转到二维吗界面
                 Intent TowCode = new Intent(context, PaymentCodeActivity.class);
@@ -433,11 +436,11 @@ public class WalletFragment extends MvpFragment<WalletDataContact.WalletDataPres
             //判断是否显示激活按钮
             if (response.body().getData().getState() == 10) {
                 ll_activation.setVisibility(View.VISIBLE);//未激活状态
-                tv_activation.setText("未激活");
+                tv_activation.setText(getResources().getString(R.string.btn_activation));
                 state = 0;
             } else {
                 ll_activation.setVisibility(View.VISIBLE);//已激活
-                tv_activation.setText("已激活");
+                tv_activation.setText(getResources().getString(R.string.yijihuo));
                 state = 1;
             }
 
@@ -546,10 +549,7 @@ public class WalletFragment extends MvpFragment<WalletDataContact.WalletDataPres
                 .setCancelable(true)
                 .setContentView(R.layout.dialog_replication_activation)
                 .setText(R.id.tv_number, "今日激活码已全部发放")
-                .setWidthAndHeight(SizeUtils.dp2px(context, 258), ViewGroup.LayoutParams.WRAP_CONTENT)
-                .setOnClickListener(R.id.ll_qiang, v -> {
-                    ToastUtils.showLongToast(context, "开始抢激活码罗");
-                });
+                .setWidthAndHeight(SizeUtils.dp2px(context, 258), ViewGroup.LayoutParams.WRAP_CONTENT);
 
         endDialog = builder.create();
         endDialog.show();
