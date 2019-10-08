@@ -137,11 +137,10 @@ public class TItancWaitGetActivity extends MvpActivity<WalletDetailContact.Walle
                 startActivity(exchange);
                 break;
             case R.id.exchange_btn://转出
-                ToastUtils.showLongToast(context, getResources().getString(R.string.not_yer));
-//                Intent exchanget = new Intent(context, TurnOutActivity.class);
-//                exchanget.putExtra("coin", coin);
-//                exchanget.putExtra("sun", sun);
-//                startActivity(exchanget);
+                Intent exchanget = new Intent(context, TurnOutActivity.class);
+                exchanget.putExtra("coin", coin);
+                exchanget.putExtra("sun", sun);
+                startActivity(exchanget);
                 break;
         }
     }

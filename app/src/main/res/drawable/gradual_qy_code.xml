@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <gradient
+        android:endColor="#3697FB"
+        android:startColor="#4F71F8"
+        android:angle="90"/>
+
+    <!--圆角属性（此处不需要直接注释掉就行了）-->
+    <!--<corners-->
+    <!--android:bottomLeftRadius="15dp"-->
+    <!--android:bottomRightRadius="15dp"-->
+    <!--android:topLeftRadius="15dp"-->
+    <!--android:topRightRadius="15dp" />-->
+</shape>

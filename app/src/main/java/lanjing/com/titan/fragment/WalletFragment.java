@@ -281,13 +281,14 @@ public class WalletFragment extends MvpFragment<WalletDataContact.WalletDataPres
                 break;
             case R.id.rl_home_notice:
                 //判断是否有相机权限 (扫一扫功能)
-//                if (ContextCompat.checkSelfPermission(context, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
-//                    ActivityCompat.requestPermissions(context, new String[]{Manifest.permission.CAMERA}, 1);
-//                } else {
-//                    goScan();
-//                }
-                Intent lingdang = new Intent(context, FeedbackListActivity.class);
-                startActivity(lingdang);
+                if (ContextCompat.checkSelfPermission(context, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+                    ActivityCompat.requestPermissions(context, new String[]{Manifest.permission.CAMERA}, 1);
+                } else {
+                    goScan();
+                }
+                //跳转到反馈列表界面
+//                Intent lingdang = new Intent(context, FeedbackListActivity.class);
+//                startActivity(lingdang);
                 break;
             case R.id.iv_tow_code://跳转到二维吗界面
                 Intent TowCode = new Intent(context, PaymentCodeActivity.class);
@@ -314,6 +315,7 @@ public class WalletFragment extends MvpFragment<WalletDataContact.WalletDataPres
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     goScan();
                 } else {
+                    //You refused the camera permission and may not be able to open the camera scanner.
                     ToastUtils.showLongToast(context, "你拒绝了权限申请，可能无法打开相机扫码哟!");
                 }
                 break;
@@ -329,9 +331,9 @@ public class WalletFragment extends MvpFragment<WalletDataContact.WalletDataPres
         if (requestCode == REQUEST_CODE_SCAN && resultCode == RESULT_OK) {
             if (data != null) {
                 //返回的文本内容
-                String content = data.getStringExtra(DECODED_CONTENT_KEY);
+                String content = data.getStringExtra(DECODED_CONTENT_KEY);//文本内容显示
                 //返回的BitMap图像
-                Bitmap bitmap = data.getParcelableExtra(DECODED_BITMAP_KEY);
+                Bitmap bitmap = data.getParcelableExtra(DECODED_BITMAP_KEY);//图像内容返回显示
 
                 Log.e("扫描内容", content);
             }
