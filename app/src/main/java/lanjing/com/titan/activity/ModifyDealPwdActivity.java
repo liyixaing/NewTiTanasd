@@ -180,10 +180,7 @@ public class ModifyDealPwdActivity extends MvpActivity<ModifyPwdContact.ModifyPw
                     ToastUtils.showLongToast(context, getResources().getString(R.string.the_cell_phone_number_cannot_be_empty));
                     return;
                 }
-//                if (!RegexUtils.isMobileExact(phone)) {
-//                    ToastUtils.showLongToast(context, getResources().getString(R.string.please_input_the_correct_mobile_phone_number));
-//                    return;
-//                }
+
                 mPresent.getCode(context, phone);// 1  綁定手机号
                 break;
             case R.id.confirm_btn:

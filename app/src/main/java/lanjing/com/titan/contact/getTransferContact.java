@@ -67,10 +67,10 @@ public class getTransferContact {
         }
 
         //提币  验证交易密码
-        public void dealPwd(final Context context, String password) {
+        public void dealPwd(final Context context, String password, String type) {
             ApiService service = ServiceGenerator.createService(ApiService.class);
             String token = SPUtils.getString(Constant.TOKEN, "", context);
-            DealPwdRequest request = new DealPwdRequest(Md5Utils.MD5(password));
+            DealPwdRequest request = new DealPwdRequest(Md5Utils.MD5(password), type);
             service.dealPwd(token, request).enqueue(new NetCallBack<ResultDTO>() {
                 @Override
                 public void onSuccess(Call<ResultDTO> call, Response<ResultDTO> response) {

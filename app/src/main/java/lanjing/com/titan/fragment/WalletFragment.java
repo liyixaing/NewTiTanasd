@@ -281,14 +281,14 @@ public class WalletFragment extends MvpFragment<WalletDataContact.WalletDataPres
                 break;
             case R.id.rl_home_notice:
                 //判断是否有相机权限 (扫一扫功能)
-                if (ContextCompat.checkSelfPermission(context, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
-                    ActivityCompat.requestPermissions(context, new String[]{Manifest.permission.CAMERA}, 1);
-                } else {
-                    goScan();
-                }
+//                if (ContextCompat.checkSelfPermission(context, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+//                    ActivityCompat.requestPermissions(context, new String[]{Manifest.permission.CAMERA}, 1);
+//                } else {
+//                    goScan();
+//                }
                 //跳转到反馈列表界面
-//                Intent lingdang = new Intent(context, FeedbackListActivity.class);
-//                startActivity(lingdang);
+                Intent lingdang = new Intent(context, FeedbackListActivity.class);
+                startActivity(lingdang);
                 break;
             case R.id.iv_tow_code://跳转到二维吗界面
                 Intent TowCode = new Intent(context, PaymentCodeActivity.class);
@@ -492,7 +492,7 @@ public class WalletFragment extends MvpFragment<WalletDataContact.WalletDataPres
                 .setCancelable(true)
                 .setContentView(R.layout.dialog_free)//载入布局文件
                 .setWidthAndHeight(SizeUtils.dp2px(context, 258), ViewGroup.LayoutParams.WRAP_CONTENT)//设置弹窗宽高
-                .setText(R.id.tv_number, "恭喜您获得激活码")
+                .setText(R.id.tv_number, getResources().getString(R.string.geterCode))
                 .setText(R.id.tv_activitycode, sun)
                 .setOnClickListener(R.id.login_activation_btn, v -> {
                     ClipboardManager copy = (ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE);
@@ -517,7 +517,7 @@ public class WalletFragment extends MvpFragment<WalletDataContact.WalletDataPres
                 .setText(R.id.tv_jhcode, code)
                 .setWidthAndHeight(SizeUtils.dp2px(context, 258), ViewGroup.LayoutParams.WRAP_CONTENT);
 //        执行到这里的话说明抢到激活名额了并且系统自动帮我激活了
-        tv_activation.setText("已激活");//改变现实文字
+        tv_activation.setText(getResources().getString(R.string.yijihuo));//改变现实文字
         state = 1;//改变激活状态
         SurplusDialog = builder.create();
         SurplusDialog.show();
@@ -531,7 +531,7 @@ public class WalletFragment extends MvpFragment<WalletDataContact.WalletDataPres
                 .addDefaultAnimation()
                 .setCancelable(true)
                 .setContentView(R.layout.dialog_grab_tomorrow)
-                .setText(R.id.tv_number, "激活码剩余：" + sun)
+                .setText(R.id.tv_number, getResources().getString(R.string.free_daily_activation_codes) + sun)
                 .setWidthAndHeight(SizeUtils.dp2px(context, 258), ViewGroup.LayoutParams.WRAP_CONTENT)
                 .setOnClickListener(R.id.ll_qiang, v -> {
                     mPresent.seckillCdkey(context);
@@ -550,7 +550,7 @@ public class WalletFragment extends MvpFragment<WalletDataContact.WalletDataPres
                 .addDefaultAnimation()
                 .setCancelable(true)
                 .setContentView(R.layout.dialog_replication_activation)
-                .setText(R.id.tv_number, "今日激活码已全部发放")
+                .setText(R.id.tv_number, getResources().getString(R.string.add_code))
                 .setWidthAndHeight(SizeUtils.dp2px(context, 258), ViewGroup.LayoutParams.WRAP_CONTENT);
 
         endDialog = builder.create();
@@ -639,7 +639,7 @@ public class WalletFragment extends MvpFragment<WalletDataContact.WalletDataPres
             } else {
                 if (response.body().getData().getIsStart() == 0) {//判断活动是否开始
 //                    已激活用户在活动未开始状态下点击激活按钮
-                    ToastUtils.showLongToast(context, "活动未开始");
+                    ToastUtils.showLongToast(context, getResources().getString(R.string.activity_not_started));
                 } else {
 //                    已激活用户在活动开始状态下点击激活按钮
                     if (response.body().getData().getFreeTimes() == 0) {//判断是否还有名额

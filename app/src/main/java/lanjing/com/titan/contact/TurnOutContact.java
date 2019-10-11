@@ -6,11 +6,13 @@ import android.content.Context;
 import com.lxh.baselibray.mvp.BasePresent;
 import com.lxh.baselibray.mvp.IBaseView;
 import com.lxh.baselibray.net.ServiceGenerator;
+import com.lxh.baselibray.util.Md5Utils;
 import com.lxh.baselibray.util.SPUtils;
 
 import lanjing.com.titan.api.ApiService;
 import lanjing.com.titan.constant.Constant;
 import lanjing.com.titan.net.NetCallBack;
+import lanjing.com.titan.request.DealPwdRequest;
 import lanjing.com.titan.request.getTransferConfigRequest;
 import lanjing.com.titan.request.RransferRequest;
 import lanjing.com.titan.response.ResultDTO;
@@ -67,12 +69,36 @@ public class TurnOutContact {
         }
 
 
+        // 验证卖出密码
+        public void dealPwdSell(final Context context, String password, String type) {
+            ApiService service = ServiceGenerator.createService(ApiService.class);
+            String token = SPUtils.getString(Constant.TOKEN, "", context);
+            DealPwdRequest request = new DealPwdRequest(Md5Utils.MD5(password), type);
+            service.dealPwd(token, request).enqueue(new NetCallBack<ResultDTO>() {
+                @Override
+                public void onSuccess(Call<ResultDTO> call, Response<ResultDTO> response) {
+                    if (getView() != null) {
+                        getView().getDealPwdSellResult(response);
+                    }
+                }
+
+                @Override
+                public void onFailed() {
+                    if (getView() != null) {
+                        getView().getDataFailed();
+                    }
+                }
+            });
+        }
+
     }
 
     public interface TurnOutView extends IBaseView {
         void getConvert(Response<getTransferConfigResponse> response);
 
         void getAccounts(Response<ResultDTO> response);
+
+        void getDealPwdSellResult(Response<ResultDTO> response);
 
         void getDataFailed();
 

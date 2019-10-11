@@ -75,7 +75,7 @@ public class ExchangeActivity extends MvpActivity<ExchangeContact.ExchangePresen
         }
     }
 
-    //弹出 买入 密码框
+    //闪兑二级密码弹出框
     AlertDialog pwdDialog = null;
 
     private void showPwdBuyDialog() {
@@ -87,7 +87,7 @@ public class ExchangeActivity extends MvpActivity<ExchangeContact.ExchangePresen
                 .setOnClickListener(R.id.tx_sure, v -> {//设置点击事件
                     EditText dealPwd = pwdDialog.getView(R.id.ed_deal_pwd);
                     String pwd = dealPwd.getText().toString();
-                    mPresent.dealPwd(context, pwd);
+                    mPresent.dealPwd(context, pwd, Constant.Flash_exchange);
                     pwdDialog.dismiss();
                 }).setOnClickListener(R.id.tx_cancel, v -> pwdDialog.dismiss());
         pwdDialog = builder.create();
@@ -131,8 +131,8 @@ public class ExchangeActivity extends MvpActivity<ExchangeContact.ExchangePresen
     public void getConvert(Response<ConvertConfigResponse> response) {
         if (response.body().getCode() == Constant.SUCCESS_CODE) {
             String Reference = getResources().getString(R.string.exchange_ratesad);
-            num = response.body().getData().getUser_titan_amount();
-            TvNum.setText(response.body().getData().getUser_titan_amount());
+            num = MoneyUtil.formatFour(response.body().getData().getUser_titan_amount());
+            TvNum.setText(MoneyUtil.formatFour(response.body().getData().getUser_titan_amount()));
             initInput();
             i = num.indexOf(".");
             TvRate.setText(Reference + "1"
@@ -143,7 +143,6 @@ public class ExchangeActivity extends MvpActivity<ExchangeContact.ExchangePresen
         } else {
             ToastUtils.showShortToast(context, response.body().getMsg());
         }
-
     }
 
     //提交兑换返回
@@ -155,7 +154,6 @@ public class ExchangeActivity extends MvpActivity<ExchangeContact.ExchangePresen
         } else {
             ToastUtils.showShortToast(context, response.body().getMsg());
         }
-
     }
 
     //二级密码验证返回
@@ -163,16 +161,15 @@ public class ExchangeActivity extends MvpActivity<ExchangeContact.ExchangePresen
     public void getDealPwdResult(Response<ResultDTO> response) {
         if (response.body().getCode() == Constant.SUCCESS_CODE) {
             mPresent.convertCoin(context, "1", EtExchangeNum.getText().toString(), "2");
+        } else if (response.body().getCode() == 201) {
+            ToastUtils.showLongToast(context, getResources().getString(R.string.password_error));
         } else {
             ToastUtils.showShortToast(context, response.body().getMsg());
         }
-
     }
 
     @Override
     public void getDataFailed() {
         ToastUtils.showShortToast(context, getResources().getString(R.string.network_error));
     }
-
-
 }

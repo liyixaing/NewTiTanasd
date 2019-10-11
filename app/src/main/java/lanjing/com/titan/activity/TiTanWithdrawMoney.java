@@ -55,7 +55,7 @@ public class TiTanWithdrawMoney extends MvpActivity<getTransferContact.getTransf
     public void initData(Bundle savedInstanceState) {
         id = getIntent().getStringExtra("id");
         taitanSum = getIntent().getStringExtra("taitanSum");
-        i= taitanSum.indexOf(".");
+        i = taitanSum.indexOf(".");
 //        asd = Double.valueOf(taitanSum);
         TvBalance.setText(taitanSum);
         if (id.equals("0")) {
@@ -111,6 +111,8 @@ public class TiTanWithdrawMoney extends MvpActivity<getTransferContact.getTransf
             mPresent.walletWithdraw(context, "1", TvAddress.getText().toString(), TvLabel.getText().toString(), EtTibusun.getText().toString());
         } else if (response.body().getCode() == -10) {
             ToastUtils.showShortToast(context, getResources().getString(R.string.not_login));
+        } else if (response.body().getCode() == 201) {
+            ToastUtils.showLongToast(context, getResources().getString(R.string.password_error));
         } else {
             ToastUtils.showShortToast(context, response.body().getMsg());
         }
@@ -149,14 +151,14 @@ public class TiTanWithdrawMoney extends MvpActivity<getTransferContact.getTransf
             case R.id.tc_extract_all:
 //                initjudge();
                 int anInt = Integer.parseInt(taitanSum.substring(0, i));
-                EtTibusun.setText(String.valueOf(anInt-3));
+                EtTibusun.setText(String.valueOf(anInt - 3));
                 EtTibusun.setSelection(EtTibusun.length());//将光标移至文字末尾
                 break;
         }
 
     }
 
-    //弹出 买入 密码框
+    //提币二级密码输入框
     AlertDialog pwdDialog = null;
 
     private void showPwdBuyDialog() {
@@ -168,7 +170,7 @@ public class TiTanWithdrawMoney extends MvpActivity<getTransferContact.getTransf
                 .setOnClickListener(R.id.tx_sure, v -> {//设置点击事件
                     EditText dealPwd = pwdDialog.getView(R.id.ed_deal_pwd);
                     String pwd = dealPwd.getText().toString();
-                    mPresent.dealPwd(context, pwd);
+                    mPresent.dealPwd(context, pwd, Constant.Withdrawal_of_money);
                     pwdDialog.dismiss();
                 }).setOnClickListener(R.id.tx_cancel, v -> pwdDialog.dismiss());
         pwdDialog = builder.create();

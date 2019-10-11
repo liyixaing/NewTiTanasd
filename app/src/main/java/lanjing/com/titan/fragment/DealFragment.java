@@ -100,8 +100,6 @@ public class DealFragment extends MvpFragment<DealContact.DealPresent> implement
     RecyclerView rvSell;
     @BindView(R.id.tv_usd_price)
     TextView tvUsdPrice;
-    //    @BindView(R.id.tv_usd_to_yuan)
-//    TextView tvUsdToYuan;
     @BindView(R.id.rv_buy)
     RecyclerView rvBuy;
     @BindView(R.id.rb_two)
@@ -133,11 +131,15 @@ public class DealFragment extends MvpFragment<DealContact.DealPresent> implement
     TextView TvJiaoyi;
     @BindView(R.id.ll_jiaoyuie)
     LinearLayout LlJiaoyuie;
+    @BindView(R.id.ll_credit)
+    LinearLayout ll_credit;//共识信用额度
+    @BindView(R.id.tv_credittext)
+    TextView tv_credittext;
 
     @BindView(R.id.ll_switch)
     LinearLayout LlSwitch;//点击顶部切换币种
 
-    private Boolean isInput = false;
+    private boolean isInput = false;
     SellSixAdapter mAdapterSell;
     BuySixAdapter mAdapterBuy;
     SellSixOneAdapter mAdapterSellOne;
@@ -149,12 +151,9 @@ public class DealFragment extends MvpFragment<DealContact.DealPresent> implement
 
     EntrustAdapter mAdapter;
     List<EntrustListResponse.DataBean> mList;
-    String phone;
-    String usd;
-    String titan;
+    String phone, usd, titan;
 
-    private boolean isEdit = true;
-    private boolean isSeek = true;
+    private boolean isEdit = true, isSeek = true;
     private boolean notHandleAfterTextChangedEvent = false;
     Integer titanMax = 0;
     Integer usdMax = 0;
@@ -183,10 +182,7 @@ public class DealFragment extends MvpFragment<DealContact.DealPresent> implement
                 return false;
             }
         });
-
-
         type = 0;
-
         //判断是否开启智能交易
         int isAuto = SPUtils.getInt(Constant.ISAUTO, 0, context);
         if (isAuto == 0) {
@@ -292,6 +288,7 @@ public class DealFragment extends MvpFragment<DealContact.DealPresent> implement
             tvCoinType.setText("BAR");
         }
         LlJiaoyuie.setVisibility(View.VISIBLE);
+        ll_credit.setVisibility(View.GONE);
         tvCoinType2.setText("USD");
         //查询数据
         checkTwo();
@@ -353,10 +350,10 @@ public class DealFragment extends MvpFragment<DealContact.DealPresent> implement
                 tvDealNum.setText("0");
                 mPresent.walletDataTitan(context);
                 LlJiaoyuie.setVisibility(View.VISIBLE);
+                ll_credit.setVisibility(View.GONE);
                 tvNum.setText(titan);
                 btnBuy.setVisibility(View.VISIBLE);
                 btnSell.setVisibility(View.GONE);
-//                tvCoinType.setText("TITAN");
                 if (coin.equals("1")) {
                     tvCoinType.setText("TITAN");
                 } else {
@@ -373,6 +370,7 @@ public class DealFragment extends MvpFragment<DealContact.DealPresent> implement
                 mPresent.walletDataUsd(context);
                 btnBuy.setVisibility(View.GONE);
                 LlJiaoyuie.setVisibility(View.GONE);
+                ll_credit.setVisibility(View.VISIBLE);
                 btnSell.setVisibility(View.VISIBLE);
                 tvCoinType.setText("USD");
                 tvCoinType2.setText("TITAN");
@@ -524,7 +522,7 @@ public class DealFragment extends MvpFragment<DealContact.DealPresent> implement
                     EditText dealPwd = pwdBuyDialog.getView(R.id.ed_deal_pwd);
                     String pwd = dealPwd.getText().toString();
 //                    pwd = Md5Utils.MD5(pwd).toUpperCase();
-                    mPresent.dealPwdBuy(context, pwd);
+                    mPresent.dealPwdBuy(context, pwd, Constant.Selling_transaction);
                     pwdBuyDialog.dismiss();
                 }).setOnClickListener(R.id.tx_cancel, v -> pwdBuyDialog.dismiss());
         pwdBuyDialog = builder.create();
@@ -547,7 +545,7 @@ public class DealFragment extends MvpFragment<DealContact.DealPresent> implement
                     String pwd = dealPwd.getText().toString();
 //                    pwd = Md5Utils.MD5(pwd).toUpperCase();
 
-                    mPresent.dealPwdSell(context, pwd);
+                    mPresent.dealPwdSell(context, pwd, Constant.Buying_transaction);
                     pwdSellDialog.dismiss();
                 }).setOnClickListener(R.id.tx_cancel, v -> pwdSellDialog.dismiss());
         pwdSellDialog = builder.create();
@@ -1123,6 +1121,7 @@ public class DealFragment extends MvpFragment<DealContact.DealPresent> implement
         refresh.finishRefresh();
         refresh.finishLoadMore();
         if (response.body().getCode() == Constant.SUCCESS_CODE) {
+            tv_credittext.setText(getResources().getString(R.string.credit_limit) + MoneyUtil.formatFouras(response.body().getStallThreshold()));//共识信用额度赋值
             if (page == 1) {
                 mList.clear();
             }
@@ -1173,6 +1172,8 @@ public class DealFragment extends MvpFragment<DealContact.DealPresent> implement
 //            mPresent.walletDataTitan(context);//获取数据
         } else if (response.body().getCode() == -10) {
             ToastUtils.showShortToast(context, getResources().getString(R.string.not_login));
+        } else if (response.body().getCode() == 201) {
+            ToastUtils.showLongToast(context, getResources().getString(R.string.password_error));
         } else {
             ToastUtils.showShortToast(context, response.body().getMsg());
         }
@@ -1189,6 +1190,8 @@ public class DealFragment extends MvpFragment<DealContact.DealPresent> implement
 //            mPresent.walletDataUsd(context);//获取数据
         } else if (response.body().getCode() == -10) {
             ToastUtils.showShortToast(context, getResources().getString(R.string.not_login));
+        } else if (response.body().getCode() == 201) {
+            ToastUtils.showLongToast(context, getResources().getString(R.string.password_error));
         } else {
             ToastUtils.showShortToast(context, response.body().getMsg());
         }
@@ -1224,14 +1227,14 @@ public class DealFragment extends MvpFragment<DealContact.DealPresent> implement
 
     @Override
     public void getPersonResult(Response<PersonResponse> response) {
-        if (response.body().getCode() == Constant.SUCCESS_CODE){
+        if (response.body().getCode() == Constant.SUCCESS_CODE) {
             //判断激活状态是否为激活
-            if (response.body().getData().getState() == 10){
+            if (response.body().getData().getState() == 10) {
                 ToastUtils.showLongToast(context, getResources().getString(R.string.not_activation));
-            }else {
+            } else {
                 showPwdSellDialog();
             }
-        }else {
+        } else {
             ToastUtils.showLongToast(context, response.body().getMsg());
         }
     }

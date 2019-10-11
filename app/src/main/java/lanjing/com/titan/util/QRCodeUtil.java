@@ -5,6 +5,7 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Matrix;
+import android.util.Log;
 
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.EncodeHintType;
@@ -141,6 +142,7 @@ public class QRCodeUtil {
             Bitmap bitmap = Bitmap.createBitmap(size, size,
                     Bitmap.Config.ARGB_8888);
             bitmap.setPixels(pixels, 0, size, 0, 0, size, size);
+            Log.e("二维码", String.valueOf(bitmap));
             return bitmap;
         } catch (WriterException e) {
             e.printStackTrace();

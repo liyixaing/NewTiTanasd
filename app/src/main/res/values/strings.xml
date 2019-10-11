@@ -561,6 +561,7 @@
     <string name="Label_allin">地址标签:</string>
     <string name="beizhu_allin">备注信息:</string>
     <string name="titan_num">TITAN余额:</string>
+    <string name="titanc_num">TITANC余额:</string>
     <string name="balance_num">闪兑数量</string>
     <string name="balance_all">全部闪兑</string>
     <string name="exchange_rate">汇率</string>
@@ -596,10 +597,20 @@
     <string name="yijihuo">已激活</string>
     <string name="record">激活码获取记录</string>
     <string name="not_yer">功能暂未开放</string>
-
-
-
-
+    <string name="credit_limit">共识信用额度:</string>
+    <string name="Transfer_all">全部转出</string>
+    <string name="Recipient_ID">接收ID</string>
+    <string name="Transfer_amount">转出数量</string>
+    <string name="Please_input">请输入接收ID</string>
+    <string name="Source_ID">来源ID</string>
+    <string name="Transfer_amount100">转出数量应大于100</string>
+    <string name="activity_not_started">活动未开始</string>
+    <string name="password_error">密码错误</string>
+    <string name="geterCode">恭喜您获得激活码</string>
+    <string name="copyCode">复制激活码</string>
+    <string name="not_used">未使用</string>
+    <string name="Already_used">已使用</string>
+    <string name="add_code">今日激活码已全部发放</string>
 
 </resources>
 

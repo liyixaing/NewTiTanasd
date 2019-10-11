@@ -12,9 +12,11 @@ public class DealPwdRequest {
      */
 
     private String password;
+    private String type;
 
 
-    public DealPwdRequest(String password) {
+    public DealPwdRequest(String password, String type) {
         this.password = password;
+        this.type = type;
     }
 }

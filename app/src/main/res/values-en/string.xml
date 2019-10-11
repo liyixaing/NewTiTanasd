@@ -556,6 +556,7 @@
     <string name="dizhi_allin">Withdrawal Address:</string>
     <string name="beizhu_allin">Remarks Information:</string>
     <string name="titan_num">TITAN Balance:</string>
+    <string name="titanc_num">TITANC Balance:</string>
     <string name="balance_num">Exchange Num</string>
     <string name="balance_all">Exchange All</string>
     <string name="exchange_rate">Exchange Rate</string>
@@ -583,13 +584,29 @@
     <string name="free_daily_allowance">Limited Daily Free Gift</string>
     <string name="free_daily_activation_codes">Number Of Activation \n Codes Remaining：</string>
     <string name="viewfinderview_status_text1">将二维码放入取景框内即可自动扫描</string>
-    <string name="turn_out">Turn Out</string>
+    <string name="turn_out">Transfer</string>
     <string name="turn_put">Turn In</string>
     <string name="flash_exchange">exchange</string>
-    <string name="Turn_outtitianc">Turn out TITANC</string>
+    <string name="Turn_outtitianc">Transfer TITANC</string>
     <string name="titanc_zhuanchu">Warm reminder: TITANC can only be transferred to the same mining and mining users.</string>
     <string name="yijihuo">Activated</string>
     <string name="record">Activation Code Acquisition Record</string>
     <string name="not_yer">Not open</string>
+    <string name="credit_limit">Credit Limit:</string>
+    <string name="Transfer_all">Transfer All</string>
+    <string name="Recipient_ID">Recipient ID</string>
+    <string name="Transfer_amount">Transfer amount</string>
+    <string name="Please_input">Please input</string>
+    <string name="Source_ID">Source ID</string>
+    <string name="Transfer_amount100">Transfer amount > 100</string>
+    <string name="activity_not_started">Activity not started</string>
+    <string name="password_error">Password Error</string>
+    <string name="geterCode">Congratulations on getting the activation code</string>
+    <string name="copyCode">Copy Activation Code</string>
+    <string name="not_used">not used</string>
+    <string name="Already_used">Already used</string>
+    <string name="add_code">Todays activation code has been released</string>
+
+
 
 </resources>

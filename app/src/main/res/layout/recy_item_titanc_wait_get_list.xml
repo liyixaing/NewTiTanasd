@@ -1,73 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/titanc_item"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="@dimen/dp_5"
-    android:background="@drawable/shape_gray_bg"
     android:foreground="@drawable/bg_white"
     android:orientation="vertical">
 
     <LinearLayout
+        android:id="@+id/ll_all"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/dp_10"
-        android:orientation="vertical">
-
-
-        <TextView
-            android:id="@+id/tv_titanc_type"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="left|center"
-            android:gravity="center_vertical"
-            android:text="@string/airdrop_release"
-            android:textColor="#182146"
-            android:textSize="13sp" />
-
+        android:layout_margin="@dimen/dp_5"
+        android:background="@drawable/shape_gray_bg"
+        android:layout_height="wrap_content">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dp_10"
-            android:orientation="horizontal">
+            android:layout_margin="@dimen/dp_10"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:id="@+id/tv_titanc_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left|center"
+                android:gravity="center_vertical"
+                android:text="@string/airdrop_release"
+                android:textColor="#182146"
+                android:textSize="13sp" />
+
 
             <LinearLayout
-                android:visibility="gone"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical">
+                android:layout_marginTop="@dimen/dp_10"
+                android:orientation="horizontal">
 
-                <TextView
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="left|center"
-                    android:maxEms="16"
-                    android:maxLength="24"
-                    android:maxLines="1"
-                    android:text="@string/airdrop_qty"
-                    android:textColor="@color/gray"
-                    android:textSize="9sp" />
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:visibility="gone">
 
-                <TextView
-                    android:id="@+id/tv_titanc_num"
-                    android:layout_width="wrap_content"
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="left|center"
+                        android:maxEms="16"
+                        android:maxLength="24"
+                        android:maxLines="1"
+                        android:text="@string/airdrop_qty"
+                        android:textColor="@color/gray"
+                        android:textSize="9sp" />
+
+                    <TextView
+                        android:id="@+id/tv_titanc_num"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="left|center"
+                        android:layout_marginTop="@dimen/dp_5"
+                        android:maxLength="24"
+                        android:maxLines="1"
+                        android:text="-100.00"
+
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="left|center"
-                    android:layout_marginTop="@dimen/dp_5"
-                    android:maxLength="24"
-                    android:maxLines="1"
-                    android:text="-100.00"
-
-                    android:textSize="12sp" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical">
+                    android:layout_weight="1"
+                    android:orientation="vertical">
 
 
                     <TextView
@@ -83,50 +88,49 @@
                         android:textSize="9sp" />
 
 
+                    <TextView
+                        android:id="@+id/tv_titanc_change_num"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="left|center"
+                        android:layout_marginTop="@dimen/dp_5"
+                        android:maxLength="24"
+                        android:maxLines="1"
+                        android:textSize="12sp" />
+                </LinearLayout>
 
-                <TextView
-                    android:id="@+id/tv_titanc_change_num"
-                    android:layout_width="wrap_content"
+                <LinearLayout
+
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="left|center"
-                    android:layout_marginTop="@dimen/dp_5"
-                    android:maxLength="24"
-                    android:maxLines="1"
-                    android:textSize="12sp" />
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right"
+                        android:maxEms="16"
+                        android:maxLength="24"
+                        android:maxLines="1"
+                        android:text="@string/time"
+                        android:textColor="@color/gray"
+                        android:textSize="9sp" />
+
+                    <TextView
+                        android:id="@+id/tv_titanc_time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right"
+                        android:layout_marginTop="@dimen/dp_5"
+                        android:maxLength="24"
+                        android:maxLines="1"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+
             </LinearLayout>
-
-            <LinearLayout
-
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical">
-
-                <TextView
-
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="right"
-                    android:maxEms="16"
-                    android:maxLength="24"
-                    android:maxLines="1"
-                    android:text="@string/time"
-                    android:textColor="@color/gray"
-                    android:textSize="9sp" />
-
-                <TextView
-                    android:id="@+id/tv_titanc_time"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="right"
-                    android:layout_marginTop="@dimen/dp_5"
-                    android:maxLength="24"
-                    android:maxLines="1"
-                    android:textSize="12sp" />
-            </LinearLayout>
-
-
         </LinearLayout>
     </LinearLayout>
-
-</LinearLayout>
+</RelativeLayout>

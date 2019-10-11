@@ -282,22 +282,6 @@
                             android:gravity="right"
                             android:text="0" />
 
-                        <!--<TextView-->
-                        <!--android:id="@+id/tv_titan_deal_num"-->
-                        <!--android:layout_width="0dp"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:layout_weight="1"-->
-                        <!--android:gravity="right"-->
-                        <!--android:text="0" />-->
-
-                        <!--<TextView-->
-                        <!--android:visibility="gone"-->
-                        <!--android:id="@+id/tv_usd_deal_num"-->
-                        <!--android:layout_width="0dp"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:layout_weight="1"-->
-                        <!--android:gravity="right"-->
-                        <!--android:text="0" />-->
 
                         <TextView
                             android:id="@+id/tv_coin_type2"
@@ -305,6 +289,22 @@
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="@dimen/dp_5"
                             android:text="USD" />
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:id="@+id/ll_credit"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp_20">
+
+                        <TextView
+                            android:id="@+id/tv_credittext"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="" />
+
+
                     </LinearLayout>
 
                     <TextView

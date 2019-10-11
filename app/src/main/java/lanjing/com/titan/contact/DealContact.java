@@ -232,10 +232,10 @@ public class DealContact {
 
 
         //币币交易  验证买入密码
-        public void dealPwdBuy(final Context context, String password) {
+        public void dealPwdBuy(final Context context, String password, String type) {
             ApiService service = ServiceGenerator.createService(ApiService.class);
             String token = SPUtils.getString(Constant.TOKEN, "", context);
-            DealPwdRequest request = new DealPwdRequest(Md5Utils.MD5(password));
+            DealPwdRequest request = new DealPwdRequest(Md5Utils.MD5(password), type);
             service.dealPwd(token, request).enqueue(new NetCallBack<ResultDTO>() {
                 @Override
                 public void onSuccess(Call<ResultDTO> call, Response<ResultDTO> response) {
@@ -254,10 +254,10 @@ public class DealContact {
         }
 
         //币币交易  验证卖出密码
-        public void dealPwdSell(final Context context, String password) {
+        public void dealPwdSell(final Context context, String password, String type) {
             ApiService service = ServiceGenerator.createService(ApiService.class);
             String token = SPUtils.getString(Constant.TOKEN, "", context);
-            DealPwdRequest request = new DealPwdRequest(Md5Utils.MD5(password));
+            DealPwdRequest request = new DealPwdRequest(Md5Utils.MD5(password), type);
             service.dealPwd(token, request).enqueue(new NetCallBack<ResultDTO>() {
                 @Override
                 public void onSuccess(Call<ResultDTO> call, Response<ResultDTO> response) {

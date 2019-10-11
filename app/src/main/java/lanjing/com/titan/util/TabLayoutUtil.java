@@ -73,15 +73,7 @@ public class TabLayoutUtil {
         return (int) (dipValue * scale + 0.5f);
     }
 
-//    public void addTabs(TabLayout tabLayout){
-//        tabLayout.addTab(tabLayout.newTab().setText("全部分类"));
-//        tabLayout.addTab(tabLayout.newTab().setText("水果"));
-//        tabLayout.addTab(tabLayout.newTab().setText("茶水饮料"));
-//        tabLayout.addTab(tabLayout.newTab().setText("肉类"));
-//        tabLayout.addTab(tabLayout.newTab().setText("有机蔬菜"));
-//        tabLayout.addTab(tabLayout.newTab().setText("推荐"));
-//        tabLayout.addTab(tabLayout.newTab().setText("膨化食品"));
-//    }
+
 
 
 

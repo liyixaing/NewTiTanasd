@@ -83,7 +83,7 @@ public class AssetTitanDetailActivity extends MvpActivity<BillDetailContact.Bill
             public boolean onLongClick(View v) {
                 ClipboardManager cmb = (ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE);
                 cmb.setText(tvTitanBlockchainId.getText());
-                ToastUtils.showShortToast(context, "已复制");
+                ToastUtils.showShortToast(context, getResources().getString(R.string.over_copy));
                 return false;
             }
         });
@@ -106,7 +106,7 @@ public class AssetTitanDetailActivity extends MvpActivity<BillDetailContact.Bill
 
             String upAndDown = MoneyUtil.formatFour(response.body().getData().getNum());
             if (response.body().getData().getType().equals("1")) {
-                TvTitleNameId.setTitleText(response.body().getData().getCoinDesc() + response.body().getData().getChangeDesc());
+                TvTitleNameId.setTitleText(response.body().getData().getCoinDesc() + getResources().getString(R.string.top_up_c));
                 tvTitanType.setText(getResources().getString(R.string.top_up_c));
                 ll_transactionID.setVisibility(View.VISIBLE);
                 v_xian_three.setVisibility(View.VISIBLE);
@@ -114,8 +114,9 @@ public class AssetTitanDetailActivity extends MvpActivity<BillDetailContact.Bill
                 VXianFour.setVisibility(View.VISIBLE);
                 llOurceaddress.setVisibility(View.VISIBLE);
             } else if (response.body().getData().getType().equals("2")) {
-                TvTitleNameId.setTitleText(response.body().getData().getCoinDesc() + response.body().getData().getChangeDesc());
+                TvTitleNameId.setTitleText(response.body().getData().getCoinDesc() + getResources().getString(R.string.withdraw_c));
                 ll_transactionID.setVisibility(View.VISIBLE);
+                tvTitanType.setText(getResources().getString(R.string.withdraw_c));
                 v_xian_three.setVisibility(View.VISIBLE);
                 v_division_one.setVisibility(View.VISIBLE);
                 v_division_tow.setVisibility(View.VISIBLE);

@@ -195,7 +195,6 @@ public class MyInviteActivity extends MvpActivity<FriendListContact.FriendListPr
 
     List<FriendListResponse.DataBean> data;
 
-
     @Override
     public void getFriendListResult(Response<FriendListResponse> response) {
         refresh.finishRefresh();

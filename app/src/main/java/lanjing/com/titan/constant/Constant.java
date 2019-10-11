@@ -121,4 +121,15 @@ public class Constant {
     public final static String OCTOBERYESTDAYAMOUNT = "octoberYestdayAmount";
     public final static String OCTOBERAMOUNTALL = "octoberAmountAll";
 
+
+    //二级密码类型
+    public final static String Privatekey = "1";//1,"导出私钥"),
+    public final static String Auxiliaries = "2";//2,"导出助记词"),
+    public final static String Withdrawal_of_money= "3";//3,"提币"),
+    public final static String Transfer_accounts= "4";//4,"转账"),
+    public final static String Flash_exchange= "7";//7,"闪兑"),
+    public final static String Buying_transaction= "5";//5,"交易,卖"),
+    public final static String Selling_transaction= "6";//6,"交易,买");
+
+
 }

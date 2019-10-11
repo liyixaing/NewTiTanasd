@@ -56,7 +56,6 @@ public class BillDetailResponse {
         private String state;
         private String time;
         private String coin;
-
         private String convertRate;
         private String createTime;
         private String sourceCoin;
@@ -65,6 +64,42 @@ public class BillDetailResponse {
         private String sourceAmount;
         private String targetCoin;
         private String targetCoinName;
+        private String transferCoinAmount;
+        private String transferCoinName;
+        private String fromUser;
+        private String toUser;
+
+        public String getToUser() {
+            return toUser;
+        }
+
+        public void setToUser(String toUser) {
+            this.toUser = toUser;
+        }
+
+        public String getFromUser() {
+            return fromUser;
+        }
+
+        public void setFromUser(String fromUser) {
+            this.fromUser = fromUser;
+        }
+
+        public String getTransferCoinName() {
+            return transferCoinName;
+        }
+
+        public void setTransferCoinName(String transferCoinName) {
+            this.transferCoinName = transferCoinName;
+        }
+
+        public String getTransferCoinAmount() {
+            return transferCoinAmount;
+        }
+
+        public void setTransferCoinAmount(String transferCoinAmount) {
+            this.transferCoinAmount = transferCoinAmount;
+        }
 
         public String getCoinDesc() {
             return coinDesc;

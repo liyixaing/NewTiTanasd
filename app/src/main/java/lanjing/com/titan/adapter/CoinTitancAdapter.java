@@ -1,6 +1,9 @@
 package lanjing.com.titan.adapter;
 
 import android.support.annotation.Nullable;
+import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
@@ -27,6 +30,7 @@ public class CoinTitancAdapter extends BaseQuickAdapter<HistoryListResponse.mDat
     @Override
     protected void convert(BaseViewHolder helper, HistoryListResponse.mData item) {
         String time = DateUtils.timedate(item.getChangeTime());
+        LinearLayout titanc_item = helper.getView(R.id.ll_all);
         int changeType = Integer.parseInt(item.getChangeType());
         String type;
         String sum = "";
@@ -62,6 +66,16 @@ public class CoinTitancAdapter extends BaseQuickAdapter<HistoryListResponse.mDat
             case 21:
                 helper.setText(R.id.tv_titanc_type, R.string.flash_exchange);
                 break;
+            case 25:
+                helper.setText(R.id.tv_titanc_type, R.string.turn_out);//转出
+                break;
+            case 15:
+                helper.setText(R.id.tv_titanc_type, R.string.turn_put);//转入
+                break;
+            case 24:
+                titanc_item.setVisibility(View.GONE);//不需要显示手续费
+                break;
+
 
         }
         helper.setText(R.id.tv_titanc_change_num, sum)

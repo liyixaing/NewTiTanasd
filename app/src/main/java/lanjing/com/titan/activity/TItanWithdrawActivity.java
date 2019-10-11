@@ -202,7 +202,7 @@ public class TItanWithdrawActivity extends MvpActivity<WalletWithdrawContact.Wal
         }
     }
 
-    //弹出 买入 密码框
+    //提币二级密码输入框
     AlertDialog pwdDialog = null;
 
     private void showPwdBuyDialog() {
@@ -214,7 +214,7 @@ public class TItanWithdrawActivity extends MvpActivity<WalletWithdrawContact.Wal
                 .setOnClickListener(R.id.tx_sure, v -> {//设置点击事件
                     EditText dealPwd = pwdDialog.getView(R.id.ed_deal_pwd);
                     String pwd = dealPwd.getText().toString();
-                    mPresent.dealPwd(context, pwd);
+                    mPresent.dealPwd(context, pwd, Constant.Withdrawal_of_money);
                     pwdDialog.dismiss();
                 }).setOnClickListener(R.id.tx_cancel, v -> pwdDialog.dismiss());
         pwdDialog = builder.create();

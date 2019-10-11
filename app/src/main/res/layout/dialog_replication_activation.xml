@@ -24,7 +24,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="65dp"
-        android:text="今日激活码已全部发放"
+        android:text="@string/add_code"
         android:textColor="@color/blue" />
 
     <LinearLayout

@@ -1,5 +1,6 @@
 package lanjing.com.titan.activity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -94,6 +95,12 @@ public class TItancWaitGetActivity extends MvpActivity<WalletDetailContact.Walle
                     details.putExtra("id", String.valueOf(mList.get(position).getId()));
                     details.putExtra("name", mList.get(position).getChangeDesc());
                     startActivity(details);
+                } else if (mList.get(position).getChangeType().equals("25") || mList.get(position).getChangeType().equals("15")) {
+                    //转出类型跳转
+                    Intent Transfer_out = new Intent(context, TransferDetailsActivity.class);
+                    Transfer_out.putExtra("id", String.valueOf(mList.get(position).getId()));
+                    startActivity(Transfer_out);
+
                 }
             }
         });

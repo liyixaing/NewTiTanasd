@@ -2,7 +2,11 @@ package lanjing.com.titan.fragment;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
@@ -20,9 +24,15 @@ import com.lxh.baselibray.mvp.MvpFragment;
 import com.lxh.baselibray.util.ObjectUtils;
 import com.lxh.baselibray.util.SPUtils;
 import com.lxh.baselibray.util.ToastUtils;
+import com.squareup.picasso.Picasso;
 
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -45,6 +55,7 @@ import lanjing.com.titan.contact.PersonContact;
 import lanjing.com.titan.eventbus.EventImpl;
 import lanjing.com.titan.response.PersonResponse;
 import lanjing.com.titan.util.MoneyUtil;
+import lanjing.com.titan.util.QRCodeUtil;
 import retrofit2.Response;
 
 import static android.content.Context.MODE_PRIVATE;
@@ -140,7 +151,6 @@ public class MyFragment extends MvpFragment<PersonContact.PersonPresent> impleme
 
         //判断是否有制度委员会
         int isVip = Integer.parseInt(SPUtils.getString(Constant.ISVIP, "", context));
-        Log.e("xiaoqiang", isVip + "");
         if (isVip == 1) {
             committeeLay.setVisibility(View.VISIBLE);
         }
@@ -263,6 +273,12 @@ public class MyFragment extends MvpFragment<PersonContact.PersonPresent> impleme
                 } else {
                     initShow();
                 }
+//                Drawable drawable = getResources().getDrawable(R.mipmap.icon_notice_titan);
+//                BitmapDrawable bd = (BitmapDrawable) drawable;
+//                final Bitmap bmm = bd.getBitmap();
+//
+//                Bitmap asd = QRCodeUtil.createQRCodeWithLogo("xiaoqi大厦大厦大ang", 500, bmm);
+//                saveBitmap(asd);
                 break;
             case R.id.people_data_lay://修改个人资料  头像   和   昵称
                 Intent intentPeople = new Intent(context, PersonalActivity.class);
@@ -321,6 +337,32 @@ public class MyFragment extends MvpFragment<PersonContact.PersonPresent> impleme
 
         }
     }
+
+
+    //将bitmap格式的图片保存到本地
+    public static void saveBitmap(Bitmap bm) {
+        Log.e("xiaoqiang", "保存图片");
+        File sdDir = Environment.getExternalStorageDirectory();
+        String tmpFile = sdDir.toString() + "/DCIM/" + "occlusiasdasdfsdfsdonCap.jpg";
+        File f = new File(tmpFile);
+
+        if (f.exists())
+            return;
+        try {
+            FileOutputStream out = new FileOutputStream(f);
+            bm.compress(Bitmap.CompressFormat.PNG, 90, out);
+            out.flush();
+            out.close();
+            Log.i("小强", "已经保存");
+        } catch (FileNotFoundException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
+
 
     @Override
     protected PersonContact.PersonPresent createPresent() {

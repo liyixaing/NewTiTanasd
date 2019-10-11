@@ -3,6 +3,7 @@ package lanjing.com.titan.activity;
 import android.os.Bundle;
 
 import com.lxh.baselibray.mvp.MvpActivity;
+import com.lxh.baselibray.util.ToastUtils;
 
 import lanjing.com.titan.R;
 import lanjing.com.titan.contact.PaymentCode;

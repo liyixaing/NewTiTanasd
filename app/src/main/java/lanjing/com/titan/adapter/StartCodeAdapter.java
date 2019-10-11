@@ -27,11 +27,11 @@ public class StartCodeAdapter extends BaseQuickAdapter<CdkeyListResponse.Data, B
         TextView tv_copy_invitation = helper.getView(R.id.tv_copy_invitation);
         TextView tv_copy_fishing = helper.getView(R.id.tv_copy_fishing);
         if (item.getUseTime() == 0) {
-            helper.setText(R.id.tv_create_time, "未使用");
+            helper.setText(R.id.tv_create_time, R.string.not_used);//未使用
             tv_copy_fishing.setVisibility(View.GONE);
             tv_copy_invitation.setVisibility(View.VISIBLE);
         } else {
-            helper.setText(R.id.tv_create_time, "已使用");
+            helper.setText(R.id.tv_create_time, R.string.Already_used);//已使用
             tv_copy_fishing.setVisibility(View.VISIBLE);
             tv_copy_invitation.setVisibility(View.GONE);
         }
@@ -41,7 +41,7 @@ public class StartCodeAdapter extends BaseQuickAdapter<CdkeyListResponse.Data, B
             public void onClick(View v) {
                 ClipboardManager copy = (ClipboardManager) mContext.getSystemService(Context.CLIPBOARD_SERVICE);
                 copy.setText(item.getCdkey());
-                ToastUtils.showLongToast(mContext, "已复制");
+                ToastUtils.showLongToast(mContext, mContext.getResources().getString(R.string.over_copy));
             }
         });
 

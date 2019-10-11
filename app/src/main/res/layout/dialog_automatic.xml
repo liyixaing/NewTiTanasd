@@ -22,7 +22,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="65dp"
-        android:text="恭喜您获得激活码"
+        android:text="@string/geterCode"
         android:textColor="@color/blue" />
 
     <TextView

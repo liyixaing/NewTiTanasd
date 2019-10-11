@@ -43,7 +43,7 @@
         android:background="@drawable/btn_radius_blue"
         android:foreground="@drawable/bg_white"
         android:gravity="center"
-        android:text="复制激活码"
+        android:text="@string/copyCode"
         android:textColor="@color/white"
         android:textSize="16sp" />
 

@@ -17,6 +17,16 @@ public class EntrustListResponse {
 
     private String msg;
     private int code;
+    private String stallThreshold;
+
+    public String getStallThreshold() {
+        return stallThreshold;
+    }
+
+    public void setStallThreshold(String stallThreshold) {
+        this.stallThreshold = stallThreshold;
+    }
+
     private List<DataBean> data;
 
     public String getMsg() {

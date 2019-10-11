@@ -11,7 +11,7 @@
         android:background="@color/default_white_bg"
         app:ivLeftPic="@mipmap/icon_page_return"
         app:titleTextColor="@color/common_black"
-        app:tvTitleText="激活码获取记录" />
+        app:tvTitleText="@string/record" />
 
 
     <com.scwang.smartrefresh.layout.SmartRefreshLayout
