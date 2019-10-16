@@ -105,6 +105,8 @@
         <activity android:name=".activity.TurnOutActivity" />
         <!--转出详情页-->
         <activity android:name=".activity.TransferDetailsActivity" />
+        <!--支付-->
+        <activity android:name=".activity.PaymentActivity" />
     </application>
 
 </manifest>

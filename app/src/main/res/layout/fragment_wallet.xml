@@ -38,13 +38,26 @@
                     android:src="@mipmap/icon_bottom_black" />
             </LinearLayout>
 
+            <RelativeLayout
+                android:id="@+id/rl_sweep_code"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true">
+
+                <ImageView
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_marginLeft="90dp"
+                    android:src="@mipmap/ic_scanning" />
+            </RelativeLayout>
+
             <LinearLayout
                 android:id="@+id/ll_activation"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_centerInParent="true"
-                android:layout_marginRight="60dp">
+                android:layout_marginRight="40dp">
 
                 <LinearLayout
                     android:layout_width="70dp"
@@ -62,7 +75,6 @@
                 </LinearLayout>
             </LinearLayout>
 
-            <!--扫一扫-->
             <RelativeLayout
                 android:id="@+id/rl_home_notice"
                 android:layout_width="25dp"
@@ -70,6 +82,8 @@
                 android:layout_alignParentRight="true"
                 android:layout_centerInParent="true">
 
+
+                <!--小红点-->
                 <LinearLayout
                     android:id="@+id/ll_red_dot"
                     android:layout_width="8dp"
@@ -82,13 +96,13 @@
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:src="@mipmap/ic_notice_msg"/>
+                    android:src="@mipmap/ic_notice_msg" />
 
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:visibility="gone"
-                    android:src="@mipmap/ic_scanning" />
+                    android:src="@mipmap/ic_scanning"
+                    android:visibility="gone" />
             </RelativeLayout>
 
         </RelativeLayout>
@@ -180,7 +194,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:visibility="gone"
                     android:layout_marginLeft="10dp"
                     android:src="@mipmap/ic_tow_code" />
 

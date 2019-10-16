@@ -3,6 +3,7 @@ package lanjing.com.titan.zxing.android;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
@@ -14,17 +15,19 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageButton;
-import android.widget.Toast;
+import android.widget.LinearLayout;
 
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.DecodeHintType;
 import com.google.zxing.Result;
+import com.lxh.baselibray.util.ToastUtils;
 
 import java.io.IOException;
 import java.util.Collection;
 import java.util.Map;
-
 import lanjing.com.titan.R;
+import lanjing.com.titan.activity.PaymentActivity;
+import lanjing.com.titan.activity.PaymentCodeActivity;
 import lanjing.com.titan.zxing.camera.CameraManager;
 import lanjing.com.titan.zxing.view.ViewfinderView;
 
@@ -32,8 +35,7 @@ import lanjing.com.titan.zxing.view.ViewfinderView;
  * 这个activity打开相机，在后台线程做常规的扫描；它绘制了一个结果view来帮助正确地显示条形码，在扫描的时候显示反馈信息，
  * 然后在扫描成功的时候覆盖扫描结果
  */
-public final class CaptureActivity extends Activity implements
-        SurfaceHolder.Callback {
+public final class CaptureActivity extends Activity implements SurfaceHolder.Callback {
 
     private static final String TAG = CaptureActivity.class.getSimpleName();
 
@@ -69,6 +71,10 @@ public final class CaptureActivity extends Activity implements
         viewfinderView.drawViewfinder();
     }
 
+    String walletAddress, labelAddress;
+    LinearLayout ll_mycode;
+    Context context;
+
     /**
      * OnCreate中初始化一些辅助类，如InactivityTimer（休眠）、Beep（声音）以及AmbientLight（闪光灯）
      */
@@ -79,20 +85,28 @@ public final class CaptureActivity extends Activity implements
         Window window = getWindow();
         window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         setContentView(R.layout.capture);
+        context = getApplicationContext();
+
+        walletAddress = getIntent().getStringExtra("walletAddress");
+        labelAddress = getIntent().getStringExtra("labelAddress");
+        ll_mycode = findViewById(R.id.ll_mycode);
+        ll_mycode.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //跳转到我的二维码界面
+                Intent intent = new Intent(context, PaymentCodeActivity.class);
+                intent.putExtra("walletAddress", walletAddress);
+                intent.putExtra("labelAddress", labelAddress);
+                startActivity(intent);
+            }
+        });
 
         hasSurface = false;
 
         inactivityTimer = new InactivityTimer(this);
         beepManager = new BeepManager(this);
 
-        imageButton_back = (ImageButton) findViewById(R.id.capture_imageview_back);
-        imageButton_back.setOnClickListener(new View.OnClickListener() {
 
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
     }
 
     @Override
@@ -183,15 +197,23 @@ public final class CaptureActivity extends Activity implements
         boolean fromLiveScan = barcode != null;
         //这里处理解码完成后的结果，此处将参数回传到Activity处理
         if (fromLiveScan) {
-            beepManager.playBeepSoundAndVibrate();
+            if (rawResult.getText().contains("TITAN")) {//判断字符串内容方法 兼容5.0以上
+                beepManager.playBeepSoundAndVibrate();
+                Intent intent = getIntent();
+                intent.putExtra("codedContent", rawResult.getText());//输入文字内容
+                intent.putExtra("codedBitmap", barcode);//输入图片内容
+                setResult(RESULT_OK, intent);
+                //存在titan字符则跳转到支付界面
+                Intent payment = new Intent(this, PaymentActivity.class);
+                payment.putExtra("rawResult", rawResult.getText());
+                startActivity(payment);
+                finish();//扫描成功后直接关闭这个界面
+            } else {
+                //不存在则未定
+                ToastUtils.showLongToast(context, "二维码扫描错误");
+                finish();//关闭当前窗口
+            }
 
-            Toast.makeText(this, "扫描成功", Toast.LENGTH_SHORT).show();
-
-            Intent intent = getIntent();
-            intent.putExtra("codedContent", rawResult.getText());
-            intent.putExtra("codedBitmap", barcode);
-            setResult(RESULT_OK, intent);
-            finish();
         }
 
     }
@@ -238,3 +260,5 @@ public final class CaptureActivity extends Activity implements
     }
 
 }
+
+//等你不如等死， 因为我知道死一定会来

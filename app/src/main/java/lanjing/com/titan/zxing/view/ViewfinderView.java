@@ -239,26 +239,23 @@ public final class ViewfinderView extends View {
 
         String statusText1 = getResources().getString(
                 R.string.viewfinderview_status_text1);
-        String statusText2 = getResources().getString(
-                R.string.viewfinderview_status_text1);
+//        String statusText2 = "我的二维码";
         int statusTextSize = 45;
-        int statusPaddingTop = 180;
-
+        int statusPaddingTop = -680;
         paint.setColor(statusColor);
         paint.setTextSize(statusTextSize);
-
         int textWidth1 = (int) paint.measureText(statusText1);
         canvas.drawText(statusText1, (width - textWidth1) / 2, frame.top
                 - statusPaddingTop, paint);
 
-        int textWidth2 = (int) paint.measureText(statusText2);
-        canvas.drawText(statusText2, (width - textWidth2) / 2, frame.top
-                - statusPaddingTop + 60, paint);
+//        int textWidth2 = (int) paint.measureText(statusText2);
+//        canvas.drawText(statusText2, (width - textWidth2) / 2, frame.top
+//                - statusPaddingTop + 100, paint);
     }
+
 
     /**
      * 绘制移动扫描线
-     *
      * @param canvas
      * @param frame
      */

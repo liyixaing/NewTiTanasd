@@ -114,6 +114,9 @@ public class WalletFragment extends MvpFragment<WalletDataContact.WalletDataPres
     @BindView(R.id.iv_tow_code)
     ImageView iv_tow_code;//二维码生成按钮
 
+    @BindView(R.id.rl_sweep_code)
+    RelativeLayout rl_sweep_code;//扫码
+
     int page = 1;
     int pageSize = 10;
 
@@ -220,7 +223,8 @@ public class WalletFragment extends MvpFragment<WalletDataContact.WalletDataPres
     }
 
     @OnClick({R.id.checkbox_private_mode, R.id.tv_wallet_name, R.id.manage_wallet, R.id.titan_lay,
-            R.id.usd_lay, R.id.titanc_lay, R.id.usd2_lay, R.id.rl_home_notice, R.id.ll_bar, R.id.ll_activation, R.id.iv_tow_code})
+            R.id.usd_lay, R.id.titanc_lay, R.id.usd2_lay, R.id.rl_home_notice, R.id.ll_bar, R.id.ll_activation,
+            R.id.iv_tow_code, R.id.rl_sweep_code})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.checkbox_private_mode:
@@ -279,19 +283,23 @@ public class WalletFragment extends MvpFragment<WalletDataContact.WalletDataPres
                 usd2.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS);
                 startActivity(usd2);
                 break;
-            case R.id.rl_home_notice:
-                //判断是否有相机权限 (扫一扫功能)
-//                if (ContextCompat.checkSelfPermission(context, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
-//                    ActivityCompat.requestPermissions(context, new String[]{Manifest.permission.CAMERA}, 1);
-//                } else {
-//                    goScan();
-//                }
+            case R.id.rl_home_notice://小铃铛
                 //跳转到反馈列表界面
                 Intent lingdang = new Intent(context, FeedbackListActivity.class);
                 startActivity(lingdang);
                 break;
+            case R.id.rl_sweep_code://扫码
+                //判断是否有相机权限 (扫一扫功能)
+                if (ContextCompat.checkSelfPermission(context, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+                    ActivityCompat.requestPermissions(context, new String[]{Manifest.permission.CAMERA}, 1);
+                } else {
+                    goScan();
+                }
+                break;
             case R.id.iv_tow_code://跳转到二维吗界面
                 Intent TowCode = new Intent(context, PaymentCodeActivity.class);
+                TowCode.putExtra("walletAddress", walletAddress);
+                TowCode.putExtra("labelAddress", labelAddress);
                 startActivity(TowCode);
                 break;
             case R.id.ll_activation://点击激活按钮
@@ -304,6 +312,8 @@ public class WalletFragment extends MvpFragment<WalletDataContact.WalletDataPres
     //跳转到扫描界面
     public void goScan() {
         Intent intent = new Intent(context, CaptureActivity.class);
+        intent.putExtra("walletAddress", walletAddress);
+        intent.putExtra("labelAddress", labelAddress);
         startActivityForResult(intent, REQUEST_CODE_SCAN);
     }
 

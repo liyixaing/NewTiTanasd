@@ -19,6 +19,7 @@
         android:gravity="center">
 
         <LinearLayout
+            android:id="@+id/ll_imageView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
@@ -40,6 +41,7 @@
                 android:layout_marginTop="20dp">
 
                 <ImageView
+                    android:id="@+id/iv_er_code"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:src="@mipmap/ic_erweimatest" />
@@ -52,12 +54,14 @@
                 android:orientation="vertical">
 
                 <TextView
+                    android:id="@+id/tv_address"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:text="地址:asjlkhda" />
 
                 <TextView
+                    android:id="@+id/tv_label"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
@@ -72,6 +76,7 @@
                 android:layout_marginRight="20dp">
 
                 <LinearLayout
+                    android:id="@+id/ll_save_album"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -94,6 +99,7 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/ll_copy_address"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -116,6 +122,7 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/ll_copy_label"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"

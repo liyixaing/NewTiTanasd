@@ -273,12 +273,13 @@ public class MyFragment extends MvpFragment<PersonContact.PersonPresent> impleme
                 } else {
                     initShow();
                 }
-//                Drawable drawable = getResources().getDrawable(R.mipmap.icon_notice_titan);
+
+//                Drawable drawable = getResources().getDrawable(R.mipmap.icon_logo);
 //                BitmapDrawable bd = (BitmapDrawable) drawable;
 //                final Bitmap bmm = bd.getBitmap();
-//
-//                Bitmap asd = QRCodeUtil.createQRCodeWithLogo("xiaoqi大厦大厦大ang", 500, bmm);
+//                Bitmap asd = QRCodeUtil.createQRCodeWithLogo("小强真帅", 500, bmm);
 //                saveBitmap(asd);
+
                 break;
             case R.id.people_data_lay://修改个人资料  头像   和   昵称
                 Intent intentPeople = new Intent(context, PersonalActivity.class);
@@ -342,8 +343,10 @@ public class MyFragment extends MvpFragment<PersonContact.PersonPresent> impleme
     //将bitmap格式的图片保存到本地
     public static void saveBitmap(Bitmap bm) {
         Log.e("xiaoqiang", "保存图片");
+        long timeStamp = System.currentTimeMillis();
+        Log.d("xxxxx", String.valueOf(timeStamp));
         File sdDir = Environment.getExternalStorageDirectory();
-        String tmpFile = sdDir.toString() + "/DCIM/" + "occlusiasdasdfsdfsdonCap.jpg";
+        String tmpFile = sdDir.toString() + "/DCIM/" + timeStamp + ".jpg";
         File f = new File(tmpFile);
 
         if (f.exists())
