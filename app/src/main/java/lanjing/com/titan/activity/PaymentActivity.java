@@ -4,6 +4,7 @@ package lanjing.com.titan.activity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -31,7 +32,10 @@ public class PaymentActivity extends MvpActivity<PaymentContact.PaymentPresent> 
     TextView tv_label;//地址标签
     @BindView(R.id.confirm_btn)
     TextView confirm_btn;
-
+    @BindView(R.id.et_tibusun)
+    EditText et_tibusun;//数量输入框
+    @BindView(R.id.tc_extract_all)
+    TextView tc_extract_all;//提取全部按钮
 
 
     @Override
@@ -55,15 +59,19 @@ public class PaymentActivity extends MvpActivity<PaymentContact.PaymentPresent> 
     }
 
 
-    @OnClick({R.id.iv_backretun, R.id.confirm_btn})
+    @OnClick({R.id.iv_backretun, R.id.confirm_btn, R.id.tc_extract_all})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.iv_backretun://返回
                 finish();
                 break;
+            case R.id.tc_extract_all:
+                ToastUtils.showLongToast(context, "提取全部");
+                break;
             case R.id.confirm_btn:
                 ToastUtils.showLongToast(context, "确认支付");
                 break;
+
         }
     }
 
