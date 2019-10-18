@@ -611,6 +611,8 @@
     <string name="not_used">未使用</string>
     <string name="Already_used">已使用</string>
     <string name="add_code">今日激活码已全部发放</string>
+    <string name="payment">支付</string>
+    <string name="permission_not_open">权限未开启</string>
 
 </resources>
 

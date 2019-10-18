@@ -149,7 +149,6 @@ public class TiTanWithdrawMoney extends MvpActivity<getTransferContact.getTransf
                 }
                 break;
             case R.id.tc_extract_all:
-//                initjudge();
                 int anInt = Integer.parseInt(taitanSum.substring(0, i));
                 EtTibusun.setText(String.valueOf(anInt - 3));
                 EtTibusun.setSelection(EtTibusun.length());//将光标移至文字末尾
@@ -212,24 +211,7 @@ public class TiTanWithdrawMoney extends MvpActivity<getTransferContact.getTransf
         });
     }
 
-    //提取全部判断
-    public void initjudge() {
-        double qweas = asd - 3;
-        String str = asd + "";
-        String split = ".";
-        StringTokenizer token = new StringTokenizer(str, split);
-        str = token.nextToken();
-        Double fdgsdf = Double.valueOf(str);
-        double dsajfghadsk = fdgsdf - 3;
-        String ing = qweas + "";
-        if (fdgsdf - 3 > 100) {
-            EtTibusun.setText(MoneyUtil.priceFormat(dsajfghadsk + ""));
-            Selection.setSelection(EtTibusun.getText(), EtTibusun.length());
-        } else {
-            ToastUtils.showShortToast(context, getResources().getString(R.string.of_money_withdrawn));
 
-        }
-    }
 
     @Override
     protected getTransferContact.getTransfer createPresent() {

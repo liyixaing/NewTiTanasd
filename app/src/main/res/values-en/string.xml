@@ -583,7 +583,7 @@
     <string name="immediate_activation">Activate Now</string>
     <string name="free_daily_allowance">Limited Daily Free Gift</string>
     <string name="free_daily_activation_codes">Number Of Activation \n Codes Remaining：</string>
-    <string name="viewfinderview_status_text1">将二维码放入取景框内即可自动扫描</string>
+    <string name="viewfinderview_status_text1">Put the QR code in the viewfinder to scan automatically</string>
     <string name="turn_out">Transfer</string>
     <string name="turn_put">Turn In</string>
     <string name="flash_exchange">exchange</string>
@@ -606,6 +606,8 @@
     <string name="not_used">not used</string>
     <string name="Already_used">Already used</string>
     <string name="add_code">Todays activation code has been released</string>
+    <string name="payment">payment</string>
+    <string name="permission_not_open">Permission not open</string>
 
 
 

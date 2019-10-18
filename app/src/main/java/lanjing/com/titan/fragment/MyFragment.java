@@ -342,7 +342,6 @@ public class MyFragment extends MvpFragment<PersonContact.PersonPresent> impleme
 
     //将bitmap格式的图片保存到本地
     public static void saveBitmap(Bitmap bm) {
-        Log.e("xiaoqiang", "保存图片");
         long timeStamp = System.currentTimeMillis();
         Log.d("xxxxx", String.valueOf(timeStamp));
         File sdDir = Environment.getExternalStorageDirectory();

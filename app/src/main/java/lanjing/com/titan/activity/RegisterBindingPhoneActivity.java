@@ -48,7 +48,6 @@ public class RegisterBindingPhoneActivity extends MvpActivity<SetPhoneContact.Se
     @Override
     public void initData(Bundle savedInstanceState) {
         inviteCode = getIntent().getStringExtra("code");
-        Log.e("xiaoqiang", inviteCode);
         areaCode = "86";
         initSpinner();
     }

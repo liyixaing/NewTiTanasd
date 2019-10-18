@@ -185,7 +185,7 @@ public class WalletFragment extends MvpFragment<WalletDataContact.WalletDataPres
             if (aBoolean) {
                 new UpdateHelper(getActivity(), true).update();
             } else {
-                ToastUtils.showShortToast(getActivity(), "权限未开启");
+                ToastUtils.showShortToast(getActivity(), getResources().getString(R.string.permission_not_open));
             }
         });
     }
@@ -293,7 +293,7 @@ public class WalletFragment extends MvpFragment<WalletDataContact.WalletDataPres
                 if (ContextCompat.checkSelfPermission(context, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
                     ActivityCompat.requestPermissions(context, new String[]{Manifest.permission.CAMERA}, 1);
                 } else {
-                    goScan();
+                    goScan();//跳转到扫描界面
                 }
                 break;
             case R.id.iv_tow_code://跳转到二维吗界面
@@ -592,24 +592,12 @@ public class WalletFragment extends MvpFragment<WalletDataContact.WalletDataPres
     //获取免费激活数量
     @Override
     public void getTodayFreeActiveTimes(Response<TodayFreeResponse> response) {
-//        if (response.body().getCode() == Constant.SUCCESS_CODE) {
-//            //获取成功
-//            Log.e("xiaoqiang", "获取免费激活名额成功");
-//            if (response.body().getData() > 0) {
-//
-//                FreeDialogDialog(response.body().getData());//免费赠送弹出框
-//            } else {
-//
-////                showactionDialog();//输入激活码弹出框
-//            }
-//        } else if (response.body().getCode() == -10) {
-//            //异地登录提示
-//            ToastUtils.showLongToast(context, getResources().getString(R.string.not_login));
-//        } else {
-//            //其他错误直接给它后台提示
-//            ToastUtils.showLongToast(context, response.body().getMsg());
-//        }
-
+        //这个接口虽然没有被使用到 但是必要的一些判断操作还是得写的
+        if (response.body().getCode() == Constant.SUCCESS_CODE) {
+            ToastUtils.showLongToast(context, response.body().getMsg());
+        } else {
+            ToastUtils.showLongToast(context, response.body().getMsg());
+        }
     }
 
 

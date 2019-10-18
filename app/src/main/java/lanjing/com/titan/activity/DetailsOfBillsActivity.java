@@ -47,7 +47,6 @@ public class DetailsOfBillsActivity extends MvpActivity<BillDetailContact.BillDe
     public void initData(Bundle savedInstanceState) {
         id = getIntent().getStringExtra("id");
         mPresent.SellOrderDetail(context, id);
-        Log.e("xiaoqiang", id);
     }
 
     @Override

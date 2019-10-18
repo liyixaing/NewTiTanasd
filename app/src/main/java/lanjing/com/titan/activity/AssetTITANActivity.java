@@ -119,8 +119,7 @@ public class AssetTITANActivity extends MvpActivity<WalletDetailContact.WalletDe
         mAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-                Log.e("xiaoqiang", historylist.get(position).getId() + "");
-                Log.e("Type", historylist.get(position).getChangeType());
+
                 //判断是否要进入详情页  1 充币  2 提币  21 titan兑换  22 bar兑换
                 if (historylist.get(position).getChangeType().equals("1") || historylist.get(position).getChangeType().equals("2")) {
                     Intent intent = new Intent(context, AssetTitanDetailActivity.class);

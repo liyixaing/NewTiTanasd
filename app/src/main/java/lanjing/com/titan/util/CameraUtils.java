@@ -114,7 +114,7 @@ public class CameraUtils {
     public static void ImgUpdateDirection(String filepath, Bitmap orc_bitmap, ImageView iv) {
         int digree = 0;//图片旋转的角度
         //根据图片的URI获取图片的绝对路径
-        Log.i("tag", ">>>>>>>>>>>>>开始");
+        Log.i("tag", ">>>>>>>>>>>>>Start");
         //String filepath = ImgUriDoString.getRealFilePath(getApplicationContext(), uri);
         Log.i("tag", "》》》》》》》》》》》》》》》" + filepath);
         //根据图片的filepath获取到一个ExifInterface的对象
@@ -141,7 +141,6 @@ public class CameraUtils {
                     default:
                         digree = 0;
                         break;
-
                 }
 
             }

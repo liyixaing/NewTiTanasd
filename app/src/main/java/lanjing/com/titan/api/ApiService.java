@@ -44,6 +44,7 @@ import lanjing.com.titan.request.UplodelRequest;
 import lanjing.com.titan.request.VersionRequest;
 import lanjing.com.titan.request.ViewFeedbackRequest;
 import lanjing.com.titan.request.WalletDetailRequest;
+import lanjing.com.titan.request.WithdrawRateRequest;
 import lanjing.com.titan.request.WithdrawRequest;
 import lanjing.com.titan.request.WithdrawalRequest;
 import lanjing.com.titan.request.SaveOrUpdateRequest;
@@ -91,6 +92,7 @@ import lanjing.com.titan.response.VersionResponse;
 import lanjing.com.titan.response.WalletDataResponse;
 import lanjing.com.titan.response.WalletDetailResponse;
 import lanjing.com.titan.response.WalletListResponse;
+import lanjing.com.titan.response.WithdrawRateResponse;
 import lanjing.com.titan.response.WithdrawalResponse;
 import lanjing.com.titan.response.getTransferConfigResponse;
 import lanjing.com.titan.response.getTransferResponse;
@@ -454,6 +456,12 @@ public interface ApiService {
      */
     @POST("/app/getConvertConfig")
     Call<ConvertConfigResponse> ConvertConfig(@Header("token") String token, @Body RequestConvertConfig data);
+
+    /**
+     * 拉取提币汇率
+     */
+    @POST("/app/getWithdrawRate")
+    Call<WithdrawRateResponse> WithdrawRate(@Header("token") String token, @Body WithdrawRateRequest data);
 
     /**
      * 兑换

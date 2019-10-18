@@ -1,13 +1,21 @@
 package lanjing.com.titan.zxing.android;
 
 
+import android.Manifest;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.database.Cursor;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.provider.MediaStore;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
@@ -15,19 +23,29 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.request.RequestOptions;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.DecodeHintType;
 import com.google.zxing.Result;
+import com.lxh.baselibray.util.BitmapUtils;
+import com.lxh.baselibray.util.CameraUtils;
 import com.lxh.baselibray.util.ToastUtils;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.Collection;
 import java.util.Map;
+
+import butterknife.internal.Utils;
 import lanjing.com.titan.R;
 import lanjing.com.titan.activity.PaymentActivity;
 import lanjing.com.titan.activity.PaymentCodeActivity;
+import lanjing.com.titan.util.QRHelper;
 import lanjing.com.titan.zxing.camera.CameraManager;
 import lanjing.com.titan.zxing.view.ViewfinderView;
 
@@ -36,9 +54,7 @@ import lanjing.com.titan.zxing.view.ViewfinderView;
  * 然后在扫描成功的时候覆盖扫描结果
  */
 public final class CaptureActivity extends Activity implements SurfaceHolder.Callback {
-
     private static final String TAG = CaptureActivity.class.getSimpleName();
-
     // 相机控制
     private CameraManager cameraManager;
     private CaptureActivityHandler handler;
@@ -52,7 +68,6 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
     private InactivityTimer inactivityTimer;
     // 声音、震动控制
     private BeepManager beepManager;
-
     private ImageButton imageButton_back;
 
     public ViewfinderView getViewfinderView() {
@@ -74,6 +89,11 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
     String walletAddress, labelAddress;
     LinearLayout ll_mycode;
     Context context;
+    ImageView img_feedback_list;
+    public static final int TAKE_PHOTO = 1;//启动相机标识
+    public static final int SELECT_PHOTO = 2;//启动相册标识
+    private Bitmap orc_bitmap;//拍照和相册获取图片的Bitmap
+    private String base64Pic;
 
     /**
      * OnCreate中初始化一些辅助类，如InactivityTimer（休眠）、Beep（声音）以及AmbientLight（闪光灯）
@@ -101,18 +121,96 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
             }
         });
 
+        //点击跳转到相册
+        img_feedback_list = findViewById(R.id.img_feedback_list);
+        img_feedback_list.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onJumpPictures();//跳转到相册
+            }
+        });
+
         hasSurface = false;
 
         inactivityTimer = new InactivityTimer(this);
         beepManager = new BeepManager(this);
 
+    }
+
+
+    //跳转到相册
+    private void onJumpPictures() {
+        Intent selectPhotoIntent = CameraUtils.getSelectPhotoIntent();
+        startActivityForResult(selectPhotoIntent, SELECT_PHOTO);
 
     }
+
+    //相册返回回调
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        switch (requestCode) {
+            //打开相册后返回
+            case SELECT_PHOTO:
+                if (resultCode == RESULT_OK) {
+                    String imagePath = null;
+                    //判断手机系统版本号
+                    if (Build.VERSION.SDK_INT > 19) {
+                        //4.4及以上系统使用这个方法处理图片
+                        imagePath = CameraUtils.getImgeOnKitKatPath(data, this);
+                    } else {
+                        imagePath = CameraUtils.getImageBeforeKitKatPath(data, this);
+                    }
+                    displayImage(imagePath);
+                    RequestOptions mRequestOptions = RequestOptions.circleCropTransform()
+                            .diskCacheStrategy(DiskCacheStrategy.NONE)//不做磁盘缓存
+                            .skipMemoryCache(true);//不做内存缓存
+
+
+                }
+                break;
+            default:
+                break;
+        }
+    }
+
+
+    private void displayImage(String imagePath) {
+        if (!TextUtils.isEmpty(imagePath)) {
+            //orc_bitmap = BitmapFactory.decodeFile(imagePath);//获取图片
+            orc_bitmap = CameraUtils.comp(BitmapFactory.decodeFile(imagePath)); //压缩图片
+            base64Pic = BitmapUtils.bitmapToBase64(orc_bitmap);
+            RequestOptions mRequestOptions = RequestOptions.circleCropTransform()
+                    .diskCacheStrategy(DiskCacheStrategy.NONE)//不做磁盘缓存
+                    .skipMemoryCache(true);//不做内存缓存
+            //做图片识别处理
+            String result = QRHelper.getReult(orc_bitmap);
+
+            //识别图片二维码成功做判断处理
+            if (result.contains("TITAN")) {//判断字符串内容方法 兼容5.0以上
+                //存在titan字符则跳转到支付界面
+                Intent payment = new Intent(this, PaymentActivity.class);
+                payment.putExtra("rawResult", result);
+                startActivity(payment);
+                finish();//扫描成功后直接关闭这个界面
+            } else {
+                //不存在则未定
+                ToastUtils.showLongToast(context, "图片识别失败");
+                finish();//关闭当前窗口
+            }
+
+
+        } else {
+            //图片获取失败
+            ToastUtils.showLongToast(this, getResources().getString(R.string.image_acquisition_failed));
+        }
+    }
+
 
     @Override
     protected void onResume() {
         super.onResume();
-
         // CameraManager必须在这里初始化，而不是在onCreate()中。
         // 这是必须的，因为当我们第一次进入时需要显示帮助页，我们并不想打开Camera,测量屏幕大小
         // 当扫描框的尺寸不正确时会出现bug
@@ -179,8 +277,7 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
     }
 
     @Override
-    public void surfaceChanged(SurfaceHolder holder, int format, int width,
-                               int height) {
+    public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
 
     }
 
@@ -210,10 +307,9 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
                 finish();//扫描成功后直接关闭这个界面
             } else {
                 //不存在则未定
-                ToastUtils.showLongToast(context, "二维码扫描错误");
+                ToastUtils.showLongToast(context, "图片识别失败");
                 finish();//关闭当前窗口
             }
-
         }
 
     }
@@ -261,4 +357,3 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
 
 }
 
-//等你不如等死， 因为我知道死一定会来

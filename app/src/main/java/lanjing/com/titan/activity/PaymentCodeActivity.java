@@ -58,7 +58,6 @@ public class PaymentCodeActivity extends MvpActivity<PaymentCode.FriendListPrese
     LinearLayout ll_copy_address;//复制地址按钮
     @BindView(R.id.ll_copy_label)
     LinearLayout ll_copy_label;//复制标签
-
     String walletAddress, labelAddress;
 
     @Override
@@ -77,7 +76,7 @@ public class PaymentCodeActivity extends MvpActivity<PaymentCode.FriendListPrese
         Drawable drawable = getResources().getDrawable(R.mipmap.icon_logo);
         BitmapDrawable bd = (BitmapDrawable) drawable;
         final Bitmap bmm = bd.getBitmap();
-        Bitmap asd = QRCodeUtil.createQRCode("TITAN"+","+walletAddress+","+labelAddress, 500);
+        Bitmap asd = QRCodeUtil.createQRCode("TITAN" + "," + walletAddress + "," + labelAddress, 500);
         iv_er_code.setImageBitmap(asd);
     }
 
@@ -97,13 +96,13 @@ public class PaymentCodeActivity extends MvpActivity<PaymentCode.FriendListPrese
                 ClipboardManager address = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
                 // 将文本内容放到系统剪贴板里。
                 address.setText(walletAddress);
-                ToastUtils.showLongToast(context, "复制成功，可以发给小伙伴们了。");
+                ToastUtils.showLongToast(context, getResources().getString(R.string.over_copy));
                 break;
             case R.id.ll_copy_label://复制标签
                 ClipboardManager lable = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
                 // 将文本内容放到系统剪贴板里。
                 lable.setText(labelAddress);
-                ToastUtils.showLongToast(context, "复制成功，可以发给小伙伴们了。");
+                ToastUtils.showLongToast(context, getResources().getString(R.string.over_copy));
                 break;
 
         }
@@ -122,7 +121,6 @@ public class PaymentCodeActivity extends MvpActivity<PaymentCode.FriendListPrese
 
     //将bitmap格式的图片保存到本地
     public void saveBitmap(Bitmap bm) {
-        Log.e("xiaoqiang", "保存图片");
         long timeStamp = System.currentTimeMillis();
         Log.d("xxxxx", String.valueOf(timeStamp));
         File sdDir = Environment.getExternalStorageDirectory();
@@ -136,7 +134,6 @@ public class PaymentCodeActivity extends MvpActivity<PaymentCode.FriendListPrese
             bm.compress(Bitmap.CompressFormat.PNG, 90, out);
             out.flush();
             out.close();
-            Log.i("小强", "已经保存");
         } catch (FileNotFoundException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -166,7 +163,7 @@ public class PaymentCodeActivity extends MvpActivity<PaymentCode.FriendListPrese
                 os.flush();
                 os.close();
                 ToastUtils.showLongToast(context, "保存成功");
-                Log.d("a7888", "存储完成");
+
             } catch (Exception e) {
             }
         }

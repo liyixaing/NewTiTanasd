@@ -109,7 +109,8 @@ public class ExchangeActivity extends MvpActivity<ExchangeContact.ExchangePresen
                     //还没有输入数据不做处理
                 } else {
                     int zhuanhuan = Integer.parseInt(num.substring(0, i));
-                    int text = Integer.parseInt(EtExchangeNum.getText().toString());
+                    //使用double的原因是因为数字如果超出int类型的长度的话会异常
+                    double text = Double.valueOf(EtExchangeNum.getText().toString());
                     if (text > zhuanhuan) {
                         EtExchangeNum.setText(num.substring(0, i));
                         EtExchangeNum.setSelection(EtExchangeNum.length());//将光标移至文字末尾

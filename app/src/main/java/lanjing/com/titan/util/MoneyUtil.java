@@ -26,7 +26,7 @@ public class MoneyUtil {
         }
     }
 
-    public static String formatFouras(String number){
+    public static String formatFouras(String number){//不保留小数
         if (number.equals("0.0000") || number.equals("0") || number.equals("0.0") || number.equals("0.00") || number.equals("0.000")) {
             String numbers = "0";
             return numbers;

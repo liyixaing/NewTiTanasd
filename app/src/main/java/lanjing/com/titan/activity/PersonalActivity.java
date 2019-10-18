@@ -258,7 +258,6 @@ public class PersonalActivity extends MvpActivity<PersonDataChangeContact.Person
             ToastUtils.showShortToast(context, getResources().getString(R.string.modify_avatar_successfully));
             SPUtils.putString(Constant.PORTRAIT, response.body().getUrl(), context);
             BusFactory.getBus().post(new EventImpl.UpdatePortraitEvent());
-            Log.e("xiaoqiang", response.body().url);
             mPresent.UserAvatarupdate(context, response.body().getUrl());
             finish();
         } else if (response.body().getCode() == -10) {

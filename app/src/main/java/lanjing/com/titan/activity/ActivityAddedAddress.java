@@ -72,7 +72,6 @@ public class ActivityAddedAddress extends MvpActivity<SaveOrUpdateContact.saveOr
                 } else if (EdCodePwd.getText().toString().equals("")) {
                     ToastUtils.showShortToast(context, getResources().getString(R.string.please_verification_code));
                 } else {
-                    Log.e("xaiqoaing", Phone);
                     mPresent.SaveorupdeatDetail(context, Phone, EdCodePwd.getText().toString(), EtCurrency.getText().toString(),
                             EtLabel.getText().toString(), EtRemarks.getText().toString());
                 }

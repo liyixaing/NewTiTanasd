@@ -125,7 +125,6 @@ public class AdviceFeedbackActivity extends MvpActivity<FeedbackContact.Feedback
                 editProblemTitle.setCursorVisible(true);//光标显示
                 break;
             case R.id.submit_advice_btn:
-//                Log.e("xiaoqiang", image1 + image2 + image3);
                 String title = editProblemTitle.getText().toString().trim();
                 String content = editProblem.getText().toString().trim();
                 if (ObjectUtils.isEmpty(title)) {

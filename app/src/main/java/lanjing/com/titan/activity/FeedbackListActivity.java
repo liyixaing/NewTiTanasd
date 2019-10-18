@@ -77,7 +77,6 @@ public class FeedbackListActivity extends MvpActivity<FeedbackListContact.Feedba
             public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
                 Intent intent = new Intent(context, FeedbackDetailActivity.class);
                 intent.putExtra("fid", mList.get(position).getFid() + "");
-                Log.e("xiaoqiang", mList.get(position).getFid() + "");
                 startActivity(intent);
             }
         });
