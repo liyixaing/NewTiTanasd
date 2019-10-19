@@ -613,6 +613,27 @@
     <string name="add_code">今日激活码已全部发放</string>
     <string name="payment">支付</string>
     <string name="permission_not_open">权限未开启</string>
+    <string name="to_scan">将二维码放入取景框即可自动扫描</string>
+
+    <string name="Warm_Tips">温馨提示：请务必仔细核对地址标签，这是您账户的唯一标识，支付完成后将不可找回</string>
+    <string name="your_payment">确认支付</string>
+    <string name="payment_amoun">请输入支付金额</string>
+    <string name="pay">支付</string>
+    <string name="Payment_Address">支付地址</string>
+    <string name="input_the_payment_address">请输入支付地址</string>
+    <string name="recognition_failed">图片识别失败</string>
+    <string name="The_number_of_withdraw">提币数量不能为空</string>
+    <string name="Scan">扫一扫</string>
+    <string name="My_QR_Code">我的二维码</string>
+    <string name="Address">地址：</string>
+    <string name="Tags">标签：</string>
+    <string name="Successfully_preserved">保存成功</string>
+    <string name="Copy_the_Tag">复制标签</string>
+    <string name="Copy_the_Address">复制地址</string>
+    <string name="Save_to_Album">保存至相册</string>
+    <string name="Receiving_Money">收款码</string>
+    <string name="the_payment_password">请输入支付密码</string>
+
 
 </resources>
 

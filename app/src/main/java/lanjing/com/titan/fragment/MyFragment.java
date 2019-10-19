@@ -169,10 +169,8 @@ public class MyFragment extends MvpFragment<PersonContact.PersonPresent> impleme
 //                Message msg = hand.obtainMessage();
 //                hand.sendMessage(msg);
 //            }
-//
 //        }.start();
     }
-
 
     @Override
     public int getLayoutId() {

@@ -28,7 +28,7 @@
             android:layout_height="@dimen/titil_view_height"
             app:ivLeftPic="@mipmap/icon_page_return_white"
             app:titleTextColor="@color/white"
-            app:tvTitleText="扫一扫" />
+            app:tvTitleText="@string/Scan" />
         <ImageView
             android:id="@+id/img_feedback_list"
             android:layout_width="@dimen/dp_25"
@@ -57,7 +57,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
-            android:text="我的二维码"
+            android:text="@string/My_QR_Code"
             android:textColor="@color/blue" />
 
     </LinearLayout>

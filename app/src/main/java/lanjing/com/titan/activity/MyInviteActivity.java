@@ -93,7 +93,6 @@ public class MyInviteActivity extends MvpActivity<FriendListContact.FriendListPr
         } else if (locale.equals(Locale.ENGLISH)) {
             myInviteBg.setBackground(getResources().getDrawable(R.mipmap.icon_my_invite_en_bg));
         }
-
     }
 
     private void initList() {

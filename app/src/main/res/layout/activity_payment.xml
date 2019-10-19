@@ -34,7 +34,7 @@
                     android:layout_height="match_parent"
                     android:layout_marginRight="50dp"
                     android:gravity="center"
-                    android:text="支付"
+                    android:text="@string/pay"
                     android:textColor="@color/common_black"
                     android:textSize="20sp" />
 
@@ -64,7 +64,7 @@
                     android:drawablePadding="@dimen/dp_10"
                     android:gravity="center_vertical"
                     android:paddingLeft="@dimen/dp_20"
-                    android:text="支付地址"
+                    android:text="@string/Payment_Address"
                     android:textColor="@color/common_black"
                     android:textSize="@dimen/sp_13" />
 
@@ -84,7 +84,7 @@
                     android:layout_height="@dimen/dp_30"
                     android:drawablePadding="@dimen/dp_10"
                     android:gravity="center_vertical"
-                    android:hint="请输入支付地址"
+                    android:hint="@string/input_the_payment_address"
                     android:paddingLeft="@dimen/dp_20"
                     android:textColor="#A0A0A0"
                     android:textSize="@dimen/sp_13" />
@@ -317,7 +317,7 @@
                     android:layout_weight="1"
                     android:background="@null"
                     android:digits="0123456789"
-                    android:hint="请输入支付金额"
+                    android:hint="@string/payment_amoun"
                     android:inputType="phone"
                     android:padding="10dp"
                     android:textSize="@dimen/sp_13" />
@@ -461,7 +461,7 @@
                 android:background="@drawable/btn_radius_blue"
                 android:foreground="@drawable/bg_white"
                 android:gravity="center"
-                android:text="确认支付"
+                android:text="@string/your_payment"
                 android:textColor="@color/white"
                 android:textSize="@dimen/sp_20" />
         </LinearLayout>

@@ -51,7 +51,7 @@ public class ActivityAddedAddress extends MvpActivity<SaveOrUpdateContact.saveOr
     public void initData(Bundle savedInstanceState) {
         setEditTextInhibitInputSpeChat(EtCurrency);
         Phone = SPUtils.getString(Constant.PHONE, null, context);
-        TvHome.setText(getResources().getString(R.string.phone)+"\u3000" + Phone);
+        TvHome.setText(getResources().getString(R.string.phone) + "\u3000" + Phone);
     }
 
     @Override
@@ -78,7 +78,7 @@ public class ActivityAddedAddress extends MvpActivity<SaveOrUpdateContact.saveOr
                 return;
             case R.id.tv_getcode://获取验证码按钮
                 InitGetCode();
-                CountDownTimerUtils  countDownTimerUtils = new CountDownTimerUtils(TvGetcode, 60000, 1000);
+                CountDownTimerUtils countDownTimerUtils = new CountDownTimerUtils(TvGetcode, 60000, 1000);
                 countDownTimerUtils.start();
                 return;
         }

@@ -583,7 +583,7 @@
     <string name="immediate_activation">Activate Now</string>
     <string name="free_daily_allowance">Limited Daily Free Gift</string>
     <string name="free_daily_activation_codes">Number Of Activation \n Codes Remaining：</string>
-    <string name="viewfinderview_status_text1">Put the QR code in the viewfinder to scan automatically</string>
+    <string name="viewfinderview_status_text1">Put the QR code in the box to scan</string>
     <string name="turn_out">Transfer</string>
     <string name="turn_put">Turn In</string>
     <string name="flash_exchange">exchange</string>
@@ -608,7 +608,26 @@
     <string name="add_code">Todays activation code has been released</string>
     <string name="payment">payment</string>
     <string name="permission_not_open">Permission not open</string>
+    <string name="to_scan">Put the QR code in the box to scan</string>
 
+    <string name="Warm_Tips">Warm Tips: Please carefully check the address tag, it is the only sign of your account, you can not retrieve it after the completion of payment.</string>
+    <string name="your_payment">Confirm your payment.</string>
+    <string name="payment_amoun">Please input the payment amount.</string>
+    <string name="pay">Pay</string>
+    <string name="Payment_Address">Payment Address</string>
+    <string name="input_the_payment_address">Please input the payment address.</string>
+    <string name="recognition_failed">Image recognition failed.</string>
+    <string name="The_number_of_withdraw">The number of withdraw can not be empty.</string>
+    <string name="Scan">Scan</string>
+    <string name="My_QR_Code">My QR Code</string>
+    <string name="Address">Address：</string>
+    <string name="Tags">Tags：</string>
+    <string name="Successfully_preserved">Successfully preserved.</string>
+    <string name="Copy_the_Tag">Copy the Tag</string>
+    <string name="Copy_the_Address">Copy the Address</string>
+    <string name="Save_to_Album">Save to Album</string>
+    <string name="Receiving_Money">Code for Receiving Money</string>
+    <string name="the_payment_password">Please enter the payment password</string>
 
 
 </resources>

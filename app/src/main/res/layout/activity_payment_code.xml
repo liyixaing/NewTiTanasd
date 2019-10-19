@@ -11,7 +11,7 @@
         android:layout_height="@dimen/titil_view_height"
         app:ivLeftPic="@mipmap/ic_backe_white"
         app:titleTextColor="@color/white"
-        app:tvTitleText="收款码" />
+        app:tvTitleText="@string/Receiving_Money" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -93,7 +93,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/dp_4"
-                        android:text="保存至相册"
+                        android:text="@string/Save_to_Album"
                         android:textColor="@color/common_black"
                         android:textSize="@dimen/sp_9" />
                 </LinearLayout>
@@ -116,7 +116,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/dp_4"
-                        android:text="复制地址"
+                        android:text="@string/Copy_the_Address"
                         android:textColor="@color/common_black"
                         android:textSize="@dimen/sp_9" />
                 </LinearLayout>
@@ -139,7 +139,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/dp_4"
-                        android:text="复制标签"
+                        android:text="@string/Copy_the_Tag"
                         android:textColor="@color/common_black"
                         android:textSize="@dimen/sp_9" />
                 </LinearLayout>

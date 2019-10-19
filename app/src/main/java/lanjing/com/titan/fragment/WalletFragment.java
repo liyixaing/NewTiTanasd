@@ -41,6 +41,7 @@ import lanjing.com.titan.R;
 import lanjing.com.titan.activity.AssetTITANActivity;
 import lanjing.com.titan.activity.AssetUSDActivity;
 import lanjing.com.titan.activity.FeedbackListActivity;
+import lanjing.com.titan.activity.MainActivity;
 import lanjing.com.titan.activity.NoticeActivity;
 import lanjing.com.titan.activity.PaymentCodeActivity;
 import lanjing.com.titan.activity.TItancWaitGetActivity;
@@ -297,10 +298,23 @@ public class WalletFragment extends MvpFragment<WalletDataContact.WalletDataPres
                 }
                 break;
             case R.id.iv_tow_code://跳转到二维吗界面
-                Intent TowCode = new Intent(context, PaymentCodeActivity.class);
+
+                if (ActivityCompat.checkSelfPermission(context, Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                        != PackageManager.PERMISSION_GRANTED) {
+                    //用户已经拒绝过一次，再次弹出权限申请对话框需要给用户一个解释
+                    if (ActivityCompat.shouldShowRequestPermissionRationale(context, Manifest.permission
+                            .WRITE_EXTERNAL_STORAGE)) {
+                        Toast.makeText(context, "请开通相关权限，否则无法正常使用本应用！", Toast.LENGTH_SHORT).show();
+                    }
+                    //申请权限
+                    ActivityCompat.requestPermissions(context, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
+                } else {
+                    Intent TowCode = new Intent(context, PaymentCodeActivity.class);
                 TowCode.putExtra("walletAddress", walletAddress);
                 TowCode.putExtra("labelAddress", labelAddress);
                 startActivity(TowCode);
+                }
+
                 break;
             case R.id.ll_activation://点击激活按钮
 //                mPresent.TodayFreeActiveTimes(context);//获取激活信息

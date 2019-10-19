@@ -102,7 +102,7 @@ public class PaymentActivity extends MvpActivity<PaymentContact.PaymentPresent> 
                 break;
             case R.id.confirm_btn:
                 if (et_tibusun.getText().toString().equals("")) {
-                    ToastUtils.showLongToast(context, "提币数量不能为空");
+                    ToastUtils.showLongToast(context, getResources().getString(R.string.The_number_of_withdraw));
                 } else {
                     showPwdBuyDialog();
                 }
@@ -119,16 +119,15 @@ public class PaymentActivity extends MvpActivity<PaymentContact.PaymentPresent> 
         }
     }
 
-
-
     //选择币种判断
     public void initCoin() {
-        Divisor = Double.parseDouble(et_tibusun.getText().toString());
-        cny = Double.parseDouble(price_cny);
-        usd = Double.parseDouble(price_usd);
+        //先判断输入框中是否有内容
         if (et_tibusun.getText().toString().equals("")) {
             //输入框为空 可以不做处理  但是这里还是简单的输出一下吧
         } else {
+            Divisor = Double.parseDouble(et_tibusun.getText().toString());
+            cny = Double.parseDouble(price_cny);
+            usd = Double.parseDouble(price_usd);
             if (type == 0) {//0为cny
                 sun = Divisor / cny;
                 tv_result.setText("≈" + MoneyUtil.formatFouras(sun + "") + "TITAN");
@@ -138,7 +137,6 @@ public class PaymentActivity extends MvpActivity<PaymentContact.PaymentPresent> 
             }
         }
     }
-
 
     //判断输入框数量
     public void initInput() {
@@ -188,9 +186,14 @@ public class PaymentActivity extends MvpActivity<PaymentContact.PaymentPresent> 
                 .setWidthAndHeight(SizeUtils.dp2px(context, 258), ViewGroup.LayoutParams.WRAP_CONTENT)//设置弹窗宽高
                 .setOnClickListener(R.id.tx_sure, v -> {//设置点击事件
                     EditText dealPwd = pwdDialog.getView(R.id.ed_deal_pwd);
-                    String pwd = dealPwd.getText().toString();
-                    mPresent.dealPwd(context, pwd, Constant.Withdrawal_of_money);
-                    pwdDialog.dismiss();
+                    if (dealPwd.getText().toString().equals("")) {
+                        ToastUtils.showLongToast(context, getResources().getString(R.string.the_payment_password));
+                    } else {
+                        String pwd = dealPwd.getText().toString();
+                        mPresent.dealPwd(context, pwd, Constant.Withdrawal_of_money);
+                        pwdDialog.dismiss();
+                    }
+
                 }).setOnClickListener(R.id.tx_cancel, v -> pwdDialog.dismiss());
         pwdDialog = builder.create();
         pwdDialog.show();
@@ -231,7 +234,7 @@ public class PaymentActivity extends MvpActivity<PaymentContact.PaymentPresent> 
         if (response.body().getCode() == Constant.SUCCESS_CODE) {
             //密码正确
             mPresent.walletWithdraw(context, "1", tv_address.getText().toString(),
-                    tv_label.getText().toString(), MoneyUtil.formatFouras(sun+""));
+                    tv_label.getText().toString(), MoneyUtil.formatFouras(sun + ""));
         } else {
             ToastUtils.showLongToast(context, response.body().getMsg());
         }

@@ -64,8 +64,8 @@ public class PaymentCodeActivity extends MvpActivity<PaymentCode.FriendListPrese
     public void initData(Bundle savedInstanceState) {
         walletAddress = getIntent().getStringExtra("walletAddress");
         labelAddress = getIntent().getStringExtra("labelAddress");
-        tv_address.setText("地址：" + walletAddress);//地址赋值
-        tv_label.setText("标签：" + labelAddress);//标签赋值
+        tv_address.setText(getResources().getString(R.string.Address) + walletAddress);//地址赋值
+        tv_label.setText(getResources().getString(R.string.Tags) + labelAddress);//标签赋值
 
         ArrayMap<String, String> map = new ArrayMap();
         map.put("addres", walletAddress);
@@ -126,7 +126,7 @@ public class PaymentCodeActivity extends MvpActivity<PaymentCode.FriendListPrese
         File sdDir = Environment.getExternalStorageDirectory();
         String tmpFile = sdDir.toString() + "/DCIM/" + timeStamp + ".jpg";
         File f = new File(tmpFile);
-        ToastUtils.showLongToast(context, "保存成功");
+        ToastUtils.showLongToast(context, getResources().getString(R.string.Successfully_preserved));
         if (f.exists())
             return;
         try {
@@ -162,7 +162,7 @@ public class PaymentCodeActivity extends MvpActivity<PaymentCode.FriendListPrese
                 bitmap.compress(Bitmap.CompressFormat.PNG, 100, os);
                 os.flush();
                 os.close();
-                ToastUtils.showLongToast(context, "保存成功");
+                ToastUtils.showLongToast(context, getResources().getString(R.string.Successfully_preserved));
 
             } catch (Exception e) {
             }

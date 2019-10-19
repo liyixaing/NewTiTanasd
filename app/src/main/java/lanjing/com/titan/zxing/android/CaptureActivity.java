@@ -15,6 +15,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.provider.MediaStore;
+import android.support.v4.app.ActivityCompat;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.SurfaceHolder;
@@ -25,6 +26,7 @@ import android.view.WindowManager;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
@@ -32,6 +34,8 @@ import com.bumptech.glide.request.RequestOptions;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.DecodeHintType;
 import com.google.zxing.Result;
+import com.lxh.baselibray.base.XActivity;
+import com.lxh.baselibray.mvp.MvpActivity;
 import com.lxh.baselibray.util.BitmapUtils;
 import com.lxh.baselibray.util.CameraUtils;
 import com.lxh.baselibray.util.ToastUtils;
@@ -53,7 +57,7 @@ import lanjing.com.titan.zxing.view.ViewfinderView;
  * 这个activity打开相机，在后台线程做常规的扫描；它绘制了一个结果view来帮助正确地显示条形码，在扫描的时候显示反馈信息，
  * 然后在扫描成功的时候覆盖扫描结果
  */
-public final class CaptureActivity extends Activity implements SurfaceHolder.Callback {
+public final class CaptureActivity extends XActivity implements SurfaceHolder.Callback {
     private static final String TAG = CaptureActivity.class.getSimpleName();
     // 相机控制
     private CameraManager cameraManager;
@@ -88,7 +92,6 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
 
     String walletAddress, labelAddress;
     LinearLayout ll_mycode;
-    Context context;
     ImageView img_feedback_list;
     public static final int TAKE_PHOTO = 1;//启动相机标识
     public static final int SELECT_PHOTO = 2;//启动相册标识
@@ -98,14 +101,14 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
     /**
      * OnCreate中初始化一些辅助类，如InactivityTimer（休眠）、Beep（声音）以及AmbientLight（闪光灯）
      */
+
+
     @Override
-    public void onCreate(Bundle icicle) {
-        super.onCreate(icicle);
-        // 保持Activity处于唤醒状态
+    public void initData(Bundle savedInstanceState) {
+// 保持Activity处于唤醒状态
         Window window = getWindow();
         window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
-        setContentView(R.layout.capture);
-        context = getApplicationContext();
+
 
         walletAddress = getIntent().getStringExtra("walletAddress");
         labelAddress = getIntent().getStringExtra("labelAddress");
@@ -113,11 +116,23 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
         ll_mycode.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //跳转到我的二维码界面
-                Intent intent = new Intent(context, PaymentCodeActivity.class);
-                intent.putExtra("walletAddress", walletAddress);
-                intent.putExtra("labelAddress", labelAddress);
-                startActivity(intent);
+                //跳转到我的二维码界面】
+                if (ActivityCompat.checkSelfPermission(context, Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                        != PackageManager.PERMISSION_GRANTED) {
+                    //用户已经拒绝过一次，再次弹出权限申请对话框需要给用户一个解释
+                    if (ActivityCompat.shouldShowRequestPermissionRationale(context, Manifest.permission
+                            .WRITE_EXTERNAL_STORAGE)) {
+                        Toast.makeText(context, "请开通相关权限，否则无法正常使用本应用！", Toast.LENGTH_SHORT).show();
+                    }
+                    //申请权限
+                    ActivityCompat.requestPermissions(context, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
+                } else {
+                    Intent intent = new Intent(context, PaymentCodeActivity.class);
+                    intent.putExtra("walletAddress", walletAddress);
+                    intent.putExtra("labelAddress", labelAddress);
+                    startActivity(intent);
+                }
+
             }
         });
 
@@ -134,8 +149,19 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
 
         inactivityTimer = new InactivityTimer(this);
         beepManager = new BeepManager(this);
-
     }
+
+    @Override
+    public int getLayoutId() {
+        return R.layout.capture;
+    }
+//    @Override
+//    public void onCreate(Bundle icicle) {
+//        super.onCreate(icicle);
+//        setContentView(R.layout.capture);
+//
+//
+//    }
 
 
     //跳转到相册
@@ -175,6 +201,7 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
         }
     }
 
+    String result;
 
     private void displayImage(String imagePath) {
         if (!TextUtils.isEmpty(imagePath)) {
@@ -184,23 +211,29 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
             RequestOptions mRequestOptions = RequestOptions.circleCropTransform()
                     .diskCacheStrategy(DiskCacheStrategy.NONE)//不做磁盘缓存
                     .skipMemoryCache(true);//不做内存缓存
+
             //做图片识别处理
-            String result = QRHelper.getReult(orc_bitmap);
+            result = QRHelper.getReult(orc_bitmap);
+            //这里的异常抛出是因为识别到没有二维码的图片是会返回null
+            try {
+                //识别图片二维码成功做判断处理
+                if (result.contains("TITAN")) {//判断字符串内容方法 兼容5.0以上
+                    //存在titan字符则跳转到支付界面
+                    Intent payment = new Intent(this, PaymentActivity.class);
+                    payment.putExtra("rawResult", result);
+                    startActivity(payment);
+                    finish();//扫描成功后直接关闭这个界面
+                } else {
+                    //不存在则未定
+                    ToastUtils.showLongToast(context, getResources().getString(R.string.recognition_failed));
+                    finish();//关闭当前窗口
+                }
+            } catch (RuntimeException e) {
+                ToastUtils.showLongToast(context, getResources().getString(R.string.recognition_failed));
 
-            //识别图片二维码成功做判断处理
-            if (result.contains("TITAN")) {//判断字符串内容方法 兼容5.0以上
-                //存在titan字符则跳转到支付界面
-                Intent payment = new Intent(this, PaymentActivity.class);
-                payment.putExtra("rawResult", result);
-                startActivity(payment);
-                finish();//扫描成功后直接关闭这个界面
-            } else {
-                //不存在则未定
-                ToastUtils.showLongToast(context, "图片识别失败");
-                finish();//关闭当前窗口
+            } catch (Exception ex) {
+                ToastUtils.showLongToast(context, getResources().getString(R.string.recognition_failed));
             }
-
-
         } else {
             //图片获取失败
             ToastUtils.showLongToast(this, getResources().getString(R.string.image_acquisition_failed));
@@ -307,7 +340,7 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
                 finish();//扫描成功后直接关闭这个界面
             } else {
                 //不存在则未定
-                ToastUtils.showLongToast(context, "图片识别失败");
+                ToastUtils.showLongToast(context, getResources().getString(R.string.recognition_failed));
                 finish();//关闭当前窗口
             }
         }
@@ -354,6 +387,7 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
         builder.setOnCancelListener(new FinishListener(this));
         builder.show();
     }
+
 
 }
 
