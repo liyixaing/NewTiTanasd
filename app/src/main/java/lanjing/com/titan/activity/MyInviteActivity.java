@@ -217,8 +217,7 @@ public class MyInviteActivity extends MvpActivity<FriendListContact.FriendListPr
             if (page == 1) {
                 mList.clear();
                 mAdapter.notifyDataSetChanged();
-            }
-            data = response.body().getData();
+            }            data = response.body().getData();
             if (!ObjectUtils.isEmpty(data)) {
                 rvNormalShow.setVisibility(View.GONE);
                 mList.addAll(data);

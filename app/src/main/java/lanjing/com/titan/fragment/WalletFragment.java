@@ -138,8 +138,6 @@ public class WalletFragment extends MvpFragment<WalletDataContact.WalletDataPres
     public void initData(Bundle savedInstanceState) {
         versionCode = APKVersionCodeUtils.getVersionCode(context);
         mPresent.notice(context, String.valueOf(page), String.valueOf(pageSize));
-
-
         mPresent.updateApp(context, 1, versionCode);
 //        initUpdate();
         mPresent.walletData(context);
@@ -155,7 +153,6 @@ public class WalletFragment extends MvpFragment<WalletDataContact.WalletDataPres
                 startActivity(intent);
             }
         });
-
     }
 
     AlertDialog UpdateDialog = null;
@@ -310,9 +307,9 @@ public class WalletFragment extends MvpFragment<WalletDataContact.WalletDataPres
                     ActivityCompat.requestPermissions(context, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
                 } else {
                     Intent TowCode = new Intent(context, PaymentCodeActivity.class);
-                TowCode.putExtra("walletAddress", walletAddress);
-                TowCode.putExtra("labelAddress", labelAddress);
-                startActivity(TowCode);
+                    TowCode.putExtra("walletAddress", walletAddress);
+                    TowCode.putExtra("labelAddress", labelAddress);
+                    startActivity(TowCode);
                 }
 
                 break;
