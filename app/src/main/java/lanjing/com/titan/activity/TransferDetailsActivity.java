@@ -66,11 +66,12 @@ public class TransferDetailsActivity extends MvpActivity<TransferDetailsContact.
     @Override
     public void getBillDeatilResult(Response<BillDetailResponse> response) {
         if (response.body().getCode() == Constant.SUCCESS_CODE) {
+            tv_titan_type.setText(response.body().getData().getChangeDesc());
             if (response.body().getData().getChangeType().equals("25")) {//转出单
                 tv_titan_num.setText("-" + MoneyUtil.formatFouras(response.body().getData().getTransferCoinAmount())
                         +"\r"+ response.body().getData().getTransferCoinName());
 
-                tv_titan_type.setText(getResources().getString(R.string.turn_out));//转出类型
+//                tv_titan_type.setText(getResources().getString(R.string.turn_out));//转出类型
 
                 tv_target.setText(getResources().getString(R.string.Recipient_ID));//显示来源id提示语
 
@@ -82,7 +83,7 @@ public class TransferDetailsActivity extends MvpActivity<TransferDetailsContact.
                 tv_titan_num.setText("+" + MoneyUtil.formatFouras(response.body().getData().getTransferCoinAmount())
                         +"\r"+response.body().getData().getTransferCoinName());
 
-                tv_titan_type.setText(getResources().getString(R.string.turn_put));//转入类型
+//                tv_titan_type.setText(getResources().getString(R.string.turn_put));//转入类型
 
                 tv_target.setText(getResources().getString(R.string.Source_ID));//显示接收id提示语
 

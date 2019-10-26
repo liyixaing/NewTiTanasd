@@ -50,9 +50,9 @@ public class NoticeActivity extends MvpActivity<InfoNoticeContact.InfoNoticePres
     int page = 1;
     int pageSize = 10;
     NoticeAdapterCH mAdapter;
-    List<InfoNoticeResponse.DataCHBean> mList;
+    List<InfoNoticeResponse.Data.Informationlist> mList;
     NoticeAdapterEN mAdapterEn;
-    List<InfoNoticeResponse.DataEHBean> mListEn;
+    List<InfoNoticeResponse.Data.Informationlist> mListEn;
 
     @Override
     public void initData(Bundle savedInstanceState) {
@@ -65,7 +65,7 @@ public class NoticeActivity extends MvpActivity<InfoNoticeContact.InfoNoticePres
             TvTitleView.setTitleText(getResources().getString(R.string.committee));
         }
         Locale locale = getResources().getConfiguration().locale;
-        if (locale.equals(Locale.SIMPLIFIED_CHINESE)) {
+//        if (locale.equals(Locale.SIMPLIFIED_CHINESE)) {
             mList = new ArrayList<>();
             mAdapter = new NoticeAdapterCH(R.layout.recy_item_notice_list, mList);
             LinearLayoutManager manager = new LinearLayoutManager(context);
@@ -86,27 +86,27 @@ public class NoticeActivity extends MvpActivity<InfoNoticeContact.InfoNoticePres
                     startActivity(intent);
                 }
             });
-        } else if (locale.equals(Locale.ENGLISH)) {
-            mListEn = new ArrayList<>();
-            mAdapterEn = new NoticeAdapterEN(R.layout.recy_item_notice_list, mListEn);
-            LinearLayoutManager manager = new LinearLayoutManager(context);
-            rv.setLayoutManager(manager);
-            rv.setAdapter(mAdapterEn);
-            mPresent.notice(context, String.valueOf(page), String.valueOf(pageSize), stringExtra);
-            mAdapterEn.setOnItemChildClickListener(new NoticeAdapterCH.OnItemChildClickListener() {
-
-                @Override
-                public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
-                    Intent intent = new Intent(context, NoticeDetailActivity.class);
-                    intent.putExtra("title", mListEn.get(position).getTitle());
-                    intent.putExtra("content", mListEn.get(position).getComtent());
-                    intent.putExtra("time", mListEn.get(position).getCreatetime());
-                    intent.putExtra("team", mListEn.get(position).getUname());
-                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS);
-                    startActivity(intent);
-                }
-            });
-        }
+//        } else if (locale.equals(Locale.ENGLISH)) {
+//            mListEn = new ArrayList<>();
+//            mAdapterEn = new NoticeAdapterEN(R.layout.recy_item_notice_list, mListEn);
+//            LinearLayoutManager manager = new LinearLayoutManager(context);
+//            rv.setLayoutManager(manager);
+//            rv.setAdapter(mAdapterEn);
+//            mPresent.notice(context, String.valueOf(page), String.valueOf(pageSize), stringExtra);
+//            mAdapterEn.setOnItemChildClickListener(new NoticeAdapterCH.OnItemChildClickListener() {
+//
+//                @Override
+//                public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
+//                    Intent intent = new Intent(context, NoticeDetailActivity.class);
+//                    intent.putExtra("title", mListEn.get(position).getTitle());
+//                    intent.putExtra("content", mListEn.get(position).getComtent());
+//                    intent.putExtra("time", mListEn.get(position).getCreatetime());
+//                    intent.putExtra("team", mListEn.get(position).getUname());
+//                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS);
+//                    startActivity(intent);
+//                }
+//            });
+//        }
 
 
         refresh.setOnRefreshListener(refreshLayout -> {
@@ -136,8 +136,8 @@ public class NoticeActivity extends MvpActivity<InfoNoticeContact.InfoNoticePres
 
     }
 
-    List<InfoNoticeResponse.DataCHBean> data;
-    List<InfoNoticeResponse.DataEHBean> dataEn;
+    List<InfoNoticeResponse.Data.Informationlist> data;
+    List<InfoNoticeResponse.Data.Informationlist> dataEn;
 
     @Override
     public void getNoticeResult(Response<InfoNoticeResponse> response) {
@@ -145,12 +145,12 @@ public class NoticeActivity extends MvpActivity<InfoNoticeContact.InfoNoticePres
         refresh.finishLoadMore();
         if (response.body().getCode() == Constant.SUCCESS_CODE) {
             Locale locale = getResources().getConfiguration().locale;
-            if (locale.equals(Locale.SIMPLIFIED_CHINESE)) {
+//            if (locale.equals(Locale.SIMPLIFIED_CHINESE)) {
                 if (page == 1) {
                     mList.clear();
                     mAdapter.notifyDataSetChanged();
                 }
-                data = response.body().getDataCH();
+                data = response.body().getData().getInformationlist();
                 if (!ObjectUtils.isEmpty(data)) {
                     rvNormalShow.setVisibility(View.GONE);
                     mList.addAll(data);
@@ -166,28 +166,28 @@ public class NoticeActivity extends MvpActivity<InfoNoticeContact.InfoNoticePres
                     rvNormalShow.setVisibility(View.VISIBLE);
                     rv.setVisibility(View.GONE);
                 }
-            } else if (locale.equals(Locale.ENGLISH)) {
-                if (page == 1) {
-                    mListEn.clear();
-                    mAdapterEn.notifyDataSetChanged();
-                }
-                dataEn = response.body().getDataEH();
-                if (!ObjectUtils.isEmpty(dataEn)) {
-                    rvNormalShow.setVisibility(View.GONE);
-                    mListEn.addAll(dataEn);
-                    mAdapterEn.notifyDataSetChanged();
-                    runLayoutAnimation(rv);
-                    if (dataEn != null && dataEn.size() == pageSize) {
-                        refresh.setEnableLoadMore(true);
-                    } else {
-                        refresh.setEnableLoadMore(false);
-                    }
-                    rv.setVisibility(View.VISIBLE);
-                } else {
-                    rvNormalShow.setVisibility(View.VISIBLE);
-                    rv.setVisibility(View.GONE);
-                }
-            }
+//            } else if (locale.equals(Locale.ENGLISH)) {
+//                if (page == 1) {
+//                    mListEn.clear();
+//                    mAdapterEn.notifyDataSetChanged();
+//                }
+//                dataEn = response.body().getData().getInformationlist();
+//                if (!ObjectUtils.isEmpty(dataEn)) {
+//                    rvNormalShow.setVisibility(View.GONE);
+//                    mListEn.addAll(dataEn);
+//                    mAdapterEn.notifyDataSetChanged();
+//                    runLayoutAnimation(rv);
+//                    if (dataEn != null && dataEn.size() == pageSize) {
+//                        refresh.setEnableLoadMore(true);
+//                    } else {
+//                        refresh.setEnableLoadMore(false);
+//                    }
+//                    rv.setVisibility(View.VISIBLE);
+//                } else {
+//                    rvNormalShow.setVisibility(View.VISIBLE);
+//                    rv.setVisibility(View.GONE);
+//                }
+//            }
 
 
         } else if (response.body().getCode() == -10) {

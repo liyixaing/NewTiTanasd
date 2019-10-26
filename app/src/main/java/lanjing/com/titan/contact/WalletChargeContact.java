@@ -10,6 +10,7 @@ import com.lxh.baselibray.util.SPUtils;
 
 import lanjing.com.titan.api.ApiService;
 import lanjing.com.titan.constant.Constant;
+import lanjing.com.titan.request.LanguageRequest;
 import lanjing.com.titan.response.ChargeResponse;
 import retrofit2.Call;
 import retrofit2.Response;
@@ -24,7 +25,9 @@ public class WalletChargeContact {
         public void walletCharge(final Context context) {
             ApiService service = ServiceGenerator.createService(ApiService.class);
             String token = SPUtils.getString(Constant.TOKEN,"",context);
-            service.charge(token).enqueue(new NetCallBack<ChargeResponse>() {
+            int language = Constant.LANGAGE;
+            LanguageRequest request = new LanguageRequest(language);
+            service.charge(token, request).enqueue(new NetCallBack<ChargeResponse>() {
                 @Override
                 public void onSuccess(Call<ChargeResponse> call, Response<ChargeResponse> response) {
                     if (getView() != null) {

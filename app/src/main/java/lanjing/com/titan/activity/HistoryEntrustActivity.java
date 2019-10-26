@@ -38,7 +38,7 @@ public class HistoryEntrustActivity extends MvpActivity<HistoryContact.HistoryPr
     @BindView(R.id.refresh)
     SmartRefreshLayout refresh;
     HistoryEntrustAdapter mAdapter;
-    List<EntrustListResponse.DataBean> mList;
+    List<EntrustListResponse.Data.OrderList> mList;
     int page = 1;
     int size = 10;
 
@@ -72,7 +72,7 @@ public class HistoryEntrustActivity extends MvpActivity<HistoryContact.HistoryPr
         return new HistoryContact.HistoryPresent();
     }
 
-    List<EntrustListResponse.DataBean> data;
+    List<EntrustListResponse.Data.OrderList> data;
 
     @Override
     public void getEntrustListResult(Response<EntrustListResponse> response) {
@@ -82,7 +82,7 @@ public class HistoryEntrustActivity extends MvpActivity<HistoryContact.HistoryPr
             if (page == 1) {
                 mList.clear();
             }
-            data = response.body().getData();
+            data = response.body().getData().orderList;
             if (!ObjectUtils.isEmpty(data)) {
                 rvNormalShow.setVisibility(View.GONE);
                 mList.addAll(data);

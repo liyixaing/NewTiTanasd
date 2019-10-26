@@ -17,14 +17,14 @@ import lanjing.com.titan.response.InfoNoticeResponse;
  * Created by chenxi on 2019/5/10.
  */
 
-public class NoticeAdapterCH extends BaseQuickAdapter<InfoNoticeResponse.DataCHBean, BaseViewHolder> {
+public class NoticeAdapterCH extends BaseQuickAdapter<InfoNoticeResponse.Data.Informationlist, BaseViewHolder> {
 
-    public NoticeAdapterCH(int layoutResId, @Nullable List<InfoNoticeResponse.DataCHBean> data) {
+    public NoticeAdapterCH(int layoutResId, @Nullable List<InfoNoticeResponse.Data.Informationlist> data) {
         super(layoutResId, data);
     }
 
     @Override
-    protected void convert(BaseViewHolder helper, InfoNoticeResponse.DataCHBean item) {
+    protected void convert(BaseViewHolder helper, InfoNoticeResponse.Data.Informationlist item) {
 
 
         helper.setText(R.id.tv_notice_time,item.getCreatetime())

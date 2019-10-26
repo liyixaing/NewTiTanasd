@@ -155,10 +155,10 @@ public class RegisterBindingPhoneActivity extends MvpActivity<SetPhoneContact.Se
 //            intent.putExtra("userId", response.body().getUserId());
 //            startActivity(intent);
 
-        } else if (response.body().getCode() ==-10){
-            ToastUtils.showShortToast(context, "账号已在另一设备登陆");
+        } else if (response.body().getCode() == -10) {
+            ToastUtils.showShortToast(context, getResources().getString(R.string.not_login));
 
-        }else {
+        } else {
             ToastUtils.showShortToast(context, response.body().getMsg());
             dismissLoadingDialog();
         }
@@ -175,10 +175,10 @@ public class RegisterBindingPhoneActivity extends MvpActivity<SetPhoneContact.Se
             ToastUtils.showShortToast(context, getResources().getString(R.string.verification_code_sent));
             CountDownTimerUtils countDownTimerUtils = new CountDownTimerUtils(aginVerificationCode, 60000, 1000);
             countDownTimerUtils.start();
-        } else if (response.body().getCode() ==-10){
+        } else if (response.body().getCode() == -10) {
             ToastUtils.showShortToast(context, getResources().getString(R.string.not_login));
 
-        }else {
+        } else {
             ToastUtils.showShortToast(context, response.body().getMsg());
             dismissLoadingDialog();
         }

@@ -74,7 +74,7 @@ public class MyInviteActivity extends MvpActivity<FriendListContact.FriendListPr
     TextView tv_copy_register;
 
     FriendListAdapter mAdapter;
-    List<FriendListResponse.DataBean> mList;
+    List<FriendListResponse.Data.DataBan> mList;
 
     int page = 1;
     int pageSize = 10;
@@ -192,7 +192,7 @@ public class MyInviteActivity extends MvpActivity<FriendListContact.FriendListPr
         return new FriendListContact.FriendListPresent();
     }
 
-    List<FriendListResponse.DataBean> data;
+    List<FriendListResponse.Data.DataBan> data;
 
     @Override
     public void getFriendListResult(Response<FriendListResponse> response) {
@@ -201,23 +201,24 @@ public class MyInviteActivity extends MvpActivity<FriendListContact.FriendListPr
         refresh.finishLoadMore();
         if (response.body().getCode() == Constant.SUCCESS_CODE) {
             Log.e("TAG", String.valueOf(response));
-            tvFriendNum.setText(String.valueOf(response.body().getNum()));
-            tvRewardNum.setText(MoneyUtil.priceFormat(String.valueOf(response.body().getReward())));
-            TvTeamSun.setText(String.valueOf(response.body().getCurrent_predice_mining_number_of_people()));
-            Tv_TeamSum.setText(MoneyUtil.priceFormat(String.valueOf(response.body().getCurrent_predice_mining_number_of_usd())));
-            TvXqSum.setText(MoneyUtil.priceFormat(String.valueOf(response.body().getLt_region_earnings())));
-            TvXqSun.setText(MoneyUtil.priceFormat(response.body().getLg_region_earnings()));
+            tvFriendNum.setText(String.valueOf(response.body().getData().getNum()));
+            tvRewardNum.setText(MoneyUtil.priceFormat(String.valueOf(response.body().getData().getReward())));
+            TvTeamSun.setText(String.valueOf(response.body().getData().getCurrent_predice_mining_number_of_people()));
+            Tv_TeamSum.setText(MoneyUtil.priceFormat(String.valueOf(response.body().getData().getCurrent_predice_mining_number_of_usd())));
+            TvXqSum.setText(MoneyUtil.priceFormat(String.valueOf(response.body().getData().getLt_region_earnings())));
+            TvXqSun.setText(MoneyUtil.priceFormat(response.body().getData().getLg_region_earnings()));
             String yqm = SPUtils.getString(Constant.INVITACODE, "", context);
             String token = SPUtils.getString(Constant.TOKEN, "", context);
             Log.e("toekn", token);
-            tvInviteUrl.setText(response.body().getRecommendurl() + "?inviteCode=" + yqm);
-            tvRegisterUrl.setText(response.body().getRegisterurl());
-            inviteUrl = response.body().getRecommendurl();
-            registerUrl = response.body().getRegisterurl();
+            tvInviteUrl.setText(response.body().getData().getRecommendurl() + "?inviteCode=" + yqm);
+            tvRegisterUrl.setText(response.body().getData().getRegisterurl());
+            inviteUrl = response.body().getData().getRecommendurl();
+            registerUrl = response.body().getData().getRegisterurl();
             if (page == 1) {
                 mList.clear();
                 mAdapter.notifyDataSetChanged();
-            }            data = response.body().getData();
+            }
+            data = response.body().getData().getData();
             if (!ObjectUtils.isEmpty(data)) {
                 rvNormalShow.setVisibility(View.GONE);
                 mList.addAll(data);

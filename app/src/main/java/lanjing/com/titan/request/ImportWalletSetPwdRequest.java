@@ -1,5 +1,7 @@
 package lanjing.com.titan.request;
 
+import lanjing.com.titan.constant.Constant;
+
 /**
  * Created by chenxi on 2019/5/9.
  */
@@ -16,12 +18,13 @@ public class ImportWalletSetPwdRequest {
     private String loginpassword;
     private String tradepassword;
     private String verificationCode;
-
+    private int language;
 
     public ImportWalletSetPwdRequest(int uid, String loginpassword, String tradepassword, String verificationCode) {
         this.uid = uid;
         this.loginpassword = loginpassword;
         this.tradepassword = tradepassword;
         this.verificationCode = verificationCode;
+        this.language = Constant.LANGAGE;
     }
 }

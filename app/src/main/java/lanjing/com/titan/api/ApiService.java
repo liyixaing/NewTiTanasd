@@ -25,6 +25,7 @@ import lanjing.com.titan.request.ImportWalletRequest;
 import lanjing.com.titan.request.ImportWalletSetPwdRequest;
 import lanjing.com.titan.request.InfoNoticeRequest;
 import lanjing.com.titan.request.InterDealRequest;
+import lanjing.com.titan.request.LanguageRequest;
 import lanjing.com.titan.request.ListWalletImportRequest;
 import lanjing.com.titan.request.LoginRequest;
 import lanjing.com.titan.request.ModifyHeadRequest;
@@ -157,7 +158,7 @@ public interface ApiService {
      * 获取用户个人信息
      */
     @POST("/app/getperson")
-    Call<PersonResponse> getPerson(@Header("token") String token);
+    Call<PersonResponse> getPerson(@Header("token") String token,@Body LanguageRequest data);//添加了body参数
 
     /**
      * 激活
@@ -231,7 +232,7 @@ public interface ApiService {
      * 行情数据列表
      */
     @POST("/app/getmarket")
-    Call<MarketListResponse> marketList(@Header("token") String token);
+    Call<MarketListResponse> marketList(@Header("token") String token, @Body LanguageRequest data);
 
     /**
      * 资讯公告列表
@@ -243,7 +244,7 @@ public interface ApiService {
      * 钱包主页数据
      */
     @POST("/app/getwellet")
-    Call<WalletDataResponse> walletData(@Header("token") String token);
+    Call<WalletDataResponse> walletData(@Header("token") String token, @Body LanguageRequest data);
 
     /**
      * 交易密碼
@@ -292,7 +293,7 @@ public interface ApiService {
      * 获取充币
      */
     @POST("/app/charge")
-    Call<ChargeResponse> charge(@Header("token") String token);
+    Call<ChargeResponse> charge(@Header("token") String token, @Body LanguageRequest data);
 
     /**
      * 提币
@@ -310,7 +311,7 @@ public interface ApiService {
      * 钱包列表
      */
     @POST("/app/getwelletlist")
-    Call<WalletListResponse> walletList(@Header("token") String token);
+    Call<WalletListResponse> walletList(@Header("token") String token, @Body LanguageRequest data);
 
 
     /**
@@ -343,7 +344,7 @@ public interface ApiService {
      * 获取币币交易  右侧行情信息
      */
     @POST("/app/getmappingtrade")
-    Call<SixTradeResponse> rigehtSixInfo(@Header("token") String token);
+    Call<SixTradeResponse> rigehtSixInfo(@Header("token") String token, @Body LanguageRequest data);
 
 
     /**
@@ -368,13 +369,13 @@ public interface ApiService {
      * 服务协议
      */
     @POST("/app/getAgreement")
-    Call<AgreementResponse> getAgreement();
+    Call<AgreementResponse> getAgreement(@Header("token") String token, @Body LanguageRequest data);
 
     /**
      * 免责声明
      */
     @POST("/app/getExemption")
-    Call<ExemptionResponse> getExemption(@Header("token") String token);
+    Call<ExemptionResponse> getExemption(@Header("token") String token, @Body LanguageRequest data);
 
 
     /**

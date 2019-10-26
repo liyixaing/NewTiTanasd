@@ -10,6 +10,7 @@ import com.lxh.baselibray.util.SPUtils;
 import lanjing.com.titan.api.ApiService;
 import lanjing.com.titan.constant.Constant;
 import lanjing.com.titan.net.NetCallBack;
+import lanjing.com.titan.request.LanguageRequest;
 import lanjing.com.titan.response.AgreementResponse;
 import lanjing.com.titan.response.ExemptionResponse;
 import retrofit2.Call;
@@ -25,7 +26,9 @@ public class ExemptionContact {
         public void getExemption(final Context context) {
             ApiService service = ServiceGenerator.createService(ApiService.class);
             String token = SPUtils.getString(Constant.TOKEN,"",context);
-            service.getExemption(token).enqueue(new NetCallBack<ExemptionResponse>() {
+            int language = Constant.LANGAGE;
+            LanguageRequest request = new LanguageRequest(language);
+            service.getExemption(token, request).enqueue(new NetCallBack<ExemptionResponse>() {
                 @Override
                 public void onSuccess(Call<ExemptionResponse> call, Response<ExemptionResponse> response) {
                     if (getView() != null) {

@@ -14,9 +14,8 @@ public class SetHelpResponse {
      */
 
     private String msg;
-    private String help;
     private int code;
-    private String keys;
+    public Data data;
 
     public String getMsg() {
         return msg;
@@ -24,14 +23,6 @@ public class SetHelpResponse {
 
     public void setMsg(String msg) {
         this.msg = msg;
-    }
-
-    public String getHelp() {
-        return help;
-    }
-
-    public void setHelp(String help) {
-        this.help = help;
     }
 
     public int getCode() {
@@ -42,11 +33,34 @@ public class SetHelpResponse {
         this.code = code;
     }
 
-    public String getKeys() {
-        return keys;
+    public Data getData() {
+        return data;
     }
 
-    public void setKeys(String keys) {
-        this.keys = keys;
+    public void setData(Data data) {
+        this.data = data;
     }
+
+    public static class Data {
+        private String help;
+        private String keys;
+
+        public String getHelp() {
+            return help;
+        }
+
+        public void setHelp(String help) {
+            this.help = help;
+        }
+
+        public String getKeys() {
+            return keys;
+        }
+
+        public void setKeys(String keys) {
+            this.keys = keys;
+        }
+    }
+
+
 }

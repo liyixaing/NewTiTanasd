@@ -55,7 +55,7 @@ public class InformationDetailActivity extends XActivity {
                         progressBar1.setProgress(newProgress);//设置进度值
                     }
                 }catch (Exception e){
-                    Log.e("TAG", "抛出空指针异常");
+                    Log.e("TAG", "异常抛出");
                 }
 
             }

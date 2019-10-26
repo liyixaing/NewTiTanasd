@@ -15,9 +15,8 @@ public class ChargeResponse {
      */
 
     private String msg;
-    private String address;
     private int code;
-    private String keys;
+    public Data data;
 
     public String getMsg() {
         return msg;
@@ -25,14 +24,6 @@ public class ChargeResponse {
 
     public void setMsg(String msg) {
         this.msg = msg;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
     }
 
     public int getCode() {
@@ -43,11 +34,33 @@ public class ChargeResponse {
         this.code = code;
     }
 
-    public String getKeys() {
-        return keys;
+    public Data getData() {
+        return data;
     }
 
-    public void setKeys(String keys) {
-        this.keys = keys;
+    public void setData(Data data) {
+        this.data = data;
     }
+
+    public static class Data {
+        private String address;
+        private String keys;
+
+        public String getAddress() {
+            return address;
+        }
+
+        public void setAddress(String address) {
+            this.address = address;
+        }
+
+        public String getKeys() {
+            return keys;
+        }
+
+        public void setKeys(String keys) {
+            this.keys = keys;
+        }
+    }
+
 }

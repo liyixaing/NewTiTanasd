@@ -633,6 +633,11 @@
     <string name="Save_to_Album">保存至相册</string>
     <string name="Receiving_Money">收款码</string>
     <string name="the_payment_password">请输入支付密码</string>
+    <string name="codeerhome_error">验证码或手机号码错误</string>
+    <string name="input_sun">请输入数量</string>
+    <string name="noNon_repeatable">不可重复选择</string>
+    <string name="Please_open_relevan">请开通相关权限!</string>
+    <string name="rejected_the_permission">你拒绝了权限申请，可能无法打开相机扫码哟!</string>
 
 
 </resources>

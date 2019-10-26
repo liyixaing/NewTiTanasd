@@ -14,6 +14,7 @@ import com.lxh.baselibray.util.Md5Utils;
 import com.lxh.baselibray.util.SPUtils;
 
 import lanjing.com.titan.api.ApiService;
+import lanjing.com.titan.request.LanguageRequest;
 import lanjing.com.titan.request.LoginRequest;
 import lanjing.com.titan.request.VersionRequest;
 import lanjing.com.titan.response.LoginResponse;
@@ -52,7 +53,9 @@ public class LoginContact {
         public void person(final Context context) {
             ApiService service = ServiceGenerator.createService(ApiService.class);
             String token = SPUtils.getString(Constant.TOKEN, "", context);
-            service.getPerson(token).enqueue(new NetCallBack<PersonResponse>() {
+            int language = Constant.LANGAGE;
+            LanguageRequest request = new LanguageRequest(language);
+            service.getPerson(token, request).enqueue(new NetCallBack<PersonResponse>() {
                 @Override
                 public void onSuccess(Call<PersonResponse> call, Response<PersonResponse> response) {
                     if (getView() != null) {

@@ -14,7 +14,7 @@ public class SetNewPhoneResponse {
 
     private String msg;
     private int code;
-    private String userId;
+    public Data data;
 
     public String getMsg() {
         return msg;
@@ -32,11 +32,24 @@ public class SetNewPhoneResponse {
         this.code = code;
     }
 
-    public String getUserId() {
-        return userId;
+    public Data getData() {
+        return data;
     }
 
-    public void setUserId(String userId) {
-        this.userId = userId;
+    public void setData(Data data) {
+        this.data = data;
     }
+
+    public static class Data {
+        private String userId;
+
+        public String getUserId() {
+            return userId;
+        }
+
+        public void setUserId(String userId) {
+            this.userId = userId;
+        }
+    }
+
 }

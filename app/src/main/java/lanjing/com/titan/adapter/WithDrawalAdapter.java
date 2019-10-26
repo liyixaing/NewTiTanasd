@@ -43,15 +43,16 @@ public class WithDrawalAdapter extends BaseQuickAdapter<CoinLogListResponse.Data
                 helper.setText(R.id.tv_typemonet, "BAR");
                 break;
         }
-        switch (type){
-            case 1:
-                helper.setText(R.id.tv_deposit_type, R.string.top_up_c);
-                break;
-            case 2:
-                helper.setText(R.id.tv_deposit_type, R.string.withdraw_c);
-                break;
-
-        }
+//        switch (type){
+//            case 1:
+//                helper.setText(R.id.tv_deposit_type, R.string.top_up_c);
+//                break;
+//            case 2:
+//                helper.setText(R.id.tv_deposit_type, R.string.withdraw_c);
+//                break;
+//
+//        }
+        helper.setText(R.id.tv_deposit_type, item.getChangeDesc());
 
 
         helper.setText(R.id.tv_number, MoneyUtil.formatFour(item.getChangeAmount()));

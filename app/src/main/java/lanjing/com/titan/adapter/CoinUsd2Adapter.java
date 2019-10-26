@@ -25,14 +25,15 @@ public class CoinUsd2Adapter extends BaseQuickAdapter<HistoryListResponse.mData,
     protected void convert(BaseViewHolder helper, HistoryListResponse.mData item) {
         String time = DateUtils.timedate(item.getChangeTime());
         int ChangeType = Integer.parseInt(item.getChangeType());
-        switch (ChangeType) {
-            case 1001:
-                helper.setText(R.id.tv_usd2_type, R.string.airdrop_release);//空投释放
-                break;
-            case 40:
-                helper.setText(R.id.tv_usd2_type, R.string.airdrop_matching);//空投配比
-                break;
-        }
+        helper.setText(R.id.tv_usd2_type, item.getChangeDesc());
+//        switch (ChangeType) {
+//            case 1001:
+//                helper.setText(R.id.tv_usd2_type, R.string.airdrop_release);//空投释放
+//                break;
+//            case 40:
+//                helper.setText(R.id.tv_usd2_type, R.string.airdrop_matching);//空投配比
+//                break;
+//        }
         helper.setText(R.id.tv_type_two, R.string.qty)
                 .setText(R.id.tv_usd2_chang_num, MoneyUtil.formatFour(item.getChangeAmount() + ""))
                 .setText(R.id.tv_usd2_time, time);

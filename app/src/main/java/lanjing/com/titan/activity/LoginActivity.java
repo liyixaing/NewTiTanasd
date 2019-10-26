@@ -180,9 +180,9 @@ public class LoginActivity extends MvpActivity<LoginContact.LoginPresent> implem
         if (response.body().getCode() == Constant.SUCCESS_CODE) {
             SPUtils.putString(Constant.ACCOUNT, edUserName.getText().toString().trim(), context);
             SPUtils.putString(Constant.LOGIN_PWD, edLoginPwd.getText().toString().trim(), context);
-            SPUtils.putString(Constant.TOKEN, response.body().getToken(), context);
+            SPUtils.putString(Constant.TOKEN, response.body().getData().getToken(), context);
             SPUtils.putBoolean(Constant.AUTOLOGIN, true, this);
-            inviteCode = response.body().getInvitacode();
+            inviteCode = response.body().getData().getInvitacode();
             mPresent.person(context);
         } else {
             ToastUtils.showShortToast(context, response.body().getMsg());

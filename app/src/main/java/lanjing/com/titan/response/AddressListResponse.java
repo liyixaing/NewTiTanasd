@@ -3,24 +3,7 @@ package lanjing.com.titan.response;
 import java.util.List;
 
 public class AddressListResponse {
-    /**
-     * {
-     * "msg": "操作成功！",
-     * "code": 200,
-     * "data": [
-     * {
-     * "createTime": 1562832034,
-     * "id": 1,
-     * "state": 1,
-     * "toAccount": "xxx",
-     * "toMemo": "222",
-     * "toTag": "aaa",
-     * "updateTime": 1562832169,
-     * "userKey": "2012222"
-     * }
-     * ]
-     * }
-     */
+
     private String msg;
     private int code;
     public List<Data> data;

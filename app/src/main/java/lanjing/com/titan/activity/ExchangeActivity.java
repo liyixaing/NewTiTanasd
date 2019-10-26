@@ -62,7 +62,7 @@ public class ExchangeActivity extends MvpActivity<ExchangeContact.ExchangePresen
         switch (view.getId()) {
             case R.id.tv_exchange:
                 if (EtExchangeNum.getText().toString().equals("")) {
-                    ToastUtils.showShortToast(context, "请输入数量");
+                    ToastUtils.showShortToast(context, getResources().getString(R.string.input_sun));
                 } else {
                     showPwdBuyDialog();
                 }

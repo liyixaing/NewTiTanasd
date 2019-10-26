@@ -136,6 +136,7 @@ public class WalletFragment extends MvpFragment<WalletDataContact.WalletDataPres
 
     @Override
     public void initData(Bundle savedInstanceState) {
+        Log.e("当前语言", Constant.LANGAGE + "");
         versionCode = APKVersionCodeUtils.getVersionCode(context);
         mPresent.notice(context, String.valueOf(page), String.valueOf(pageSize));
         mPresent.updateApp(context, 1, versionCode);
@@ -301,7 +302,7 @@ public class WalletFragment extends MvpFragment<WalletDataContact.WalletDataPres
                     //用户已经拒绝过一次，再次弹出权限申请对话框需要给用户一个解释
                     if (ActivityCompat.shouldShowRequestPermissionRationale(context, Manifest.permission
                             .WRITE_EXTERNAL_STORAGE)) {
-                        Toast.makeText(context, "请开通相关权限，否则无法正常使用本应用！", Toast.LENGTH_SHORT).show();
+                        ToastUtils.showLongToast(context, getResources().getString(R.string.Please_open_relevan));
                     }
                     //申请权限
                     ActivityCompat.requestPermissions(context, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
@@ -337,7 +338,7 @@ public class WalletFragment extends MvpFragment<WalletDataContact.WalletDataPres
                     goScan();
                 } else {
                     //You refused the camera permission and may not be able to open the camera scanner.
-                    ToastUtils.showLongToast(context, "你拒绝了权限申请，可能无法打开相机扫码哟!");
+                    ToastUtils.showLongToast(context, getResources().getString(R.string.rejected_the_permission));
                 }
                 break;
             default:
@@ -411,7 +412,7 @@ public class WalletFragment extends MvpFragment<WalletDataContact.WalletDataPres
         if (response.body().getCode() == Constant.SUCCESS_CODE) {
             Locale locale = getResources().getConfiguration().locale;
             if (locale.equals(Locale.SIMPLIFIED_CHINESE)) {
-                List<InfoNoticeResponse.DataCHBean> data = response.body().getDataCH();
+                List<InfoNoticeResponse.Data.Informationlist> data = response.body().getData().getInformationlist();
                 if (ObjectUtils.isEmpty(data)) return;
                 title.clear();
                 for (int i = 0; i < data.size(); i++) {
@@ -420,7 +421,7 @@ public class WalletFragment extends MvpFragment<WalletDataContact.WalletDataPres
                 listNoticeContent.setList(title);
                 listNoticeContent.startScroll();
             } else if (locale.equals(Locale.ENGLISH)) {
-                List<InfoNoticeResponse.DataEHBean> data = response.body().getDataEH();
+                List<InfoNoticeResponse.Data.Informationlist> data = response.body().getData().getInformationlist();
                 if (ObjectUtils.isEmpty(data)) return;
                 title.clear();
                 for (int i = 0; i < data.size(); i++) {

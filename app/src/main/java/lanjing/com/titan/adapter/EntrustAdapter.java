@@ -22,14 +22,14 @@ import lanjing.com.titan.util.MoneyUtil;
  * 币币交易  委托列表  列表数据适配器
  */
 
-public class EntrustAdapter extends BaseQuickAdapter<EntrustListResponse.DataBean, BaseViewHolder> {
+public class EntrustAdapter extends BaseQuickAdapter<EntrustListResponse.Data.OrderList, BaseViewHolder> {
 
-    public EntrustAdapter(int layoutResId, @Nullable List<EntrustListResponse.DataBean> data) {
+    public EntrustAdapter(int layoutResId, @Nullable List<EntrustListResponse.Data.OrderList> data) {
         super(layoutResId, data);
     }
 
     @Override
-    protected void convert(BaseViewHolder helper, EntrustListResponse.DataBean item) {
+    protected void convert(BaseViewHolder helper, EntrustListResponse.Data.OrderList item) {
 
         int type = item.getType();
         switch (type) {  //1，买   2，卖

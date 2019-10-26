@@ -52,9 +52,9 @@ public class InformationFragment extends MvpFragment<InfoNoticeContact.InfoNotic
     int page = 1;
     int pageSize = 10;
     InformationAdapterCH mAdapter;
-    List<InfoNoticeResponse.DataCHBean> mList;
+    List<InfoNoticeResponse.Data.Informationlist> mList;
     InformationAdapterEN mAdapterEn;
-    List<InfoNoticeResponse.DataEHBean> mListEn;
+    List<InfoNoticeResponse.Data.Informationlist> mListEn;
     private List<String> title = new ArrayList<>();
 
     @Override
@@ -64,7 +64,7 @@ public class InformationFragment extends MvpFragment<InfoNoticeContact.InfoNotic
 
     private void initList(){
         Locale locale = getResources().getConfiguration().locale;
-        if(locale.equals(Locale.SIMPLIFIED_CHINESE)){
+//        if(locale.equals(Locale.SIMPLIFIED_CHINESE)){
             mList = new ArrayList<>();
             mAdapter = new InformationAdapterCH(R.layout.recy_item_information_list,mList);
             LinearLayoutManager manager = new LinearLayoutManager(context);
@@ -86,26 +86,26 @@ public class InformationFragment extends MvpFragment<InfoNoticeContact.InfoNotic
                     startActivity(intent);
                 }
             });
-        }else if (locale.equals(Locale.ENGLISH)){
-            mListEn = new ArrayList<>();
-            mAdapterEn = new InformationAdapterEN(R.layout.recy_item_information_list,mListEn);
-            LinearLayoutManager manager = new LinearLayoutManager(context);
-            rv.setLayoutManager(manager);
-            rv.setAdapter(mAdapterEn);
-            mPresent.information(context,String.valueOf(page),String.valueOf(pageSize));
-            mPresent.notice(context,String.valueOf(page),String.valueOf(pageSize), "1");
-
-            mAdapterEn.setOnItemChildClickListener(new InformationAdapterCH.OnItemChildClickListener(){
-
-                @Override
-                public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
-                    Intent intent = new Intent(context,InformationDetailActivity.class);
-                    intent.putExtra("content",mListEn.get(position).getComtent());
-                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS);
-                    startActivity(intent);
-                }
-            });
-        }
+//        }else if (locale.equals(Locale.ENGLISH)){
+//            mListEn = new ArrayList<>();
+//            mAdapterEn = new InformationAdapterEN(R.layout.recy_item_information_list,mListEn);
+//            LinearLayoutManager manager = new LinearLayoutManager(context);
+//            rv.setLayoutManager(manager);
+//            rv.setAdapter(mAdapterEn);
+//            mPresent.information(context,String.valueOf(page),String.valueOf(pageSize));
+//            mPresent.notice(context,String.valueOf(page),String.valueOf(pageSize), "1");
+//
+//            mAdapterEn.setOnItemChildClickListener(new InformationAdapterCH.OnItemChildClickListener(){
+//
+//                @Override
+//                public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
+//                    Intent intent = new Intent(context,InformationDetailActivity.class);
+//                    intent.putExtra("content",mListEn.get(position).getComtent());
+//                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS);
+//                    startActivity(intent);
+//                }
+//            });
+//        }
 
 
         refresh.setOnRefreshListener(refreshLayout -> {
@@ -147,17 +147,17 @@ public class InformationFragment extends MvpFragment<InfoNoticeContact.InfoNotic
     protected InfoNoticeContact.InfoNoticePresent createPresent() {
         return new InfoNoticeContact.InfoNoticePresent();
     }
-    List<InfoNoticeResponse.DataCHBean> data;
-    List<InfoNoticeResponse.DataEHBean> dataEn;
+    List<InfoNoticeResponse.Data.Informationlist> data;
+    List<InfoNoticeResponse.Data.Informationlist> dataEn;
     @Override
     public void getInformationResult(Response<InfoNoticeResponse> response) {
         refresh.finishRefresh();
         refresh.finishLoadMore();
         if (response.body().getCode() == Constant.SUCCESS_CODE) {
             Locale locale = getResources().getConfiguration().locale;//判断当前的语言
-            if (locale.equals(Locale.SIMPLIFIED_CHINESE)) {
+//            if (locale.equals(Locale.SIMPLIFIED_CHINESE)) {
                 //轮播图
-                List<String> bannerBean =  response.body().getBannerCH();
+                List<String> bannerBean =  response.body().getData().getBannerlist();
                 if (ObjectUtils.isEmpty(bannerBean)) return;
                 List<String> imgPath = new ArrayList<>();
                 for (int i = 0; i < bannerBean.size(); i++) {
@@ -171,7 +171,7 @@ public class InformationFragment extends MvpFragment<InfoNoticeContact.InfoNotic
                     mList.clear();
                     mAdapter.notifyDataSetChanged();
                 }
-                data = response.body().getDataCH();
+                data = response.body().getData().getInformationlist();
                 if (!ObjectUtils.isEmpty(data)) {
                     rvNormalShow.setVisibility(View.GONE);
                     mList.addAll(data);
@@ -190,42 +190,40 @@ public class InformationFragment extends MvpFragment<InfoNoticeContact.InfoNotic
 
 
 
-            } else if (locale.equals(Locale.ENGLISH)) {
-                //轮播图
-                List<String> bannerBean =  response.body().getBannerEH();
-                if (ObjectUtils.isEmpty(bannerBean)) return;
-                List<String> imgPath = new ArrayList<>();
-                for (int i = 0; i < bannerBean.size(); i++) {
-                    imgPath.add(bannerBean.get(i));
-                }
-                banner.setImages(imgPath);
-                banner.setImageLoader(new GlideImageLoader());
-                banner.start();
-
-
-                if (page == 1) {
-                    mListEn.clear();
-                    mAdapterEn.notifyDataSetChanged();
-                }
-                dataEn = response.body().getDataEH();
-                if (!ObjectUtils.isEmpty(dataEn)) {
-                    rvNormalShow.setVisibility(View.GONE);
-                    mListEn.addAll(dataEn);
-                    mAdapterEn.notifyDataSetChanged();
-                    runLayoutAnimation(rv);
-                    if (dataEn != null && dataEn.size() == pageSize) {
-                        refresh.setEnableLoadMore(true);
-                    } else {
-                        refresh.setEnableLoadMore(false);
-                    }
-                    rv.setVisibility(View.VISIBLE);
-                }else {
-                    rvNormalShow.setVisibility(View.VISIBLE);
-                    rv.setVisibility(View.GONE);
-                }
-
-
-            }
+//            } else if (locale.equals(Locale.ENGLISH)) {
+//                //轮播图
+//                List<String> bannerBean =  response.body().getData().getBannerlist();
+//                if (ObjectUtils.isEmpty(bannerBean)) return;
+//                List<String> imgPath = new ArrayList<>();
+//                for (int i = 0; i < bannerBean.size(); i++) {
+//                    imgPath.add(bannerBean.get(i));
+//                }
+//                banner.setImages(imgPath);
+//                banner.setImageLoader(new GlideImageLoader());
+//                banner.start();
+//                if (page == 1) {
+//                    mListEn.clear();
+//                    mAdapterEn.notifyDataSetChanged();
+//                }
+//                dataEn = response.body().getData().getInformationlist();
+//                if (!ObjectUtils.isEmpty(dataEn)) {
+//                    rvNormalShow.setVisibility(View.GONE);
+//                    mListEn.addAll(dataEn);
+//                    mAdapterEn.notifyDataSetChanged();
+//                    runLayoutAnimation(rv);
+//                    if (dataEn != null && dataEn.size() == pageSize) {
+//                        refresh.setEnableLoadMore(true);
+//                    } else {
+//                        refresh.setEnableLoadMore(false);
+//                    }
+//                    rv.setVisibility(View.VISIBLE);
+//                }else {
+//                    rvNormalShow.setVisibility(View.VISIBLE);
+//                    rv.setVisibility(View.GONE);
+//                }
+//
+//
+//            }
 
 
 
@@ -243,8 +241,8 @@ public class InformationFragment extends MvpFragment<InfoNoticeContact.InfoNotic
         refresh.finishLoadMore();
         if(response.body().getCode() == Constant.SUCCESS_CODE){
             Locale locale = getResources().getConfiguration().locale;
-            if(locale.equals(Locale.SIMPLIFIED_CHINESE)){
-                List<InfoNoticeResponse.DataCHBean> data = response.body().getDataCH();
+//            if(locale.equals(Locale.SIMPLIFIED_CHINESE)){
+                List<InfoNoticeResponse.Data.Informationlist> data = response.body().getData().getInformationlist();
                 if (ObjectUtils.isEmpty(data)) return;
                 title.clear();
                 for (int i = 0; i < data.size(); i++) {
@@ -252,16 +250,16 @@ public class InformationFragment extends MvpFragment<InfoNoticeContact.InfoNotic
                 }
                 listNoticeContent.setList(title);
                 listNoticeContent.startScroll();
-            }else if(locale.equals(Locale.ENGLISH)){
-                List<InfoNoticeResponse.DataEHBean> data = response.body().getDataEH();
-                if (ObjectUtils.isEmpty(data)) return;
-                title.clear();
-                for (int i = 0; i < data.size(); i++) {
-                    title.add(data.get(i).getTitle());
-                }
-                listNoticeContent.setList(title);
-                listNoticeContent.startScroll();
-            }
+//            }else if(locale.equals(Locale.ENGLISH)){
+//                List<InfoNoticeResponse.Data.Informationlist> data = response.body().getData().getInformationlist();
+//                if (ObjectUtils.isEmpty(data)) return;
+//                title.clear();
+//                for (int i = 0; i < data.size(); i++) {
+//                    title.add(data.get(i).getTitle());
+//                }
+//                listNoticeContent.setList(title);
+//                listNoticeContent.startScroll();
+//            }
         } else if (response.body().getCode() == -10) {
             ToastUtils.showShortToast(context, getResources().getString(R.string.not_login));
         } else {

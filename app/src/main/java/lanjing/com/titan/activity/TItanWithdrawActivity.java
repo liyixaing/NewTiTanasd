@@ -54,13 +54,13 @@ public class TItanWithdrawActivity extends MvpActivity<WalletWithdrawContact.Wal
     TextView tvServiceFee;
     @BindView(R.id.tv_balance)
     TextView TvBalance;
-    String dasd;
+    String AvailableBalance;//可用余额
 
     @Override
     public void initData(Bundle savedInstanceState) {
         balance = getIntent().getStringExtra("balance");
-        dasd = getIntent().getStringExtra("taitanSum");
-        TvBalance.setText("可用余额: " + dasd);
+        AvailableBalance = getIntent().getStringExtra("taitanSum");
+        TvBalance.setText( getResources().getString(R.string.asset_balance1)+":" + AvailableBalance);
         initEdit();
     }
 

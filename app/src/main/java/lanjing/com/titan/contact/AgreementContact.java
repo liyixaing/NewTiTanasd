@@ -5,9 +5,12 @@ import android.content.Context;
 import com.lxh.baselibray.mvp.BasePresent;
 import com.lxh.baselibray.mvp.IBaseView;
 import com.lxh.baselibray.net.ServiceGenerator;
+import com.lxh.baselibray.util.SPUtils;
 
 import lanjing.com.titan.api.ApiService;
+import lanjing.com.titan.constant.Constant;
 import lanjing.com.titan.net.NetCallBack;
+import lanjing.com.titan.request.LanguageRequest;
 import lanjing.com.titan.response.AgreementResponse;
 import retrofit2.Call;
 import retrofit2.Response;
@@ -21,7 +24,10 @@ public class AgreementContact {
         //协议
         public void getAgreement(final Context context) {
             ApiService service = ServiceGenerator.createService(ApiService.class);
-            service.getAgreement().enqueue(new NetCallBack<AgreementResponse>() {
+            String token = SPUtils.getString(Constant.TOKEN,"",context);
+            int language = Constant.LANGAGE;
+            LanguageRequest request = new LanguageRequest(language);
+            service.getAgreement(token, request).enqueue(new NetCallBack<AgreementResponse>() {
                 @Override
                 public void onSuccess(Call<AgreementResponse> call, Response<AgreementResponse> response) {
                     if (getView() != null) {

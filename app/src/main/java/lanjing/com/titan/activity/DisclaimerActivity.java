@@ -80,11 +80,11 @@ public class DisclaimerActivity extends MvpActivity<ExemptionContact.ExemptionPr
         dismissLoadingDialog();
         if(response.body().getCode() == Constant.SUCCESS_CODE){
             Locale locale = getResources().getConfiguration().locale;//判断当前的语言
-            if (locale.equals(Locale.SIMPLIFIED_CHINESE)) {
-                webView.loadUrl(response.body().getExemptionCH());
-            } else if (locale.equals(Locale.ENGLISH)) {
-                webView.loadUrl(response.body().getExemptionEN());
-            }
+            webView.loadUrl(response.body().getData().getExemption());
+//            if (locale.equals(Locale.SIMPLIFIED_CHINESE)) {
+//            } else if (locale.equals(Locale.ENGLISH)) {
+//                webView.loadUrl(response.body().getExemptionEN());
+//            }
         }else if (response.body().getCode() == -10){
             ToastUtils.showShortToast(context, getResources().getString(R.string.not_login));
         }else {

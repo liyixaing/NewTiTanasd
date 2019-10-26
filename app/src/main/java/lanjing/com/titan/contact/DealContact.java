@@ -18,6 +18,7 @@ import lanjing.com.titan.request.BuyOrSellRequest;
 import lanjing.com.titan.request.DealPwdRequest;
 import lanjing.com.titan.request.EntrustListRequest;
 import lanjing.com.titan.request.InterDealRequest;
+import lanjing.com.titan.request.LanguageRequest;
 import lanjing.com.titan.request.RecallRequest;
 import lanjing.com.titan.response.ActiveResponse;
 import lanjing.com.titan.response.EntrustListResponse;
@@ -62,7 +63,9 @@ public class DealContact {
         public void rightSixList(final Context context) {
             ApiService service = ServiceGenerator.createService(ApiService.class);
             String token = SPUtils.getString(Constant.TOKEN, "", context);
-            service.rigehtSixInfo(token).enqueue(new NetCallBack<SixTradeResponse>() {
+            int language = Constant.LANGAGE;
+            LanguageRequest request = new LanguageRequest(language);
+            service.rigehtSixInfo(token, request).enqueue(new NetCallBack<SixTradeResponse>() {
                 @Override
                 public void onSuccess(Call<SixTradeResponse> call, Response<SixTradeResponse> response) {
                     if (getView() != null) {
@@ -83,7 +86,9 @@ public class DealContact {
         public void rightSixListOne(final Context context) {
             ApiService service = ServiceGenerator.createService(ApiService.class);
             String token = SPUtils.getString(Constant.TOKEN, "", context);
-            service.rigehtSixInfo(token).enqueue(new NetCallBack<SixTradeResponse>() {
+            int language = Constant.LANGAGE;
+            LanguageRequest request = new LanguageRequest(language);
+            service.rigehtSixInfo(token, request).enqueue(new NetCallBack<SixTradeResponse>() {
                 @Override
                 public void onSuccess(Call<SixTradeResponse> call, Response<SixTradeResponse> response) {
                     if (getView() != null) {
@@ -104,7 +109,9 @@ public class DealContact {
         public void rightSixListZero(final Context context) {
             ApiService service = ServiceGenerator.createService(ApiService.class);
             String token = SPUtils.getString(Constant.TOKEN, "", context);
-            service.rigehtSixInfo(token).enqueue(new NetCallBack<SixTradeResponse>() {
+            int language = Constant.LANGAGE;
+            LanguageRequest request = new LanguageRequest(language);
+            service.rigehtSixInfo(token, request).enqueue(new NetCallBack<SixTradeResponse>() {
                 @Override
                 public void onSuccess(Call<SixTradeResponse> call, Response<SixTradeResponse> response) {
                     if (getView() != null) {
@@ -125,7 +132,9 @@ public class DealContact {
         public void walletDataTitan(final Context context) {
             ApiService service = ServiceGenerator.createService(ApiService.class);
             String token = SPUtils.getString(Constant.TOKEN, "", context);
-            service.walletData(token).enqueue(new NetCallBack<WalletDataResponse>() {
+            int language = Constant.LANGAGE;
+            LanguageRequest request = new LanguageRequest(language);
+            service.walletData(token, request).enqueue(new NetCallBack<WalletDataResponse>() {
                 @Override
                 public void onSuccess(Call<WalletDataResponse> call, Response<WalletDataResponse> response) {
                     if (getView() != null) {
@@ -146,7 +155,9 @@ public class DealContact {
         public void walletDataUsd(final Context context) {
             ApiService service = ServiceGenerator.createService(ApiService.class);
             String token = SPUtils.getString(Constant.TOKEN, "", context);
-            service.walletData(token).enqueue(new NetCallBack<WalletDataResponse>() {
+            int language = Constant.LANGAGE;
+            LanguageRequest request = new LanguageRequest(language);
+            service.walletData(token, request).enqueue(new NetCallBack<WalletDataResponse>() {
                 @Override
                 public void onSuccess(Call<WalletDataResponse> call, Response<WalletDataResponse> response) {
                     if (getView() != null) {
@@ -278,7 +289,9 @@ public class DealContact {
         public void person(final Context context) {
             ApiService service = ServiceGenerator.createService(ApiService.class);
             String token = SPUtils.getString(Constant.TOKEN, "", context);
-            service.getPerson(token).enqueue(new NetCallBack<PersonResponse>() {
+            int language = Constant.LANGAGE;
+            LanguageRequest request = new LanguageRequest(language);
+            service.getPerson(token, request).enqueue(new NetCallBack<PersonResponse>() {
                 @Override
                 public void onSuccess(Call<PersonResponse> call, Response<PersonResponse> response) {
                     if (getView() != null) {

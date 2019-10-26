@@ -17,6 +17,7 @@ import lanjing.com.titan.request.ActiveRequest;
 import lanjing.com.titan.request.CdkeyRequest;
 import lanjing.com.titan.request.FreeRequest;
 import lanjing.com.titan.request.InfoNoticeRequest;
+import lanjing.com.titan.request.LanguageRequest;
 import lanjing.com.titan.request.SeckillCdkeyRequest;
 import lanjing.com.titan.request.VersionRequest;
 import lanjing.com.titan.response.ActiveResponse;
@@ -40,7 +41,9 @@ public class WalletDataContact {
         public void walletData(final Context context) {
             ApiService service = ServiceGenerator.createService(ApiService.class);
             String token = SPUtils.getString(Constant.TOKEN, "", context);
-            service.walletData(token).enqueue(new NetCallBack<WalletDataResponse>() {
+            int language = Constant.LANGAGE;
+            LanguageRequest request = new LanguageRequest(language);
+            service.walletData(token, request).enqueue(new NetCallBack<WalletDataResponse>() {
                 @Override
                 public void onSuccess(Call<WalletDataResponse> call, Response<WalletDataResponse> response) {
                     if (getView() != null) {
@@ -82,7 +85,9 @@ public class WalletDataContact {
         public void person(final Context context) {
             ApiService service = ServiceGenerator.createService(ApiService.class);
             String token = SPUtils.getString(Constant.TOKEN, "", context);
-            service.getPerson(token).enqueue(new NetCallBack<PersonResponse>() {
+            int language = Constant.LANGAGE;
+            LanguageRequest request = new LanguageRequest(language);
+            service.getPerson(token, request).enqueue(new NetCallBack<PersonResponse>() {
                 @Override
                 public void onSuccess(Call<PersonResponse> call, Response<PersonResponse> response) {
                     if (getView() != null) {

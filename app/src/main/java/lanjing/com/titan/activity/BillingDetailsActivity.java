@@ -82,20 +82,4 @@ public class BillingDetailsActivity extends XActivity {
         fragmentTransaction.commit();
     }
 
-//    @OnClick({R.id.tv_cash_value, R.id.tv_coin_currency_trading, R.id.tv_reward_drop})
-//    public void onViewClicked(View view) {
-//        switch (view.getId()) {
-//            case R.id.tv_cash_value://充值提现
-//                fragmentManager(R.id.fragment_container, new CashValueFragment(), "cashValue");
-//                break;
-//            case R.id.tv_coin_currency_trading://币币交易
-//                fragmentManager(R.id.fragment_container, new CoinCurrencyTradingFragment(), "coinCurrencyTrading");
-//                break;
-//            case R.id.tv_reward_drop://空投奖励
-//                fragmentManager(R.id.fragment_container, new RewardDropFragment(), "rewardDrop");
-//                break;
-//        }
-//    }
-
-
 }

@@ -75,11 +75,11 @@ public class AgreementActivity extends MvpActivity<AgreementContact.AgreementPre
         dismissLoadingDialog();
         if (response.body().getCode() == Constant.SUCCESS_CODE) {
             Locale locale = getResources().getConfiguration().locale;//判断当前的语言
-            if (locale.equals(Locale.SIMPLIFIED_CHINESE)) {
-                webView.loadUrl(response.body().getAgreementCH());
-            } else if (locale.equals(Locale.ENGLISH)) {
-                webView.loadUrl(response.body().getAgreementEN());
-            }
+            webView.loadUrl(response.body().getData().getAgreement());
+//            if (locale.equals(Locale.SIMPLIFIED_CHINESE)) {
+//            } else if (locale.equals(Locale.ENGLISH)) {
+//                webView.loadUrl(response.body().getData().getAgreement());
+//            }
         } else if (response.body().getCode() == -10) {
             ToastUtils.showShortToast(context, getResources().getString(R.string.not_login));
         } else {

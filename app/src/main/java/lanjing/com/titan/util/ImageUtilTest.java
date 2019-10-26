@@ -13,6 +13,8 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
+import lanjing.com.titan.R;
+
 /**
  * Created by Administrator on 2019/4/1 0001.
  */
@@ -46,16 +48,16 @@ public class ImageUtilTest {
             Uri uri = Uri.fromFile(file);
             context.sendBroadcast(new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE, uri));
             if (isSuccess) {
-                ToastUtils.showShortToast(context,"保存相片成功");
+                ToastUtils.showShortToast(context,context.getResources().getString(R.string.save_photo_successfully));//保存相片成功
                 return;
             } else {
-                ToastUtils.showShortToast(context,"保存相片失败");
+                ToastUtils.showShortToast(context,context.getResources().getString(R.string.failed_to_save_photo));//保存相片失败
                 return;
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
-        ToastUtils.showShortToast(context,"保存相片失败");
+        ToastUtils.showShortToast(context,context.getResources().getString(R.string.failed_to_save_photo));//保存相片失败
     }
 
 }

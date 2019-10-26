@@ -4,6 +4,7 @@ import android.os.Environment;
 
 public class Constant {
 
+    public static int LANGAGE = 0;//中英文选择默认为中文  0,中文  1,英文
     public final static String FIRST_OPEN = "isFirst";
 
     public final static String DEVICE_ID = "device_id";

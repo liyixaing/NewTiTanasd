@@ -41,43 +41,7 @@ public class CoinTitancAdapter extends BaseQuickAdapter<HistoryListResponse.mDat
             type = "Qty";
             sum = MoneyUtil.formatFour(String.valueOf(item.getChangeAmount()));
         }
-        switch (changeType) {
-            case 1003:
-                helper.setText(R.id.tv_titanc_type, R.string.of_mineral);//矿层交易激活
-                break;
-            case 1004:
-                helper.setText(R.id.tv_titanc_type, R.string.ore_pool);//矿池交易激活
-                break;
-            case 1002:
-                helper.setText(R.id.tv_titanc_type, R.string.unfrozen);//交易激活
-                break;
-            case 102:
-                helper.setText(R.id.tv_titanc_type, R.string.ore_root);//空投加权
-                break;
-            case 103:
-                helper.setText(R.id.tv_titanc_type, R.string.ore_lv);//空投等级收益
-                break;
-            case 501:
-                helper.setText(R.id.tv_titanc_type, R.string.airdrop_gift);//空投赠送
-                break;
-            case 1:
-                helper.setText(R.id.tv_titanc_type, R.string.top_up_c);//充币
-                break;
-            case 21:
-                helper.setText(R.id.tv_titanc_type, R.string.flash_exchange);
-                break;
-            case 25:
-                helper.setText(R.id.tv_titanc_type, R.string.turn_out);//转出
-                break;
-            case 15:
-                helper.setText(R.id.tv_titanc_type, R.string.turn_put);//转入
-                break;
-            case 24:
-                titanc_item.setVisibility(View.GONE);//不需要显示手续费
-                break;
-
-
-        }
+        helper.setText(R.id.tv_titanc_type, item.getChangeDesc());
         helper.setText(R.id.tv_titanc_change_num, sum)
                 .setText(R.id.tv_type_two, R.string.qty)
                 .setText(R.id.tv_titanc_time, time);

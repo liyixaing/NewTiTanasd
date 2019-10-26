@@ -628,6 +628,10 @@
     <string name="Save_to_Album">Save to Album</string>
     <string name="Receiving_Money">Code for Receiving Money</string>
     <string name="the_payment_password">Please enter the payment password</string>
-
+    <string name="codeerhome_error">Wrong verification code or mobile number</string>
+    <string name="input_sun">Please enter quantity</string>
+    <string name="noNon_repeatable">Non repeatable selection</string>
+    <string name="Please_open_relevan">Please open relevant permissions!</string>
+    <string name="rejected_the_permission">You have rejected the permission application. You may not be able to open the camera to scan the code.</string>
 
 </resources>

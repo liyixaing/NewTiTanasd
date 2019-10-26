@@ -30,21 +30,22 @@ public class CoinUsdAdapter extends BaseQuickAdapter<HistoryListResponse.mData, 
         int type = Integer.parseInt(item.getChangeType());
         String upAndDown = String.valueOf(MoneyUtil.formatFour(String.valueOf(item.getChangeAmount())));
         String time = DateUtils.timedate(item.getChangeTime());
-        switch (type) {
-            case 11:
-                helper.setText(R.id.usd_type, R.string.sell);//卖出
-                break;
-            case 12:
-                helper.setText(R.id.usd_type, R.string.selling_charges);//卖出手续费
-                break;
-
-            case 13:
-                helper.setText(R.id.usd_type, R.string.buy);//买入
-                break;
-            case 14:
-                helper.setText(R.id.usd_type, R.string.loop);//循环
-                break;
-        }
+        helper.setText(R.id.usd_type,item.getChangeDesc());//卖出
+//        switch (type) {
+//            case 11:
+//                helper.setText(R.id.usd_type, R.string.sell);//卖出
+//                break;
+//            case 12:
+//                helper.setText(R.id.usd_type, R.string.selling_charges);//卖出手续费
+//                break;
+//
+//            case 13:
+//                helper.setText(R.id.usd_type, R.string.buy);//买入
+//                break;
+//            case 14:
+//                helper.setText(R.id.usd_type, R.string.loop);//循环
+//                break;
+//        }
         helper.setText(R.id.tv_usd_num, upAndDown)
                 .setText(R.id.tv_usd_state, R.string.finish)
                 .setText(R.id.tv_usd_time, time);

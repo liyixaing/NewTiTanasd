@@ -11,6 +11,7 @@ import com.lxh.baselibray.util.SPUtils;
 import lanjing.com.titan.api.ApiService;
 import lanjing.com.titan.constant.Constant;
 import lanjing.com.titan.request.DeleteWalletRequest;
+import lanjing.com.titan.request.LanguageRequest;
 import lanjing.com.titan.response.ResultDTO;
 import lanjing.com.titan.response.WalletListResponse;
 import retrofit2.Call;
@@ -27,7 +28,9 @@ public class WalletContact {
         public void walletList(final Context context) {
             ApiService service = ServiceGenerator.createService(ApiService.class);
             String token = SPUtils.getString(Constant.TOKEN,"",context);
-            service.walletList(token).enqueue(new NetCallBack<WalletListResponse>() {
+            int language = Constant.LANGAGE;
+            LanguageRequest request = new LanguageRequest(language);
+            service.walletList(token, request).enqueue(new NetCallBack<WalletListResponse>() {
                 @Override
                 public void onSuccess(Call<WalletListResponse> call, Response<WalletListResponse> response) {
                     if (getView() != null) {

@@ -150,7 +150,7 @@ public class DealFragment extends MvpFragment<DealContact.DealPresent> implement
     List<SixTradeResponse.BuydataBean> mListBuy;
 
     EntrustAdapter mAdapter;
-    List<EntrustListResponse.DataBean> mList;
+    List<EntrustListResponse.Data.OrderList> mList;
     String phone, usd, titan;
 
     private boolean isEdit = true, isSeek = true;
@@ -1113,7 +1113,7 @@ public class DealFragment extends MvpFragment<DealContact.DealPresent> implement
     }
 
     //委托列表返回数据
-    List<EntrustListResponse.DataBean> data;
+    List<EntrustListResponse.Data.OrderList> data;
 
     //委托列表返回数据
     @Override
@@ -1121,11 +1121,11 @@ public class DealFragment extends MvpFragment<DealContact.DealPresent> implement
         refresh.finishRefresh();
         refresh.finishLoadMore();
         if (response.body().getCode() == Constant.SUCCESS_CODE) {
-            tv_credittext.setText(getResources().getString(R.string.credit_limit) + MoneyUtil.formatFouras(response.body().getStallThreshold()));//共识信用额度赋值
+            tv_credittext.setText(getResources().getString(R.string.credit_limit) + MoneyUtil.formatFouras(response.body().getData().getStallThreshold()));//共识信用额度赋值
             if (page == 1) {
                 mList.clear();
             }
-            data = response.body().getData();
+            data = response.body().getData().orderList;
             if (!ObjectUtils.isEmpty(data)) {
                 rvNormalShow.setVisibility(View.GONE);
                 mList.addAll(data);

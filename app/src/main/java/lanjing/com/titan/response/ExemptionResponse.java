@@ -15,8 +15,7 @@ public class ExemptionResponse {
 
     private String msg;
     private int code;
-    private String ExemptionCH;
-    private String ExemptionEN;
+    public Data data;
 
     public String getMsg() {
         return msg;
@@ -34,19 +33,23 @@ public class ExemptionResponse {
         this.code = code;
     }
 
-    public String getExemptionCH() {
-        return ExemptionCH;
+    public Data getData() {
+        return data;
     }
 
-    public void setExemptionCH(String ExemptionCH) {
-        this.ExemptionCH = ExemptionCH;
+    public void setData(Data data) {
+        this.data = data;
     }
 
-    public String getExemptionEN() {
-        return ExemptionEN;
-    }
+    public static class Data {
+        private String exemption;
 
-    public void setExemptionEN(String ExemptionEN) {
-        this.ExemptionEN = ExemptionEN;
+        public String getExemption() {
+            return exemption;
+        }
+
+        public void setExemption(String exemption) {
+            this.exemption = exemption;
+        }
     }
 }

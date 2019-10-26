@@ -10,6 +10,7 @@ import com.lxh.baselibray.util.SPUtils;
 
 import lanjing.com.titan.api.ApiService;
 import lanjing.com.titan.constant.Constant;
+import lanjing.com.titan.request.LanguageRequest;
 import lanjing.com.titan.response.PersonResponse;
 import retrofit2.Call;
 import retrofit2.Response;
@@ -23,7 +24,9 @@ public class PersonContact {
         public void person(final Context context) {
             ApiService service = ServiceGenerator.createService(ApiService.class);
             String token = SPUtils.getString(Constant.TOKEN,"",context);
-            service.getPerson(token).enqueue(new NetCallBack<PersonResponse>() {
+            int language = Constant.LANGAGE;
+            LanguageRequest request = new LanguageRequest(language);
+            service.getPerson(token, request).enqueue(new NetCallBack<PersonResponse>() {
                 @Override
                 public void onSuccess(Call<PersonResponse> call, Response<PersonResponse> response) {
                     if (getView() != null) {

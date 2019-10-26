@@ -14,14 +14,14 @@ import lanjing.com.titan.response.InfoNoticeResponse;
  * Created by chenxi on 2019/5/10.
  */
 
-public class NoticeAdapterEN extends BaseQuickAdapter<InfoNoticeResponse.DataEHBean, BaseViewHolder> {
+public class NoticeAdapterEN extends BaseQuickAdapter<InfoNoticeResponse.Data.Informationlist, BaseViewHolder> {
 
-    public NoticeAdapterEN(int layoutResId, @Nullable List<InfoNoticeResponse.DataEHBean> data) {
+    public NoticeAdapterEN(int layoutResId, @Nullable List<InfoNoticeResponse.Data.Informationlist> data) {
         super(layoutResId, data);
     }
 
     @Override
-    protected void convert(BaseViewHolder helper, InfoNoticeResponse.DataEHBean item) {
+    protected void convert(BaseViewHolder helper, InfoNoticeResponse.Data.Informationlist item) {
 
         helper.setText(R.id.tv_notice_time,item.getCreatetime())
                 .setText(R.id.tv_notice_title,item.getTitle())

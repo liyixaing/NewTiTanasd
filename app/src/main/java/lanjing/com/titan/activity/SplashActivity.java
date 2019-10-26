@@ -73,15 +73,15 @@ public class SplashActivity extends MvpActivity<LoginContact.LoginPresent> imple
 
         Locale locale = getResources().getConfiguration().locale;//判断当前的语言
         if (locale.equals(Locale.SIMPLIFIED_CHINESE)) {
+            Constant.LANGAGE = 0;
             welcomeBg.setBackground(getResources().getDrawable(R.drawable.splash_bg));
         } else if (locale.equals(Locale.ENGLISH)) {
+            Constant.LANGAGE = 1;
             welcomeBg.setBackground(getResources().getDrawable(R.drawable.splash_en_bg));
         }
 
         setValue();
         LocalManageUtil.getSelectLanguage(this);
-
-
     }
 
 //    Handler hand = new Handler() {
@@ -207,10 +207,12 @@ public class SplashActivity extends MvpActivity<LoginContact.LoginPresent> imple
                 .setOnClickListener(R.id.tv_one, v -> {
 //                    languageText.setText(getResources().getString(R.string.simplified_chinese));//切换中文
                     selectLanguage(1);
+                    Constant.LANGAGE = 0;
                     typeDialog.dismiss();
                 }).setOnClickListener(R.id.tv_two, v -> {
 //                    languageText.setText("English");//切换英语
                     selectLanguage(2);
+                    Constant.LANGAGE = 1;
                     typeDialog.dismiss();
                 });
         typeDialog = builder.create();
@@ -232,8 +234,8 @@ public class SplashActivity extends MvpActivity<LoginContact.LoginPresent> imple
     @Override
     public void getLoginResult(Response<LoginResponse> response) {
         if (response.body().getCode() == Constant.SUCCESS_CODE) {
-            SPUtils.putString(Constant.TOKEN, response.body().getToken(), context);
-            inviteCode = response.body().getInvitacode();
+            SPUtils.putString(Constant.TOKEN, response.body().getData().getToken(), context);
+            inviteCode = response.body().getData().getInvitacode();
             mPresent.person(context);
 
         } else if (response.body().getCode() == -10) {

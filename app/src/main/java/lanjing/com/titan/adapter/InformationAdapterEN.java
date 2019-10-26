@@ -17,14 +17,14 @@ import lanjing.com.titan.response.InfoNoticeResponse;
  * 资讯  列表数据适配器
  */
 
-public class InformationAdapterEN extends BaseQuickAdapter<InfoNoticeResponse.DataEHBean, BaseViewHolder> {
+public class InformationAdapterEN extends BaseQuickAdapter<InfoNoticeResponse.Data.Informationlist, BaseViewHolder> {
 
-    public InformationAdapterEN(int layoutResId, @Nullable List<InfoNoticeResponse.DataEHBean> data) {
+    public InformationAdapterEN(int layoutResId, @Nullable List<InfoNoticeResponse.Data.Informationlist> data) {
         super(layoutResId, data);
     }
 
     @Override
-    protected void convert(BaseViewHolder helper, InfoNoticeResponse.DataEHBean item) {
+    protected void convert(BaseViewHolder helper, InfoNoticeResponse.Data.Informationlist item) {
         ImageView imgOne= helper.getView(R.id.img);
 
                 Glide.with(mContext).load(item.getTitleimg()).into(imgOne);

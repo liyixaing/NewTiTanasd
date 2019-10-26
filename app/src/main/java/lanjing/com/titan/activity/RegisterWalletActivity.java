@@ -390,7 +390,7 @@ public class RegisterWalletActivity extends MvpActivity<SetHelpContact.SetHelpPr
                 }else {
                     if(!ObjectUtils.isEmpty(word1) && !ObjectUtils.isEmpty(word2) || !ObjectUtils.isEmpty(word3)){
                         if(word1.equals(word2) || word1.equals(word3) || word2.equals(word3)) {
-                            ToastUtils.showLongToast(context, "不可重复选择");
+                            ToastUtils.showLongToast(context, getResources().getString(R.string.noNon_repeatable));//不可重复选择
                         }
                         return;
                     }else {
@@ -429,7 +429,7 @@ public class RegisterWalletActivity extends MvpActivity<SetHelpContact.SetHelpPr
                 }else {
                     if(!ObjectUtils.isEmpty(word1) && !ObjectUtils.isEmpty(word2) && !ObjectUtils.isEmpty(word3)){
                         if(word1.equals(word2) || word1.equals(word3) || word2.equals(word3)) {
-                            ToastUtils.showLongToast(context, "不可重复选择");
+                            ToastUtils.showLongToast(context, getResources().getString(R.string.noNon_repeatable));
                         }
                         return;
                     }else {
@@ -466,7 +466,7 @@ public class RegisterWalletActivity extends MvpActivity<SetHelpContact.SetHelpPr
                 }else {
                     if(!ObjectUtils.isEmpty(word1) && !ObjectUtils.isEmpty(word2) && !ObjectUtils.isEmpty(word3)){
                         if(word1.equals(word2) || word1.equals(word3) || word2.equals(word3)) {
-                            ToastUtils.showLongToast(context, "不可重复选择");
+                            ToastUtils.showLongToast(context, getResources().getString(R.string.noNon_repeatable));
                         }
                         return;
                     }else {
@@ -503,7 +503,7 @@ public class RegisterWalletActivity extends MvpActivity<SetHelpContact.SetHelpPr
                 }else {
                     if(!ObjectUtils.isEmpty(word1) && !ObjectUtils.isEmpty(word2) && !ObjectUtils.isEmpty(word3)){
                         if(word1.equals(word2) || word1.equals(word3) || word2.equals(word3)) {
-                            ToastUtils.showLongToast(context, "不可重复选择");
+                            ToastUtils.showLongToast(context, getResources().getString(R.string.noNon_repeatable));
                         }
                         return;
                     }else {
@@ -540,7 +540,7 @@ public class RegisterWalletActivity extends MvpActivity<SetHelpContact.SetHelpPr
                 }else {
                     if(!ObjectUtils.isEmpty(word1) && !ObjectUtils.isEmpty(word2) && !ObjectUtils.isEmpty(word3)){
                         if(word1.equals(word2) || word1.equals(word3) || word2.equals(word3)) {
-                            ToastUtils.showLongToast(context, "不可重复选择");
+                            ToastUtils.showLongToast(context, getResources().getString(R.string.noNon_repeatable));
                         }
                         return;
                     }else {
@@ -577,7 +577,7 @@ public class RegisterWalletActivity extends MvpActivity<SetHelpContact.SetHelpPr
                 }else {
                     if(!ObjectUtils.isEmpty(word1) && !ObjectUtils.isEmpty(word2) && !ObjectUtils.isEmpty(word3)){
                         if(word1.equals(word2) || word1.equals(word3) || word2.equals(word3)) {
-                            ToastUtils.showLongToast(context, "不可重复选择");
+                            ToastUtils.showLongToast(context, getResources().getString(R.string.noNon_repeatable));
                         }
                         return;
                     }else {
@@ -614,7 +614,7 @@ public class RegisterWalletActivity extends MvpActivity<SetHelpContact.SetHelpPr
                 }else {
                     if(!ObjectUtils.isEmpty(word1) && !ObjectUtils.isEmpty(word2) && !ObjectUtils.isEmpty(word3)){
                         if(word1.equals(word2) || word1.equals(word3) || word2.equals(word3)) {
-                            ToastUtils.showLongToast(context, "不可重复选择");
+                            ToastUtils.showLongToast(context, getResources().getString(R.string.noNon_repeatable));
                         }
                         return;
                     }else {
@@ -651,7 +651,7 @@ public class RegisterWalletActivity extends MvpActivity<SetHelpContact.SetHelpPr
                 }else {
                     if(!ObjectUtils.isEmpty(word1) && !ObjectUtils.isEmpty(word2) && !ObjectUtils.isEmpty(word3)){
                         if(word1.equals(word2) || word1.equals(word3) || word2.equals(word3)) {
-                            ToastUtils.showLongToast(context, "不可重复选择");
+                            ToastUtils.showLongToast(context, getResources().getString(R.string.noNon_repeatable));
                         }
                         return;
                     }else {
@@ -688,7 +688,7 @@ public class RegisterWalletActivity extends MvpActivity<SetHelpContact.SetHelpPr
                 }else {
                     if(!ObjectUtils.isEmpty(word1) && !ObjectUtils.isEmpty(word2) && !ObjectUtils.isEmpty(word3)){
                         if(word1.equals(word2) || word1.equals(word3) || word2.equals(word3)) {
-                            ToastUtils.showLongToast(context, "不可重复选择");
+                            ToastUtils.showLongToast(context, getResources().getString(R.string.noNon_repeatable));
                         }
                         return;
                     }else {
@@ -725,7 +725,7 @@ public class RegisterWalletActivity extends MvpActivity<SetHelpContact.SetHelpPr
                 }else {
                     if(!ObjectUtils.isEmpty(word1) && !ObjectUtils.isEmpty(word2) && !ObjectUtils.isEmpty(word3)){
                         if(word1.equals(word2) || word1.equals(word3) || word2.equals(word3)) {
-                            ToastUtils.showLongToast(context, "不可重复选择");
+                            ToastUtils.showLongToast(context, getResources().getString(R.string.noNon_repeatable));
                         }
                         return;
                     }else {
@@ -762,7 +762,7 @@ public class RegisterWalletActivity extends MvpActivity<SetHelpContact.SetHelpPr
                 }else {
                     if(!ObjectUtils.isEmpty(word1) && !ObjectUtils.isEmpty(word2) && !ObjectUtils.isEmpty(word3)){
                         if(word1.equals(word2) || word1.equals(word3) || word2.equals(word3)) {
-                            ToastUtils.showLongToast(context, "不可重复选择");
+                            ToastUtils.showLongToast(context, getResources().getString(R.string.noNon_repeatable));
                         }
                         return;
                     }else {
@@ -837,7 +837,7 @@ public class RegisterWalletActivity extends MvpActivity<SetHelpContact.SetHelpPr
             intent.putExtra("wordone",wordOne.getText().toString());
             intent.putExtra("wordtwo",wordTwo.getText().toString());
             intent.putExtra("wordthree",wordThree.getText().toString());
-            intent.putExtra("key",response.body().getKeys());
+            intent.putExtra("key",response.body().getData().getKeys());
             startActivity(intent);
         } else if (response.body().getCode() ==-10){
             ToastUtils.showShortToast(context, getResources().getString(R.string.not_login));

@@ -17,17 +17,7 @@ public class EntrustListResponse {
 
     private String msg;
     private int code;
-    private String stallThreshold;
-
-    public String getStallThreshold() {
-        return stallThreshold;
-    }
-
-    public void setStallThreshold(String stallThreshold) {
-        this.stallThreshold = stallThreshold;
-    }
-
-    private List<DataBean> data;
+    public Data data;
 
     public String getMsg() {
         return msg;
@@ -45,177 +35,199 @@ public class EntrustListResponse {
         this.code = code;
     }
 
-    public List<DataBean> getData() {
+    public Data getData() {
         return data;
     }
 
-    public void setData(List<DataBean> data) {
+    public void setData(Data data) {
         this.data = data;
     }
 
-    public static class DataBean {
+    public static class Data {
 
-        private int fid;
-        private double rest;
-        private String createtime;
-        private String fuser;
-        private int hangOrderWay;
-        private double fee;
-        private double tradenum;
-        private int type;
-        private double releasenum;
-        private int coinid;
-        private String cointype;
-        private int sourceCoin;
-        private double price;
-        private double sourceAmount;
-        private double coinnum;
-        private int state;
-        private String updatetime;
-        private int isreal;
+        private String stallThreshold;
+        public List<OrderList> orderList;
 
-        public int getFid() {
-            return fid;
+        public String getStallThreshold() {
+            return stallThreshold;
         }
 
-        public void setFid(int fid) {
-            this.fid = fid;
+        public void setStallThreshold(String stallThreshold) {
+            this.stallThreshold = stallThreshold;
         }
 
-        public double getRest() {
-            return rest;
+        public List<OrderList> getOrderList() {
+            return orderList;
         }
 
-        public void setRest(double rest) {
-            this.rest = rest;
+        public void setOrderList(List<OrderList> orderList) {
+            this.orderList = orderList;
         }
 
-        public String getCreatetime() {
-            return createtime;
-        }
+        public static class OrderList {
+            private int fid;
+            private double rest;
+            private String createtime;
+            private String fuser;
+            private int hangOrderWay;
+            private double fee;
+            private double tradenum;
+            private int type;
+            private double releasenum;
+            private int coinid;
+            private String cointype;
+            private int sourceCoin;
+            private double price;
+            private double sourceAmount;
+            private double coinnum;
+            private int state;
+            private String updatetime;
+            private int isreal;
 
-        public void setCreatetime(String createtime) {
-            this.createtime = createtime;
-        }
+            public int getFid() {
+                return fid;
+            }
 
-        public String getFuser() {
-            return fuser;
-        }
+            public void setFid(int fid) {
+                this.fid = fid;
+            }
 
-        public void setFuser(String fuser) {
-            this.fuser = fuser;
-        }
+            public double getRest() {
+                return rest;
+            }
 
-        public int getHangOrderWay() {
-            return hangOrderWay;
-        }
+            public void setRest(double rest) {
+                this.rest = rest;
+            }
 
-        public void setHangOrderWay(int hangOrderWay) {
-            this.hangOrderWay = hangOrderWay;
-        }
+            public String getCreatetime() {
+                return createtime;
+            }
 
-        public double getFee() {
-            return fee;
-        }
+            public void setCreatetime(String createtime) {
+                this.createtime = createtime;
+            }
 
-        public void setFee(double fee) {
-            this.fee = fee;
-        }
+            public String getFuser() {
+                return fuser;
+            }
 
-        public double getTradenum() {
-            return tradenum;
-        }
+            public void setFuser(String fuser) {
+                this.fuser = fuser;
+            }
 
-        public void setTradenum(double tradenum) {
-            this.tradenum = tradenum;
-        }
+            public int getHangOrderWay() {
+                return hangOrderWay;
+            }
 
-        public int getType() {
-            return type;
-        }
+            public void setHangOrderWay(int hangOrderWay) {
+                this.hangOrderWay = hangOrderWay;
+            }
 
-        public void setType(int type) {
-            this.type = type;
-        }
+            public double getFee() {
+                return fee;
+            }
 
-        public double getReleasenum() {
-            return releasenum;
-        }
+            public void setFee(double fee) {
+                this.fee = fee;
+            }
 
-        public void setReleasenum(double releasenum) {
-            this.releasenum = releasenum;
-        }
+            public double getTradenum() {
+                return tradenum;
+            }
 
-        public int getCoinid() {
-            return coinid;
-        }
+            public void setTradenum(double tradenum) {
+                this.tradenum = tradenum;
+            }
 
-        public void setCoinid(int coinid) {
-            this.coinid = coinid;
-        }
+            public int getType() {
+                return type;
+            }
 
-        public String getCointype() {
-            return cointype;
-        }
+            public void setType(int type) {
+                this.type = type;
+            }
 
-        public void setCointype(String cointype) {
-            this.cointype = cointype;
-        }
+            public double getReleasenum() {
+                return releasenum;
+            }
 
-        public int getSourceCoin() {
-            return sourceCoin;
-        }
+            public void setReleasenum(double releasenum) {
+                this.releasenum = releasenum;
+            }
 
-        public void setSourceCoin(int sourceCoin) {
-            this.sourceCoin = sourceCoin;
-        }
+            public int getCoinid() {
+                return coinid;
+            }
 
-        public double getPrice() {
-            return price;
-        }
+            public void setCoinid(int coinid) {
+                this.coinid = coinid;
+            }
 
-        public void setPrice(double price) {
-            this.price = price;
-        }
+            public String getCointype() {
+                return cointype;
+            }
 
-        public double getSourceAmount() {
-            return sourceAmount;
-        }
+            public void setCointype(String cointype) {
+                this.cointype = cointype;
+            }
 
-        public void setSourceAmount(double sourceAmount) {
-            this.sourceAmount = sourceAmount;
-        }
+            public int getSourceCoin() {
+                return sourceCoin;
+            }
 
-        public double getCoinnum() {
-            return coinnum;
-        }
+            public void setSourceCoin(int sourceCoin) {
+                this.sourceCoin = sourceCoin;
+            }
 
-        public void setCoinnum(double coinnum) {
-            this.coinnum = coinnum;
-        }
+            public double getPrice() {
+                return price;
+            }
 
-        public int getState() {
-            return state;
-        }
+            public void setPrice(double price) {
+                this.price = price;
+            }
 
-        public void setState(int state) {
-            this.state = state;
-        }
+            public double getSourceAmount() {
+                return sourceAmount;
+            }
 
-        public String getUpdatetime() {
-            return updatetime;
-        }
+            public void setSourceAmount(double sourceAmount) {
+                this.sourceAmount = sourceAmount;
+            }
 
-        public void setUpdatetime(String updatetime) {
-            this.updatetime = updatetime;
-        }
+            public double getCoinnum() {
+                return coinnum;
+            }
 
-        public int getIsreal() {
-            return isreal;
-        }
+            public void setCoinnum(double coinnum) {
+                this.coinnum = coinnum;
+            }
 
-        public void setIsreal(int isreal) {
-            this.isreal = isreal;
+            public int getState() {
+                return state;
+            }
+
+            public void setState(int state) {
+                this.state = state;
+            }
+
+            public String getUpdatetime() {
+                return updatetime;
+            }
+
+            public void setUpdatetime(String updatetime) {
+                this.updatetime = updatetime;
+            }
+
+            public int getIsreal() {
+                return isreal;
+            }
+
+            public void setIsreal(int isreal) {
+                this.isreal = isreal;
+            }
         }
     }
+
 }

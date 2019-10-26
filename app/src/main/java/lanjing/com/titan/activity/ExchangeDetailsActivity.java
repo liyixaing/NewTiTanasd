@@ -54,6 +54,7 @@ public class ExchangeDetailsActivity extends MvpActivity<BillDetailContact.BillD
     public void getBillDeatilResult(Response<BillDetailResponse> response) {
         if (response.body().getCode() == Constant.SUCCESS_CODE) {
             //21 titan兑换  22 bar兑换
+            tv_titan_type.setText(response.body().getData().getChangeDesc());
             if (response.body().getData().getChangeType().equals("22")) {//titan兑换
                 tv_getandset.setText(getResources().getString(R.string.qty_acquire));//设置类型  花费
                 tv_titan_num.setText(MoneyUtil.formatFour(response.body().getData().

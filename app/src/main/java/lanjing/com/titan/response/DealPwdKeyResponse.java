@@ -14,7 +14,7 @@ public class DealPwdKeyResponse {
 
     private String msg;
     private int code;
-    private String welletkey;
+    public Data data;
 
     public String getMsg() {
         return msg;
@@ -32,11 +32,24 @@ public class DealPwdKeyResponse {
         this.code = code;
     }
 
-    public String getWelletkey() {
-        return welletkey;
+    public Data getData() {
+        return data;
     }
 
-    public void setWelletkey(String welletkey) {
-        this.welletkey = welletkey;
+    public void setData(Data data) {
+        this.data = data;
     }
+
+    public static class Data{
+        private String welletkey;
+
+        public String getWelletkey() {
+            return welletkey;
+        }
+
+        public void setWelletkey(String welletkey) {
+            this.welletkey = welletkey;
+        }
+    }
+
 }

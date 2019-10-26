@@ -16,8 +16,7 @@ public class AgreementResponse {
 
     private String msg;
     private int code;
-    private String AgreementEN;
-    private String AgreementCH;
+    public Data data;
 
     public String getMsg() {
         return msg;
@@ -35,19 +34,23 @@ public class AgreementResponse {
         this.code = code;
     }
 
-    public String getAgreementEN() {
-        return AgreementEN;
+    public Data getData() {
+        return data;
     }
 
-    public void setAgreementEN(String AgreementEN) {
-        this.AgreementEN = AgreementEN;
+    public void setData(Data data) {
+        this.data = data;
     }
 
-    public String getAgreementCH() {
-        return AgreementCH;
-    }
+    public static class Data {
+        public String agreement;
 
-    public void setAgreementCH(String AgreementCH) {
-        this.AgreementCH = AgreementCH;
+        public String getAgreement() {
+            return agreement;
+        }
+
+        public void setAgreement(String agreement) {
+            this.agreement = agreement;
+        }
     }
 }

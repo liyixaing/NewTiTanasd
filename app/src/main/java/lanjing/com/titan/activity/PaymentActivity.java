@@ -223,6 +223,8 @@ public class PaymentActivity extends MvpActivity<PaymentContact.PaymentPresent> 
             price_usd = response.body().getData().getPrice_usd();
             price_cny = response.body().getData().getPrice_cny();
             price_usdt = response.body().getData().getPrice_usdt();
+        } else if (response.body().getCode() == -10) {
+            ToastUtils.showLongToast(context, getResources().getString(R.string.not_login));
         } else {
             ToastUtils.showLongToast(context, response.body().getMsg());
         }
@@ -247,6 +249,8 @@ public class PaymentActivity extends MvpActivity<PaymentContact.PaymentPresent> 
         if (response.body().getCode() == Constant.SUCCESS_CODE) {
             ToastUtils.showLongToast(context, response.body().getMsg());
             finish();
+        } else if (response.body().getCode() == -10) {
+            ToastUtils.showLongToast(context, getResources().getString(R.string.not_login));
         } else {
             ToastUtils.showLongToast(context, response.body().getMsg());
         }

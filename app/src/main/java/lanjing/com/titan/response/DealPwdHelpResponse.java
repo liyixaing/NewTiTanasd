@@ -13,8 +13,8 @@ public class DealPwdHelpResponse {
      */
 
     private String msg;
-    private String help;
     private int code;
+    public Data data;
 
     public String getMsg() {
         return msg;
@@ -24,14 +24,6 @@ public class DealPwdHelpResponse {
         this.msg = msg;
     }
 
-    public String getHelp() {
-        return help;
-    }
-
-    public void setHelp(String help) {
-        this.help = help;
-    }
-
     public int getCode() {
         return code;
     }
@@ -39,4 +31,26 @@ public class DealPwdHelpResponse {
     public void setCode(int code) {
         this.code = code;
     }
+
+    public Data getData() {
+        return data;
+    }
+
+    public void setData(Data data) {
+        this.data = data;
+    }
+
+    public static class Data {
+        private String help;
+
+        public String getHelp() {
+            return help;
+        }
+
+        public void setHelp(String help) {
+            this.help = help;
+        }
+    }
+
+
 }

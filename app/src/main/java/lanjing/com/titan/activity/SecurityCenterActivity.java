@@ -87,7 +87,7 @@ public class SecurityCenterActivity extends XActivity {
                     tv_Code = changPhoneDialog.getView(R.id.et_code);
                     //判断输入框状态
                     if (tv_Code.length() == 0) {
-                        ToastUtils.showShortToast(context, "请输入验证码");
+                        ToastUtils.showShortToast(context, getResources().getString(R.string.please_verification_code));
                     } else {
                         //当验证码输入框不为空时直接跳转进修改密码
                         Intent intentPhone = new Intent(context, BindingPhoneActivity.class);

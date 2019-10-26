@@ -238,9 +238,8 @@ public class BindingPhoneActivity extends MvpActivity<SetPhoneContact.SetPhonePr
                 String code = edVerificationCode.getText().toString().trim();
                 String oldcode = EtUsedCode.getText().toString().trim();
                 String phonesun = areaCode + edPhone.getText().toString().trim();
-                Log.e("xaioqiang", edPhone.getText().toString());
                 if (ObjectUtils.isEmpty(code) || ObjectUtils.isEmpty(oldcode) || ObjectUtils.isEmpty(phonesun)) {
-                    ToastUtils.showLongToast(context, "验证码或手机号码错误");
+                    ToastUtils.showLongToast(context, getResources().getString(R.string.codeerhome_error));//验证码或手机号码错误
                     return;
                 }
 

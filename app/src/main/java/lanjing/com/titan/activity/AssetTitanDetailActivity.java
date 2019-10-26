@@ -103,11 +103,11 @@ public class AssetTitanDetailActivity extends MvpActivity<BillDetailContact.Bill
     @Override
     public void getBillDeatilResult(Response<BillDetailResponse> response) {
         if (response.body().getCode() == Constant.SUCCESS_CODE) {
-
+            tvTitanType.setText(response.body().getData().getChangeDesc());
             String upAndDown = MoneyUtil.formatFour(response.body().getData().getNum());
             if (response.body().getData().getType().equals("1")) {
                 TvTitleNameId.setTitleText(response.body().getData().getCoinDesc() + getResources().getString(R.string.top_up_c));
-                tvTitanType.setText(getResources().getString(R.string.top_up_c));
+//                tvTitanType.setText(getResources().getString(R.string.top_up_c));
                 ll_transactionID.setVisibility(View.VISIBLE);
                 v_xian_three.setVisibility(View.VISIBLE);
                 tvTitanNum.setText("+" + upAndDown + response.body().getData().getCoinDesc());
@@ -116,7 +116,7 @@ public class AssetTitanDetailActivity extends MvpActivity<BillDetailContact.Bill
             } else if (response.body().getData().getType().equals("2")) {
                 TvTitleNameId.setTitleText(response.body().getData().getCoinDesc() + getResources().getString(R.string.withdraw_c));
                 ll_transactionID.setVisibility(View.VISIBLE);
-                tvTitanType.setText(getResources().getString(R.string.withdraw_c));
+//                tvTitanType.setText(getResources().getString(R.string.withdraw_c));
                 v_xian_three.setVisibility(View.VISIBLE);
                 v_division_one.setVisibility(View.VISIBLE);
                 v_division_tow.setVisibility(View.VISIBLE);

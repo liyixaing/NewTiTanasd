@@ -28,32 +28,8 @@ public class AwardAdapter extends BaseQuickAdapter<CoinLogListResponse.Data, Bas
     @Override
     protected void convert(BaseViewHolder helper, CoinLogListResponse.Data item) {
         int changeType = Integer.parseInt(item.getChangeType());
-        switch (changeType) {
-            case 202:
-                helper.setText(R.id.tv_award_type, R.string.direct_push_trade_gains);//矿层交易获得
-                break;
-            case 203:
-                helper.setText(R.id.tv_award_type, R.string.rank_trading_weight);//矿池交易获得
-                break;
-            case 201:
-                helper.setText(R.id.tv_award_type, R.string.trade_get);//交易获得
-                break;
-            case 103:
-                helper.setText(R.id.tv_award_type, R.string.ore_lv);//空投等级收益
-                break;
-            case 101:
-                helper.setText(R.id.tv_award_type, R.string.airdrop_release);//空投释放
-                break;
-            case 102:
-                helper.setText(R.id.tv_award_type, R.string.ore_root);//空投加权
-                break;
-            case 401:
-                helper.setText(R.id.tv_award_type, R.string.airdrop_matching);//空投加权
-                break;
-            case 501:
-                helper.setText(R.id.tv_award_type, R.string.airdrop_gift);//空投赠送
-                break;
-        }
+        helper.setText(R.id.tv_award_type, item.getChangeDesc());
+
         int changeCoin = Integer.parseInt(item.getChangeCoin());
         switch (changeCoin) {
             case 1:

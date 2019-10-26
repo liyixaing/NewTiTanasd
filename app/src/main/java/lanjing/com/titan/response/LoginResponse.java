@@ -7,17 +7,9 @@ package lanjing.com.titan.response;
 public class LoginResponse {
 
 
-    /**
-     * msg : ok
-     * code : 200
-     * Invitacode :
-     * token : eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1NTc0NjExMDg3NDUsInBheWxvYWQiOiJcIjk1MGQzMDViZjA5MzQ2Yzc5Y2Q4NDQxNTg0MjFiZmJhXCIifQ.FYvWwfatlaJx9tNfbM8jSObm3d1_4VbBqOl6tTPmrCw
-     */
-
     private String msg;
     private int code;
-    private String Invitacode;
-    private String token;
+    public Data data;
 
     public String getMsg() {
         return msg;
@@ -35,19 +27,34 @@ public class LoginResponse {
         this.code = code;
     }
 
-    public String getInvitacode() {
-        return Invitacode;
+    public Data getData() {
+        return data;
     }
 
-    public void setInvitacode(String Invitacode) {
-        this.Invitacode = Invitacode;
+    public void setData(Data data) {
+        this.data = data;
     }
 
-    public String getToken() {
-        return token;
+    public static class Data {
+        private String Invitacode;
+        private String token;
+
+        public String getInvitacode() {
+            return Invitacode;
+        }
+
+        public void setInvitacode(String invitacode) {
+            Invitacode = invitacode;
+        }
+
+        public String getToken() {
+            return token;
+        }
+
+        public void setToken(String token) {
+            this.token = token;
+        }
     }
 
-    public void setToken(String token) {
-        this.token = token;
-    }
+
 }
