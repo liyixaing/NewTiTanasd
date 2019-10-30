@@ -57,7 +57,6 @@ public class BindingPhoneActivity extends MvpActivity<SetPhoneContact.SetPhonePr
         areaCode = "86";
         Oldphone = getIntent().getStringExtra("phone");
         TvHomeSun.setText(Oldphone);
-        Log.e("原手机号码", Oldphone);
         initSpinner();
     }
 

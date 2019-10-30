@@ -64,51 +64,26 @@ public class NoticeActivity extends MvpActivity<InfoNoticeContact.InfoNoticePres
             type = 2;
             TvTitleView.setTitleText(getResources().getString(R.string.committee));
         }
-        Locale locale = getResources().getConfiguration().locale;
-//        if (locale.equals(Locale.SIMPLIFIED_CHINESE)) {
-            mList = new ArrayList<>();
-            mAdapter = new NoticeAdapterCH(R.layout.recy_item_notice_list, mList);
-            LinearLayoutManager manager = new LinearLayoutManager(context);
-            rv.setLayoutManager(manager);
-            rv.setAdapter(mAdapter);
-            mPresent.notice(context, String.valueOf(page), String.valueOf(pageSize), stringExtra);
+        mList = new ArrayList<>();
+        mAdapter = new NoticeAdapterCH(R.layout.recy_item_notice_list, mList);
+        LinearLayoutManager manager = new LinearLayoutManager(context);
+        rv.setLayoutManager(manager);
+        rv.setAdapter(mAdapter);
+        mPresent.notice(context, String.valueOf(page), String.valueOf(pageSize), stringExtra);
 
-            mAdapter.setOnItemChildClickListener(new NoticeAdapterCH.OnItemChildClickListener() {
+        mAdapter.setOnItemChildClickListener(new NoticeAdapterCH.OnItemChildClickListener() {
 
-                @Override
-                public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
-                    Intent intent = new Intent(context, NoticeDetailActivity.class);
-                    intent.putExtra("title", mList.get(position).getTitle());
-                    intent.putExtra("content", mList.get(position).getComtent());
-                    intent.putExtra("time", mList.get(position).getCreatetime());
-                    intent.putExtra("team", mList.get(position).getUname());
-                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS);
-                    startActivity(intent);
-                }
-            });
-//        } else if (locale.equals(Locale.ENGLISH)) {
-//            mListEn = new ArrayList<>();
-//            mAdapterEn = new NoticeAdapterEN(R.layout.recy_item_notice_list, mListEn);
-//            LinearLayoutManager manager = new LinearLayoutManager(context);
-//            rv.setLayoutManager(manager);
-//            rv.setAdapter(mAdapterEn);
-//            mPresent.notice(context, String.valueOf(page), String.valueOf(pageSize), stringExtra);
-//            mAdapterEn.setOnItemChildClickListener(new NoticeAdapterCH.OnItemChildClickListener() {
-//
-//                @Override
-//                public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
-//                    Intent intent = new Intent(context, NoticeDetailActivity.class);
-//                    intent.putExtra("title", mListEn.get(position).getTitle());
-//                    intent.putExtra("content", mListEn.get(position).getComtent());
-//                    intent.putExtra("time", mListEn.get(position).getCreatetime());
-//                    intent.putExtra("team", mListEn.get(position).getUname());
-//                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS);
-//                    startActivity(intent);
-//                }
-//            });
-//        }
-
-
+            @Override
+            public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
+                Intent intent = new Intent(context, NoticeDetailActivity.class);
+                intent.putExtra("title", mList.get(position).getTitle());
+                intent.putExtra("content", mList.get(position).getComtent());
+                intent.putExtra("time", mList.get(position).getCreatetime());
+                intent.putExtra("team", mList.get(position).getUname());
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS);
+                startActivity(intent);
+            }
+        });
         refresh.setOnRefreshListener(refreshLayout -> {
             page = 1;
             mPresent.notice(context, String.valueOf(page), String.valueOf(pageSize), stringExtra);
@@ -125,7 +100,6 @@ public class NoticeActivity extends MvpActivity<InfoNoticeContact.InfoNoticePres
         return R.layout.activity_notice;
     }
 
-
     @Override
     protected InfoNoticeContact.InfoNoticePresent createPresent() {
         return new InfoNoticeContact.InfoNoticePresent();
@@ -133,62 +107,40 @@ public class NoticeActivity extends MvpActivity<InfoNoticeContact.InfoNoticePres
 
     @Override
     public void getInformationResult(Response<InfoNoticeResponse> response) {
-
+        if (response.body().getCode() == Constant.SUCCESS_CODE) {
+            ToastUtils.showLongToast(context, response.body().getMsg());
+        } else {
+            ToastUtils.showLongToast(context, response.body().getMsg());
+        }
     }
 
     List<InfoNoticeResponse.Data.Informationlist> data;
-    List<InfoNoticeResponse.Data.Informationlist> dataEn;
 
     @Override
     public void getNoticeResult(Response<InfoNoticeResponse> response) {
         refresh.finishRefresh();
         refresh.finishLoadMore();
         if (response.body().getCode() == Constant.SUCCESS_CODE) {
-            Locale locale = getResources().getConfiguration().locale;
-//            if (locale.equals(Locale.SIMPLIFIED_CHINESE)) {
-                if (page == 1) {
-                    mList.clear();
-                    mAdapter.notifyDataSetChanged();
-                }
-                data = response.body().getData().getInformationlist();
-                if (!ObjectUtils.isEmpty(data)) {
-                    rvNormalShow.setVisibility(View.GONE);
-                    mList.addAll(data);
-                    mAdapter.notifyDataSetChanged();
-                    runLayoutAnimation(rv);
-                    if (data != null && data.size() == pageSize) {
-                        refresh.setEnableLoadMore(true);
-                    } else {
-                        refresh.setEnableLoadMore(false);
-                    }
-                    rv.setVisibility(View.VISIBLE);
+            if (page == 1) {
+                mList.clear();
+                mAdapter.notifyDataSetChanged();
+            }
+            data = response.body().getData().getInformationlist();
+            if (!ObjectUtils.isEmpty(data)) {
+                rvNormalShow.setVisibility(View.GONE);
+                mList.addAll(data);
+                mAdapter.notifyDataSetChanged();
+                runLayoutAnimation(rv);
+                if (data != null && data.size() == pageSize) {
+                    refresh.setEnableLoadMore(true);
                 } else {
-                    rvNormalShow.setVisibility(View.VISIBLE);
-                    rv.setVisibility(View.GONE);
+                    refresh.setEnableLoadMore(false);
                 }
-//            } else if (locale.equals(Locale.ENGLISH)) {
-//                if (page == 1) {
-//                    mListEn.clear();
-//                    mAdapterEn.notifyDataSetChanged();
-//                }
-//                dataEn = response.body().getData().getInformationlist();
-//                if (!ObjectUtils.isEmpty(dataEn)) {
-//                    rvNormalShow.setVisibility(View.GONE);
-//                    mListEn.addAll(dataEn);
-//                    mAdapterEn.notifyDataSetChanged();
-//                    runLayoutAnimation(rv);
-//                    if (dataEn != null && dataEn.size() == pageSize) {
-//                        refresh.setEnableLoadMore(true);
-//                    } else {
-//                        refresh.setEnableLoadMore(false);
-//                    }
-//                    rv.setVisibility(View.VISIBLE);
-//                } else {
-//                    rvNormalShow.setVisibility(View.VISIBLE);
-//                    rv.setVisibility(View.GONE);
-//                }
-//            }
-
+                rv.setVisibility(View.VISIBLE);
+            } else {
+                rvNormalShow.setVisibility(View.VISIBLE);
+                rv.setVisibility(View.GONE);
+            }
 
         } else if (response.body().getCode() == -10) {
             ToastUtils.showShortToast(context, getResources().getString(R.string.not_login));

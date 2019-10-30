@@ -69,32 +69,19 @@ public class TransferDetailsActivity extends MvpActivity<TransferDetailsContact.
             tv_titan_type.setText(response.body().getData().getChangeDesc());
             if (response.body().getData().getChangeType().equals("25")) {//转出单
                 tv_titan_num.setText("-" + MoneyUtil.formatFouras(response.body().getData().getTransferCoinAmount())
-                        +"\r"+ response.body().getData().getTransferCoinName());
-
-//                tv_titan_type.setText(getResources().getString(R.string.turn_out));//转出类型
-
+                        + "\r" + response.body().getData().getTransferCoinName());
                 tv_target.setText(getResources().getString(R.string.Recipient_ID));//显示来源id提示语
-
                 tv_ource_address.setText(response.body().getData().getToUser());//来源id
-
                 tv_titan_time.setText(DateUtils.timedate(response.body().getData().getCreateTime()));//时间
-
             } else if (response.body().getData().getChangeType().equals("15")) {
                 tv_titan_num.setText("+" + MoneyUtil.formatFouras(response.body().getData().getTransferCoinAmount())
-                        +"\r"+response.body().getData().getTransferCoinName());
-
-//                tv_titan_type.setText(getResources().getString(R.string.turn_put));//转入类型
-
+                        + "\r" + response.body().getData().getTransferCoinName());
                 tv_target.setText(getResources().getString(R.string.Source_ID));//显示接收id提示语
-
                 tv_ource_address.setText(response.body().getData().getFromUser());//接收id
-
                 tv_titan_time.setText(DateUtils.timedate(response.body().getData().getCreateTime()));//时间
             }
-
         } else {
             ToastUtils.showLongToast(context, response.body().getMsg());
         }
-
     }
 }

@@ -188,20 +188,14 @@ public class PersonalActivity extends MvpActivity<PersonDataChangeContact.Person
      */
     private void displayImage(String imagePath, ImageView iv) {
         if (!TextUtils.isEmpty(imagePath)) {
-            //orc_bitmap = BitmapFactory.decodeFile(imagePath);//获取图片
             orc_bitmap = CameraUtils.comp(BitmapFactory.decodeFile(imagePath)); //压缩图片
-
             base64Pic = BitmapUtils.bitmapToBase64(orc_bitmap);
-
             RequestOptions mRequestOptions = RequestOptions.circleCropTransform()
                     .diskCacheStrategy(DiskCacheStrategy.NONE)//不做磁盘缓存
                     .skipMemoryCache(true);//不做内存缓存
             Glide.with(context).load(base64Pic).apply(mRequestOptions).into(headPic);
-
             CameraUtils.ImgUpdateDirection(imagePath, orc_bitmap, iv);//显示图片,并且判断图片显示的方向,如果不正就放正
-
             mPresent.modifyHead(context, base64Pic, "1");
-
         } else {
             ToastUtils.showLongToast(this, getResources().getString(R.string.image_acquisition_failed));
         }
@@ -272,7 +266,6 @@ public class PersonalActivity extends MvpActivity<PersonDataChangeContact.Person
         if (response.body().getCode() == Constant.SUCCESS_CODE) {
             ToastUtils.showShortToast(context, response.body().getMsg());
         } else if (response.body().getCode() == -10) {
-//            ToastUtils.showShortToast(context, );
         } else {
             ToastUtils.showShortToast(context, response.body().getMsg());
         }

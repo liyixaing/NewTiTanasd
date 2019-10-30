@@ -175,7 +175,6 @@ public class WalletListActivity extends MvpActivity<WalletContact.WalletPresent>
     private SwipeMenuCreator swipeMenuCreator = new SwipeMenuCreator() {
         @Override
         public void onCreateMenu(SwipeMenu swipeLeftMenu, SwipeMenu swipeRightMenu, int viewType) {
-//            token = mList.get(viewType).getToken();
             SwipeMenuItem deleteItem = new SwipeMenuItem(context)
                     .setBackgroundColor(getResources().getColor(R.color.red)) // 背景颜色
                     .setText(R.string.delete) // 文字。
@@ -287,9 +286,4 @@ public class WalletListActivity extends MvpActivity<WalletContact.WalletPresent>
         Intent intent = new Intent(context, ImportNewWalletActivity.class);
         startActivity(intent);
     }
-
-//    else if(response.body().getCode() == LOG_BACK_IN){
-//        Intent intent = new Intent(context,LoginActivity.class);
-//        startActivity(intent);
-//    }
 }

@@ -58,7 +58,6 @@ public class PaymentActivity extends MvpActivity<PaymentContact.PaymentPresent> 
     int i;
     String num;
     int coin = 1;
-    //定义一个int类型用来判断选择CNY还是选择usd
     int type = 0;//0为cny 1为usd
 
     String price_usd;//USD汇率

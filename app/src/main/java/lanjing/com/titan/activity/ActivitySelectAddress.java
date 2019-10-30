@@ -197,8 +197,6 @@ public class ActivitySelectAddress extends MvpActivity<SelectAddressContact.Sele
         } else {
             ToastUtils.showShortToast(context, response.body().getMsg());
         }
-
-
     }
 
     @Override

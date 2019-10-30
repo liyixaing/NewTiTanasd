@@ -205,12 +205,10 @@ public class SplashActivity extends MvpActivity<LoginContact.LoginPresent> imple
                 .setContentView(R.layout.dialog_language)
                 .setWidthAndHeight(SizeUtils.dp2px(context, 223), SizeUtils.dp2px(context, 81))
                 .setOnClickListener(R.id.tv_one, v -> {
-//                    languageText.setText(getResources().getString(R.string.simplified_chinese));//切换中文
                     selectLanguage(1);
                     Constant.LANGAGE = 0;
                     typeDialog.dismiss();
                 }).setOnClickListener(R.id.tv_two, v -> {
-//                    languageText.setText("English");//切换英语
                     selectLanguage(2);
                     Constant.LANGAGE = 1;
                     typeDialog.dismiss();
@@ -310,7 +308,6 @@ public class SplashActivity extends MvpActivity<LoginContact.LoginPresent> imple
     public void getupdateAppResult(Response<VersionResponse> response) {
         if (response.body().getCode() == Constant.SUCCESS_CODE) {
             //参数正确不做处理
-            Log.e("返回200", "200");
         } else if (response.body().getCode() == 201) {
             int systemCode = Integer.parseInt(response.body().getData().getVersioncode());
             if (systemCode > versionCode) {

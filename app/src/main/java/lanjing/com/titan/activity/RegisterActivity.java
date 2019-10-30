@@ -110,7 +110,6 @@ public class RegisterActivity extends MvpActivity<RegisterContact.RegisterPresen
     protected RegisterContact.RegisterPresent createPresent() {
         return new RegisterContact.RegisterPresent();
     }
-
     //注册返回
     @Override
     public void getRegisterResult(Response<RegisterResponse> response) {
@@ -129,7 +128,6 @@ public class RegisterActivity extends MvpActivity<RegisterContact.RegisterPresen
             ToastUtils.showShortToast(context, response.body().getMsg());
         }
     }
-
     @Override
     public void getDataFailed() {
         ToastUtils.showShortToast(context, getResources().getString(R.string.network_error));

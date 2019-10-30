@@ -88,7 +88,6 @@ public class ResetInformationActivity extends MvpActivity<ImportWalletSetPwdCont
                 if (validate(logPwd,comfirmLogPwd,dealPwd,comfirmDealPwd))
                     return;
                 showLoadingDialog();
-//                mPresent.importWalletSetPwd(context,Integer.parseInt(userId),logPwd,dealPwd);
                 break;
         }
     }

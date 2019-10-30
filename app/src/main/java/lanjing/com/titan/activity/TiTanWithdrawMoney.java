@@ -61,18 +61,15 @@ public class TiTanWithdrawMoney extends MvpActivity<getTransferContact.getTransf
         if (id.equals("0")) {
             //参数为0 不做处理
         } else {
-            Log.e("xiaqoiang", id);
             mPresent.Transfer(context, id);
         }
         initInput();
     }
 
-
     @Override
     public int getLayoutId() {
         return R.layout.activity_withdraw_money;
     }
-
 
     @Override
     public void getTransferstaster(Response<getTransferResponse> response) {
@@ -87,7 +84,6 @@ public class TiTanWithdrawMoney extends MvpActivity<getTransferContact.getTransf
         } else {
             ToastUtils.showShortToast(context, response.body().getMsg());
         }
-
     }
 
     @Override

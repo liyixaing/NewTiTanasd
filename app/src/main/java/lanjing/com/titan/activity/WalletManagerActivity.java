@@ -66,7 +66,6 @@ public class WalletManagerActivity extends MvpActivity<ExportContact.ExportPrese
                 .setOnClickListener(R.id.tx_sure, v -> {//设置点击事件
                     EditText dealPwd = pwdHelpDialog.getView(R.id.ed_deal_pwd);
                     String pwd = dealPwd.getText().toString();
-//                    pwd = Md5Utils.MD5(pwd).toUpperCase();
                     showLoadingDialog();
                     mPresent.exportHelp(context, pwd, Constant.Auxiliaries);
                     pwdHelpDialog.dismiss();
@@ -87,7 +86,6 @@ public class WalletManagerActivity extends MvpActivity<ExportContact.ExportPrese
                 .setOnClickListener(R.id.tx_sure, v -> {//设置点击事件
                     EditText dealPwd = pwdHelpDialog.getView(R.id.ed_deal_pwd);
                     String pwd = dealPwd.getText().toString();
-//                    pwd = Md5Utils.MD5(pwd).toUpperCase();
                     showLoadingDialog();
                     mPresent.exportKey(context, pwd, Constant.Privatekey);
                     pwdHelpDialog.dismiss();

@@ -50,34 +50,10 @@ public class LoginActivity extends MvpActivity<LoginContact.LoginPresent> implem
 
     @Override
     public void initData(Bundle savedInstanceState) {
-
-//        SharedPreferences pref = getSharedPreferences("first_pref", MODE_PRIVATE);
-//        SharedPreferences.Editor editor = pref.edit();
-//        editor.putBoolean("isFirstIn", false);
-//        editor.commit();
-
-
         sb.setOnSeekBarChangeListener(this);
-
         adminNo = Settings.System.getString(context.getContentResolver(), Settings.System.ANDROID_ID);
-
         SPUtils.putString(Constant.DEVICE_ID, adminNo, context);
-
-
-//        final String text = "登录中";
-//        lt = new LoadToast(this)
-//                .setProgressColor(Color.RED)
-//                .setText(text)
-//                .setTranslationY(100)
-//                .setBorderColor(Color.LTGRAY);
-//
-//        //lt.success();
-//        final ViewGroup root = (ViewGroup) findViewById(android.R.id.content);
-//
-//        View v = new View(this);
-//        v.setBackgroundColor(Color.RED);
     }
-
 
     @Override
     public int getLayoutId() {
@@ -105,10 +81,7 @@ public class LoginActivity extends MvpActivity<LoginContact.LoginPresent> implem
                     ToastUtils.showShortToast(context, getResources().getString(R.string.please_right_validation));
                     return;
                 }
-
-
                 showLoadingDialog();
-//                lt.show();
                 String device = SPUtils.getString(Constant.DEVICE_ID, "", context);
                 mPresent.login(context, userName, loginPwd, device);
                 break;
@@ -198,13 +171,6 @@ public class LoginActivity extends MvpActivity<LoginContact.LoginPresent> implem
                 startActivity(intent);
                 return;
             }
-//            if(response.body().getData().getPhonenum().equals("")){
-//                Intent intent = new Intent(context, RegisterBindingPhoneActivity.class);
-//                intent.putExtra("code",inviteCode);
-//                startActivity(intent);
-//                return;
-//            }
-
             if (inviteCode.equals("")) {
                 Intent intent = new Intent(context, ImportWalletBindActivity.class);
                 startActivity(intent);
@@ -214,7 +180,6 @@ public class LoginActivity extends MvpActivity<LoginContact.LoginPresent> implem
             startActivity(intent);
             finish();
         } else {
-            //英文版输出中文的原因是输出的是接口中的massage消息
             ToastUtils.showShortToast(context, response.body().getMsg());
         }
     }
@@ -228,7 +193,6 @@ public class LoginActivity extends MvpActivity<LoginContact.LoginPresent> implem
     public void getDataFailed() {
         ToastUtils.showShortToast(context, getResources().getString(R.string.network_error));
         dismissLoadingDialog();
-//        lt.error();
     }
 
     private long timeMillis;

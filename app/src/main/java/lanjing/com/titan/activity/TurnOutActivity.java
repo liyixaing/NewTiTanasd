@@ -56,7 +56,6 @@ public class TurnOutActivity extends MvpActivity<TurnOutContact.ETurnOutPresent>
         tv_num.setText(sun);
         i = sun.indexOf(".");
         initInput();
-        //mPresent.Convert(context, Integer.parseInt(coin));
     }
 
     @Override

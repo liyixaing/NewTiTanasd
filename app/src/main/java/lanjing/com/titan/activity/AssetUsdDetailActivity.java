@@ -47,7 +47,7 @@ public class AssetUsdDetailActivity extends MvpActivity<BillDetailContact.BillDe
             tvUsdType.setText(R.string.sell);
             TvTitleType.setTitleText("USD "+getResources().getString(R.string.sell));
         } else {
-            tvUsdType.setText("其他");
+            tvUsdType.setText(getResources().getString(R.string.others));
         }
         mPresent.billDetail(context, id);
     }

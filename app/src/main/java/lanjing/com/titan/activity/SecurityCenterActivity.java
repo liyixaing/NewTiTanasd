@@ -142,7 +142,6 @@ public class SecurityCenterActivity extends XActivity {
         switch (view.getId()) {
             case R.id.tv_phone://绑定手机号
                 if (phone != null) {
-//                    showChangPhoneDialog();//弹出选择框
                     Intent intentPhone = new Intent(context, BindingPhoneActivity.class);
                     intentPhone.putExtra("phone", phone);
                     startActivity(intentPhone);

@@ -143,17 +143,12 @@ public class RegisterBindingPhoneActivity extends MvpActivity<SetPhoneContact.Se
                 Intent intent = new Intent(context, ImportWalletBindActivity.class);
                 startActivity(intent);
                 finish();
-//                return;
             } else {//反之则进入首页面
                 Intent intent = new Intent(context, MainActivity.class);
                 startActivity(intent);
                 return;
 
             }
-
-//            Intent intent = new Intent(context, ResetInformationActivity.class);
-//            intent.putExtra("userId", response.body().getUserId());
-//            startActivity(intent);
 
         } else if (response.body().getCode() == -10) {
             ToastUtils.showShortToast(context, getResources().getString(R.string.not_login));
