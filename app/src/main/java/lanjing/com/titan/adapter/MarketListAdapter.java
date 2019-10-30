@@ -1,6 +1,5 @@
 package lanjing.com.titan.adapter;
 
-import android.graphics.Color;
 import android.support.annotation.Nullable;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
@@ -9,7 +8,6 @@ import com.chad.library.adapter.base.BaseViewHolder;
 import java.util.List;
 
 import lanjing.com.titan.R;
-import lanjing.com.titan.response.FriendListResponse;
 import lanjing.com.titan.response.MarketListResponse;
 import lanjing.com.titan.util.MoneyUtil;
 

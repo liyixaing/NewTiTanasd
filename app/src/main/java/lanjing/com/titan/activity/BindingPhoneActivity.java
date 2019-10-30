@@ -70,7 +70,6 @@ public class BindingPhoneActivity extends MvpActivity<SetPhoneContact.SetPhonePr
         return new SetPhoneContact.SetPhonePresent();
     }
 
-
     private void initSpinner() {
         spinner1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -149,9 +148,6 @@ public class BindingPhoneActivity extends MvpActivity<SetPhoneContact.SetPhonePr
             BusFactory.getBus().post(new EventImpl.UpdatePhoneEvent());
             startActivity(intent);
 
-//            Intent intent = new Intent(context, ResetInformationActivity.class);
-//            intent.putExtra("userId", response.body().getUserId());
-//            startActivity(intent);
             finish();
         } else if (response.body().getCode() == -10) {
             ToastUtils.showShortToast(context, getResources().getString(R.string.not_login));
@@ -167,16 +163,8 @@ public class BindingPhoneActivity extends MvpActivity<SetPhoneContact.SetPhonePr
         if (response.body().getCode() == Constant.SUCCESS_CODE) {
             ToastUtils.showShortToast(context, getResources().getString(R.string.binding_success_tip));
             SPUtils.putString(Constant.PHONE, edPhone.getText().toString().trim(), context);
-//            Intent intent = new Intent(context, SecurityCenterActivity.class);
-//            BusFactory.getBus().post(new EventImpl.UpdatePhoneEvent());
-//            startActivity(intent);
             Intent newIntent = new Intent(context, MainActivity.class);
             startActivity(newIntent);
-
-//            Intent intent = new Intent(context, ResetInformationActivity.class);
-//            intent.putExtra("userId", response.body().getUserId());
-//            startActivity(intent);
-
         } else if (response.body().getCode() == -10) {
             ToastUtils.showShortToast(context, getResources().getString(R.string.not_login));
             dismissLoadingDialog();
@@ -241,7 +229,6 @@ public class BindingPhoneActivity extends MvpActivity<SetPhoneContact.SetPhonePr
                     ToastUtils.showLongToast(context, getResources().getString(R.string.codeerhome_error));//验证码或手机号码错误
                     return;
                 }
-
                 showLoadingDialog();
                 mPresent.setnewPhone(context, Oldphone, oldcode, phonesun, code);
                 break;

@@ -17,7 +17,6 @@ import lanjing.com.titan.util.DateUtils;
 import lanjing.com.titan.util.MoneyUtil;
 
 /**
- * extends BaseQuickAdapter<WalletDetailResponse.History2Bean, BaseViewHolder>
  * Created by chenxi on 2019/5/10.
  * TITANC  列表数据适配器
  */
@@ -31,14 +30,11 @@ public class CoinTitancAdapter extends BaseQuickAdapter<HistoryListResponse.mDat
     protected void convert(BaseViewHolder helper, HistoryListResponse.mData item) {
         String time = DateUtils.timedate(item.getChangeTime());
         LinearLayout titanc_item = helper.getView(R.id.ll_all);
-        int changeType = Integer.parseInt(item.getChangeType());
         String type;
         String sum = "";
         if (item.getChangeAmount() > 0) {
-            type = "Qty";
             sum = "+" + MoneyUtil.formatFour(String.valueOf(item.getChangeAmount()));
         } else {
-            type = "Qty";
             sum = MoneyUtil.formatFour(String.valueOf(item.getChangeAmount()));
         }
         helper.setText(R.id.tv_titanc_type, item.getChangeDesc());

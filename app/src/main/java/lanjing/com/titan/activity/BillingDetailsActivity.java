@@ -53,7 +53,6 @@ public class BillingDetailsActivity extends XActivity {
             }
         });
         rg.getChildAt(0).performClick();
-
     }
 
     @Override
@@ -69,7 +68,6 @@ public class BillingDetailsActivity extends XActivity {
         if (showFragment != null) {
             fragmentTransaction.hide(showFragment);
         }
-
         Fragment mFragment = fragmentManager.findFragmentByTag(tag);
         if (mFragment != null) {
             fragmentTransaction.show(mFragment);
@@ -77,7 +75,6 @@ public class BillingDetailsActivity extends XActivity {
             mFragment = fragment;
             fragmentTransaction.add(resid, mFragment, tag);
         }
-
         showFragment = mFragment;
         fragmentTransaction.commit();
     }

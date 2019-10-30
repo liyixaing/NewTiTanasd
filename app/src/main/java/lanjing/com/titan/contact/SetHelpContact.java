@@ -4,7 +4,9 @@ import android.content.Context;
 
 import com.lxh.baselibray.mvp.BasePresent;
 import com.lxh.baselibray.mvp.IBaseView;
+
 import lanjing.com.titan.net.NetCallBack;
+
 import com.lxh.baselibray.net.ServiceGenerator;
 
 import lanjing.com.titan.api.ApiService;
@@ -44,7 +46,7 @@ public class SetHelpContact {
 
     public interface ISetHelpView extends IBaseView {
         void getSetHelpResult(Response<SetHelpResponse> response);
-//        void getRegisterAgreementResult(Response<RegisterAgreementResponse> response);
+
         void getDataFailed();
 
     }

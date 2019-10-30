@@ -75,10 +75,8 @@ public class HistoryEntrustAdapter extends BaseQuickAdapter<EntrustListResponse.
         }
         if (item.getSourceCoin() == 1) {
             helper.setText(R.id.tv_num_type, R.string.buy_usd_num_a);//获得TITAN数量
-//            helper.setText(R.id.tv_num_type, "TITAN单价");
         } else if (item.getSourceCoin() == 5) {
             helper.setText(R.id.tv_num_type, R.string.sell_titan_num_a);//获得USD数量
-//            helper.setText(R.id.tv_num_type, "BAR单价");
         }
 
         helper.setText(R.id.tv_entrust_num, MoneyUtil.priceFormatDoubleFour(item.getPrice()))

@@ -38,7 +38,7 @@ public class AgreementActivity extends MvpActivity<AgreementContact.AgreementPre
         mPresent.getAgreement(context);
         WebSettings webSettings = webView.getSettings();
         webSettings.setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
-//                设置缓存
+        //设置缓存
         webSettings.setJavaScriptEnabled(true);
         webView.setWebViewClient(new WebViewClient() {
             @Override
@@ -47,7 +47,6 @@ public class AgreementActivity extends MvpActivity<AgreementContact.AgreementPre
                 return true;
             }
         });
-
         webView.setWebChromeClient(new WebChromeClient() {
             @Override
             public void onProgressChanged(WebView view, int newProgress) {
@@ -59,7 +58,6 @@ public class AgreementActivity extends MvpActivity<AgreementContact.AgreementPre
                 }
             }
         });
-//        webView.loadUrl(url);
     }
 
     @Override
@@ -76,12 +74,7 @@ public class AgreementActivity extends MvpActivity<AgreementContact.AgreementPre
     public void getAgreementResult(Response<AgreementResponse> response) {
         dismissLoadingDialog();
         if (response.body().getCode() == Constant.SUCCESS_CODE) {
-//            url = response.body().getData().getAgreement();
             webView.loadUrl(response.body().getData().getAgreement());
-//            if (locale.equals(Locale.SIMPLIFIED_CHINESE)) {
-//            } else if (locale.equals(Locale.ENGLISH)) {
-//                webView.loadUrl(response.body().getData().getAgreement());
-//            }
         } else if (response.body().getCode() == -10) {
             ToastUtils.showShortToast(context, getResources().getString(R.string.not_login));
         } else {

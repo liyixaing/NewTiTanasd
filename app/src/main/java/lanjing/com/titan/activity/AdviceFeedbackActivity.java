@@ -216,7 +216,6 @@ public class AdviceFeedbackActivity extends MvpActivity<FeedbackContact.Feedback
                 image3 = base64Pic;
             }
             CameraUtils.ImgUpdateDirection(imagePath, orc_bitmap, iv);//显示图片,并且判断图片显示的方向,如果不正就放正
-            Log.e("图片路径", imagePath);
         } else {
             ToastUtils.showLongToast(this, getResources().getString(R.string.image_acquisition_failed));
         }
@@ -243,20 +242,17 @@ public class AdviceFeedbackActivity extends MvpActivity<FeedbackContact.Feedback
                         RlDeltOne.setVisibility(View.VISIBLE);//显示删除图片
                         IvImageOne.setVisibility(View.GONE);//隐藏加号图标
                         displayImage(imagePath, IvFeedbackOne);
-//                        mPresent.uploadImage(context, base64Pic, types);//上传图片
                     } else if (type == 2) {
 
                         IvFeedbackTow.setVisibility(View.VISIBLE);//显示选择图片
                         RlDeltTow.setVisibility(View.VISIBLE);//显示删除图片
                         IvImageTow.setVisibility(View.GONE);//隐藏加号图标
                         displayImage(imagePath, IvFeedbackTow);
-//                        mPresent.uploadImage(context, base64Pic, types);//上传图片
                     } else if (type == 3) {
                         IvFeedbackThree.setVisibility(View.VISIBLE);//显示选择图片
                         RlDeltThree.setVisibility(View.VISIBLE);//显示删除图片
                         IvImageThree.setVisibility(View.GONE);//隐藏加号图标
                         displayImage(imagePath, IvFeedbackThree);
-//                        mPresent.uploadImage(context, base64Pic, types);//上传图片
                     }
                 }
                 break;
@@ -265,10 +261,7 @@ public class AdviceFeedbackActivity extends MvpActivity<FeedbackContact.Feedback
         }
     }
 
-    /*
-     * 或许每个人心底都有一个难以磨灭的名字
-     */
-
+    //或许每个人心底都有一个难以磨灭的名字
     //限制输入文本内容
     public static void setEditTextInhibitInputSpeChat(EditText editText) {
         InputFilter filter = new InputFilter() {
@@ -282,7 +275,6 @@ public class AdviceFeedbackActivity extends MvpActivity<FeedbackContact.Feedback
             }
         };
         editText.setFilters(new InputFilter[]{filter});
-
     }
 
     @Override
@@ -310,9 +302,7 @@ public class AdviceFeedbackActivity extends MvpActivity<FeedbackContact.Feedback
         if (response.body().getCode() == Constant.SUCCESS_CODE) {
         } else {
             ToastUtils.showLongToast(context, response.body().getMsg());
-
         }
-
     }
 
     //删除图片返回执行
@@ -322,12 +312,10 @@ public class AdviceFeedbackActivity extends MvpActivity<FeedbackContact.Feedback
         } else {
             ToastUtils.showLongToast(context, response.body().getMsg());
         }
-
     }
 
     @Override
     public void getDataFailed() {
         ToastUtils.showShortToast(context, getResources().getString(R.string.network_error));
     }
-
 }

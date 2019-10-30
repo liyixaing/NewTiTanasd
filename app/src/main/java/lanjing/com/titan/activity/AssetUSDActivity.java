@@ -116,8 +116,6 @@ public class AssetUSDActivity extends MvpActivity<WalletDetailContact.WalletDeta
         return new WalletDetailContact.WalletDetailPresent();
     }
 
-//    List<WalletDetailResponse.HistoryBean> data;
-
     @Override
     public void getWalletDeatilResult(Response<WalletDetailResponse> response) {
         refresh.finishRefresh();
@@ -132,7 +130,6 @@ public class AssetUSDActivity extends MvpActivity<WalletDetailContact.WalletDeta
             ToastUtils.showShortToast(context, response.body().getMsg());
         }
     }
-
 
     List<HistoryListResponse.mData> data;
 
@@ -150,7 +147,6 @@ public class AssetUSDActivity extends MvpActivity<WalletDetailContact.WalletDeta
                 rvNormalShow.setVisibility(View.GONE);
                 mList.clear();
                 mList.addAll(data);
-//                mAdapter.notifyDataSetChanged();
                 RecyclerViewAnimation.runLayoutAnimation(rv);//动画显示
                 if (data != null && data.size() >= pageSize) {
                     refresh.setEnableLoadMore(true);
@@ -240,6 +236,4 @@ public class AssetUSDActivity extends MvpActivity<WalletDetailContact.WalletDeta
                 break;
         }
     }
-
-
 }

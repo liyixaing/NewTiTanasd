@@ -106,7 +106,6 @@ public class FeedbackDetailActivity extends MvpActivity<FeedbackDetaiContact.Fee
 
     }
 
-
     @Override
     protected FeedbackDetaiContact.FeedbackDetaiPresent createPresent() {
         return new FeedbackDetaiContact.FeedbackDetaiPresent();
@@ -159,8 +158,6 @@ public class FeedbackDetailActivity extends MvpActivity<FeedbackDetaiContact.Fee
         tvTitles.setText(response.body().getData().getTitle());//标题
         tvContent.setText(response.body().getData().getContent());//内容
         tvAnswer.setText(response.body().getData().getReply());
-
-
     }
 
     @Override

@@ -4,7 +4,9 @@ import android.content.Context;
 
 import com.lxh.baselibray.mvp.BasePresent;
 import com.lxh.baselibray.mvp.IBaseView;
+
 import lanjing.com.titan.net.NetCallBack;
+
 import com.lxh.baselibray.net.ServiceGenerator;
 import com.lxh.baselibray.util.Md5Utils;
 
@@ -41,12 +43,11 @@ public class RegisterContact {
         }
 
 
-
     }
 
     public interface IRegisterView extends IBaseView {
         void getRegisterResult(Response<RegisterResponse> response);
-//        void getRegisterAgreementResult(Response<RegisterAgreementResponse> response);
+
         void getDataFailed();
 
     }

@@ -140,7 +140,6 @@ public class WalletFragment extends MvpFragment<WalletDataContact.WalletDataPres
         versionCode = APKVersionCodeUtils.getVersionCode(context);
         mPresent.notice(context, String.valueOf(page), String.valueOf(pageSize));
         mPresent.updateApp(context, 1, versionCode);
-//        initUpdate();
         mPresent.walletData(context);
         mPresent.person(context);
         tvWalletName.setText(SPUtils.getString(Constant.WALLET_NAME, null, context));
@@ -474,15 +473,6 @@ public class WalletFragment extends MvpFragment<WalletDataContact.WalletDataPres
             ToastUtils.showShortToast(context, response.body().getMsg());
         }
     }
-
-
-    /**
-     * dialog_activation.xml 输入界面
-     * dialog_automatic.xml  未激活用户抢到激活码
-     * dialog_free.xml  已激活用抢到激活码
-     * dialog_grab_tomorrow.xml 开始抢名额
-     * dialog_replication_activation.xml 名额已抢完
-     */
 
     //弹出 账号激活码的输入框
     AlertDialog ActivationDialog = null;

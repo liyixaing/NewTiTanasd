@@ -25,7 +25,6 @@ public class FeedbackListAdapter extends BaseQuickAdapter<FeedbackListResponse.D
 
 
         helper.setText(R.id.tv_title,item.getTitle());
-//                .setText(R.id.tv_create_time,item.getCreatetime());
         int state = item.getState();
         if (state ==0){
             helper.setVisible(R.id.red_lay, false);

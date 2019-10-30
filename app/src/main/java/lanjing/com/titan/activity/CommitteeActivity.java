@@ -1,15 +1,12 @@
 package lanjing.com.titan.activity;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
-import com.lxh.baselibray.base.XActivity;
 import com.lxh.baselibray.mvp.MvpActivity;
 import com.lxh.baselibray.util.ObjectUtils;
 import com.lxh.baselibray.util.ToastUtils;
@@ -40,10 +37,7 @@ public class CommitteeActivity extends MvpActivity<GovernanceContact.GovernanceC
     RecyclerView recyclerView;
     @BindView(R.id.refresh)
     SmartRefreshLayout refresh;
-
-
     List<InformationResponse.DataCH> mList;
-
     int type = 3;//委员会类型固定为3
     int page = 1;
     int pageSize = 10;
@@ -72,7 +66,6 @@ public class CommitteeActivity extends MvpActivity<GovernanceContact.GovernanceC
     public int getLayoutId() {
         return R.layout.activity_committee;
     }
-
 
     @Override
     protected GovernanceContact.GovernanceCommittee createPresent() {
@@ -109,8 +102,6 @@ public class CommitteeActivity extends MvpActivity<GovernanceContact.GovernanceC
                     recyclerView.setVisibility(View.GONE);
                 }
             }
-
-
         } else if (response.body().getCode() == -10) {
             ToastUtils.showShortToast(context, getResources().getString(R.string.not_login));
 

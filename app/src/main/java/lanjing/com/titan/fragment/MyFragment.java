@@ -161,7 +161,7 @@ public class MyFragment extends MvpFragment<PersonContact.PersonPresent> impleme
         }
 
 
-//        //获取头像
+        //获取头像
         String portrait = SPUtils.getString(Constant.PORTRAIT, null, context);
         RequestOptions mRequestOptions = RequestOptions.circleCropTransform()
                 .diskCacheStrategy(DiskCacheStrategy.NONE)//不做磁盘缓存
@@ -169,12 +169,6 @@ public class MyFragment extends MvpFragment<PersonContact.PersonPresent> impleme
         Glide.with(context).load(portrait).apply(mRequestOptions).into(ivUserHeadPic);
 
         mPresent.person(context);
-//        new Thread() {
-//            public void run() {
-//                Message msg = hand.obtainMessage();
-//                hand.sendMessage(msg);
-//            }
-//        }.start();
     }
 
     @Override
@@ -192,11 +186,6 @@ public class MyFragment extends MvpFragment<PersonContact.PersonPresent> impleme
         if (!ObjectUtils.isEmpty(event)) {
             //获取头像
             mPresent.person(context);
-//            String portrait = SPUtils.getString(Constant.PORTRAIT, null, context);
-//            RequestOptions mRequestOptions = RequestOptions.circleCropTransform()
-//                    .diskCacheStrategy(DiskCacheStrategy.NONE)//不做磁盘缓存
-//                    .skipMemoryCache(true);//不做内存缓存
-//            Glide.with(context).load(portrait).apply(mRequestOptions).into(ivUserHeadPic);
         }
     }
 
@@ -204,7 +193,6 @@ public class MyFragment extends MvpFragment<PersonContact.PersonPresent> impleme
     public void receiveActivity(EventImpl.UpdateNicknameEvent event) {
         if (!ObjectUtils.isEmpty(event)) {
             mPresent.person(context);
-//            tvNickName.setText(SPUtils.getString(Constant.NICK_NAME, null, context));//用户昵称
         }
     }
 
@@ -276,13 +264,6 @@ public class MyFragment extends MvpFragment<PersonContact.PersonPresent> impleme
                 } else {
                     initShow();
                 }
-
-//                Drawable drawable = getResources().getDrawable(R.mipmap.icon_logo);
-//                BitmapDrawable bd = (BitmapDrawable) drawable;
-//                final Bitmap bmm = bd.getBitmap();
-//                Bitmap asd = QRCodeUtil.createQRCodeWithLogo("dfgdgd", 500, bmm);
-//                saveBitmap(asd);
-
                 break;
             case R.id.people_data_lay://修改个人资料  头像   和   昵称
                 Intent intentPeople = new Intent(context, PersonalActivity.class);
@@ -378,13 +359,6 @@ public class MyFragment extends MvpFragment<PersonContact.PersonPresent> impleme
         if (response.body().getCode() == Constant.SUCCESS_CODE) {
             tvNickName.setText(response.body().getData().getNickname());
             tvInviteCode.setText(String.valueOf(response.body().getData().getKeyes()));
-//            //获取头像
-//            SPUtils.putString(Constant.PORTRAIT, response.body().getData().getPicture(), context);
-//            portrait = response.body().getData().getPicture();
-//            RequestOptions mRequestOptions = RequestOptions.circleCropTransform()
-//                    .diskCacheStrategy(DiskCacheStrategy.NONE)//不做磁盘缓存
-//                    .skipMemoryCache(true);//不做内存缓存
-//            Glide.with(context).load(portrait).apply(mRequestOptions).into(ivUserHeadPic);
 
             SPUtils.putString(Constant.NICK_NAME, response.body().getData().getNickname(), context);
 
@@ -402,28 +376,3 @@ public class MyFragment extends MvpFragment<PersonContact.PersonPresent> impleme
         ToastUtils.showShortToast(context, getResources().getString(R.string.network_error));
     }
 }
-
-
-/**
- * _ooOoo_
- * o8888888o
- * 88" . "88
- * (| -_- |)
- * O\ = /O
- * ____/`---'\____
- * .   ' \\| |// `.
- * / \\||| : |||// \
- * / _||||| -:- |||||- \
- * | | \\\ - /// | |
- * | \_| ''\---/'' | |
- * \ .-\__ `-` ___/-. /
- * ___`. .' /--.--\ `. . __
- * ."" '< `.___\_<|>_/___.' >'"".
- * | | : `- \`.;`\ _ /`;.`/ - ` : | |
- * \ \ `-. \_ __\ /__ _/ .-` / /
- * ======`-.____`-.___\_____/___.-`____.-'======
- * `=---='
- * <p>
- * .............................................
- * 佛祖保佑             永无BUG
- */

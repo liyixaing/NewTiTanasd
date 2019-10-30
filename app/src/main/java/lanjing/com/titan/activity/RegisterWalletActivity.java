@@ -820,7 +820,6 @@ public class RegisterWalletActivity extends MvpActivity<SetHelpContact.SetHelpPr
             startActivity(intent);
         } else if (response.body().getCode() == -10) {
             ToastUtils.showShortToast(context, getResources().getString(R.string.not_login));
-
         } else {
             ToastUtils.showShortToast(context, response.body().getMsg());
         }

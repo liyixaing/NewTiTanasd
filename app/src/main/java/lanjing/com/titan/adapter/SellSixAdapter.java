@@ -9,7 +9,6 @@ import java.math.BigDecimal;
 import java.util.List;
 
 import lanjing.com.titan.R;
-import lanjing.com.titan.response.InfoNoticeResponse;
 import lanjing.com.titan.response.SixTradeResponse;
 import lanjing.com.titan.util.MoneyUtil;
 

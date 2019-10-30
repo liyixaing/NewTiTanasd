@@ -103,7 +103,6 @@ public class LoginContact {
 
         void getupdateAppResult(Response<VersionResponse> response);
 
-        //        void getRegisterAgreementResult(Response<RegisterAgreementResponse> response);
         void getDataFailed();
 
     }

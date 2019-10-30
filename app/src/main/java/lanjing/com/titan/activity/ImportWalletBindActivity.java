@@ -48,8 +48,6 @@ public class ImportWalletBindActivity extends MvpActivity<BindContact.BindPresen
         String people = edReferencesId.getText().toString().trim();
         switch (view.getId()) {
             case R.id.tv_skip:
-//                mPresent.bind(context,"99999999");
-//                finish();
                 break;
             case R.id.ed_references_id:
                 edReferencesId.setCursorVisible(true);//光标显示

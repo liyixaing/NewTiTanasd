@@ -34,7 +34,7 @@ public class InformationDetailActivity extends XActivity {
     public void initData(Bundle savedInstanceState) {
         WebSettings webSettings = webView.getSettings();
         webSettings.setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
-//                设置缓存
+        //设置缓存
         webSettings.setJavaScriptEnabled(true);
         webView.setWebViewClient(new WebViewClient() {
             @Override
@@ -43,7 +43,6 @@ public class InformationDetailActivity extends XActivity {
                 return true;
             }
         });
-
         webView.setWebChromeClient(new WebChromeClient() {
             @Override
             public void onProgressChanged(WebView view, int newProgress) {
@@ -54,13 +53,12 @@ public class InformationDetailActivity extends XActivity {
                         progressBar1.setVisibility(View.VISIBLE);//开始加载网页时显示进度条
                         progressBar1.setProgress(newProgress);//设置进度值
                     }
-                }catch (Exception e){
+                } catch (Exception e) {
                     Log.e("TAG", "异常抛出");
                 }
 
             }
         });
-//        titleLay.setTitleText(getIntent().getStringExtra("title"));
         webView.loadUrl(getIntent().getStringExtra("content"));
     }
 
@@ -68,13 +66,4 @@ public class InformationDetailActivity extends XActivity {
     public int getLayoutId() {
         return R.layout.activity_information_detail;
     }
-
-//    Locale locale = getResources().getConfiguration().locale;//判断当前的语言
-//            if (locale.equals(Locale.SIMPLIFIED_CHINESE)) {
-//        webView.loadUrl(response.body().getData().getHelper());
-//    } else if (locale.equals(Locale.ENGLISH)) {
-//        webView.loadUrl(response.body().getData().getHelperEN());
-//    }
-
-
 }

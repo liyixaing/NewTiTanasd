@@ -161,7 +161,6 @@ public class DateUtils {
         SimpleDateFormat sdr = new SimpleDateFormat("yyyy/MM/dd");
         @SuppressWarnings("unused")
         long lcc = Long.valueOf(time);
-//		int i = Integer.parseInt(time);
         String times = sdr.format(new Date(lcc * 1000L));
         return times;
 

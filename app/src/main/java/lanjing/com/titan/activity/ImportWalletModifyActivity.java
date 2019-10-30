@@ -134,7 +134,6 @@ public class ImportWalletModifyActivity extends MvpActivity<ImportWalletSetPwdCo
             ToastUtils.showShortToast(context, getResources().getString(R.string.the_two_deal_passwords_do_not_match));
             return true;
         }
-
         return false;
     }
 }

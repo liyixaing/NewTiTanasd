@@ -4,7 +4,9 @@ import android.content.Context;
 
 import com.lxh.baselibray.mvp.BasePresent;
 import com.lxh.baselibray.mvp.IBaseView;
+
 import lanjing.com.titan.net.NetCallBack;
+
 import com.lxh.baselibray.net.ServiceGenerator;
 import com.lxh.baselibray.util.SPUtils;
 
@@ -24,7 +26,7 @@ public class WalletChargeContact {
         //充币
         public void walletCharge(final Context context) {
             ApiService service = ServiceGenerator.createService(ApiService.class);
-            String token = SPUtils.getString(Constant.TOKEN,"",context);
+            String token = SPUtils.getString(Constant.TOKEN, "", context);
             int language = Constant.LANGAGE;
             LanguageRequest request = new LanguageRequest(language);
             service.charge(token, request).enqueue(new NetCallBack<ChargeResponse>() {
@@ -49,7 +51,7 @@ public class WalletChargeContact {
 
     public interface IWalletChargeView extends IBaseView {
         void getWalletChargeResult(Response<ChargeResponse> response);
-//        void getRegisterAgreementResult(Response<RegisterAgreementResponse> response);
+
         void getDataFailed();
 
     }

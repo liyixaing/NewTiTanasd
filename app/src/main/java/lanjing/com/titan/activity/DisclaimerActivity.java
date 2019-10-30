@@ -8,14 +8,12 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ProgressBar;
 
-import com.lxh.baselibray.base.XActivity;
 import com.lxh.baselibray.mvp.MvpActivity;
 import com.lxh.baselibray.util.ToastUtils;
 
 import java.util.Locale;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import lanjing.com.titan.R;
 import lanjing.com.titan.constant.Constant;
 import lanjing.com.titan.contact.ExemptionContact;
@@ -26,8 +24,6 @@ import retrofit2.Response;
  * 免责声明
  */
 public class DisclaimerActivity extends MvpActivity<ExemptionContact.ExemptionPresent> implements ExemptionContact.IExemptionView {
-
-
     @BindView(R.id.progressBar1)
     ProgressBar progressBar1;
     @BindView(R.id.webView)
@@ -49,13 +45,12 @@ public class DisclaimerActivity extends MvpActivity<ExemptionContact.ExemptionPr
             }
         });
 
-        webView.setWebChromeClient(new WebChromeClient(){
+        webView.setWebChromeClient(new WebChromeClient() {
             @Override
             public void onProgressChanged(WebView view, int newProgress) {
-                if(newProgress==100){
+                if (newProgress == 100) {
                     progressBar1.setVisibility(View.GONE);//加载完网页进度条消失
-                }
-                else{
+                } else {
                     progressBar1.setVisibility(View.VISIBLE);//开始加载网页时显示进度条
                     progressBar1.setProgress(newProgress);//设置进度值
                 }
@@ -78,22 +73,18 @@ public class DisclaimerActivity extends MvpActivity<ExemptionContact.ExemptionPr
     @Override
     public void getExemptionResult(Response<ExemptionResponse> response) {
         dismissLoadingDialog();
-        if(response.body().getCode() == Constant.SUCCESS_CODE){
+        if (response.body().getCode() == Constant.SUCCESS_CODE) {
             Locale locale = getResources().getConfiguration().locale;//判断当前的语言
             webView.loadUrl(response.body().getData().getExemption());
-//            if (locale.equals(Locale.SIMPLIFIED_CHINESE)) {
-//            } else if (locale.equals(Locale.ENGLISH)) {
-//                webView.loadUrl(response.body().getExemptionEN());
-//            }
-        }else if (response.body().getCode() == -10){
+        } else if (response.body().getCode() == -10) {
             ToastUtils.showShortToast(context, getResources().getString(R.string.not_login));
-        }else {
+        } else {
             ToastUtils.showShortToast(context, response.body().getMsg());
         }
     }
 
     @Override
     public void getDataFailed() {
-        ToastUtils.showShortToast(context,getResources().getString(R.string.network_error));
+        ToastUtils.showShortToast(context, getResources().getString(R.string.network_error));
     }
 }

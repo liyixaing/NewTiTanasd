@@ -4,16 +4,13 @@ package lanjing.com.titan.activity;
 import android.content.ClipboardManager;
 import android.content.Context;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.util.Log;
-import android.view.KeyEvent;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.lxh.baselibray.view.TitleView;
 import com.lxh.baselibray.mvp.MvpActivity;
 import com.lxh.baselibray.util.ToastUtils;
+import com.lxh.baselibray.view.TitleView;
 
 import butterknife.BindView;
 import lanjing.com.titan.R;
@@ -72,7 +69,6 @@ public class AssetTitanDetailActivity extends MvpActivity<BillDetailContact.Bill
         tvTitanType.setText(type);
         mPresent.billDetail(context, id);
 
-        //TextViewCopy();
     }
 
 
@@ -107,7 +103,6 @@ public class AssetTitanDetailActivity extends MvpActivity<BillDetailContact.Bill
             String upAndDown = MoneyUtil.formatFour(response.body().getData().getNum());
             if (response.body().getData().getType().equals("1")) {
                 TvTitleNameId.setTitleText(response.body().getData().getCoinDesc() + getResources().getString(R.string.top_up_c));
-//                tvTitanType.setText(getResources().getString(R.string.top_up_c));
                 ll_transactionID.setVisibility(View.VISIBLE);
                 v_xian_three.setVisibility(View.VISIBLE);
                 tvTitanNum.setText("+" + upAndDown + response.body().getData().getCoinDesc());
@@ -116,7 +111,6 @@ public class AssetTitanDetailActivity extends MvpActivity<BillDetailContact.Bill
             } else if (response.body().getData().getType().equals("2")) {
                 TvTitleNameId.setTitleText(response.body().getData().getCoinDesc() + getResources().getString(R.string.withdraw_c));
                 ll_transactionID.setVisibility(View.VISIBLE);
-//                tvTitanType.setText(getResources().getString(R.string.withdraw_c));
                 v_xian_three.setVisibility(View.VISIBLE);
                 v_division_one.setVisibility(View.VISIBLE);
                 v_division_tow.setVisibility(View.VISIBLE);
@@ -128,7 +122,6 @@ public class AssetTitanDetailActivity extends MvpActivity<BillDetailContact.Bill
             if (response.body().getData().getCoin().equals("1")){
 
             }
-
             //订单详情状态
             int state = Integer.parseInt(response.body().getData().getState());
             switch (state) {

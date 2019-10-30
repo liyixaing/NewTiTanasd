@@ -28,8 +28,6 @@ public class UpdateHelper {
 
     public void update(){
         Map<String, String> params=new HashMap<>();
-    //    params.put("versionCode", AppUpdateUtils.getVersionCode(mContext)+"");
-    //    params.put("clientType","1");
         new UpdateAppManager
                 .Builder()
                 //必须设置，当前Activity

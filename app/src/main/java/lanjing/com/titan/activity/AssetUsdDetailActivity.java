@@ -42,10 +42,10 @@ public class AssetUsdDetailActivity extends MvpActivity<BillDetailContact.BillDe
             TvTitleType.setTitleText(getResources().getString(R.string.service_fee));
         } else if (type.equals("34")) {
             tvUsdType.setText(R.string.buy);
-            TvTitleType.setTitleText("USD "+getResources().getString(R.string.buy));
+            TvTitleType.setTitleText("USD " + getResources().getString(R.string.buy));
         } else if (type.equals("35")) {
             tvUsdType.setText(R.string.sell);
-            TvTitleType.setTitleText("USD "+getResources().getString(R.string.sell));
+            TvTitleType.setTitleText("USD " + getResources().getString(R.string.sell));
         } else {
             tvUsdType.setText(getResources().getString(R.string.others));
         }
@@ -80,8 +80,6 @@ public class AssetUsdDetailActivity extends MvpActivity<BillDetailContact.BillDe
             } else {
                 tvUsdNum.setText("+" + upAndDown + "USD");
             }
-
-
             int type = Integer.parseInt(response.body().getData().getType());
             switch (type) {
                 case 0:

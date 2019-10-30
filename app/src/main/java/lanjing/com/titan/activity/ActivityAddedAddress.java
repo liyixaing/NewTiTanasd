@@ -3,7 +3,6 @@ package lanjing.com.titan.activity;
 import android.os.Bundle;
 import android.text.InputFilter;
 import android.text.Spanned;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -97,7 +96,6 @@ public class ActivityAddedAddress extends MvpActivity<SaveOrUpdateContact.saveOr
             }
         };
         editText.setFilters(new InputFilter[]{filter});
-
     }
 
     //获取验证码
@@ -113,14 +111,11 @@ public class ActivityAddedAddress extends MvpActivity<SaveOrUpdateContact.saveOr
                     ToastUtils.showShortToast(context, response.body().getMsg());
                 }
             }
-
             @Override
             public void onFailed() {
             }
         });
-
     }
-
     @Override
     protected SaveOrUpdateContact.saveOrUpdatePresent createPresent() {
         return new SaveOrUpdateContact.saveOrUpdatePresent();
@@ -135,10 +130,7 @@ public class ActivityAddedAddress extends MvpActivity<SaveOrUpdateContact.saveOr
         } else {
             ToastUtils.showShortToast(context, response.body().getMsg());
         }
-
-
     }
-
 
     //提币返回事件
     @Override

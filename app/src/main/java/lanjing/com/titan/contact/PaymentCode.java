@@ -21,8 +21,8 @@ public class PaymentCode {
         public void friendList(final Context context, String page, String size) {
             ApiService service = ServiceGenerator.createService(ApiService.class);
             FriendListRequest request = new FriendListRequest(page, size);
-            String token = SPUtils.getString(Constant.TOKEN,"",context);
-            service.friendList(token,request).enqueue(new NetCallBack<FriendListResponse>() {
+            String token = SPUtils.getString(Constant.TOKEN, "", context);
+            service.friendList(token, request).enqueue(new NetCallBack<FriendListResponse>() {
                 @Override
                 public void onSuccess(Call<FriendListResponse> call, Response<FriendListResponse> response) {
                     if (getView() != null) {
@@ -44,7 +44,7 @@ public class PaymentCode {
 
     public interface IFriendListView extends IBaseView {
         void getFriendListResult(Response<FriendListResponse> response);
-        //        void getRegisterAgreementResult(Response<RegisterAgreementResponse> response);
+
         void getDataFailed();
 
     }

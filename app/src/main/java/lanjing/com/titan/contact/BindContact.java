@@ -47,7 +47,6 @@ public class BindContact {
 
     public interface IBindView extends IBaseView {
         void getBindResult(Response<ResultDTO> response);
-//        void getRegisterAgreementResult(Response<RegisterAgreementResponse> response);
         void getDataFailed();
 
     }

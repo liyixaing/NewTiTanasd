@@ -1,7 +1,6 @@
 package lanjing.com.titan.adapter;
 
 import android.support.annotation.Nullable;
-import android.view.View;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
@@ -10,7 +9,6 @@ import java.util.List;
 
 import lanjing.com.titan.R;
 import lanjing.com.titan.response.CoinLogListResponse;
-import lanjing.com.titan.response.WithdrawalResponse;
 import lanjing.com.titan.util.DateUtils;
 import lanjing.com.titan.util.MoneyUtil;
 
@@ -43,18 +41,7 @@ public class WithDrawalAdapter extends BaseQuickAdapter<CoinLogListResponse.Data
                 helper.setText(R.id.tv_typemonet, "BAR");
                 break;
         }
-//        switch (type){
-//            case 1:
-//                helper.setText(R.id.tv_deposit_type, R.string.top_up_c);
-//                break;
-//            case 2:
-//                helper.setText(R.id.tv_deposit_type, R.string.withdraw_c);
-//                break;
-//
-//        }
         helper.setText(R.id.tv_deposit_type, item.getChangeDesc());
-
-
         helper.setText(R.id.tv_number, MoneyUtil.formatFour(item.getChangeAmount()));
         String time = DateUtils.timedate(item.getChangeTime());//时间戳转换成时间格式
         helper.setText(R.id.tv_create_time, time);

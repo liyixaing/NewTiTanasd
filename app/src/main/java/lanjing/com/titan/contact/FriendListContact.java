@@ -47,7 +47,6 @@ public class FriendListContact {
 
     public interface IFriendListView extends IBaseView {
         void getFriendListResult(Response<FriendListResponse> response);
-//        void getRegisterAgreementResult(Response<RegisterAgreementResponse> response);
         void getDataFailed();
 
     }
