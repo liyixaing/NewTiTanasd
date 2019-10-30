@@ -96,7 +96,7 @@
     <string name="top_up_address">充币地址</string>
     <string name="copy">复制</string>
     <string name="over_copy">已复制</string>
-    <string name="werm_tip">温馨提示：请务必仔细核对地址标签，这是您账户的唯一标识否则资产将不可找回。</string>
+    <string name="werm_tip">温馨提示：请务必仔细核对地址标签，这是您账户的唯一标识，否则资产将不可找回。</string>
     <string name="wallet_management">钱包管理</string>
 
     <string name="all">全部</string>
@@ -616,11 +616,11 @@
     <string name="to_scan">将二维码放入取景框即可自动扫描</string>
 
     <string name="Warm_Tips">温馨提示：请务必仔细核对地址标签，这是您账户的唯一标识，支付完成后将不可找回</string>
-    <string name="your_payment">确认支付</string>
-    <string name="payment_amoun">请输入支付金额</string>
-    <string name="pay">支付</string>
-    <string name="Payment_Address">支付地址</string>
-    <string name="input_the_payment_address">请输入支付地址</string>
+    <string name="your_payment">确认泰兑</string>
+    <string name="payment_amoun">请输入泰兑金额</string>
+    <string name="pay">泰兑</string>
+    <string name="Payment_Address">泰兑地址</string>
+    <string name="input_the_payment_address">请输入地址</string>
     <string name="recognition_failed">图片识别失败</string>
     <string name="The_number_of_withdraw">提币数量不能为空</string>
     <string name="Scan">扫一扫</string>
@@ -638,6 +638,7 @@
     <string name="noNon_repeatable">不可重复选择</string>
     <string name="Please_open_relevan">请开通相关权限!</string>
     <string name="rejected_the_permission">你拒绝了权限申请，可能无法打开相机扫码哟!</string>
+    <string name="To_Innovate_and_Develop">打造数字经济共同体</string>
 
 
 </resources>

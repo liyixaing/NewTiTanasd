@@ -158,7 +158,7 @@ public interface ApiService {
      * 获取用户个人信息
      */
     @POST("/app/getperson")
-    Call<PersonResponse> getPerson(@Header("token") String token,@Body LanguageRequest data);//添加了body参数
+    Call<PersonResponse> getPerson(@Header("token") String token, @Body LanguageRequest data);//添加了body参数
 
     /**
      * 激活

@@ -6,7 +6,6 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Environment;
 import android.text.InputFilter;
 import android.text.Spanned;
 import android.text.TextUtils;
@@ -17,18 +16,13 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.lxh.baselibray.dialog.AlertDialog;
 import com.lxh.baselibray.mvp.MvpActivity;
 import com.lxh.baselibray.util.BitmapUtils;
 import com.lxh.baselibray.util.CameraUtils;
 import com.lxh.baselibray.util.ObjectUtils;
-import com.lxh.baselibray.util.SizeUtils;
 import com.lxh.baselibray.util.ToastUtils;
 import com.tbruyelle.rxpermissions2.RxPermissions;
 
-import java.io.File;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -82,9 +76,6 @@ public class AdviceFeedbackActivity extends MvpActivity<FeedbackContact.Feedback
     ImageView IvDeltTow;//第二张图片删除按钮
     @BindView(R.id.iv_delt_three)
     ImageView IvDeltThiree;//第三张图片删除按钮
-
-
-    public String Imageurl;
     public static final int SELECT_PHOTO = 2;//启动相册标识
     private Bitmap orc_bitmap;//拍照和相册获取图片的Bitmap
     private String base64Pic;
@@ -92,7 +83,6 @@ public class AdviceFeedbackActivity extends MvpActivity<FeedbackContact.Feedback
     int type = 0;//判断状态使用（不能作为参数传递）
     int Imagetype = 0;//判断删除的是哪一个图片
     String types = "2";
-
     String image1, image2, image3;
 
     RxPermissions rxPermissions;
@@ -108,7 +98,6 @@ public class AdviceFeedbackActivity extends MvpActivity<FeedbackContact.Feedback
     public int getLayoutId() {
         return R.layout.activity_advice_feedback;
     }
-
 
     String douhao1 = "";
     String douhao2 = "";
@@ -139,8 +128,6 @@ public class AdviceFeedbackActivity extends MvpActivity<FeedbackContact.Feedback
                 mPresent.addFeedback(context, content, title, image1 + douhao1 + image2 + douhao2 + image3);
                 break;
             case R.id.iv_image_one://选择第一张图片
-
-
                 rxPermissions.request(Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE)
                         .subscribe(granted -> {
                             if (granted) {
@@ -278,6 +265,10 @@ public class AdviceFeedbackActivity extends MvpActivity<FeedbackContact.Feedback
         }
     }
 
+    /*
+     * 或许每个人心底都有一个难以磨灭的名字
+     */
+
     //限制输入文本内容
     public static void setEditTextInhibitInputSpeChat(EditText editText) {
         InputFilter filter = new InputFilter() {
@@ -318,6 +309,7 @@ public class AdviceFeedbackActivity extends MvpActivity<FeedbackContact.Feedback
     public void getmodifyHeadResult(Response<Responseuplode> response) {
         if (response.body().getCode() == Constant.SUCCESS_CODE) {
         } else {
+            ToastUtils.showLongToast(context, response.body().getMsg());
 
         }
 
@@ -327,9 +319,8 @@ public class AdviceFeedbackActivity extends MvpActivity<FeedbackContact.Feedback
     @Override
     public void getcancelImage(Response<ResultDTO> response) {
         if (response.body().getCode() == Constant.SUCCESS_CODE) {
-
         } else {
-
+            ToastUtils.showLongToast(context, response.body().getMsg());
         }
 
     }

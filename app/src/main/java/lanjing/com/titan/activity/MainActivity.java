@@ -41,7 +41,6 @@ public class MainActivity extends XActivity implements RadioGroup.OnCheckedChang
         fragmentList.add(new DealFragment());
         fragmentList.add(new InformationFragment());
         fragmentList.add(new MyFragment());
-
         adapter = new MainFragmentPagerAdapter(getSupportFragmentManager(), fragmentList);
         viewPager.setAdapter(adapter);
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
@@ -111,7 +110,7 @@ public class MainActivity extends XActivity implements RadioGroup.OnCheckedChang
         }
     }
 
-
+    //男人天生即使观众 女人生来就是演员
     @Override
     public int getLayoutId() {
         return R.layout.activity_main;

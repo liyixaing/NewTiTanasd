@@ -6,7 +6,6 @@
     android:background="@color/white"
     android:orientation="vertical">
 
-
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -238,7 +237,7 @@
                     android:layout_gravity="center"
                     android:gravity="center_vertical"
                     android:paddingLeft="@dimen/dp_20"
-                    android:text="@string/payment"
+                    android:text="@string/pay"
                     android:textColor="@color/common_black"
                     android:textSize="@dimen/sp_13" />
 

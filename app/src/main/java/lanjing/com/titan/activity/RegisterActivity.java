@@ -1,5 +1,6 @@
 package lanjing.com.titan.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -66,8 +67,8 @@ public class RegisterActivity extends MvpActivity<RegisterContact.RegisterPresen
             case R.id.i_agree_checkbox:
                 break;
             case R.id.agreement:
-//                Intent intent = new Intent(context,AgreementActivity.class);
-//                startActivity(intent);
+                Intent intent = new Intent(context,AgreementActivity.class);
+                startActivity(intent);
                 break;
             case R.id.create_btn://注册按钮点击执行
                 if (edUserName.getText().toString().equals("")) {//判断是否输入用户名

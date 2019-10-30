@@ -146,8 +146,8 @@ public class DealFragment extends MvpFragment<DealContact.DealPresent> implement
     BuySixOneAdapter mAdapterBuyOne;
     SellSixZeroAdapter mAdapterSellZero;
     BuySixZeroAdapter mAdapterBuyZero;
-    List<SixTradeResponse.SelldataBean> mListSell;
-    List<SixTradeResponse.BuydataBean> mListBuy;
+    List<SixTradeResponse.Data.SelldataBean> mListSell;
+    List<SixTradeResponse.Data.BuydataBean> mListBuy;
 
     EntrustAdapter mAdapter;
     List<EntrustListResponse.Data.OrderList> mList;
@@ -935,8 +935,8 @@ public class DealFragment extends MvpFragment<DealContact.DealPresent> implement
         return new DealContact.DealPresent();
     }
 
-    List<SixTradeResponse.SelldataBean> sellData;
-    List<SixTradeResponse.BuydataBean> buyData;
+    List<SixTradeResponse.Data.SelldataBean> sellData;
+    List<SixTradeResponse.Data.BuydataBean> buyData;
 
     //开启智能交易
     @Override
@@ -1019,21 +1019,21 @@ public class DealFragment extends MvpFragment<DealContact.DealPresent> implement
         refreshTwo.finishRefresh();
         if (response.body().getCode() == Constant.SUCCESS_CODE) {
             if (coin.equals("1")) {
-                tvUsdPrice.setText(MoneyUtil.priceFormatDoubleFour(response.body().getTt_price_usd()));
-                tvPrice.setText(MoneyUtil.priceFormatDoubleFour(response.body().getTt_price_usd()));
+                tvUsdPrice.setText(MoneyUtil.priceFormatDoubleFour(response.body().getData().getTt_price_usd()));
+                tvPrice.setText(MoneyUtil.priceFormatDoubleFour(response.body().getData().getTt_price_usd()));
             } else {
-                tvUsdPrice.setText(MoneyUtil.priceFormatDoubleFour(response.body().getBar_price_usd()));
-                tvPrice.setText(MoneyUtil.priceFormatDoubleFour(response.body().getBar_price_usd()));
+                tvUsdPrice.setText(MoneyUtil.priceFormatDoubleFour(response.body().getData().getBar_price_usd()));
+                tvPrice.setText(MoneyUtil.priceFormatDoubleFour(response.body().getData().getBar_price_usd()));
             }
 //            tvUsdToYuan.setText("≈￥" + MoneyUtil.priceFormatDoubleFour(response.body().getCNYprice()));
 
-            sellData = response.body().getSelldata();
+            sellData = response.body().getData().getSelldata();
             if (!ObjectUtils.isEmpty(sellData)) {
                 mListSell.clear();
                 mListSell.addAll(sellData);
                 mAdapterSell.notifyDataSetChanged();
             }
-            buyData = response.body().getBuydata();
+            buyData = response.body().getData().getBuydata();
             if (!ObjectUtils.isEmpty(buyData)) {
                 mListBuy.clear();
                 mListBuy.addAll(buyData);
@@ -1052,21 +1052,21 @@ public class DealFragment extends MvpFragment<DealContact.DealPresent> implement
     public void getDealSixOneResult(Response<SixTradeResponse> response) {
         if (response.body().getCode() == Constant.SUCCESS_CODE) {
             if (coin.equals("1")) {
-                tvUsdPrice.setText(MoneyUtil.priceFormatDoubleFour(response.body().getTt_price_usd()));
-                tvPrice.setText(MoneyUtil.priceFormatDoubleFour(response.body().getTt_price_usd()));
+                tvUsdPrice.setText(MoneyUtil.priceFormatDoubleFour(response.body().getData().getTt_price_usd()));
+                tvPrice.setText(MoneyUtil.priceFormatDoubleFour(response.body().getData().getTt_price_usd()));
             } else {
-                tvUsdPrice.setText(MoneyUtil.priceFormatDoubleFour(response.body().getBar_price_usd()));
-                tvPrice.setText(MoneyUtil.priceFormatDoubleFour(response.body().getBar_price_usd()));
+                tvUsdPrice.setText(MoneyUtil.priceFormatDoubleFour(response.body().getData().getBar_price_usd()));
+                tvPrice.setText(MoneyUtil.priceFormatDoubleFour(response.body().getData().getBar_price_usd()));
             }
 
 //            tvUsdToYuan.setText("≈￥" + MoneyUtil.priceFormatDoubleFour(response.body().getCNYprice()));
-            sellData = response.body().getSelldata();
+            sellData = response.body().getData().getSelldata();
             if (!ObjectUtils.isEmpty(sellData)) {
                 mListSell.clear();
                 mListSell.addAll(sellData);
                 mAdapterSellOne.notifyDataSetChanged();
             }
-            buyData = response.body().getBuydata();
+            buyData = response.body().getData().getBuydata();
             if (!ObjectUtils.isEmpty(buyData)) {
                 mListBuy.clear();
                 mListBuy.addAll(buyData);
@@ -1086,19 +1086,19 @@ public class DealFragment extends MvpFragment<DealContact.DealPresent> implement
     public void getDealSixZeroResult(Response<SixTradeResponse> response) {
         if (response.body().getCode() == Constant.SUCCESS_CODE) {
             if (coin.equals("1")) {
-                tvUsdPrice.setText(MoneyUtil.priceFormatDoubleFour(response.body().getTt_price_usd()));
-                tvPrice.setText(MoneyUtil.priceFormatDoubleFour(response.body().getTt_price_usd()));
+                tvUsdPrice.setText(MoneyUtil.priceFormatDoubleFour(response.body().getData().getTt_price_usd()));
+                tvPrice.setText(MoneyUtil.priceFormatDoubleFour(response.body().getData().getTt_price_usd()));
             } else {
-                tvUsdPrice.setText(MoneyUtil.priceFormatDoubleFour(response.body().getBar_price_usd()));
-                tvPrice.setText(MoneyUtil.priceFormatDoubleFour(response.body().getBar_price_usd()));
+                tvUsdPrice.setText(MoneyUtil.priceFormatDoubleFour(response.body().getData().getBar_price_usd()));
+                tvPrice.setText(MoneyUtil.priceFormatDoubleFour(response.body().getData().getBar_price_usd()));
             }
-            sellData = response.body().getSelldata();
+            sellData = response.body().getData().getSelldata();
             if (!ObjectUtils.isEmpty(sellData)) {
                 mListSell.clear();
                 mListSell.addAll(sellData);
                 mAdapterSellZero.notifyDataSetChanged();
             }
-            buyData = response.body().getBuydata();
+            buyData = response.body().getData().getBuydata();
             if (!ObjectUtils.isEmpty(buyData)) {
                 mListBuy.clear();
                 mListBuy.addAll(buyData);

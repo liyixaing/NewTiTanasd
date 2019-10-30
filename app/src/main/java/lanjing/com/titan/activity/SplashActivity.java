@@ -74,10 +74,10 @@ public class SplashActivity extends MvpActivity<LoginContact.LoginPresent> imple
         Locale locale = getResources().getConfiguration().locale;//判断当前的语言
         if (locale.equals(Locale.SIMPLIFIED_CHINESE)) {
             Constant.LANGAGE = 0;
-            welcomeBg.setBackground(getResources().getDrawable(R.drawable.splash_bg));
+            welcomeBg.setBackground(getResources().getDrawable(R.drawable.ic_bg_stater));//添加中文背景
         } else if (locale.equals(Locale.ENGLISH)) {
             Constant.LANGAGE = 1;
-            welcomeBg.setBackground(getResources().getDrawable(R.drawable.splash_en_bg));
+            welcomeBg.setBackground(getResources().getDrawable(R.drawable.ic_bg_stater));//添加英文背景
         }
 
         setValue();

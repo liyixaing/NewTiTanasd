@@ -46,7 +46,6 @@ public class LoginActivity extends MvpActivity<LoginContact.LoginPresent> implem
     TextView tvStart;
     @BindView(R.id.ed_login_pwd)
     EditText edLoginPwd;
-    //    LoadToast lt;
     String adminNo;
 
     @Override

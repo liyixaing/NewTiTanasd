@@ -544,7 +544,7 @@
     <string name="of_money_withdrawn">The Amount Of Money Withdrawn Is Less Than 100</string>
     <string name="please_enter_notes">Please Enter Notes</string>
     <string name="please_enter">Please Enter Notes</string>
-    <string name="please_verification_code"> </string>
+    <string name="please_verification_code">please Verification Code</string>
     <string name="added_withdrawal_address">Added Withdrawal Address</string>
     <string name="remarks">Remarks</string>
     <string name="newphone">New Cell Phone Number</string>
@@ -611,10 +611,10 @@
     <string name="to_scan">Put the QR code in the box to scan</string>
 
     <string name="Warm_Tips">Warm Tips: Please carefully check the address tag, it is the only sign of your account, you can not retrieve it after the completion of payment.</string>
-    <string name="your_payment">Confirm your payment.</string>
-    <string name="payment_amoun">Please input the payment amount.</string>
-    <string name="pay">Pay</string>
-    <string name="Payment_Address">Payment Address</string>
+    <string name="your_payment">Confirm TPay</string>
+    <string name="payment_amoun">Please input the Tpayment amount.</string>
+    <string name="pay">TPay</string>
+    <string name="Payment_Address">TPay Address</string>
     <string name="input_the_payment_address">Please input the payment address.</string>
     <string name="recognition_failed">Image recognition failed.</string>
     <string name="The_number_of_withdraw">The number of withdraw can not be empty.</string>
@@ -633,5 +633,5 @@
     <string name="noNon_repeatable">Non repeatable selection</string>
     <string name="Please_open_relevan">Please open relevant permissions!</string>
     <string name="rejected_the_permission">You have rejected the permission application. You may not be able to open the camera to scan the code.</string>
-
+    <string name="To_Innovate_and_Develop">To Innovate and Develop The Digital Economic Chai</string>
 </resources>

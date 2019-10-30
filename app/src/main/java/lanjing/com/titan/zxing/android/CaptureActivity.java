@@ -113,7 +113,8 @@ public final class CaptureActivity extends XActivity implements SurfaceHolder.Ca
                     //用户已经拒绝过一次，再次弹出权限申请对话框需要给用户一个解释
                     if (ActivityCompat.shouldShowRequestPermissionRationale(context, Manifest.permission
                             .WRITE_EXTERNAL_STORAGE)) {
-                        Toast.makeText(context, "请开通相关权限，否则无法正常使用本应用！", Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(context, "请开通相关权限，否则无法正常使用本应用！", Toast.LENGTH_SHORT).show();
+                        ToastUtils.showLongToast(context, getResources().getString(R.string.permission_not_opened));//权限提示
                     }
                     //申请权限
                     ActivityCompat.requestPermissions(context, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
@@ -150,15 +151,25 @@ public final class CaptureActivity extends XActivity implements SurfaceHolder.Ca
 //    public void onCreate(Bundle icicle) {
 //        super.onCreate(icicle);
 //        setContentView(R.layout.capture);
-//
-//
 //    }
 
 
     //跳转到相册
     private void onJumpPictures() {
-        Intent selectPhotoIntent = CameraUtils.getSelectPhotoIntent();
-        startActivityForResult(selectPhotoIntent, SELECT_PHOTO);
+
+        if (ActivityCompat.checkSelfPermission(context, Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                != PackageManager.PERMISSION_GRANTED) {
+            //用户已经拒绝过一次，再次弹出权限申请对话框需要给用户一个解释
+            if (ActivityCompat.shouldShowRequestPermissionRationale(context, Manifest.permission
+                    .WRITE_EXTERNAL_STORAGE)) {
+                ToastUtils.showLongToast(context, getResources().getString(R.string.Please_open_relevan));
+            }
+            //申请权限
+            ActivityCompat.requestPermissions(context, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
+        } else {
+            Intent selectPhotoIntent = CameraUtils.getSelectPhotoIntent();
+            startActivityForResult(selectPhotoIntent, SELECT_PHOTO);
+        }
 
     }
 
@@ -228,6 +239,7 @@ public final class CaptureActivity extends XActivity implements SurfaceHolder.Ca
         } else {
             //图片获取失败
             ToastUtils.showLongToast(this, getResources().getString(R.string.image_acquisition_failed));
+
         }
     }
 

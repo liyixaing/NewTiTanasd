@@ -174,9 +174,7 @@ public class TiTanWithdrawMoney extends MvpActivity<getTransferContact.getTransf
                 }).setOnClickListener(R.id.tx_cancel, v -> pwdDialog.dismiss());
         pwdDialog = builder.create();
         pwdDialog.show();
-
     }
-
 
     //判断输入框中的数量是否与已有的数量比较
     public void initInput() {
@@ -190,6 +188,8 @@ public class TiTanWithdrawMoney extends MvpActivity<getTransferContact.getTransf
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if (EtTibusun.getText().toString().equals("")) {
                     //还没有输入数据不做处理
+                } else if (EtTibusun.getText().toString().length() > 8) {//为了防止用户输入数字超出int值
+                    EtTibusun.setText("10000000");
                 } else {
                     int zhuanhuan = Integer.parseInt(taitanSum.substring(0, i));
                     int text = Integer.parseInt(EtTibusun.getText().toString());
@@ -210,7 +210,6 @@ public class TiTanWithdrawMoney extends MvpActivity<getTransferContact.getTransf
             }
         });
     }
-
 
 
     @Override

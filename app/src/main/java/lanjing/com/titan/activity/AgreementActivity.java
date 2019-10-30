@@ -30,6 +30,7 @@ public class AgreementActivity extends MvpActivity<AgreementContact.AgreementPre
     ProgressBar progressBar1;
     @BindView(R.id.webView)
     WebView webView;
+    String url;
 
     @Override
     public void initData(Bundle savedInstanceState) {
@@ -58,6 +59,7 @@ public class AgreementActivity extends MvpActivity<AgreementContact.AgreementPre
                 }
             }
         });
+//        webView.loadUrl(url);
     }
 
     @Override
@@ -74,7 +76,7 @@ public class AgreementActivity extends MvpActivity<AgreementContact.AgreementPre
     public void getAgreementResult(Response<AgreementResponse> response) {
         dismissLoadingDialog();
         if (response.body().getCode() == Constant.SUCCESS_CODE) {
-            Locale locale = getResources().getConfiguration().locale;//判断当前的语言
+//            url = response.body().getData().getAgreement();
             webView.loadUrl(response.body().getData().getAgreement());
 //            if (locale.equals(Locale.SIMPLIFIED_CHINESE)) {
 //            } else if (locale.equals(Locale.ENGLISH)) {

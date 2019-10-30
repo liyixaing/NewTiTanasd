@@ -177,7 +177,6 @@ public class AssetTITANActivity extends MvpActivity<WalletDetailContact.WalletDe
                 TTmoney.putExtra("id", "0");
                 TTmoney.putExtra("taitanSum", suntaitan);
                 startActivity(TTmoney);
-
                 break;
             case R.id.exchange_btn://交易页面
                 Intent intent = new Intent(context, MainActivity.class);

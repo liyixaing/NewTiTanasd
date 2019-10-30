@@ -10,6 +10,8 @@ public class InformationResponse {
     public List<BannerEH> bannerEH;
     public List<DataCH> dataCH;
 
+
+
     public int getCode() {
         return code;
     }

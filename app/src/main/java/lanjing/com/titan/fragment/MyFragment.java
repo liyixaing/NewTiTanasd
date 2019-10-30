@@ -139,6 +139,12 @@ public class MyFragment extends MvpFragment<PersonContact.PersonPresent> impleme
             case 7:
                 tvLevel.setText("T7");
                 break;
+            case 8:
+                tvLevel.setText("T8");
+                break;
+            case 9:
+                tvLevel.setText("T9");
+                break;
         }
 
         //判断是否有节点
@@ -147,7 +153,6 @@ public class MyFragment extends MvpFragment<PersonContact.PersonPresent> impleme
         if (node == 1) {
             nodeLay.setVisibility(View.VISIBLE);
         }
-
 
         //判断是否有制度委员会
         int isVip = Integer.parseInt(SPUtils.getString(Constant.ISVIP, "", context));
@@ -275,7 +280,7 @@ public class MyFragment extends MvpFragment<PersonContact.PersonPresent> impleme
 //                Drawable drawable = getResources().getDrawable(R.mipmap.icon_logo);
 //                BitmapDrawable bd = (BitmapDrawable) drawable;
 //                final Bitmap bmm = bd.getBitmap();
-//                Bitmap asd = QRCodeUtil.createQRCodeWithLogo("小强真帅", 500, bmm);
+//                Bitmap asd = QRCodeUtil.createQRCodeWithLogo("dfgdgd", 500, bmm);
 //                saveBitmap(asd);
 
                 break;
@@ -400,25 +405,25 @@ public class MyFragment extends MvpFragment<PersonContact.PersonPresent> impleme
 
 
 /**
- *                    _ooOoo_
- *                   o8888888o
- *                   88" . "88
- *                   (| -_- |)
- *                    O\ = /O
- *                ____/`---'\____
- *              .   ' \\| |// `.
- *               / \\||| : |||// \
- *             / _||||| -:- |||||- \
- *               | | \\\ - /// | |
- *             | \_| ''\---/'' | |
- *              \ .-\__ `-` ___/-. /
- *           ___`. .' /--.--\ `. . __
- *        ."" '< `.___\_<|>_/___.' >'"".
- *       | | : `- \`.;`\ _ /`;.`/ - ` : | |
- *         \ \ `-. \_ __\ /__ _/ .-` / /
+ * _ooOoo_
+ * o8888888o
+ * 88" . "88
+ * (| -_- |)
+ * O\ = /O
+ * ____/`---'\____
+ * .   ' \\| |// `.
+ * / \\||| : |||// \
+ * / _||||| -:- |||||- \
+ * | | \\\ - /// | |
+ * | \_| ''\---/'' | |
+ * \ .-\__ `-` ___/-. /
+ * ___`. .' /--.--\ `. . __
+ * ."" '< `.___\_<|>_/___.' >'"".
+ * | | : `- \`.;`\ _ /`;.`/ - ` : | |
+ * \ \ `-. \_ __\ /__ _/ .-` / /
  * ======`-.____`-.___\_____/___.-`____.-'======
- *                    `=---='
- *
+ * `=---='
+ * <p>
  * .............................................
- *          佛祖保佑             永无BUG
+ * 佛祖保佑             永无BUG
  */

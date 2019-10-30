@@ -14,6 +14,19 @@ public class ResultDTO {
 
     private String msg;
     private int code;
+    public Data data;
+
+    public Data getData() {
+        return data;
+    }
+
+    public void setData(Data data) {
+        this.data = data;
+    }
+
+    public static class Data {
+
+    }
 
     public String getMsg() {
         return msg;

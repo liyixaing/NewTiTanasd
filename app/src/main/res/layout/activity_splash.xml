@@ -7,24 +7,26 @@
     tools:context="lanjing.com.titan.activity.SplashActivity">
 
     <RelativeLayout
-        android:visibility="gone"
         android:id="@+id/guide_lay"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-            <lanjing.com.titan.view.CustomVideoView
-                android:id="@+id/videoview"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:visibility="gone">
+
+        <lanjing.com.titan.view.CustomVideoView
+            android:id="@+id/videoview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
         <TextView
-            android:textColor="@color/blue"
             android:id="@+id/btn_skip"
-            android:gravity="center"
             android:layout_width="80dp"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_alignParentRight="true"
             android:layout_marginTop="20dp"
-            android:text="@string/vault" />
+            android:gravity="center"
+            android:text="@string/vault"
+            android:textColor="@color/blue" />
     </RelativeLayout>
 
     <RelativeLayout
@@ -32,15 +34,39 @@
         android:id="@+id/welcome_bg"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/splash_bg">
+        android:background="@drawable/ic_bg_stater">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="70dp"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_logo" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="30dp"
+                android:text="@string/To_Innovate_and_Develop"
+                android:textColor="@color/white" />
+        </LinearLayout>
+
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:layout_marginBottom="@dimen/dp_50"
             android:layout_marginLeft="@dimen/dp_20"
-            android:layout_marginRight="@dimen/dp_20">
+            android:layout_marginRight="@dimen/dp_20"
+            android:layout_marginBottom="@dimen/dp_50">
 
             <LinearLayout
                 android:layout_width="0dp"

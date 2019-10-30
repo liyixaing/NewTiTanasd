@@ -19,14 +19,14 @@ import static lanjing.com.titan.util.MoneyUtil.priceFormatDoubleZero;
  * 币币交易  上面只显示六条数据
  */
 
-public class SellSixZeroAdapter extends BaseQuickAdapter<SixTradeResponse.SelldataBean, BaseViewHolder> {
+public class SellSixZeroAdapter extends BaseQuickAdapter<SixTradeResponse.Data.SelldataBean, BaseViewHolder> {
 
-    public SellSixZeroAdapter(int layoutResId, @Nullable List<SixTradeResponse.SelldataBean> data) {
+    public SellSixZeroAdapter(int layoutResId, @Nullable List<SixTradeResponse.Data.SelldataBean> data) {
         super(layoutResId, data);
     }
 
     @Override
-    protected void convert(BaseViewHolder helper, SixTradeResponse.SelldataBean item) {
+    protected void convert(BaseViewHolder helper, SixTradeResponse.Data.SelldataBean item) {
 
         helper.setText(R.id.sell_price, MoneyUtil.priceFormatDoubleZero(item.getPrice()));
 
