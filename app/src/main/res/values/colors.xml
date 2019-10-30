@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="common_main">#3B5677</color>
-
     <color name="mask_color">#99e5eaee</color>
-
     <color name="common_white">#FFFFFFFF</color>
     <color name="common_black">#FF000000</color>
     <color name="common_text_hint">#FFA0A0A0</color>
@@ -14,16 +12,12 @@
     <color name="red">#FF0000</color>
     <color name="goods_info_gray">#ACACAC</color>
     <color name="gray_text_tip">#BEBEBE</color>
-
     <color name="default_bg">#3b5677</color>
-
-
     <color name="bg_gray">#F5F5F5</color>
     <color name="line_gray2">#D5D5D5</color>
     <color name="yellow">#FF8416</color>
     <color name="yellow_buy">#FF8C00</color>
     <color name="white">#FFFFFF</color>
-
     <color name="create_account_gray">#F2F2F2</color>
     <color name="gray">#ababab</color>
     <color name="green">#37A118</color>
@@ -32,16 +26,12 @@
     <color name="public_bg">#F8F8F8</color>
     <color name="public_line">#C8C8CC</color>
     <color name="friend">#666666</color>
-
     <color name="line">#8A8A8A</color>
     <color name="greens">#03AD8F</color>
     <color name="reds">#F2635B</color>
-
-
     <color name="mall_gray_bg">#F2F2F2</color>
     <color name="line_gray">#F0F0F0</color>
     <color name="ed_gray">#B1B1B1</color>
-
     <color name="blue">#3286ED</color>
     <color name="dark_blue">#0C55AF</color>
     <color name="onclick_blue">#0975E1</color>
@@ -59,12 +49,9 @@
     <color name="gray_asset">#7F8592</color>
     <color name="gray_asset2">#535353</color>
     <color name="text_gray">#A0A0A0</color>
-
-    <!-- Android standard ICS color -->
     <color name="viewfinder_mask">#60000000</color>
     <color name="result_view">#b0000000</color>
     <color name="viewfinder_laser">#ffcc0000</color>
     <color name="possible_result_points">#c0ffbd21</color>
     <color name="status_text">#ffffffff</color>
-
 </resources>

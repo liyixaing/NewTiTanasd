@@ -18,14 +18,13 @@
     </style>
 
     <declare-styleable name="TitleView">
-        <attr name="ivLeftVisiable" format="boolean"/>
+        <attr name="ivLeftVisiable" format="boolean" />
         <attr name="tvTitleText" format="reference|string" />
-        <attr name="titleTextColor" format="color"/>
+        <attr name="titleTextColor" format="color" />
     </declare-styleable>
 
     <!--页面切换动画-->
-    <style name="Animation_Activity"
-        parent="@android:style/Animation.Activity">
+    <style name="Animation_Activity" parent="@android:style/Animation.Activity">
         <item name="android:activityOpenEnterAnimation">@anim/right_in</item>
         <item name="android:activityOpenExitAnimation">@anim/left_out</item>
         <item name="android:activityCloseEnterAnimation">@anim/left_in</item>
@@ -33,7 +32,7 @@
     </style>
 
     <!--底部导航rb设置-->
-    <style name="main_rb_style" >
+    <style name="main_rb_style">
         <item name="android:layout_weight">1</item>
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">wrap_content</item>
@@ -42,16 +41,6 @@
         <item name="android:textSize">12sp</item>
         <item name="android:textColor">@drawable/selector_main_rb_text_color</item>
     </style>
-    <!--交易筛选设置-->
-    <!--<style name="deal_recrod_style" >-->
-        <!--<item name="android:layout_weight">1</item>-->
-        <!--<item name="android:layout_width">0dp</item>-->
-        <!--<item name="android:layout_height">wrap_content</item>-->
-        <!--<item name="android:button">@null</item>-->
-        <!--<item name="android:gravity">center</item>-->
-        <!--<item name="android:textSize">12sp</item>-->
-        <!--<item name="android:textColor">@drawable/selector_deal_text_color</item>-->
-    <!--</style>-->
 
     <style name="MyEditText" parent="Theme.AppCompat.Light">
         <item name="colorControlNormal">@android:color/darker_gray</item>
@@ -72,10 +61,10 @@
     </style>
     <!--注册item-->
     <declare-styleable name="RegisterItemView">
-        <attr name="leftText" format="string|reference"/>
-        <attr name="rightVisiable" format="boolean"/>
-        <attr name="rightText" format="reference|string"/>
-        <attr name="isPassword" format="boolean"/>
+        <attr name="leftText" format="string|reference" />
+        <attr name="rightVisiable" format="boolean" />
+        <attr name="rightText" format="reference|string" />
+        <attr name="isPassword" format="boolean" />
     </declare-styleable>
     <!--首页-->
     <style name="home_tv_style">
@@ -90,11 +79,10 @@
     </style>
     <!--矿机item view-->
     <declare-styleable name="OreMachineItemView">
-        <attr name="leftName" format="string|reference"/>
-        <attr name="buyTime" format="string|reference"/>
-        <attr name="dueDate" format="string|reference"/>
-        <!--  <attr name="remainDay" format="integer"/>-->
-        <attr name="leftPic" format="reference"/>
+        <attr name="leftName" format="string|reference" />
+        <attr name="buyTime" format="string|reference" />
+        <attr name="dueDate" format="string|reference" />
+        <attr name="leftPic" format="reference" />
     </declare-styleable>
 
     <!--个人中心 tv style-->
@@ -111,9 +99,9 @@
     </style>
 
     <declare-styleable name="OreMachineDetailItemView">
-        <attr name="content_one" format="reference|string"/>
-        <attr name="content_two" format="reference|string"/>
-        <attr name="content_three" format="reference|string"/>
+        <attr name="content_one" format="reference|string" />
+        <attr name="content_two" format="reference|string" />
+        <attr name="content_three" format="reference|string" />
 
     </declare-styleable>
 
@@ -141,6 +129,7 @@
         <!--是否模糊-->
         <item name="android:backgroundDimEnabled">true</item>
     </style>
+
     <style name="down_dialog_style" parent="@android:style/Theme.Holo.Light.Dialog">
         <!-- 窗口背景色 -->
 
@@ -161,10 +150,6 @@
         <!--消失动画-->
         <item name="android:windowExitAnimation">@android:style/Animation.Translucent</item>
     </style>
-    <!--&lt;!&ndash;单选按钮样式&ndash;&gt;-->
-    <!--<style name="RadioBtnSelect">-->
-        <!--<item name="android:button">@drawable/shape_radio_selctor</item>-->
-    <!--</style>-->
 
     <!--复选框样式，未勾选时为灰色，勾选好为蓝色-->
     <style name="MyCheckBox" parent="Theme.AppCompat.Light">

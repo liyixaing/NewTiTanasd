@@ -97,10 +97,8 @@
         <activity android:name=".activity.PaymentCodeActivity" />
         <!--激活码获取记录-->
         <activity android:name=".activity.StartCodeActivity" />
-
         <!--扫描-->
         <activity android:name=".zxing.android.CaptureActivity" />
-
         <!--转出-->
         <activity android:name=".activity.TurnOutActivity" />
         <!--转出详情页-->
