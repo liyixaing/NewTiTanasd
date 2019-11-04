@@ -307,6 +307,14 @@ public class SplashActivity extends MvpActivity<LoginContact.LoginPresent> imple
     @Override
     public void getupdateAppResult(Response<VersionResponse> response) {
         if (response.body().getCode() == Constant.SUCCESS_CODE) {
+
+            int systemCode = Integer.parseInt(response.body().getData().getVersioncode());
+            Log.e("版本号1：", systemCode+"");
+            Log.e("版本号1：", versionCode+"");
+            if (systemCode > versionCode) {
+                showUpdateDialog(response.body().getData().getVersionname(), response.body().getData().getRemarks(), response.body().getData().getUrl());
+            }
+
             //参数正确不做处理
         } else if (response.body().getCode() == 201) {
             int systemCode = Integer.parseInt(response.body().getData().getVersioncode());

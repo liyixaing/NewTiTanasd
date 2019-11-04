@@ -111,11 +111,13 @@ public class ActivityAddedAddress extends MvpActivity<SaveOrUpdateContact.saveOr
                     ToastUtils.showShortToast(context, response.body().getMsg());
                 }
             }
+
             @Override
             public void onFailed() {
             }
         });
     }
+
     @Override
     protected SaveOrUpdateContact.saveOrUpdatePresent createPresent() {
         return new SaveOrUpdateContact.saveOrUpdatePresent();

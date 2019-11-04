@@ -70,10 +70,8 @@ public class PersonalActivity extends MvpActivity<PersonDataChangeContact.Person
     public static final int TAKE_PHOTO = 1;//启动相机标识
     public static final int SELECT_PHOTO = 2;//启动相册标识
     private File outputImagepath;//存储拍完照后的图片
-
     private Bitmap orc_bitmap;//拍照和相册获取图片的Bitmap
     AlertDialog dialog = null;
-
     private String base64Pic;
 
     @Override

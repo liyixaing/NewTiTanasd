@@ -74,7 +74,7 @@ public class MyInviteActivity extends MvpActivity<FriendListContact.FriendListPr
     TextView tv_copy_register;
 
     FriendListAdapter mAdapter;
-    List<FriendListResponse.Data.DataBan> mList;
+    List<FriendListResponse.Data.ChildList> mList;
 
     int page = 1;
     int pageSize = 10;
@@ -192,7 +192,7 @@ public class MyInviteActivity extends MvpActivity<FriendListContact.FriendListPr
         return new FriendListContact.FriendListPresent();
     }
 
-    List<FriendListResponse.Data.DataBan> data;
+    List<FriendListResponse.Data.ChildList> data;
 
     @Override
     public void getFriendListResult(Response<FriendListResponse> response) {
@@ -218,7 +218,7 @@ public class MyInviteActivity extends MvpActivity<FriendListContact.FriendListPr
                 mList.clear();
                 mAdapter.notifyDataSetChanged();
             }
-            data = response.body().getData().getData();
+            data = response.body().getData().getChild_list();
             if (!ObjectUtils.isEmpty(data)) {
                 rvNormalShow.setVisibility(View.GONE);
                 mList.addAll(data);
@@ -235,7 +235,6 @@ public class MyInviteActivity extends MvpActivity<FriendListContact.FriendListPr
                     rvNormalShow.setVisibility(View.VISIBLE);
                     rv.setVisibility(View.GONE);
                 }
-
             }
         } else if (response.body().getCode() == -10) {
             ToastUtils.showShortToast(context, getResources().getString(R.string.not_login));

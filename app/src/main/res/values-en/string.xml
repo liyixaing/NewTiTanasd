@@ -543,7 +543,7 @@
     <string name="payment">payment</string>
     <string name="permission_not_open">Permission not open</string>
     <string name="to_scan">Put the QR code in the box to scan</string>
-    <string name="Warm_Tips">Warm Tips: Please carefully check the address tag, it is the only sign of your account, you can not retrieve it after the completion of payment.</string>
+    <string name="Warm_Tips">Warm tip: please check the address label carefully, which is the only identification of your account. It will not be retrieved after payment</string>
     <string name="your_payment">Confirm TPay</string>
     <string name="payment_amoun">Please input the Tpayment amount.</string>
     <string name="pay">TPay</string>
@@ -567,4 +567,5 @@
     <string name="Please_open_relevan">Please open relevant permissions!</string>
     <string name="rejected_the_permission">You have rejected the permission application. You may not be able to open the camera to scan the code.</string>
     <string name="To_Innovate_and_Develop">To Innovate and Develop The Digital Economic Chai</string>
+    <string name="tips">tips</string>
 </resources>

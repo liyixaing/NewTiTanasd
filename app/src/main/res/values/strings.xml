@@ -566,5 +566,6 @@
     <string name="Please_open_relevan">请开通相关权限!</string>
     <string name="rejected_the_permission">你拒绝了权限申请，可能无法打开相机扫码哟!</string>
     <string name="To_Innovate_and_Develop">打造数字经济共同体</string>
+    <string name="tips">提示</string>
 </resources>
 

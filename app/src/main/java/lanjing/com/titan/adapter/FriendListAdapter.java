@@ -18,14 +18,14 @@ import lanjing.com.titan.util.MoneyUtil;
  * 我的邀请  好友列表数据适配器
  */
 
-public class FriendListAdapter extends BaseQuickAdapter<FriendListResponse.Data.DataBan, BaseViewHolder> {
+public class FriendListAdapter extends BaseQuickAdapter<FriendListResponse.Data.ChildList, BaseViewHolder> {
 
-    public FriendListAdapter(int layoutResId, @Nullable List<FriendListResponse.Data.DataBan> data) {
+    public FriendListAdapter(int layoutResId, @Nullable List<FriendListResponse.Data.ChildList> data) {
         super(layoutResId, data);
     }
 
     @Override
-    protected void convert(BaseViewHolder helper, FriendListResponse.Data.DataBan item) {
+    protected void convert(BaseViewHolder helper, FriendListResponse.Data.ChildList item) {
 
         TextView tv_xing = helper.getView(R.id.tv_xing);
         if (item.getValid() == 1){
