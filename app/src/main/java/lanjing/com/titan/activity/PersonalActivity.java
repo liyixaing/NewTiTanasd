@@ -248,9 +248,9 @@ public class PersonalActivity extends MvpActivity<PersonDataChangeContact.Person
     public void getmodifyHeadResult(Response<Responseuplode> response) {
         if (response.body().getCode() == Constant.SUCCESS_CODE) {
             ToastUtils.showShortToast(context, getResources().getString(R.string.modify_avatar_successfully));
-            SPUtils.putString(Constant.PORTRAIT, response.body().getUrl(), context);
+            SPUtils.putString(Constant.PORTRAIT, response.body().getData().getUrl(), context);
             BusFactory.getBus().post(new EventImpl.UpdatePortraitEvent());
-            mPresent.UserAvatarupdate(context, response.body().getUrl());
+            mPresent.UserAvatarupdate(context, response.body().getData().getUrl());
             finish();
         } else if (response.body().getCode() == -10) {
             ToastUtils.showShortToast(context, getResources().getString(R.string.not_login));

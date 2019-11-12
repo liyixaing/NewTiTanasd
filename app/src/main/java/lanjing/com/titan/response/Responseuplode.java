@@ -3,7 +3,7 @@ package lanjing.com.titan.response;
 public class Responseuplode {
     private String msg;
     private int code;
-    public String url;
+    public Data data;
 
     public String getMsg() {
         return msg;
@@ -21,11 +21,26 @@ public class Responseuplode {
         this.code = code;
     }
 
-    public String getUrl() {
-        return url;
+    public Data getData() {
+        return data;
     }
 
-    public void setUrl(String url) {
-        this.url = url;
+    public void setData(Data data) {
+        this.data = data;
     }
+
+    public static class Data {
+        public String url;
+
+        public String getUrl() {
+            return url;
+        }
+
+        public void setUrl(String url) {
+            this.url = url;
+        }
+    }
+
+
+
 }

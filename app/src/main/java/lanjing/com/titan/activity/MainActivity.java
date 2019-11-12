@@ -110,7 +110,7 @@ public class MainActivity extends XActivity implements RadioGroup.OnCheckedChang
         }
     }
 
-    //男人天生即使观众 女人生来就是演员
+    //男人天生即是观众 女人生来就是演员
     @Override
     public int getLayoutId() {
         return R.layout.activity_main;
