@@ -9,11 +9,11 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ServiceGenerator {
     /**
-     * 正式上线
+     * 正式上线  白色的泰坦
      */
-    public static final String BASE_URL = "http://app.titans.world:80";//正式服  端口  80
+//    public static final String BASE_URL = "http://app.titans.world:80";//正式服  端口  80
 //    public static final String BASE_URL = "http://120.79.169.58:8888";//阿里测试服  端口  8888
-//    public static final String BASE_URL = "http://192.168.0.121:9999";//本地测试服 端口 9999
+    public static final String BASE_URL = "http://192.168.31.136:9999";//本地测试服 端口 9999
 
     public static <T> T createService(Class<T> serviceClass) {
         OkHttpClient.Builder okHttpClientBuilder = new OkHttpClient.Builder();

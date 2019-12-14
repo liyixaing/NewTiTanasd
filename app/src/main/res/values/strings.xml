@@ -567,5 +567,8 @@
     <string name="rejected_the_permission">你拒绝了权限申请，可能无法打开相机扫码哟!</string>
     <string name="To_Innovate_and_Develop">打造数字经济共同体</string>
     <string name="tips">提示</string>
+    <string name="mapping">映射</string>
+    <string name="mappingall">映射全部</string>
+    <string name="mappingNumber">映射数量</string>
 </resources>
 

@@ -568,4 +568,7 @@
     <string name="rejected_the_permission">You have rejected the permission application. You may not be able to open the camera to scan the code.</string>
     <string name="To_Innovate_and_Develop">To Innovate and Develop The Digital Economic Chain</string>
     <string name="tips">tips</string>
+    <string name="mapping">Mapping</string>
+    <string name="mappingall">Mapping All</string>
+    <string name="mappingNumber">Mapping Number</string>
 </resources>

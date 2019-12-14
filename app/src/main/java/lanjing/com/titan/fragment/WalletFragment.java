@@ -45,6 +45,7 @@ import lanjing.com.titan.activity.MainActivity;
 import lanjing.com.titan.activity.NoticeActivity;
 import lanjing.com.titan.activity.PaymentCodeActivity;
 import lanjing.com.titan.activity.TItancWaitGetActivity;
+import lanjing.com.titan.activity.TtaWaitGetActivity;
 import lanjing.com.titan.activity.UsdAirdroppedActivity;
 import lanjing.com.titan.activity.WalletListActivity;
 import lanjing.com.titan.activity.WalletManagerActivity;
@@ -117,6 +118,13 @@ public class WalletFragment extends MvpFragment<WalletDataContact.WalletDataPres
 
     @BindView(R.id.rl_sweep_code)
     RelativeLayout rl_sweep_code;//扫码
+
+    @BindView(R.id.tta_lay)
+    LinearLayout tta_lay;//TTA钱包
+    @BindView(R.id.tta_num)
+    TextView tta_num;
+    @BindView(R.id.tta_price)
+    TextView tta_price;
 
     int page = 1;
     int pageSize = 10;
@@ -222,7 +230,7 @@ public class WalletFragment extends MvpFragment<WalletDataContact.WalletDataPres
 
     @OnClick({R.id.checkbox_private_mode, R.id.tv_wallet_name, R.id.manage_wallet, R.id.titan_lay,
             R.id.usd_lay, R.id.titanc_lay, R.id.usd2_lay, R.id.rl_home_notice, R.id.ll_bar, R.id.ll_activation,
-            R.id.iv_tow_code, R.id.rl_sweep_code})
+            R.id.iv_tow_code, R.id.rl_sweep_code, R.id.tta_lay})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.checkbox_private_mode:
@@ -280,6 +288,10 @@ public class WalletFragment extends MvpFragment<WalletDataContact.WalletDataPres
                 usd2.putExtra("coin", "4");
                 usd2.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS);
                 startActivity(usd2);
+                break;
+            case R.id.tta_lay://进入  TTA钱包
+                Intent tta_lay = new Intent(context, TtaWaitGetActivity.class);
+                startActivity(tta_lay);
                 break;
             case R.id.rl_home_notice://小铃铛
                 //跳转到反馈列表界面
@@ -393,6 +405,9 @@ public class WalletFragment extends MvpFragment<WalletDataContact.WalletDataPres
                 } else if (mList.get(i).getCoin().equals("5")) {
                     TvBar.setText(MoneyUtil.formatFour(mList.get(i).getCoin_num()));
                     TvBarnum.setText("$" + MoneyUtil.formatFour(mList.get(i).getCoin_usd_worth()));
+                } else if (mList.get(i).getCoin().equals("10")) {
+                    tta_num.setText(MoneyUtil.formatFour(mList.get(i).getCoin_num()));
+                    tta_price.setText("$" + MoneyUtil.formatFour(mList.get(i).getCoin_usd_worth()));
                 }
             }
 
@@ -696,8 +711,8 @@ public class WalletFragment extends MvpFragment<WalletDataContact.WalletDataPres
         if (response.body().getCode() == Constant.SUCCESS_CODE) {
 
             int systemCode = Integer.parseInt(response.body().getData().getVersioncode());
-            Log.e("版本号1：", systemCode+"");
-            Log.e("版本号1：", versionCode+"");
+            Log.e("版本号1：", systemCode + "");
+            Log.e("版本号1：", versionCode + "");
             if (systemCode > versionCode) {
                 showUpdateDialog(response.body().getData().getVersionname(), response.body().getData().getRemarks(), response.body().getData().getUrl());
             }

@@ -105,6 +105,8 @@
         <activity android:name=".activity.TransferDetailsActivity" />
         <!--支付-->
         <activity android:name=".activity.PaymentActivity" />
+        <!--映射-->
+        <activity android:name=".activity.MappingActivity" />
     </application>
 
 </manifest>

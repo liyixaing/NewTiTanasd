@@ -136,9 +136,8 @@ public class ExchangeActivity extends MvpActivity<ExchangeContact.ExchangePresen
             TvNum.setText(MoneyUtil.formatFour(response.body().getData().getUser_titan_amount()));
             initInput();
             i = num.indexOf(".");
-            TvRate.setText(Reference + "1"
-                    + "TITAN ≈ " + MoneyUtil.formatFour(response.body().getData().getConvert_rate()) + "TITANC");
-
+            String rath = Reference + "1" + "TITAN ≈ " + MoneyUtil.formatFour(response.body().getData().getConvert_rate()) + "TITANC";
+            TvRate.setText(rath);
         } else if (response.body().getCode() == -10) {
             ToastUtils.showShortToast(context, getResources().getString(R.string.not_login));
         } else {
