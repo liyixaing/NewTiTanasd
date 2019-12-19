@@ -107,6 +107,8 @@
         <activity android:name=".activity.PaymentActivity" />
         <!--映射-->
         <activity android:name=".activity.MappingActivity" />
+        <!--TTA钱包-->
+        <activity android:name=".activity.TtaWaitGetActivity" />
     </application>
 
 </manifest>

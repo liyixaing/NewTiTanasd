@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
@@ -97,11 +98,20 @@ public class AssetTITANActivity extends MvpActivity<WalletDetailContact.WalletDe
             TvZhican.setVisibility(View.GONE);
             tvTitanTradingFrozen.setVisibility(View.GONE);
             TvCash.setText(getResources().getString(R.string.frozen));
+        } else if (coin.equals("10")) {
+            LlExchange.setVisibility(View.GONE);
+            exchangeBtn.setText(getResources().getString(R.string.mapping));
         }
         TitleLay.setTitleText(types);
 
         //判断来源
         if (types.equals("TITAN")) {//从泰坦资产跳转过来
+            //TITAN界面不需要做处理
+
+        }
+        if (types.equals("TTA")) {
+            topUpCBtn.setVisibility(View.GONE);//TTA界面跳转过来 不需要提币按钮  将其隐藏
+        } else if (types.equals("TITAN")) {
 
         } else {//从bra界面跳转过来
             withdrawCBtn.setVisibility(View.GONE);
@@ -161,6 +171,8 @@ public class AssetTITANActivity extends MvpActivity<WalletDetailContact.WalletDe
                     showScreenDialog();//泰坦筛选弹出选择
                 } else if (coin.equals("5")) {
                     showBARDialog();//BAR赛选弹出选择
+                } else if (coin.equals("10")) {
+                    ttacreeadialog();
                 }
 
                 break;
@@ -170,16 +182,32 @@ public class AssetTITANActivity extends MvpActivity<WalletDetailContact.WalletDe
                 startActivity(topUp);
                 break;
             case R.id.withdraw_c_btn://提币
-                Intent TTmoney = new Intent(context, TiTanWithdrawMoney.class);
-                TTmoney.putExtra("id", "0");
-                TTmoney.putExtra("taitanSum", suntaitan);
-                startActivity(TTmoney);
+                if (coin.equals("10")) {
+                    Intent TTAmoney = new Intent(context, TiTanWithdrawMoney.class);
+                    TTAmoney.putExtra("id", "0");
+                    TTAmoney.putExtra("type", "tta");
+                    TTAmoney.putExtra("taitanSum", suntaitan);
+                    startActivity(TTAmoney);
+                } else {
+                    Intent TTmoney = new Intent(context, TiTanWithdrawMoney.class);
+                    TTmoney.putExtra("id", "0");
+                    TTmoney.putExtra("type", "titan");
+                    TTmoney.putExtra("taitanSum", suntaitan);
+                    startActivity(TTmoney);
+                }
+
                 break;
-            case R.id.exchange_btn://交易页面
-                Intent intent = new Intent(context, MainActivity.class);
-                intent.putExtra("flag", 2);
-                startActivity(intent);
-                finish();
+            case R.id.exchange_btn://交易页面  当币种为1和5的时候跳转到交易界面否则跳转到映射界面
+                if (coin.equals("1") || coin.equals("5")) {
+                    Intent intent = new Intent(context, MainActivity.class);
+                    intent.putExtra("flag", 2);
+                    startActivity(intent);
+                    finish();
+                } else {
+                    Intent mapping = new Intent(context, MappingActivity.class);
+                    startActivity(mapping);
+                }
+
                 break;
             case R.id.tv_exchange://兑换
                 Intent exchange = new Intent(context, ExchangeActivity.class);
@@ -235,6 +263,41 @@ public class AssetTITANActivity extends MvpActivity<WalletDetailContact.WalletDe
         BARDialog = builder.create();
         BARDialog.show();
     }
+
+
+    //TTA筛选
+    AlertDialog TTAcreeaDialog = null;
+
+    private void ttacreeadialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this)
+                .addDefaultAnimation()//默认弹出动画
+                .setCancelable(true)
+                .fromRight(true)
+                .setContentView(R.layout.dialog_tta_screen)
+                .setWidthAndHeight(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT)//设置弹窗宽高
+                .setOnClickListener(R.id.all, v -> {
+                    type = "";//全部
+                    tvTitanScreen.setText(getResources().getString(R.string.all));
+                    mPresent.historylist(context, coin, type, String.valueOf(page), String.valueOf(pageSize));
+                    TTAcreeaDialog.dismiss();
+                })
+                .setOnClickListener(R.id.tv_mappingget, v -> {
+                    type = "28";//映射获得
+                    tvTitanScreen.setText(getResources().getString(R.string.mappingget));
+                    mPresent.historylist(context, coin, type, String.valueOf(page), String.valueOf(pageSize));
+                    TTAcreeaDialog.dismiss();
+                })
+                .setOnClickListener(R.id.tv_withdraw, v -> {
+                    type = "2";//提币
+                    tvTitanScreen.setText(getResources().getString(R.string.withdraw_c));
+                    mPresent.historylist(context, coin, type, String.valueOf(page), String.valueOf(pageSize));
+                    TTAcreeaDialog.dismiss();
+                });
+        TTAcreeaDialog = builder.create();
+        TTAcreeaDialog.show();
+
+    }
+
 
     AlertDialog screenDialog = null;
 
@@ -329,10 +392,14 @@ public class AssetTITANActivity extends MvpActivity<WalletDetailContact.WalletDe
 
         if (response.body().getCode() == Constant.SUCCESS_CODE) {
             suntaitan = MoneyUtil.priceFormatDoubleFour(response.body().getData().getWellet().getCoinnum());
-            tvAssetBalance.setText(MoneyUtil.priceFormatDoubleFour(response.body().getData().getWellet().getCoinnum()));
+            String assetbate = MoneyUtil.priceFormatDoubleFour(response.body().getData().getWellet().getCoinnum())
+                    + response.body().getData().getWellet().getCointype();
+            tvAssetBalance.setText(assetbate);
             if (coin.equals("1")) {
                 tvTixianBalance.setText(MoneyUtil.priceFormatDoubleFour(response.body().getData().getWellet().getCoinnum()));//提现余额
             } else if (coin.equals("5")) {
+                tvTixianBalance.setText(MoneyUtil.priceFormatDoubleFour(response.body().getData().getWellet().getFrozennum()));//提现余额
+            } else if (coin.equals("10")) {
                 tvTixianBalance.setText(MoneyUtil.priceFormatDoubleFour(response.body().getData().getWellet().getFrozennum()));//提现余额
             }
             tvTitanTradingFrozen.setText(MoneyUtil.priceFormatDoubleFour(response.body().getData().getWellet().getFrozennum()));//交易冻结

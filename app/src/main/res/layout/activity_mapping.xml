@@ -27,7 +27,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/titan_num" />
+            android:text="@string/tta_sun" />
 
         <TextView
             android:id="@+id/tv_num"
@@ -129,6 +129,7 @@
                 android:layout_marginRight="20dp"
                 android:layout_weight="1"
                 android:background="@null"
+                android:maxLength="8"
                 android:digits="0123456789"
                 android:inputType="phone" />
 
@@ -191,7 +192,7 @@
         android:layout_marginTop="20dp"
         android:layout_marginRight="20dp"
         android:text="温馨提示：映射确认后将以实际价格进行映射TITAN数量"
-        android:textColor="#A0A0A0"
+        android:textColor="#F44336"
         android:textSize="13sp" />
 
 </LinearLayout>

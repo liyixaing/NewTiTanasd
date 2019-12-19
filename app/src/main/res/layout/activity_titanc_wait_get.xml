@@ -172,5 +172,19 @@
             android:text="@string/turn_out"
             android:textColor="@color/white"
             android:textSize="@dimen/sp_15" />
+
+        <TextView
+            android:id="@+id/tv_tibi_btn"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/dp_39"
+            android:layout_marginLeft="@dimen/dp_2"
+            android:layout_marginRight="@dimen/dp_2"
+            android:layout_weight="1"
+            android:background="@drawable/btn_radius_blue"
+            android:foreground="@drawable/bg_white"
+            android:gravity="center"
+            android:text="@string/withdraw_c"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_15" />
     </LinearLayout>
 </RelativeLayout>

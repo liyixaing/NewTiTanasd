@@ -290,8 +290,14 @@ public class WalletFragment extends MvpFragment<WalletDataContact.WalletDataPres
                 startActivity(usd2);
                 break;
             case R.id.tta_lay://进入  TTA钱包
-                Intent tta_lay = new Intent(context, TtaWaitGetActivity.class);
-                startActivity(tta_lay);
+//                Intent tta_lay = new Intent(context, TtaWaitGetActivity.class);
+//                startActivity(tta_lay);
+                Intent ttawallet = new Intent(context, AssetTITANActivity.class);
+                ttawallet.putExtra("walletId", titanId);
+                ttawallet.putExtra("coin", "10");
+                ttawallet.putExtra("type", "TTA");
+                ttawallet.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS);
+                startActivity(ttawallet);
                 break;
             case R.id.rl_home_notice://小铃铛
                 //跳转到反馈列表界面

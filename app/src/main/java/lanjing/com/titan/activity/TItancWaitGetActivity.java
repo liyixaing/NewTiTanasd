@@ -59,11 +59,15 @@ public class TItancWaitGetActivity extends MvpActivity<WalletDetailContact.Walle
     TextView exchange_btn;//转出
     String walletId;//钱包ID
 
+    @BindView(R.id.tv_tibi_btn)
+    TextView tv_tibi_btn;
+
 
     CoinTitancAdapter mAdapter;
     List<HistoryListResponse.mData> mList;
 
     String sun = "0";
+    String suntaitan;
 
     int page = 1;
     int pageSize = 20;
@@ -126,7 +130,8 @@ public class TItancWaitGetActivity extends MvpActivity<WalletDetailContact.Walle
         return R.layout.activity_titanc_wait_get;
     }
 
-    @OnClick({R.id.tv_all_btn, R.id.top_up_c_btn, R.id.withdraw_c_btn, R.id.exchange_btn})
+    @OnClick({R.id.tv_all_btn, R.id.top_up_c_btn, R.id.withdraw_c_btn, R.id.exchange_btn,
+            R.id.tv_tibi_btn})
 
     public void onViewClicked(View view) {
         switch (view.getId()) {
@@ -148,6 +153,13 @@ public class TItancWaitGetActivity extends MvpActivity<WalletDetailContact.Walle
                 exchanget.putExtra("coin", coin);
                 exchanget.putExtra("sun", sun);
                 startActivity(exchanget);
+                break;
+            case R.id.tv_tibi_btn:
+                Intent TTmoney = new Intent(context, TiTanWithdrawMoney.class);
+                TTmoney.putExtra("id", "0");
+                TTmoney.putExtra("type", "titanc");
+                TTmoney.putExtra("taitanSum", suntaitan);
+                startActivity(TTmoney);
                 break;
         }
     }
@@ -235,6 +247,7 @@ public class TItancWaitGetActivity extends MvpActivity<WalletDetailContact.Walle
         refresh.finishRefresh();
         refresh.finishLoadMore();
         if (response.body().getCode() == Constant.SUCCESS_CODE) {
+            suntaitan = MoneyUtil.priceFormatDoubleFour(response.body().getData().getWellet().getCoinnum());
             sun = MoneyUtil.priceFormatDoubleFour(response.body().getData().getWellet().getCoinnum());
             tvTitancWaitGet.setText(MoneyUtil.priceFormatDoubleFour(response.body().getData().getWellet().getCoinnum()) + "TITANC");//可用余额
         }
@@ -282,5 +295,4 @@ public class TItancWaitGetActivity extends MvpActivity<WalletDetailContact.Walle
     public void getDataFailed() {
         ToastUtils.showShortToast(context, getResources().getString(R.string.network_error));
     }
-
 }

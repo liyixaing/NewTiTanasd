@@ -53,6 +53,8 @@ public class ActivitySelectAddress extends MvpActivity<SelectAddressContact.Sele
     SelectAddressAdapter selecAdapter;
     String taitanSum;
 
+    String type;
+
     int page = 1;
     int pageSize = 20;
     List<AddressListResponse.Data> mList;
@@ -67,6 +69,7 @@ public class ActivitySelectAddress extends MvpActivity<SelectAddressContact.Sele
     @Override
     public void initData(Bundle savedInstanceState) {
         taitanSum = getIntent().getStringExtra("taitanSum");
+        type = getIntent().getStringExtra("type");
         mPresent.walletList(context, String.valueOf(page), String.valueOf(pageSize));
         mList = new ArrayList<>();
         selecAdapter = new SelectAddressAdapter(R.layout.item_select_address, mList);
@@ -112,6 +115,7 @@ public class ActivitySelectAddress extends MvpActivity<SelectAddressContact.Sele
                     Intent intent = new Intent(context, TiTanWithdrawMoney.class);
                     intent.putExtra("id", mList.get(position).getId());
                     intent.putExtra("taitanSum", taitanSum);
+                    intent.putExtra("type", type);
                     startActivity(intent);
                     finish();
                 }
@@ -148,6 +152,7 @@ public class ActivitySelectAddress extends MvpActivity<SelectAddressContact.Sele
             case R.id.iv_backretun:
                 Intent back = new Intent(context, TiTanWithdrawMoney.class);
                 back.putExtra("id", "0");
+                back.putExtra("type", type);
                 back.putExtra("taitanSum", taitanSum);
                 startActivity(back);
                 finish();

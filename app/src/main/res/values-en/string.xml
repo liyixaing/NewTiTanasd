@@ -571,4 +571,6 @@
     <string name="mapping">Mapping</string>
     <string name="mappingall">Mapping All</string>
     <string name="mappingNumber">Mapping Number</string>
+    <string name="mappingget">Mapping_Acquisition</string>
+    <string name="tta_sun">TTA Number</string>
 </resources>

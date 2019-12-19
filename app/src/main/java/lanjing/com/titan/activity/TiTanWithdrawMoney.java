@@ -46,15 +46,23 @@ public class TiTanWithdrawMoney extends MvpActivity<getTransferContact.getTransf
     TextView TvBalance;//余额
     @BindView(R.id.et_tibusun)
     EditText EtTibusun;//数量输入框
+    @BindView(R.id.tv_text_title)
+    TextView tv_text_title;//界面标题
+    @BindView(R.id.tv_company)
+    TextView tv_company;//币种单位
+
     private String id;
     String taitanSum;
     Double asd = 0.0;
+    String type;
+    String coin;
     int i;
 
     @Override
     public void initData(Bundle savedInstanceState) {
         id = getIntent().getStringExtra("id");
         taitanSum = getIntent().getStringExtra("taitanSum");
+        type = getIntent().getStringExtra("type");
         i = taitanSum.indexOf(".");
 //        asd = Double.valueOf(taitanSum);
         TvBalance.setText(taitanSum);
@@ -62,6 +70,22 @@ public class TiTanWithdrawMoney extends MvpActivity<getTransferContact.getTransf
             //参数为0 不做处理
         } else {
             mPresent.Transfer(context, id);
+        }
+        Log.e("TAG", type);
+        //判断界面来源
+        if (type.equals("tta")) {
+            coin = "10";//TTA币种
+            tv_text_title.setText("TTA " + getResources().getString(R.string.withdraw_c));//改变标题
+            tv_company.setText("TTA");
+        } else if (type.equals("titan")) {
+            //titan界面跳转
+            coin = "1";//titan币种
+            tv_text_title.setText("TITAN " + getResources().getString(R.string.withdraw_c));//改变标题
+            tv_company.setText("TITAN");
+        } else {
+            coin = "2";//titanc币种
+            tv_text_title.setText("TITANC " + getResources().getString(R.string.withdraw_c));//改变标题
+            tv_company.setText("TITANC");
         }
         initInput();
     }
@@ -104,7 +128,7 @@ public class TiTanWithdrawMoney extends MvpActivity<getTransferContact.getTransf
     public void getDealPwdResult(Response<ResultDTO> response) {
         if (response.body().getCode() == Constant.SUCCESS_CODE) {
             showLoadingDialog();
-            mPresent.walletWithdraw(context, "1", TvAddress.getText().toString(), TvLabel.getText().toString(), EtTibusun.getText().toString());
+            mPresent.walletWithdraw(context, coin, TvAddress.getText().toString(), TvLabel.getText().toString(), EtTibusun.getText().toString());
         } else if (response.body().getCode() == -10) {
             ToastUtils.showShortToast(context, getResources().getString(R.string.not_login));
         } else if (response.body().getCode() == 201) {
@@ -131,6 +155,7 @@ public class TiTanWithdrawMoney extends MvpActivity<getTransferContact.getTransf
             case R.id.tv_select_address:
                 Intent Select = new Intent(context, ActivitySelectAddress.class);
                 Select.putExtra("taitanSum", taitanSum);
+                Select.putExtra("type", type);
                 startActivity(Select);
                 finish();
                 break;

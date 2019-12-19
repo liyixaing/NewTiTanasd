@@ -28,6 +28,7 @@ import lanjing.com.titan.request.InterDealRequest;
 import lanjing.com.titan.request.LanguageRequest;
 import lanjing.com.titan.request.ListWalletImportRequest;
 import lanjing.com.titan.request.LoginRequest;
+import lanjing.com.titan.request.MappingRequest;
 import lanjing.com.titan.request.ModifyHeadRequest;
 import lanjing.com.titan.request.ModifyNicknameRequest;
 import lanjing.com.titan.request.RecallRequest;
@@ -50,6 +51,7 @@ import lanjing.com.titan.request.WithdrawRequest;
 import lanjing.com.titan.request.WithdrawalRequest;
 import lanjing.com.titan.request.SaveOrUpdateRequest;
 import lanjing.com.titan.request.deleterRequest;
+import lanjing.com.titan.request.getMappingRequest;
 import lanjing.com.titan.request.getTransferConfigRequest;
 import lanjing.com.titan.request.getTransferRequest;
 import lanjing.com.titan.request.RransferRequest;
@@ -70,6 +72,7 @@ import lanjing.com.titan.response.EntrustListResponse;
 import lanjing.com.titan.response.ExemptionResponse;
 import lanjing.com.titan.response.FeedbackListResponse;
 import lanjing.com.titan.response.FriendListResponse;
+import lanjing.com.titan.response.GetMappingResponse;
 import lanjing.com.titan.response.HistoryListResponse;
 import lanjing.com.titan.response.InfoNoticeResponse;
 import lanjing.com.titan.response.InformationResponse;
@@ -77,6 +80,7 @@ import lanjing.com.titan.response.InterDealResponse;
 import lanjing.com.titan.response.IsfindResponse;
 import lanjing.com.titan.response.ListWalletImportResponse;
 import lanjing.com.titan.response.LoginResponse;
+import lanjing.com.titan.response.MappingResponse;
 import lanjing.com.titan.response.MarketListResponse;
 import lanjing.com.titan.response.PersonResponse;
 import lanjing.com.titan.response.RegisterResponse;
@@ -499,6 +503,18 @@ public interface ApiService {
      */
     @POST("/app/transfer")
     Call<ResultDTO> transfer(@Header("token") String token, @Body RransferRequest data);
+
+    /**
+     * 拉取映射配置
+     */
+    @POST("/app/getMappingConfig")
+    Call<MappingResponse> MappingConfig(@Header("token") String token, @Body MappingRequest data);
+
+    /**
+     * 映射
+     */
+    @POST("/app/mapping")
+    Call<GetMappingResponse> getmapping(@Header("token") String token, @Body getMappingRequest data);
 
     /**
      * 版本更新
