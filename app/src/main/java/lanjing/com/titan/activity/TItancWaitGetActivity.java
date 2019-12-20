@@ -104,7 +104,6 @@ public class TItancWaitGetActivity extends MvpActivity<WalletDetailContact.Walle
                     Intent Transfer_out = new Intent(context, TransferDetailsActivity.class);
                     Transfer_out.putExtra("id", String.valueOf(mList.get(position).getId()));
                     startActivity(Transfer_out);
-
                 }
             }
         });
@@ -283,8 +282,6 @@ public class TItancWaitGetActivity extends MvpActivity<WalletDetailContact.Walle
                 rvNormalShow.setVisibility(View.VISIBLE);
                 rv.setVisibility(View.GONE);
             }
-
-
         } else {
             ToastUtils.showShortToast(context, response.body().getMsg());
         }

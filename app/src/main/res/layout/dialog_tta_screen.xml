@@ -15,6 +15,7 @@
         android:text="@string/all"
         android:textColor="#FF000000"
         android:textSize="@dimen/sp_15" />
+
     <TextView
         android:id="@+id/tv_mappingget"
         android:layout_width="match_parent"
@@ -37,6 +38,7 @@
         android:text="@string/withdraw_c"
         android:textColor="#FF000000"
         android:textSize="@dimen/sp_15" />
+
 
 
 

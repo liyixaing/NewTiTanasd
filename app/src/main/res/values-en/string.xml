@@ -573,4 +573,6 @@
     <string name="mappingNumber">Mapping Number</string>
     <string name="mappingget">Mapping_Acquisition</string>
     <string name="tta_sun">TTA Number</string>
+    <string name="Mapping_consumption">Mapping Consumption</string>
+    <string name="tibishulaing">Withdrawal quantity is less than</string>
 </resources>

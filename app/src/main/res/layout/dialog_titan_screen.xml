@@ -5,16 +5,17 @@
     android:background="@drawable/shape_white_bg"
     android:gravity="center_horizontal"
     android:orientation="vertical">
+
     <TextView
-    android:id="@+id/all"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:foreground="@drawable/bg_white"
-    android:gravity="center"
-    android:padding="@dimen/dp_10"
-    android:text="@string/all"
-    android:textColor="#FF000000"
-    android:textSize="@dimen/sp_15" />
+        android:id="@+id/all"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:foreground="@drawable/bg_white"
+        android:gravity="center"
+        android:padding="@dimen/dp_10"
+        android:text="@string/all"
+        android:textColor="#FF000000"
+        android:textSize="@dimen/sp_15" />
 
     <TextView
         android:id="@+id/tv_buy"
@@ -70,6 +71,7 @@
         android:text="@string/flash_exchange"
         android:textColor="#FF000000"
         android:textSize="@dimen/sp_15" />
+
     <TextView
         android:id="@+id/tv_exchange"
         android:layout_width="match_parent"
@@ -77,10 +79,10 @@
         android:foreground="@drawable/bg_white"
         android:gravity="center"
         android:padding="@dimen/dp_10"
-        android:visibility="gone"
         android:text="@string/top_exchange"
         android:textColor="#FF000000"
-        android:textSize="@dimen/sp_15" />
+        android:textSize="@dimen/sp_15"
+        android:visibility="gone" />
 
     <TextView
         android:id="@+id/tv_service_fee"
@@ -92,7 +94,6 @@
         android:text="@string/service_fee"
         android:textColor="#FF000000"
         android:textSize="@dimen/sp_15" />
-
 
     <LinearLayout
         android:id="@+id/tv_unfrozen"
@@ -113,7 +114,16 @@
             android:textSize="@dimen/sp_15" />
     </LinearLayout>
 
-
+    <TextView
+        android:id="@+id/tv_consume"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:foreground="@drawable/bg_white"
+        android:gravity="center"
+        android:padding="@dimen/dp_10"
+        android:text="@string/Mapping_consumption"
+        android:textColor="#FF000000"
+        android:textSize="@dimen/sp_15" />
 
 
     <TextView
@@ -145,10 +155,10 @@
         android:layout_height="wrap_content"
         android:foreground="@drawable/bg_white"
         android:gravity="center"
-        android:visibility="gone"
         android:padding="@dimen/dp_10"
         android:text="@string/peer_acquisition"
         android:textColor="#FF000000"
-        android:textSize="@dimen/sp_15" />
+        android:textSize="@dimen/sp_15"
+        android:visibility="gone" />
 
 </LinearLayout>

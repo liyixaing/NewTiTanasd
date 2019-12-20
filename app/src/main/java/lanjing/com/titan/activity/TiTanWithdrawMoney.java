@@ -145,6 +145,7 @@ public class TiTanWithdrawMoney extends MvpActivity<getTransferContact.getTransf
 
     }
 
+    int tibishulaing = 0;
 
     @OnClick({R.id.confirm_btn, R.id.tv_select_address, R.id.iv_backretun, R.id.tc_extract_all})
     public void onViewClicked(View view) {
@@ -160,14 +161,29 @@ public class TiTanWithdrawMoney extends MvpActivity<getTransferContact.getTransf
                 finish();
                 break;
             case R.id.confirm_btn:
-
                 if (TvAddress.getText().toString().equals("")) {
                     ToastUtils.showShortToast(context, getResources().getString(R.string.please_address));
+                    break;
                 } else if (EtTibusun.getText().toString().equals("")) {
                     ToastUtils.showShortToast(context, getResources().getString(R.string.pls_three));
+                    break;
                 } else {
-                    showPwdBuyDialog();
+                    tibishulaing = Integer.parseInt(EtTibusun.getText().toString());
+                    if (tibishulaing < 100) {
+                        ToastUtils.showLongToast(context, getResources().getString(R.string.tibishulaing) + "100");
+                    } else {
+                        showPwdBuyDialog();
+                    }
                 }
+//                if (TvAddress.getText().toString().equals("")) {
+//                    ToastUtils.showShortToast(context, getResources().getString(R.string.please_address));
+//                } else if (EtTibusun.getText().toString().equals("")) {
+//                    ToastUtils.showShortToast(context, getResources().getString(R.string.pls_three));
+//                } else if (tibishulaing < 100) {
+//                    ToastUtils.showLongToast(context, getResources().getString(R.string.tibishulaing) + "100");
+//                } else {
+//                    showPwdBuyDialog();
+//                }
                 break;
             case R.id.tc_extract_all:
                 int anInt = Integer.parseInt(taitanSum.substring(0, i));

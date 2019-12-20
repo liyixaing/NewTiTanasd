@@ -35,6 +35,8 @@ public class CoinDealAdapter extends BaseQuickAdapter<CoinDealResponse.DataBean,
         String types = "TITAN";
         if (coin.equals("5")) {
             types = "BAR";
+        }else if (coin.equals("10")){
+            types = "TTA";
         } else {
             types = "TITAN";
         }

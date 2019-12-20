@@ -572,5 +572,7 @@
     <string name="mappingNumber">映射数量</string>
     <string name="mappingget">映射获得</string>
     <string name="tta_sun">TTA数量</string>
+    <string name="Mapping_consumption">映射消耗</string>
+    <string name="tibishulaing">提币数量小于</string>
 </resources>
 

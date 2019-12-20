@@ -1,5 +1,6 @@
 package lanjing.com.titan.activity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -7,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -172,7 +174,7 @@ public class AssetTITANActivity extends MvpActivity<WalletDetailContact.WalletDe
                 } else if (coin.equals("5")) {
                     showBARDialog();//BAR赛选弹出选择
                 } else if (coin.equals("10")) {
-                    ttacreeadialog();
+                    ttacreeadialog();//TTA筛选
                 }
 
                 break;
@@ -298,7 +300,6 @@ public class AssetTITANActivity extends MvpActivity<WalletDetailContact.WalletDe
 
     }
 
-
     AlertDialog screenDialog = null;
 
     //0，手续费 1，交易释放 2，充币 3，提币 4，买入 5，卖出 6，系统 7，其他 （不填写为全部）
@@ -372,6 +373,12 @@ public class AssetTITANActivity extends MvpActivity<WalletDetailContact.WalletDe
                     tvTitanScreen.setText(getResources().getString(R.string.flash_exchange));
                     mPresent.historylist(context, coin, type, String.valueOf(page), String.valueOf(pageSize));
                     screenDialog.dismiss();
+                })
+                .setOnClickListener(R.id.tv_consume, v -> {
+                    type = "29";//映射消耗
+                    tvTitanScreen.setText(getResources().getString(R.string.Mapping_consumption));
+                    mPresent.historylist(context, coin, type, String.valueOf(page), String.valueOf(pageSize));
+                    screenDialog.dismiss();
                 });
         screenDialog = builder.create();
         screenDialog.show();
@@ -400,7 +407,7 @@ public class AssetTITANActivity extends MvpActivity<WalletDetailContact.WalletDe
             } else if (coin.equals("5")) {
                 tvTixianBalance.setText(MoneyUtil.priceFormatDoubleFour(response.body().getData().getWellet().getFrozennum()));//提现余额
             } else if (coin.equals("10")) {
-                tvTixianBalance.setText(MoneyUtil.priceFormatDoubleFour(response.body().getData().getWellet().getFrozennum()));//提现余额
+                tvTixianBalance.setText(assetbate);//提现余额
             }
             tvTitanTradingFrozen.setText(MoneyUtil.priceFormatDoubleFour(response.body().getData().getWellet().getFrozennum()));//交易冻结
         }
@@ -438,13 +445,10 @@ public class AssetTITANActivity extends MvpActivity<WalletDetailContact.WalletDe
                 rv.setVisibility(View.GONE);
             }
         }
-
     }
 
     @Override
     public void getDataFailed() {
         ToastUtils.showShortToast(context, getResources().getString(R.string.network_error));
     }
-
-
 }

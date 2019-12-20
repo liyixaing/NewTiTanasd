@@ -47,6 +47,9 @@ public class AwardAdapter extends BaseQuickAdapter<CoinLogListResponse.Data, Bas
             case 5:
                 helper.setText(R.id.tv_bi_type, "BAR");
                 break;
+            case 10:
+                helper.setText(R.id.tv_bi_type, "TTA");
+                break;
         }
         String time = DateUtils.timedate(item.getChangeTime());
         helper
